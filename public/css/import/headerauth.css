@@ -1,0 +1,11 @@
+#logo {
+    display: block;
+    text-transform: uppercase;
+    font-family: 'Roboto Medium';
+    color: white;
+    padding: 13px 0px;
+}
+
+#header-auth {
+    background: #f12a43;
+}

@@ -1,0 +1,50 @@
+#post-product-wp {
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.9s ease;
+}
+
+#post-product-wp.show-full {
+    height: auto;
+    padding-bottom: 60px;
+    overflow: visible;
+}
+
+.bg-blur {
+    background: linear-gradient(to bottom, rgba(255 255 255/0), rgba(255 255 255/62.5), rgba(255 255 255/1));
+    bottom: 0px;
+    height: 105px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+#post-product-wp .section-detail {
+    background: #fff;
+    padding: 15px 30px;
+}
+
+#show-hidden-content {
+    padding: 5px 89px;
+    display: inline-block;
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    transition: all 0.5s ease;
+    /* border: 1px solid #8787ea; */
+    color: #9999d6;
+    border-radius: 4px;
+    background: none;
+}
+
+#show-hidden-content {
+    background: #cceef7;
+    cursor: pointer;
+}
+
+.desc p {
+    margin-bottom: 0px;
+}
