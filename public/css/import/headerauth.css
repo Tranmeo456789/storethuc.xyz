@@ -9,3 +9,20 @@
 #header-auth {
     background: #f12a43;
 }
+.title-form-login{
+    color: #8b8080;
+    font-size: 30px;
+    font-weight: 600;
+}
+.wp-input-icon{
+    position: relative;
+}
+.icon-eye,.icon-eye-slash{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+.icon-eye i,.icon-eye-slash i{
+    color: blue;
+}

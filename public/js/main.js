@@ -148,3 +148,4 @@ function tab() {
     $('#tab-menu li:first-child').addClass('show');
     $('.tabItem:first-child').show();
 }
+

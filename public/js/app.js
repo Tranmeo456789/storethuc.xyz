@@ -43,3 +43,18 @@ function zoom(e) {
     y = offsetY / zoomer.offsetHeight * 100
     zoomer.style.backgroundPosition = x + '% ' + y + '%';
 }
+/* FORM LOGIN */
+
+$(document).on('click', ".icon-eye", function (event) {
+    $('.icon-eye i').toggleClass("fa-eye-slash");
+   
+});
+const ipnElement = document.querySelector('.wp-input-icon #password');
+const btnElement = document.querySelector('.wp-input-icon .icon-eye');
+btnElement.addEventListener('click', function() {
+  const currentType = ipnElement.getAttribute('type');
+  ipnElement.setAttribute(
+    'type',
+    currentType === 'password' ? 'text' : 'password'
+  )
+});

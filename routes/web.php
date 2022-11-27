@@ -32,7 +32,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Route::get('/getInfo/facebook/{social}','SocialController@getInfo');
+Route::get('/getInfo-facebook/{social}','SocialController@getInfo');
 Route::get('/check-info-facebook/{social}','SocialController@checkInfo');
 
 

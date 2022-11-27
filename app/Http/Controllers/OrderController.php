@@ -89,8 +89,6 @@ class OrderController extends Controller
         echo $output;
     }
     function OrderSuccess(Request $request){
-        $order_id_last=Order::latest('id')->first();
-        return $order_id_last;
         $request->validate(
             [
             'fullname' => 'required|string|min:1',
@@ -118,7 +116,6 @@ class OrderController extends Controller
         $province=Quanhuyen::where('maqh',$request->input('province'))->get();
         $wards=Xaphuongthitran::where('xaid',$request->input('wards'))->get();
         
-        $order_code='ISM-'.($order_id_last['id']+1).Str::upper(Str::random(9));
         $price_total=0;
         foreach(Cart::content() as $item9){
             $price_total+=$item9->total;
@@ -126,8 +123,6 @@ class OrderController extends Controller
         
         Order::create(
             [    
-                'id'=> $order_id_last['id']+1,
-                'code_order' => $order_code,
                 'fullname' => $request->input('fullname'),
                 'price_total' => $price_total,
                 'status'=> 'Đang xử lý',
@@ -135,28 +130,34 @@ class OrderController extends Controller
                 'payments'=>$request->input('payment-method'),      
             ]
           );
-          
+           $order_id_last=Order::latest('id')->first();
+           $order_code='ISM-'.($order_id_last['id']).Str::upper(Str::random(9));
+          Order::where('id', $order_id_last['id'])->update(
+            [    
+                'code_order' => $order_code,     
+            ]
+          );
         Guest::create(
             [                
                 'fullname' => $request->input('fullname'),
                 'phone' => $request->input('phone'),
                 'email' => $request->input('email'),
                 'address' => $request->input('address').', '.$wards[0]['name_xa'].', '.$province[0]['name_huyen'].', '.$city[0]['name_tinh'],
-                'order_id' => $order_id_last['id']+1,                  
+                'order_id' => $order_id_last['id'],                  
             ]
           );
         foreach(Cart::content() as $item7){
             Product_order::create(
                 [                
-                    'order_id' => $order_id_last['id']+1,
+                    'order_id' => $order_id_last['id'],
                     'product_id' => $item7->id,
                     'qty' => $item7->qty,                  
                 ]
             );
         }
-        $guests=Guest::where('order_id',$order_id_last['id']+1)->get();
+        $guests=Guest::where('order_id',$order_id_last['id'])->get();
         $guest=$guests[0];
-        $order=Order::where('id',$order_id_last['id']+1)->get();
+        $order=Order::where('id',$order_id_last['id'])->get();
         $data=[
             'code_order' => $order[0]->code_order,
             'fullname'=>$guest->fullname,

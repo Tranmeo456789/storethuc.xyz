@@ -9,7 +9,7 @@
                 <div class="section-detail">
                     @foreach ($_SESSION['slider'] as $slider)
                     <div class="item">
-                        <img src="{{asset($slider->image)}}" alt="" class="img-fluid" style="">
+                        <img src="{{asset($slider->image)}}" alt="" class="img-fluid">
                     </div>
                     @endforeach                   
                    </div>
@@ -30,7 +30,7 @@
                                 <img src="{{asset('images/icon-2.png')}}">
                             </div>
                             <h3 class="title">Tư vấn 24/7</h3>
-                            <p class="desc">1900.9999</p>
+                            <p class="desc">0983195167</p>
                         </li>
                         <li>
                             <div class="thumb">
@@ -39,13 +39,13 @@
                             <h3 class="title">Tiết kiệm hơn</h3>
                             <p class="desc">Với nhiều ưu đãi cực lớn</p>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="thumb">
                                 <img src="{{asset('images/icon-4.png')}}">
                             </div>
                             <h3 class="title">Thanh toán nhanh</h3>
                             <p class="desc">Hỗ trợ nhiều hình thức</p>
-                        </li>
+                        </li> -->
                         <li>
                             <div class="thumb">
                                 <img src="{{asset('images/icon-5.png')}}">
@@ -94,10 +94,10 @@
                         <div class="section-detail">
                             <ul class="list-item clearfix">
                                 @php
-                                    $count =1;
+                                    $count = 1;
                                 @endphp
                                @foreach ($_SESSION['product'] as $smartphone)                                   
-                                    @if ($smartphone['cat_id']==$cat_product['id'] && $count<9)
+                                    @if ($smartphone['cat_id']==$cat_product['id'] && $count < 9 )
                                         @php
                                             $count++;
                                         @endphp 

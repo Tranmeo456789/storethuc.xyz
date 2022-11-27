@@ -1,7 +1,7 @@
 /*HEADER*/
 
 #head-top {
-    background: #d9263c;
+    background: #0E7346;
 }
 
 #head-top #main-menu li {
@@ -14,7 +14,9 @@
     color: #fff;
     padding: 10px 0px 10px 20px;
 }
-
+#head-top a{
+    font-size: 18px;
+}
 #head-top #payment-link:before {
     position: absolute;
     content: '\f0c1';
@@ -26,7 +28,7 @@
 #head-top #main-menu li>a {
     display: block;
     color: #fff;
-    padding: 10px 15px;
+    padding: 12px 15px;
 }
 
 #head-top #main-menu li:last-child a {
@@ -34,7 +36,7 @@
 }
 
 #head-body {
-    background: #f12a43;
+    background: #147a4d;
 }
 
 #head-body #logo {
@@ -43,36 +45,50 @@
     font-family: 'Roboto Medium';
     color: #fff;
     padding: 13px 0px;
+    width: 12%;
 }
 
 #head-body #search-wp {
-    padding: 22px 0px 22px 195px;
+    padding: 22px 10px 22px 100px;
+    position: relative;
+    width: 63%;
+}
+.wp-form-search{
     position: relative;
 }
-
 #head-body #search-wp #s {
     display: inline-block;
-    width: 400px;
+    width: 100%;
     border: none;
     outline: none;
     padding: 5px 20px 7px 20px;
     line-height: normal;
+    border-radius: 20px;
+    height: 40px;
+    position: absolute;
+    z-index: 10;
 }
-
+.wp-input-search{
+width: 80%;
+position: relative;
+}
 .user-login {
     padding-top: 8px;
 }
 
 #head-body #search-wp .search-result {
     position: absolute;
-    z-index: 10000;
-    margin-top: 2px;
+    z-index: 9;
+    top: 20px;
     border-radius: 4px;
-    width: 400px;
+    width: 82%;
     background: rgb(255, 255, 255);
     box-shadow: 0 1px 8px rgb(0 0 0 / 30%);
+    
 }
-
+/* .suggest-search{
+    padding-top: 25px;
+} */
 #head-body #search-wp .search-result .suggest-search .product-suggest a {
     display: flex;
     justify-content: space-between;
@@ -121,22 +137,30 @@
 #head-body #search-wp .search-result .suggest-search li.product-suggest {
     padding: 8px 0;
 }
-
+#head-body #search-wp .search-result .suggest-search li:first-child.product-suggest{
+    padding-top: 25px;
+}
 #head-body #search-wp #sm-s {
-    position: relative;
-    left: -4px;
+    position: absolute;
+    top: 0px;right:0px;
+    z-index: 10;
     display: inline-block;
     border: none;
     outline: none;
-    background: #111111;
+    background: #d3d3d3;
     color: #fff;
-    padding: 10px 20px 10px 20px;
+    width: 18%;
     line-height: 13px;
-    font-size: 13px;
+    font-size: 16px;
+    height: 40px;
+    border-radius: 0px 20px 20px 0px;
 }
-
+#head-body #search-wp #sm-s i{
+    font-size: 20px;
+    color: #584747;
+}
 #head-body #search-wp #sm-s:hover {
-    background: #444444;
+    background: #e0dddd;
 }
 
 #advisory-wp {
@@ -166,7 +190,7 @@
     content: '';
     width: 1px;
     height: 50%;
-    background: #da263c;
+    background: gray;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
