@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product_cat;
+use Illuminate\Support\Str;
 class AdminProductCatController extends Controller
 {
     function __construct()
@@ -51,7 +52,7 @@ class AdminProductCatController extends Controller
                 [
                     'title'=>$request->input('cat_title'),
                     'parent_id'=>$request->input('parent_id'),
-                   
+                    'slug'  => Str::slug($request->input('cat_title')), 
                 ]
               );
             return redirect('admin/product/cat')->with('status', 'Đã thêm danh mục thành công');

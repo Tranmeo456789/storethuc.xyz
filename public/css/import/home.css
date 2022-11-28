@@ -270,30 +270,30 @@
 #feature-product-wp .list-item li .action .add-cart,
 #list-product-wp .list-item li .action .add-cart,
 #same-category-wp .list-item li .action .add-cart {
-    border: 1px solid #333;
-    color: #333;
+    border: 1px solid #ddd1d1;
+    color: rgb(59, 57, 57);
     transition: all 0.2s ease-in-out;
 }
 
 #feature-product-wp .list-item li .action .buy-now,
 #list-product-wp .list-item li .action .buy-now,
 #same-category-wp .list-item li .action .buy-now {
-    color: #da1818;
-    border: 1px solid #da1818;
+    color: #16812d;
+    border: 1px solid #98dda1;
     transition: all 0.2s ease-in-out;
 }
 
 #feature-product-wp .list-item li .action .buy-now:hover,
 #list-product-wp .list-item li .action .buy-now:hover,
 #same-category-wp .list-item li .action .buy-now:hover {
-    background: #da1818;
+    background: #6de262da;
     color: #fff;
 }
 
 #feature-product-wp .list-item li .action .add-cart:hover,
 #list-product-wp .list-item li .action .add-cart:hover,
 #same-category-wp .list-item li .action .add-cart:hover {
-    background: #333;
+    background: rgb(153, 143, 143);
     color: #fff;
 }
 

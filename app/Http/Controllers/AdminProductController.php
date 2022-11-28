@@ -285,7 +285,6 @@ class AdminProductController extends Controller
                     'content' => $request->input('product_content'),
                     'user_id' => Auth::id(),
                     'cat_id' => $request->input('product_cat'),
-                    'cat_id_child' => $request->input('product_cat_child'),
                     'status' => $request->input('status'),
                     'slug'  => Str::slug($request->input('product_name')),   
                 ]

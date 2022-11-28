@@ -51,9 +51,6 @@ class ProductController extends Controller
         return view('client.product.all_product',compact('pages','page_contact','page_introduce'));
     }
     
-    // function show_detail($slug_product){
-    //     return view('client.product.detail');
-    // }
     function list_product1($slug1){
         $page_contact=Page::find(15);
         $page_introduce=Page::find(21);
@@ -84,7 +81,6 @@ class ProductController extends Controller
             }
             $product_like_cat=Product::where([
                 ['id','<>',$product->id],
-                ['cat_id_child',$product->cat_id_child]
             ])->inRandomOrder()->limit(7)->get();
            
             return view('client.product.detail',compact('product','page_contact','page_introduce','posts','image_products','product_like_cat'));

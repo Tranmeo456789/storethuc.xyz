@@ -48,26 +48,25 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Danh mục cha</label>
+                        <label for="">Danh mục sản phẩm</label>
                         <select name="product_cat" class="form-control choose" id="product-cat">
                             <option value="">Chọn danh mục cha</option>
                             @foreach ($cat_products as $cat_product)
                                 @if ($cat_product['parent_id']==0)
                                 <option value="{{$cat_product['id']}}">{{ str_repeat('--', $cat_product['level']) }}{{$cat_product['title']}}</option>
-                                @endif
-                                
+                                @endif                              
                             @endforeach
                         </select>
                         @error('product_cat')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">Danh mục con</label>
                         <select name="product_cat_child" class="form-control" id="product-cat-child">
                             <option value="">Chọn danh mục con</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="">Trạng thái</label>
                         <div class="form-check">

@@ -14,7 +14,7 @@ class Product_cat extends Model
      * @var array
      */
     protected $fillable = [
-        'title','parent_id'
+        'title','parent_id','slug'
     ];
 
     

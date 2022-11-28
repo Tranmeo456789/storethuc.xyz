@@ -28,13 +28,13 @@
                             <label for="">Danh mục cha</label>
                             <select name="parent_id" class="form-control" id="">
                                 <option value="0">Không có danh mục cha</option>
-                                @foreach ($product_cats as $item)
+                                <!-- @foreach ($product_cats as $item)
                                     @if ($item['parent_id'] == 0)
                                         <option value="{{ $item['id'] }}" class="font-weight-bold">{{ $item['title'] }}</option>
                                     @else
                                         <option value="{{ $item['id'] }}">{{ str_repeat('-', $item['level']) }}{{ $item['title'] }}</option>
                                     @endif
-                                @endforeach
+                                @endforeach -->
                             </select>
                         </div>
                         <button type="submit" name='add_cat' value='Thêm mới' class="btn btn-primary">Thêm mới</button>
@@ -66,7 +66,7 @@
                                     $temp++;
                                 @endphp
                                 @if ($product_cat['parent_id'] == 0)
-                                    <tr class="font-weight-bolder">
+                                    <tr class="">
                                         <th scope="row">{{ $temp }}</th>
                                         <td>
                                             {{ str_repeat('--', $product_cat['level']) }}
@@ -79,7 +79,7 @@
                                         </td>
                                     </tr>
                                 @else
-                                    <tr class=".font-italic">
+                                    <tr class="font-italic">
                                         <th scope="row">{{ $temp }}</th>
                                         <td>
                                             {{ str_repeat('--', $product_cat['level']) }}

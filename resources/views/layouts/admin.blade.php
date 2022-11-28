@@ -12,7 +12,7 @@
     <script src="https://cdn.tiny.cloud/1/cilgdefwwpjwph4t9r56jwn4kf0yp1sqhhl0l0sf7z400bng/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         var editor_config = {
-        path_absolute : "http://localhost/unitop/back-end/Laravel/project/unimart/",
+        path_absolute : "http://localhost/storethuc.xyz/",
         selector: '#mytextarea',
         height: 500,
         relative_urls: false,
@@ -52,7 +52,7 @@
     </script>
     <script>
         var editor_config = {
-        path_absolute : "http://localhost/unitop/back-end/Laravel/project/unimart/",
+        path_absolute : "http://localhost/storethuc.xyz/",
         selector: '#describe',
         height: 250,
         relative_urls: false,
@@ -95,7 +95,7 @@
 <body>
     <div id="warpper" class="nav-fixed">
         <nav class="topnav shadow navbar-light bg-white d-flex">
-            <div class="navbar-brand"><a href="?">UNITOP ADMIN</a></div>
+            <div class="navbar-brand"><a href="?">STORE THỨC</a></div>
             <div class="nav-right ">
                 <div class="btn-group mr-auto">
                     <button type="button" class="btn dropdown" data-toggle="dropdown" aria-haspopup="true"

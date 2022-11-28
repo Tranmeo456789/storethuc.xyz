@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function(){
     
 
     Route::get('dashboard', 'DashboardController@show');
-    Route::get('admin', 'DashboardController@show');
+    Route::get('admin', 'DashboardController@show')->name('backend.dashboard');
         
     Route::get('admin/user/list', 'AdminUserController@list')->middleware('can:list_user');
     Route::get('admin/user/list_active', 'AdminUserController@list_active');
