@@ -300,7 +300,7 @@
 .border-bottom-title {
     display: block;
     width: 80%;
-    border-bottom: 2px solid #239b3d;
+    border-top: 2px solid #239b3d;
 }
 
 #list-product-wp .section-detail .list-item li {

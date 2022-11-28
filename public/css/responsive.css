@@ -211,6 +211,9 @@
     .policy {
         padding-left: 0!important;
     }
+    #list-product-wp .list-item li .action button ,#feature-product-wp .list-item li .action button{
+        padding: 3px;
+    }
     /*CART*/
     .table-responsive {
         width: 100%;
@@ -258,7 +261,7 @@
 @media screen and (max-width: 600px) {
     /*HEADER*/
     #head-body #logo {
-        max-width: 23%;
+        width: 44%;
         padding: 10px 0px;
         font-size: 18px;
     }
