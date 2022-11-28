@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>ISMART STORE</title>
+    <title>Cửa hàng thực phẩm khô</title>
     <link href="{{asset('css/bootstrap/bootstrap-theme.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/reset.css')}}" rel="stylesheet" type="text/css" />
@@ -107,9 +107,9 @@
                     <div id="head-body" class="clearfix">
                         <div class="wp-inner">
                             @if (Auth::check())
-                            <a href="{{url('/home')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logostore.png')}}" /></a>
+                            <a href="{{url('/home')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logokieutrang.png')}}" /></a>
                             @else
-                            <a href="{{url('/')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logostore.png')}}" /></a>
+                            <a href="{{url('/')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logokieutrang.png')}}" /></a>
                             @endif
 
                             <div id="search-wp" class="fl-left">

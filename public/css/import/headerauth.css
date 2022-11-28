@@ -24,5 +24,17 @@
     cursor: pointer;
 }
 .icon-eye i,.icon-eye-slash i{
-    color: blue;
+    color: #0d8e9b;
+}
+.form-lgrg{
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+}
+.img-title-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-title-login img{
+    max-width: 150px;
 }

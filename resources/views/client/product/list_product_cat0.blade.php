@@ -4,17 +4,17 @@
 <div id="main-content-wp" class="home-page clearfix">
     <div class="wp-inner">
         <div class="main-content fl-right">
-            <div class="section" id="slider-wp">
+            <!-- <div class="section" id="slider-wp">
                 <div class="section-detail">
                     <div class="item">
-                        <img src="{{asset('images/slider-01.png')}}" alt="">
+                        <img src="{{asset('uploads/images/product/banner1.png')}}" alt="">
                     </div>
                     <div class="item">
-                        <img src="{{asset('images/slider-02.png')}}" alt="">
+                        <img src="{{asset('uploads/images/product/banner2.png')}}" alt="">
                     </div>
                    
                 </div>
-            </div>
+            </div> -->
             <div class="section" id="support-wp">
                 <div class="section-detail">
                     <ul class="list-item clearfix">
@@ -30,7 +30,7 @@
                                 <img src="{{asset('images/icon-2.png')}}">
                             </div>
                             <h3 class="title">Tư vấn 24/7</h3>
-                            <p class="desc">1900.9999</p>
+                            <p class="desc">0983.195.167</p>
                         </li>
                         <li>
                             <div class="thumb">
@@ -38,13 +38,6 @@
                             </div>
                             <h3 class="title">Tiết kiệm hơn</h3>
                             <p class="desc">Với nhiều ưu đãi cực lớn</p>
-                        </li>
-                        <li>
-                            <div class="thumb">
-                                <img src="{{asset('images/icon-4.png')}}">
-                            </div>
-                            <h3 class="title">Thanh toán nhanh</h3>
-                            <p class="desc">Hỗ trợ nhiều hình thức</p>
                         </li>
                         <li>
                             <div class="thumb">
@@ -102,7 +95,7 @@
                                     $count =1;
                                 @endphp
                                @foreach ($_SESSION['product'] as $smartphone)                                   
-                                    @if ($smartphone['cat_id_child']==$cat_product['id'] && $count<9)
+                                    @if ($smartphone['cat_id_child']==$cat_product['id'] && $count < 9)
                                         @php
                                             $count++;
                                         @endphp 
