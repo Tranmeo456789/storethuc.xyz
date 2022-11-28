@@ -220,7 +220,6 @@
 #feature-product-wp .list-item li .product-name,
 #list-product-wp .list-item li .product-name,
 #same-category-wp .list-item li .product-name {
-    display: block;
     min-height: 40px;
     text-align: center;
     color: #222;
@@ -311,7 +310,7 @@
     background: #fff;
     padding: 10px 10px 30px 10px;
     border: 1px solid transparent;
-    min-height: 292px;
+    height: 292px;
 }
 
 #list-product-wp .section-detail .list-item li>a>img {
@@ -331,10 +330,12 @@
 
 #feature-product-wp .section-detail .list-item li {
     border: 1px solid transparent;
+    height: 292px;
 }
 
 #feature-product-wp .section-detail .list-item li:hover {
     border: 1px solid #ddd;
+    
 }
 
 #feature-product-wp .section-detail .list-item li>a>img {

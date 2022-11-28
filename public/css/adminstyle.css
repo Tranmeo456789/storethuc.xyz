@@ -183,3 +183,8 @@ td.thumb-post {
     border: 1px solid rgb(199, 185, 185);
     padding: 8px 3px;
 }
+
+.input-file-add{
+    cursor: pointer;
+    width: 16%;
+}

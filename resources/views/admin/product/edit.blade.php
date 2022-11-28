@@ -26,18 +26,15 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="product-price">Giá cũ</label>
-                                @if(!empty($product->price_old))
-                                    <input class="form-control" type="text" name="price_old" value="{{$product['price_old']}}" id="product-price-old" autocomplete="off" >
-                                @else
-                                    <input class="form-control" type="text" name="price_old" value="" id="product-price-old" autocomplete="off" >
-                                @endif
-                                
-                                @error('price_old')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div> -->
+                            <div class="form-group">
+                                <label for="">Đơn vị tính</label>
+                                <select name="unit" class="form-control">
+                                    <option value="Kg">Kg</option>
+                                    <option value="Gói">Gói</option>
+                                    <option value="Túi">Túi</option>
+                                    <option value="Hộp">Hộp</option>
+                                </select>
+                            </div>
                             <div class="form-group" style="max-width: 300px;">
                                 <label for="file-product">Ảnh đại diện</label>
                                 <input type="file" name="file" id="file-product" class="form-control-file">

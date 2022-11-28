@@ -18,11 +18,22 @@ img {
     height: auto;
     display: block;
 }
-
+.wp-img-50pt{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+}
 .fl-left {
     float: left;
 }
-
+.truncate2 {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    display: -webkit-box;
+}
 .fl-right {
     float: right;
 }

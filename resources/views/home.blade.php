@@ -65,15 +65,15 @@
                     <ul class="list-item">
                         @foreach ($_SESSION['product_sellign'] as $item4)
                             <li>
-                                    <a href="{{route('cat1.product',$item4->slug)}}" title="" class="thumb">
+                                    <a href="{{route('cat1.product',$item4->slug)}}" title="" class="thumb wp-img-50pt">
                                         <img src="{{asset($item4->thumbnail)}}">
                                     </a>
-                                    <a href="{{route('cat1.product',$item4->slug)}}" title="" class="product-name">{{$item4->name}}</a>
+                                    <a href="{{route('cat1.product',$item4->slug)}}" title="" class="product-name truncate2">{{$item4->name}}</a>
                                     <div class="price">
-                                        <span class="new">{{number_format($item4['price_current'], 0, "" ,"." )}}đ</span>
-                                            @if ($item4['price_old'])
+                                        <span class="new">{{number_format($item4['price_current'], 0, "" ,"." )}}đ / {{$item4['unit']}}</span>
+                                            <!-- @if ($item4['price_old'])
                                                 <span class="old">{{number_format($item4['price_old'], 0, "" ,"." )}}đ</span>
-                                            @endif 
+                                            @endif  -->
                                     </div>
                                     <div class="action clearfix">
                                         <button type="submit" title="" data-id="{{$item4->id}}" class="add-cart fl-left">Thêm giỏ hàng</button>
@@ -102,15 +102,12 @@
                                             $count++;
                                         @endphp 
                                             <li>
-                                                <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="thumb">
+                                                <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="thumb wp-img-50pt">
                                                     <img src="{{asset($smartphone['thumbnail'])}}">
                                                 </a>
-                                                <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name">{{$smartphone['name']}}</a>
+                                                <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name truncate2">{{$smartphone['name']}}</a>
                                                 <div class="price">
-                                                    <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ</span>
-                                                    @if ($smartphone['price_old'])
-                                                        <span class="old">{{number_format($smartphone['price_old'], 0, "" ,"." )}}đ</span>
-                                                    @endif                                                                       
+                                                    <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ / {{$smartphone['unit']}}</span>
                                                 </div>
                                                 <div class="action clearfix">
                                                     <button href="" title="Thêm giỏ hàng" data-id="{{$smartphone->id}}" class="add-cart fl-left">Thêm giỏ hàng</button>
@@ -135,7 +132,7 @@
                         @foreach ($_SESSION['cat_product'] as $item2)
                             @if ($item2['parent_id']==0)
                             <li>
-                                <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value='{{$item2['id']}}' >{{$item2['title']}}</a>
+                                <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value="{{$item2['id']}}" >{{$item2['title']}}</a>
                                 <!-- <ul class="sub-menu">
                                     @foreach ($_SESSION['cat_product_child'] as $item3)
                                         @if ($item3['parent_id']==$item2['id'])
@@ -165,10 +162,10 @@
                                 <div class="info fl-right">
                                     <a href="{{route('cat1.product',$item1->slug)}}" title="" class="product-name">{{$item1['name']}}</a>
                                     <div class="price">
-                                        <span class="new">{{number_format($item1['price_current'], 0, "" ,"." )}}đ</span>
-                                        @if ($item1['price_old'])
+                                        <span class="new">{{number_format($item1['price_current'], 0, "" ,"." )}}đ / {{$item1['unit']}}</span>
+                                        <!-- @if ($item1['price_old'])
                                             <span class="old">{{number_format($item1['price_old'], 0, "" ,"." )}}đ</span>
-                                        @endif                                                                       
+                                        @endif                                                                        -->
                                     </div>
                                     <a href="{{url('thanh-toan')}}" title="" class="buy-now">Mua ngay</a>
                                 </div>

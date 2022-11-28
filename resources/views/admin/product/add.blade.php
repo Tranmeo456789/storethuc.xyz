@@ -25,6 +25,15 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label for="">Đơn vị tính</label>
+                                <select name="unit" class="form-control">
+                                    <option value="Kg">Kg</option>
+                                    <option value="Gói">Gói</option>
+                                    <option value="Túi">Túi</option>
+                                    <option value="Hộp">Hộp</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
@@ -38,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         <label for="file-product">Ảnh đại diện</label>
-                        <input type="file" name="file" id="file-product" class="form-control-file">
+                        <input type="file" name="file" id="file-product" class="form-control-file input-file-add">
                     </div>
                     <div class="form-group">
                         <label for="mytextarea">Chi tiết sản phẩm</label>

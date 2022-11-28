@@ -97,7 +97,7 @@
                     {!!$product->content!!}
                 </div>
                 <div class="bg-blur"></div>
-                <div id="show-hidden-content" class="border border-primary border-2">Xem thêm</div>
+                <div id="show-hidden-content" class="">Xem thêm</div>
             </div>
             <div class="section" id="same-category-wp">
                 @if ($product_like_cat->count()>0)

@@ -282,6 +282,7 @@ class AdminProductController extends Controller
                     'thumbnail' => $thumbnail,
                     'describe'=>$request->input('describe'),
                     'price_current'=>$request->input('price'),
+                    'unit' => $request->input('unit'),
                     'content' => $request->input('product_content'),
                     'user_id' => Auth::id(),
                     'cat_id' => $request->input('product_cat'),

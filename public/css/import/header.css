@@ -108,7 +108,7 @@ position: relative;
 
 #head-body #search-wp .search-result .suggest-search .product-suggest a .item-info .product-name {
     font-size: 16px;
-    color: #333;
+    color: blue;
     padding: 5px 5px 0px 0px;
     font-weight: 400;
     margin-bottom: 0px;
@@ -131,7 +131,7 @@ position: relative;
 }
 
 #head-body #search-wp .search-result .suggest-search li:not(:last-child).product-suggest {
-    border-bottom: 1px solid rgb(185, 185, 185);
+    border-bottom: 1px solid rgb(239 233 233);
 }
 
 #head-body #search-wp .search-result .suggest-search li.product-suggest {
