@@ -200,6 +200,7 @@
     #detail-product-wp .info {
         padding-left: 25px;
         width: 100%;
+        margin-top: 15px;
     }
     #detail-product-wp .info .product-name {
         line-height: normal;
@@ -293,6 +294,9 @@
     /*DETAIL PRODUCT*/
     #detail-product-wp .add-cart {
         font-size: 14px;
+    }
+    #show-hidden-content{
+        padding: 5px 15px;
     }
     /*DETAIL BLOG*/
     #detail-blog-wp .section-title {

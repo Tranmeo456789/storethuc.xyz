@@ -187,9 +187,10 @@
                             </a>
                             <i class="arrow fas {{$module_active=='product'?'fa-angle-down':'fa-angle-right'}}"></i>
                             <ul class="sub-menu">
-                                <li><a href="{{url('admin/product/add')}}">Thêm mới</a></li>
+                                <li><a href="{{url('admin/product/add')}}">Thêm sản phẩm</a></li>
                                 <li><a href="{{url('admin/product/list')}}">Danh sách sản phẩm</a></li>
                                 <li><a href="{{url('admin/product/cat')}}">Danh mục</a></li>
+                                <li><a href="{{route('backend.unit.list')}}">Đơn vị tính</a></li>
                                 <li><a href="{{url('admin/product/list_color')}}">Danh sách màu</a></li>
                             </ul>
                         </li>

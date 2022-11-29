@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div id="main-content-wp" class="cart-page">
     <div class="section" id="breadcrumb-wp">

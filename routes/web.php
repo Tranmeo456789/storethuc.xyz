@@ -124,6 +124,10 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/product/add_color', 'AdminProductController@add_color');
     Route::get('admin/product/delete_color/{id}', 'AdminProductController@delete_color')->name('delete.color');
 
+    Route::get('admin/unit/list', 'AdminUnitController@list')->name('backend.unit.list');
+    Route::post('admin/unit/store', 'AdminUnitController@store')->name('backend.unit.store');
+    Route::get('admin/unit/delete/{id}', 'AdminUnitController@forcedelete')->name('backend.unit.delete');
+
     Route::get('admin/product/list_image', 'AdminProductController@list_image');
     Route::get('admin/product/add_img/{id}', 'AdminProductController@add_img')->name('product.add_img')->middleware('can:add_img');
     Route::post('admin/product/update_img/{id}', 'AdminProductController@update_img')->name('product.update_img');

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Color_product;
 use App\Image_product;
+use App\Model\Unit;
 use Illuminate\Support\Str;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
@@ -218,8 +219,9 @@ class AdminProductController extends Controller
             return $result;
         }
         $cat_products=data_tree( $data, 0);
-        $cat_product_childs=Product_cat_child::all();  
-        return view('admin.product.add', compact('cat_products','cat_product_childs'));
+        $cat_product_childs=Product_cat_child::all();
+        $units=Unit::all();  
+        return view('admin.product.add', compact('cat_products','cat_product_childs','units'));
     }
     // chọn danh mục
     public function selectCat(Request $request){
@@ -311,7 +313,8 @@ class AdminProductController extends Controller
         $cat_products=data_tree1( $data, 0); 
         $product=Product::find($id);
         $cat_product_childs=Product_cat_child::all(); 
-        return view('admin.product.edit',compact('cat_products', 'product','cat_product_childs'));
+        $units=Unit::all(); 
+        return view('admin.product.edit',compact('cat_products', 'product','cat_product_childs','units'));
     }
     // cập nhật
     function update(Request $request, $id){

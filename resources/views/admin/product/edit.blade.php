@@ -29,10 +29,9 @@
                             <div class="form-group">
                                 <label for="">Đơn vị tính</label>
                                 <select name="unit" class="form-control">
-                                    <option value="Kg">Kg</option>
-                                    <option value="Gói">Gói</option>
-                                    <option value="Túi">Túi</option>
-                                    <option value="Hộp">Hộp</option>
+                                    @foreach($units as $item)
+                                        <option value="{{$item['name']}}" {{$item['name'] == $product['unit'] ? " selected = 'selected' " : '' }}  >{{$item['name']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group" style="max-width: 300px;">
