@@ -37,12 +37,22 @@
                             </div>
                             <div class="form-group" style="max-width: 300px;">
                                 <label for="file-product">Ảnh đại diện</label>
-                                <input type="file" name="file" id="file-product" class="form-control-file">
+                                <input type="file" name="file" id="file-slider" class="form-control-file @error('file')  is-invalid @enderror" onchange="show_upload_image()">
+                                <div><img src="{{asset('uploads/images/product//')}}
+                                    @php
+                                        if(isset($_FILES['file']) && !empty($_FILES['file']['name'])){
+                                            echo '/'.$_FILES['file']['name'];
+                                        }else{
+                                            echo '/null.png';
+                                        }
+                                    @endphp" 
+                                    alt="" id="image-slider" class="border img-fluid" style="max-width: 50%">
+                                </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="describe">Mô tả sản phẩm</label>
+                                <label for="describe">Mô tả ngắn</label>
                                 <div><textarea name="describe" id="describe"  class="form-control" style="height: 100%" cols="30" rows="5">{{$product['describe']}}</textarea></div>
                                 @error('describe')
                                     <small class="text-danger">{{ $message }}</small>
@@ -64,7 +74,7 @@
                             <option value="">Chọn danh mục cha</option>
                             @foreach ($cat_products as $cat_product)
                                 @if ($cat_product['parent_id']==0)
-                                <option value="{{$cat_product['id']}}" {{$cat_product['id']==$product['cat_id']?"selected='selected'":''}}>{{ str_repeat('--', $cat_product['level']) }}{{$cat_product['title']}}</option>
+                                <option value="{{$cat_product['id']}}" {{$cat_product['id'] == $product['cat_id'] ? " selected = 'selected' " : '' }} > {{ str_repeat('--', $cat_product['level']) }}{{$cat_product['title']}}</option>
                                 @endif    
                             @endforeach
                         </select>
@@ -72,7 +82,7 @@
                             <small class="text-danger">{{$message }}</small>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">Danh mục con</label>
                         <select name="product_cat_child" class="form-control" id="product-cat-child">
                             <option value="">Chọn danh mục con</option>
@@ -80,7 +90,7 @@
                                 <option value="{{$cat_product_child['id']}}" {{$cat_product_child['id']==$product['cat_id_child']?"selected='selected'":''}}>{{$cat_product_child['title']}}</option>   
                             @endforeach
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="">Trạng thái</label>
                         

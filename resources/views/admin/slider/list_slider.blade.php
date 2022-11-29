@@ -41,7 +41,7 @@
                                 @endif
                                 
                             </div>
-                            <div class="form-group col-6" style="">
+                            <div class="form-group col-6">
                                 <label for="">Trạng thái</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="Công khai" checked>

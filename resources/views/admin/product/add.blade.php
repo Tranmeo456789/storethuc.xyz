@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="describe">Mô tả sản phẩm</label>
+                                <label for="describe">Mô tả ngắn</label>
                                 <textarea name="describe" class="form-control" id="describe" cols="30" rows="5">{{old('describe')}}</textarea>
                                 @error('describe')
                                     <small class="text-danger">{{ $message }}</small>
@@ -45,10 +45,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="max-width: 300px;">
                         <label for="file-product">Ảnh đại diện</label>
-                        <input type="file" name="file" id="file-product" class="form-control-file input-file-add">
+                        <input type="file" name="file" id="file-slider" class="form-control-file @error('file')  is-invalid @enderror" onchange="show_upload_image()">
+                        <div><img src="{{asset('uploads/images/product//')}}
+                         @php
+                            if(isset($_FILES['file']) && !empty($_FILES['file']['name'])){
+                                echo '/'.$_FILES['file']['name'];
+                                }else{
+                                    echo '/null.png';
+                                }
+                        @endphp" 
+                        alt="" id="image-slider" class="border img-fluid" style="max-width: 50%">
+                        </div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="mytextarea">Chi tiết sản phẩm</label>
                         <textarea name="product_content" id="mytextarea" class="form-control" cols="30" rows="5">{{old('product_content')}}</textarea>

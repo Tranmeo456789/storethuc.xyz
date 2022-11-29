@@ -385,7 +385,7 @@ class AdminProductController extends Controller
                 [
                     'product_name'=>'Tên sản phẩm',
                     'price'=>'Giá sản phẩm',
-                    'price_old' => 'Giá cũ',
+                    
                     'describe'=>'Mô tả ngắn',
                     'product_content'=>'Nội dung',   
                     'product_cat'=>'Danh mục cha',                
@@ -406,11 +406,10 @@ class AdminProductController extends Controller
                         'thumbnail' => $thumbnail,
                         'describe'=>$request->input('describe'),
                         'price_current'=>$request->input('price'),
-                        'price_old' => $request->input('price_old'),
+                        //'price_old' => $request->input('price_old'),
                         'content' => $request->input('product_content'),
                         'user_id' => Auth::id(),
                         'cat_id' => $request->input('product_cat'),
-                        'cat_id_child' => $request->input('product_cat_child'),
                         'status' => $request->input('status'),
                         'slug'  => Str::slug($request->input('product_name')), 
                     ]
@@ -422,11 +421,10 @@ class AdminProductController extends Controller
                         'thumbnail' => $thumbnail,
                         'describe'=>$request->input('describe'),
                         'price_current'=>$request->input('price'),
-                        
+                        'unit' => $request->input('unit'),
                         'content' => $request->input('product_content'),
                         'user_id' => Auth::id(),
                         'cat_id' => $request->input('product_cat'),
-                        'cat_id_child' => $request->input('product_cat_child'),
                         'status' => $request->input('status'),
                         'slug'  => Str::slug($request->input('product_name')), 
                     ]
