@@ -94,17 +94,14 @@ class ProductController extends Controller
         $page_introduce=Page::find(21);
         $posts=Post::all();
         $cat0_id_products=Product_cat::where('slug',$slug)->get();
-        
-        foreach($cat0_id_products as $cat0_id_product){
-            $cat0_id_product=$cat0_id_product['id'];
-            
-        }
+        $cat0_id_product=$cat0_id_products[0];
         if(!empty($cat0_id_product)){
             $_SESSION['cat_product']=Product_cat::all();
             $_SESSION['cat_product_child']=Product_cat_child::all();
             $_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
-            $product_sellign_like_cats=Product::where('cat_id',$cat0_id_product)->inRandomOrder()->limit(8)->get();
+            $product_sellign_like_cats=Product::where('cat_id',$cat0_id_product['id'])->inRandomOrder()->limit(8)->get();
             $_SESSION['product']=Product::all();
+            ///return($cat0_id_product);
             return view('client.product.list_product_cat0',compact('cat0_id_product','page_contact','page_introduce','posts','product_sellign_like_cats'));
         }
         else{

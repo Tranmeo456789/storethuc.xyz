@@ -44,7 +44,7 @@
                         @endif  
                         <div id="list-thumb">    
                                 @foreach ($image_products as $image_product)
-                                <div style="">
+                                <div>
                                     @if ($image_product['image'])
                                         <div class="image-click" href="" data-image="" data-zoom-image="">
                                             <img  style="padding: 2px" src="{{asset($image_product['image'])}}" />
@@ -57,11 +57,11 @@
                                 @endforeach           
                         </div>
                     </div>
-                    @if ($image_products[0]['image'])
+                    <!-- @if ($image_products[0]['image'])
                     <div class="thumb-respon-wp fl-left">
                         <img src="{{asset($image_products[0]['image'])}}" alt="">
                     </div>
-                    @endif      
+                    @endif       -->
                     @endif
                     
                     <div class="info fl-right">
@@ -73,17 +73,20 @@
                             <span class="title">Sản phẩm: </span>
                             <span class="status">{{$product['status']}}</span>
                         </div>
-                        <span class="text-dark mr-5" style="font-size:20px;">Giá:</span><span class="price">{{number_format($product['price_current'], 0, "" ,"." )}}đ</span>
+                        <span class="text-dark mr-5" style="font-size:20px;">Giá:</span><span class="price">{{number_format($product['price_current'], 0, "" ,"." )}}đ / {{$product['unit']}}</span>
                             <div id="num-order-wp">
                                 <form action="{{route('cart.add')}}" method="POST" id="detail-add-product" >
                                     @csrf
-                                    <div class="d-inline-block mr-3"><span style="font-size:18px;padding-top: 5px">Số lượng:</span></div>
                                     {{-- <input type="hidden" name="_token" value="">           --}}
-                                    <a title="" id="minus"><i class="fa fa-minus"></i></a>
-                                    <input type="text" name="num_order" value="1" min="1" max="10" id="num-order" readonly>
-                                    <a title="" id="plus"><i class="fa fa-plus"></i></a>
-                                    <input type="hidden" name="id_product" value="{{$product->id}}">
-                                    <input type="submit" title="Thêm giỏ hàng" value="Thêm giỏ hàng" class="add-cart3 mt-3" style="border:none;display: block">
+                                    <div class="d-flex">
+                                        <div class="d-inline-block mr-3"><span style="font-size:18px;padding-top: 5px">Số lượng:</span></div>
+                                        <a title="" id="minus"><i class="fa fa-minus"></i></a>
+                                        <input type="text" name="num_order" value="1" min="1" max="10" id="num-order" readonly>
+                                        <a title="" id="plus"><i class="fa fa-plus"></i></a>
+                                        <input type="hidden" name="id_product" value="{{$product->id}}">
+                                        
+                                    </div>
+                                    <div><input type="submit" title="Thêm giỏ hàng" value="Thêm giỏ hàng" class="add-cart3 mt-3" style="border:none;display: block"></div>
                                 </form>
                             </div>
                     </div>
@@ -110,13 +113,13 @@
                         @foreach ($product_like_cat as $item5)
                             <li>
                                 @if ($item5->thumbnail)
-                                <a href="{{route('cat1.product',$item5->slug)}}" title="" class="thumb">
+                                <a href="{{route('cat1.product',$item5->slug)}}" title="" class="thumb wp-img-50pt">
                                     <img src="{{asset($item5->thumbnail)}}">
                                 </a>
                                 @endif
-                                <a href="{{route('cat1.product',$item5->slug)}}" title="" class="product-name">{{$item5->name}}</a>
+                                <a href="{{route('cat1.product',$item5->slug)}}" title="" class="product-name truncate2">{{$item5->name}}</a>
                                 <div class="price">
-                                    <span class="new">{{number_format($item5['price_current'], 0, "" ,"." )}}đ</span>
+                                    <span class="new">{{number_format($item5['price_current'], 0, "" ,"." )}}đ / {{$item5['unit']}}</span>
                                     @if ($item5->price_old)
                                         <span class="old">{{number_format($item5['price_old'], 0, "" ,"." )}}đ</span>
                                     @endif                            
@@ -143,16 +146,7 @@
                         @foreach ($_SESSION['cat_product'] as $item2)
                             @if ($item2['parent_id']==0)
                             <li>
-                                <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value='{{$item2['id']}}' >{{$item2['title']}}</a>
-                                <ul class="sub-menu">
-                                    @foreach ($_SESSION['cat_product_child'] as $item3)
-                                        @if ($item3['parent_id']==$item2['id'])
-                                        <li>
-                                            <a href="{{route('cat1.product',$item3->slug)}}" title="">{{$item3['title']}}</a>
-                                        </li> 
-                                        @endif
-                                    @endforeach                                   
-                                </ul>
+                                <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value="{{$item2['id']}}" >{{$item2['title']}}</a>
                             </li>
                             @endif  
                         @endforeach
@@ -161,6 +155,9 @@
             </div>
             <div class="section" id="banner-wp">
                 <div class="section-detail">
+                    <a href="" title="" class="thumb">
+                        <img src="{{asset('images/banner_doc3.png')}}" alt="">
+                    </a>
                     <a href="" title="" class="thumb">
                         <img src="{{asset('images/banner.png')}}" alt="">
                     </a>

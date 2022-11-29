@@ -38,7 +38,7 @@ Route::get('/check-info-facebook/{social}','SocialController@checkInfo');
 
 Route::get('san-pham-{slug}', 'ProductController@list_product')->name('cat0.product');
 // Route::get('san-pham/{slugproduct}', 'ProductController@show_detail')->name('product.detail');
-Route::get('san-pham/{slug1}', 'ProductController@list_product1')->name('cat1.product');
+Route::get('san-pham/{slug1}.html', 'ProductController@list_product1')->name('cat1.product');
 
 Route::get('searchProduct', 'ProductController@searchProductAjax')->name('searchProductAjax');
 Route::post('cart/updateCartAjax', 'CartController@updateCartAjax')->name('updateCartAjax');

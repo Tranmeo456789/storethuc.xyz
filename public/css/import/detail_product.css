@@ -6,7 +6,7 @@
 }
 
 #detail-product-wp .thumb-respon-wp {
-    border: 1px solid #c7c7c7;
+    display: none;
 }
 
 #detail-product-wp .info {
@@ -133,6 +133,8 @@
     border: 1px solid #b1b1b1;
     font-family: "Roboto Regular";
     color: #545454;
+    border-left: none;
+    border-right: none;
 }
 
 #minus,

@@ -142,12 +142,12 @@
         margin-left: 0;
     }
     /*DETAIL PRODUCT*/
-    .thumb-wp {
+    /* .thumb-wp {
         display: none;
     }
     .thumb-respon-wp {
         display: block;
-    }
+    } */
     /*FOOTER*/
     /*CHECK OUT*/
     #to-checkout-wp .shop-table tbody tr td {
