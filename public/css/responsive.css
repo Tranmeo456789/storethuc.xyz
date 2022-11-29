@@ -199,9 +199,13 @@
     /*DETAIL PRODUCT*/
     #detail-product-wp .info {
         padding-left: 25px;
+        width: 100%;
     }
     #detail-product-wp .info .product-name {
         line-height: normal;
+    }
+    #detail-product-wp .thumb-wp,#detail-product-wp .info{
+        width: 100%;
     }
     /*FOOTER*/
     #footer-wp #foot-body .block {

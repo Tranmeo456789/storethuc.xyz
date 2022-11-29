@@ -9,15 +9,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Cửa hàng anh thức</title>
-    <link href="{{asset('css/bootstrap/bootstrap-theme.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/reset.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/carousel/owl.theme.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/import.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('css/sweetalert.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/bootstrap/bootstrap-theme.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/bootstrap/bootstrap.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/reset.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/carousel/owl.theme.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/carousel/owl.carousel.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/import.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/sweetalert.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/responsive.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -136,10 +136,12 @@
                                 </div>
                                 <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                 <a href="{{url('show/cart')}}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    @if (Cart::count() >0)
-                                    <span id="num1">{{Cart::count()}}</span>
-                                    @endif
+                                    <div class="wp-cart-respon">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        @if (Cart::count() >0)
+                                            <span id="num1" class="num-cart-res">{{Cart::count()}}</span>
+                                        @endif
+                                    </div>
                                 </a>
                                 <div id="cart-wp" class="fl-right">
                                     <div id="btn-cart">
@@ -257,48 +259,17 @@
                 </div>
             </div>
             <div id="menu-respon">
-                <a href="?page=home" title="" class="logo">VSHOP</a>
+                <a href="{{route('home')}}" title="" class="logo">STORE</a>
                 <div id="menu-respon-wp">
                     <ul class="" id="main-menu-respon">
                         <li>
-                            <a href="?page=home" title>Trang chủ</a>
+                            <a href="{{route('home')}}" title>Trang chủ</a>
                         </li>
                         <li>
-                            <a href="?page=category_product" title>Điện thoại</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="?page=category_product" title="">Iphone</a>
-                                </li>
-                                <li>
-                                    <a href="?page=category_product" title="">Samsung</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="?page=category_product" title="">Iphone X</a>
-                                        </li>
-                                        <li>
-                                            <a href="?page=category_product" title="">Iphone 8</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="?page=category_product" title="">Nokia</a>
-                                </li>
-                            </ul>
-                        </li>
+                            <a href="" title>Yến</a>                         
+                        </li>                        
                         <li>
-                            <a href="?page=category_product" title>Máy tính bảng</a>
-                        </li>
-                        <li>
-                            <a href="?page=category_product" title>Laptop</a>
-                        </li>
-                        <li>
-                            <a href="?page=category_product" title>Đồ dùng sinh hoạt</a>
-                        </li>
-                        <li>
-                            <a href="?page=blog" title>Blog</a>
-                        </li>
-                        <li>
-                            <a href="#" title>Liên hệ</a>
+                            <a href="" title>Liên hệ</a>
                         </li>
                     </ul>
                 </div>

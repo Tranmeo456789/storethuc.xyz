@@ -248,7 +248,14 @@ position: relative;
     position: relative;
     cursor: pointer;
 }
-
+.wp-cart-respon{
+    position: relative;
+}
+.wp-cart-respon .num-cart-res{
+    position: absolute;
+    top: -6px;
+    font-weight: bold;
+}
 #cart-wp #dropdown {
     visibility: hidden;
     opacity: 0;

@@ -26,11 +26,10 @@
     <div id="wrapper" class="wp-inner clearfix">
         <div class="section" id="info-cart-wp">
             <div class="section-detail table-responsive">
-                
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>Mã sản phẩm</td>
+                            <!-- <td>Mã sản phẩm</td> -->
                             <td>Ảnh sản phẩm</td>
                             <td>Tên sản phẩm</td>
                             <td>Giá sản phẩm</td>
@@ -45,14 +44,15 @@
                         @endphp
                         @foreach (Cart::content() as $row)
                         <tr>                          
-                            <td>HCA00031</td>
+                            <!-- <td>HCA00031</td> -->
                             <td>
                                 <a href="" title="" class="thumb">
                                     <img src="{{asset($row->options->thumbnail)}}" alt="">
                                 </a>
                             </td>
                             <td>
-                                <a href="" title="" class="name-product">{{$row->name}}</a>
+                                <a href="" title="" class="name-product truncate2">{{$row->name}}</a>
+                                <p class="unit-cart"><span>Đơn vị tính: </span><span>{{$row->options->unit}}</span></p>
                             </td>
                             <td>{{ number_format($row->price, 0, ',', '.') }}đ</td>
                             <td>
@@ -86,8 +86,7 @@
                             </td>
                         </tr>
                     </tfoot>
-                </table>
-                         
+                </table>         
             </div>
         </div>
         <div class="section" id="action-cart-wp">

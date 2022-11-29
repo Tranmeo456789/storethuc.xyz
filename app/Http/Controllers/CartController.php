@@ -57,7 +57,7 @@ class CartController extends Controller
                 'name' => $product1->name,
                 'qty' => $qty1,
                 'price' => $product1->price_current,
-                'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail],
+                'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail,'unit'=>$product1->unit],
             ]);
         }else{
             //return   $qty_total;
@@ -77,7 +77,7 @@ class CartController extends Controller
             'name' => $product->name,
             'qty' => 1,
             'price' => $product->price_current,
-            'options' => ['slug'=>$product->slug,'thumbnail'=>$product->thumbnail],
+            'options' => ['slug'=>$product->slug,'thumbnail'=>$product->thumbnail,'unit'=>$product->unit],
         ]);
     }
     function remove($rowId){
