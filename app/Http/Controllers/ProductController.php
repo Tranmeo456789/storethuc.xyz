@@ -143,8 +143,8 @@ class ProductController extends Controller
                                 </div>
                             </div>
                             <div class="item-info">
-                                <h3 class="product-name">'.$item->name.'</h3>
-                                <strong class="price-new">'.number_format($item->price_current, 0, "" ,"." ).'đ</strong>
+                                <h3 class="product-name truncate2">'.$item->name.'</h3>
+                                <strong class="price-new mt-2">'.number_format($item->price_current, 0, "" ,"." ).'đ / '.$item->unit.'</strong>
                                  
                             </div>    
                         </a>  

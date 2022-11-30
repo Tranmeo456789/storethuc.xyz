@@ -153,6 +153,9 @@
     #to-checkout-wp .shop-table tbody tr td {
         white-space: nowrap;
     }
+    .head-ls-product-cart{
+        font-size: 10px;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -262,7 +265,15 @@
         padding-right: 10px;
     }
 }
-
+@media screen and (max-width: 768px) {
+    .head-ls-product-cart{
+        display: none;
+    }
+    .item-product-cart .col-img-item-cart,.item-product-cart .col-info-product{
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
 @media screen and (max-width: 600px) {
     /*HEADER*/
     #head-body #logo {
@@ -352,6 +363,12 @@
     }
     #order-review-wp {
         margin-left: 0!important;
+    }
+    #update-cart{
+        padding: 8px 10px;
+    }
+    #checkout-cart{
+        padding: 8px 10px;
     }
     /*DETAIL NEWS*/
     #list-news-wp .thumb {

@@ -321,7 +321,6 @@ position: relative;
 }
 
 #cart-wp #dropdown .list-cart .info .product-name {
-    display: block;
     font-size: 13px;
     color: #333;
 }

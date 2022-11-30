@@ -80,6 +80,7 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+    height: 90px;
 }
 
 #selling-wp .section-detail .list-item li:last-child {
@@ -89,7 +90,10 @@
 }
 
 #selling-wp .section-detail .list-item .thumb {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     width: 30%;
     border: 1px solid #ddd;
 }

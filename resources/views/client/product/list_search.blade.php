@@ -18,10 +18,10 @@
                                                  </a>
                                                  <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name truncate2">{{$smartphone['name']}}</a>
                                                  <div class="price">
-                                                     <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ</span>
-                                                     @if ($smartphone['price_old'])
+                                                     <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ / {{$smartphone['unit']}}</span>
+                                                     <!-- @if ($smartphone['price_old'])
                                                          <span class="old">{{number_format($smartphone['price_old'], 0, "" ,"." )}}đ</span>
-                                                     @endif                                                                       
+                                                     @endif                                                                        -->
                                                  </div>
                                                  <div class="action clearfix">
                                                      <a href="?page=cart" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>

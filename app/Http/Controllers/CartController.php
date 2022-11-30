@@ -136,8 +136,8 @@ class CartController extends Controller
                     <img src="'.asset($row1->options->thumbnail).'" alt="">
                 </a>
                     <div class="info fl-right">
-                         <a href="'.route('cat1.product',$row1->options->slug).'" title="" class="product-name">'.$row1->name.'</a>
-                        <p class="price mb-0">'.number_format($row1->price, 0, ',', '.') .'đ</p>
+                         <a href="'.route('cat1.product',$row1->options->slug).'" title="" class="product-name truncate2">'.$row1->name.'</a>
+                        <p class="price mb-0">'.number_format($row1->price, 0, ',', '.') .'đ / '.$row1->options->unit.'</p>
                         <p class="qty mb-0">Số lượng: <span>'.$row1->qty.'</span></p>
                      </div>
             </li>';
