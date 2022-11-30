@@ -13,10 +13,10 @@
                                 
                                 @foreach ($product_searchs as $smartphone)                                   
                                              <li>
-                                                 <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="thumb">
+                                                 <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="thumb wp-img-50pt">
                                                      <img src="{{asset($smartphone['thumbnail'])}}">
                                                  </a>
-                                                 <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name">{{$smartphone['name']}}</a>
+                                                 <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name truncate2">{{$smartphone['name']}}</a>
                                                  <div class="price">
                                                      <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ</span>
                                                      @if ($smartphone['price_old'])
@@ -59,7 +59,7 @@
                             @if ($item2['parent_id']==0)
                             <li>
                                 <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value='{{$item2['id']}}' >{{$item2['title']}}</a>
-                                <ul class="sub-menu">
+                                <!-- <ul class="sub-menu">
                                     @foreach ($_SESSION['cat_product_child'] as $item3)
                                         @if ($item3['parent_id']==$item2['id'])
                                         <li>
@@ -67,7 +67,7 @@
                                         </li> 
                                         @endif
                                     @endforeach                                   
-                                </ul>
+                                </ul> -->
                             </li>
                             @endif
                            

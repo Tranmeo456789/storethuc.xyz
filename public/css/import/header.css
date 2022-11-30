@@ -92,8 +92,11 @@ position: relative;
 #head-body #search-wp .search-result .suggest-search .product-suggest a {
     display: flex;
     justify-content: space-between;
+    height: 100%;
 }
-
+.wp-img-search{
+    height: 100%;
+}
 #head-body #search-wp .search-result .suggest-search .product-suggest a .item-img {
     flex-basis: 38%;
     height: auto;
@@ -132,10 +135,12 @@ position: relative;
 
 #head-body #search-wp .search-result .suggest-search li:not(:last-child).product-suggest {
     border-bottom: 1px solid rgb(239 233 233);
+    height: 120px;
 }
 
 #head-body #search-wp .search-result .suggest-search li.product-suggest {
     padding: 8px 0;
+    height: 120px;
 }
 #head-body #search-wp .search-result .suggest-search li:first-child.product-suggest{
     padding-top: 25px;

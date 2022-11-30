@@ -121,7 +121,9 @@ class ProductController extends Controller
                     <li class="product-suggest">
                         <a href="">
                             <div class="item-img">
-                                <img src="'.asset($item->thumbnail).'">
+                                <div class="wp-img-search">
+                                    <img src="'.asset($item->thumbnail).'">
+                                </div>
                             </div>
                             <div class="item-info">
                                 <h3 class="product-name">'.$item->name.'</h3>
@@ -136,7 +138,9 @@ class ProductController extends Controller
                     <li class="product-suggest">
                         <a href="">
                             <div class="item-img">
-                                <img src="'.asset($item->thumbnail).'">
+                                <div class="wp-img-search">
+                                    <img src="'.asset($item->thumbnail).'">
+                                </div>
                             </div>
                             <div class="item-info">
                                 <h3 class="product-name">'.$item->name.'</h3>

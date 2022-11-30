@@ -401,27 +401,13 @@ class AdminProductController extends Controller
                 $filename = $file->getClientOriginalName();
                 $path = $file->move('public/uploads/images/product', $file->getClientOriginalName());
                 $thumbnail='uploads/images/product/'.$filename;   
-            }
-            if($request->input('price_old')){
+                Product::where('id', $id)->update([
+                    'thumbnail' => $thumbnail,
+                ]);
+            }          
                 Product::where('id', $id)->update(
                     [
-                        'name' => $request->input('product_name'),
-                        'thumbnail' => $thumbnail,
-                        'describe'=>$request->input('describe'),
-                        'price_current'=>$request->input('price'),
-                        //'price_old' => $request->input('price_old'),
-                        'content' => $request->input('product_content'),
-                        'user_id' => Auth::id(),
-                        'cat_id' => $request->input('product_cat'),
-                        'status' => $request->input('status'),
-                        'slug'  => Str::slug($request->input('product_name')), 
-                    ]
-                );
-            }else{
-                Product::where('id', $id)->update(
-                    [
-                        'name' => $request->input('product_name'),
-                        'thumbnail' => $thumbnail,
+                        'name' => $request->input('product_name'),                      
                         'describe'=>$request->input('describe'),
                         'price_current'=>$request->input('price'),
                         'unit' => $request->input('unit'),
@@ -431,10 +417,7 @@ class AdminProductController extends Controller
                         'status' => $request->input('status'),
                         'slug'  => Str::slug($request->input('product_name')), 
                     ]
-                );
-            }
-           
-              
+                );  
             return redirect('admin/product/list')->with('status', 'Bạn đã cập nhật thành công');
         }      
     }

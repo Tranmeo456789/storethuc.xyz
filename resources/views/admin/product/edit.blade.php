@@ -37,12 +37,12 @@
                             <div class="form-group" style="max-width: 300px;">
                                 <label for="file-product">Ảnh đại diện</label>
                                 <input type="file" name="file" id="file-slider" class="form-control-file @error('file')  is-invalid @enderror" onchange="show_upload_image()">
-                                <div><img src="{{asset('uploads/images/product//')}}
+                                <div><img src="
                                     @php
                                         if(isset($_FILES['file']) && !empty($_FILES['file']['name'])){
-                                            echo '/'.$_FILES['file']['name'];
+                                            echo asset('/').'uploads/images/product/'.$_FILES['file']['name'];
                                         }else{
-                                            echo '/null.png';
+                                            echo asset('/').$product['thumbnail'];
                                         }
                                     @endphp" 
                                     alt="" id="image-slider" class="border img-fluid" style="max-width: 50%">
