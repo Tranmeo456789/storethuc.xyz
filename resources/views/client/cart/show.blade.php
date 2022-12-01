@@ -130,7 +130,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <a href="" title="" class="name-product truncate2">{{$row->name}}</a>
-                                    <p class="unit-cart"><span class="font-weight-bold">Đơn giá: </span><span class="text-danger">{{ number_format($row->price, 0, ',', '.') }}đ / {{$row->options->unit}}</span></p>
+                                    <p class="unit-cart"><span class="font-weight-bold">Đơn giá: </span><span class="text-dark">{{ number_format($row->price, 0, ',', '.') }}đ / {{$row->options->unit}}</span></p>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row">
@@ -143,7 +143,7 @@
                                                         <span title="" class="plus1"><i class="fa fa-plus"></i></span>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-5 mt-2 mt-md-0"><span class="sub-total{{$row->id}}">{{ number_format($row->total, 0, ',', '.') }}</span>đ</div>
+                                                <div class="col-12 col-md-5 mt-2 mt-md-0 font-weight-bold"><span class="sub-total{{$row->id}}">{{ number_format($row->total, 0, ',', '.') }}</span>đ</div>
                                             </div>
                                         </div>
                                         <div class="col-2 text-center"><a href="{{route('cart.remove', $row->rowId)}}" title="" class="del-product"><i class="fa fa-trash-o"></i></a></div>

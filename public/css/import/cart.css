@@ -176,13 +176,20 @@
 .minus1,
 .plus1 {
     border: 1px solid #d3cccc;
-    padding: 5px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
     cursor: pointer;
     color: rgb(216, 29, 29);
     transition: all 0.2s ease-in-out;
 }
 .plus1{
     color: green;
+}
+.minus1 i,
+.plus1 i{
+    font-size: 10px;
 }
 .minus1:hover,
 .plus1:hover {

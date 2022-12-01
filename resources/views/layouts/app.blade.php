@@ -392,6 +392,7 @@
                         success: function(data) {
                             $(".sub-total" + id).text(data.sub_total);
                             $("#num").text(data.num_order);
+                            $("#num1").text(data.num_order);
                             $("#total-cart").text(data.total_cart);
                             $('#dropdown').html(data.list_cart);
                         },
@@ -420,6 +421,7 @@
                         success: function(data) {
                             $(".sub-total" + id).text(data.sub_total);
                             $("#num").text(data.num_order);
+                            $("#num1").text(data.num_order);
                             $("#total-cart").text(data.total_cart);
                             $('#dropdown').html(data.list_cart);
                         },
