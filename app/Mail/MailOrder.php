@@ -32,8 +32,8 @@ class MailOrder extends Mailable
         $order_id_last=Order::latest('id')->first();
         $order=Order::where('id',$order_id_last['id']+1)->get();
         return $this->view('mail.OrderComfirm')
-        ->from('dungdeguimail89@gmail.com','Ismart store')
-        ->subject('[Ismart store] Thông tin đơn hàng')->with($this->data);
+        ->from('dungdeguimail89@gmail.com','STORE THUC')
+        ->subject('[STORE THUC] Thông tin đơn hàng')->with($this->data);
         
     }
 }

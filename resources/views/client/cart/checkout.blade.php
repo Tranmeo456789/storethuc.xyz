@@ -46,6 +46,9 @@
                         <div class="col-12 col-md-12 pb-2">
                             <label for="email">Email</label>
                             <input type="email" name="email" value="{{old('email')}}" id="email">
+                            @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div> 
                         <div class="col-12 col-md-12">
                             <label for="address">Địa chỉ <small class="text-danger">(*)</small></label>
@@ -81,7 +84,7 @@
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 pb-3">
-                            <input type="tel" name="address" id="address" placeholder="Số nhà, tên đường">
+                            <input type="text" name="address" id="address" placeholder="Số nhà, tên đường">
                             @error('address')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror

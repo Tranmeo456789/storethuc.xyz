@@ -92,7 +92,8 @@ class OrderController extends Controller
         $request->validate(
             [
             'fullname' => 'required|string|min:1',
-            'phone'=> 'required|numeric|min:1',
+            'phone' => 'required|numeric|min:1',
+            //'email' => 'email',
             'city'=> 'required',
             'province' =>'required',
             'wards' =>'required',
@@ -101,11 +102,13 @@ class OrderController extends Controller
             [
                 'numeric' => 'Số điện thoại không hợp lệ',
                 'required'=>'Vui lòng :attribute',
+                'email'=> ':attribute không hợp lệ',
                 'min'=>':attribute có độ dài ít nhất :min ký tự',                  
             ],
             [
                 'fullname'=>'nhập họ và tên',
                 'phone'=>'nhập số điện thoại',
+                'email'=>'Email',
                 'city'=> 'chọn tỉnh thành phố',
                 'province' =>'chọn quận huyện',
                 'wards' =>'chọn xã phường thị trấn',
@@ -168,8 +171,10 @@ class OrderController extends Controller
             'note'=>$order[0]->note,
             'payments'=>$order[0]->payments,
         ];
-        
-        Mail::to($request->input('email'))->send(new MailOrder( $data));
+        if($request->input('email')){
+            Mail::to($request->input('email'))->send(new MailOrder( $data));
+        }  
+        Mail::to('storethuc@gmail.com')->send(new MailOrder( $data));    
         return redirect()->route('order.success', ['id'=>Str::lower(Order::latest('id')->first()['code_order'])]);
     }
     function OrderSuccess1($id){

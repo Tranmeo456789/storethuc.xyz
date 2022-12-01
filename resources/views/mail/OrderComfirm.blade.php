@@ -10,7 +10,7 @@
     <p style="font-size: 18px">THÔNG TIN ĐƠN HÀNG: {{$data['code_order']}}</p>
     <hr style="border:solid 1px #dbd8d8">
     <div>
-        <table cellpadding="5" cellspacing="0" border="1" width="100%" style="font-size:15px; ">
+        <table cellpadding="5" cellspacing="0" border = "1" width="100%" style="font-size:15px; ">
             <tbody>
                 <tr style="background-color:#20d144;color:#fff">
                     <th> THÔNG TIN ĐƠN HÀNG </th>
