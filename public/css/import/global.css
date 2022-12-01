@@ -12,7 +12,10 @@ body {
     width: 1170px;
     margin: 0px auto;
 }
-
+.wp-inner-fluid {
+    width: 1170px;
+    margin: 0px auto;
+}
 img {
     max-width: 100%;
     max-height: 100%;
@@ -22,6 +25,12 @@ img {
     display: flex;
     justify-content: center;
     height: 50%;
+}
+.wp-img-ordersuccess{
+    height: 80px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
 }
 .fl-left {
     float: left;
@@ -51,6 +60,12 @@ padding: 8px 0px;
 }
 .view-when-768{
     display: none;
+}
+.item-center-768{
+    text-align: center;
+}
+.mb-1px{
+    margin-bottom: -1px;
 }
 #btn-top {
     position: fixed;

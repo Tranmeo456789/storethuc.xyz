@@ -276,6 +276,14 @@
         padding-left: 6px;
         padding-right: 6px;
     }
+    .ls-item-order-success .col-item-info{
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .ls-item-order-success .row-mr0{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
     .hidden-when-768{
         display: none;
     }
@@ -284,6 +292,16 @@
     }
     .mt-table-1{
         margin-top: -1px;
+    }
+    .wp-inner-fluid{
+        width: 100%;
+    }
+    .checkout-page .card{
+        border: none;
+        border-radius: 0px;
+    }
+    .checkout-page .card .card-body{
+       padding: 10px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -366,8 +384,18 @@
         padding-left: 0px;
         margin-top: 20px;
     }
+    .checkout-page  .monney-item{
+        text-align: right;
+    }
+    .item-center-768{
+        text-align: left;
+    }
     .checkout-page .section {
         width: 100%!important;
+        font-size: 14px;
+    }
+    .checkout-page .section h5{
+        font-size: 16px;
     }
     #customer-info-wp {
         margin-right: 0!important;
@@ -381,6 +409,12 @@
     }
     #checkout-cart{
         padding: 8px 10px;
+    }
+    .thanks{
+        font-size: 14px;
+    }
+    .thanks h4{
+        font-size: 16px;
     }
     /*DETAIL NEWS*/
     #list-news-wp .thumb {
