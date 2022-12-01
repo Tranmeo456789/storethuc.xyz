@@ -27,90 +27,70 @@
             <div class="section-head">
                 <h1 class="section-title">Thông tin khách hàng</h1>
             </div>
-            <div class="section-detail">
-                {{-- <form method="POST" action="" name="form-checkout">
-                    @csrf --}}
-                    <div class="form-row clearfix">
-                        <div class="form-col fl-left">
+            <div class="section-detail container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-6 pb-2">
                             <label for="fullname">Họ tên <small class="text-danger">(*)</small></label>
                             <input type="text" name="fullname" value="{{old('fullname')}}" id="fullname">
                             @error('fullname')
                                     <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-col fl-right">
+                        <div class="col-12 col-md-6 pb-2">
                             <label for="phone">Số điện thoại <small class="text-danger">(*)</small></label>
                             <input type="tel" name="phone" value="{{old('phone')}}" id="phone">
                             @error('phone')
                                     <small class="text-danger">{{ $message }}</small>
                             @enderror
-                        </div>
-                        
-                    </div>
-                    <div class="form-row clearfix">
-                        <div class="form-col" style="width: 100%; padding:0px">
+                        </div>   
+                        <div class="col-12 col-md-12 pb-2">
                             <label for="email">Email</label>
                             <input type="email" name="email" value="{{old('email')}}" id="email">
-                        </div>
-                    </div>
-                    <label for="address">Địa chỉ <small class="text-danger">(*)</small></label>
-                    <div class="form-row clearfix">
-                        <div class="form-col fl-left">
-                            <div class="form-group">
-                                <select name="city" class="form-control choose1 city" id="city">
-                                    <option value="">--Chọn tỉnh thành phố--</option>
-                                    @error('city')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                    @foreach ($city as $item)
-                                        <option value="{{$item->matp}}">{{$item->name_tinh}}</option>
-                                    @endforeach                                  
-                                </select>
+                        </div> 
+                        <div class="col-12 col-md-12">
+                            <label for="address">Địa chỉ <small class="text-danger">(*)</small></label>
+                        </div> 
+                        <div class="col-12 col-md-6 pb-3">
+                            <select name="city" class="form-control choose1 city" id="city" data-href="{{route('locationAjax')}}">
+                                <option value="">--Chọn tỉnh thành phố--</option>
                                 @error('city')
                                 <small class="text-danger">{{ $message }}</small>
-                                 @enderror
-                            </div>
+                                @enderror
+                                @foreach ($city as $item)
+                                    <option value="{{$item->matp}}">{{$item->name_tinh}}</option>
+                                @endforeach                                  
+                            </select>
+                            @error('city')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>  
+                        <div class="col-12 col-md-6 pb-3">
+                            <select name="province" class="form-control choose1 province" id="province" data-href="{{route('locationAjax')}}">
+                                <option value="">--Chọn quận huyện--</option>   
+                            </select>
+                            @error('province')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
-                       
-                        <div class="form-col fl-left">
-                            <div class="form-group">
-                                <select name="province" class="form-control choose1 province" id="province">
-                                    <option value="">--Chọn quận huyện--</option>   
-                                </select>
-                                @error('province')
+                        <div class="col-12 col-md-6 pb-3">
+                            <select name="wards" class="form-control wards" id="wards">
+                                <option value="">--Chọn xã phường--</option>   
+                            </select>
+                            @error('wards')
                                 <small class="text-danger">{{ $message }}</small>
-                                 @enderror
-                            </div>
-                        </div>                      
-                    </div>
-                    <div class="form-row clearfix">
-                        <div class="form-col fl-left">
-                            <div class="form-group">
-                                <select name="wards" class="form-control wards" id="wards">
-                                    <option value="">--Chọn xã phường--</option>   
-                                </select>
-                                @error('wards')
-                                <small class="text-danger">{{ $message }}</small>
-                                 @enderror
-                            </div>
+                            @enderror
                         </div>
-                        <div class="form-col fl-left">
-                            <div class="form-group">
-                                <input type="tel" name="address" id="address" placeholder="Số nhà, tên đường">
-                                @error('address')
+                        <div class="col-12 col-md-6 pb-3">
+                            <input type="tel" name="address" id="address" placeholder="Số nhà, tên đường">
+                            @error('address')
                                 <small class="text-danger">{{ $message }}</small>
-                                 @enderror
-                            </div>
-                        </div>                      
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col" style="width: 100%; padding-right: 0px">
+                            @enderror
+                        </div>
+                        <div class="col-12 col-md-12">
                             <label >Ghi chú</label>
                             <textarea name="note" style="width: 100%;height: 110px;">{{old('note')}}</textarea>
                         </div>
                     </div>
-                   
-                {{-- </form> --}}
             </div>
         </div>
         <div class="section" id="order-review-wp">
@@ -136,7 +116,7 @@
                     </tbody>
                     <tfoot>
                         <tr class="order-total">
-                            <td>Tổng đơn hàng:</td>
+                            <td style="width:70%">Tổng đơn hàng:</td>
                             <td><strong class="total-price">{{ Cart::total() }} <span style="text-transform: lowercase">đ</span></strong></td>
                         </tr>
                     </tfoot>

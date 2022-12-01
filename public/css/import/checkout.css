@@ -47,13 +47,16 @@
     padding-bottom: 15px;
 }
 
-#customer-info-wp .form-row label {
+#customer-info-wp label {
     display: block;
-    padding-bottom: 10px;
     font-family: 'Roboto Medium';
     font-weight: normal;
+    margin-bottom: 3px;
 }
-
+#customer-info-wp .col-md-6,#customer-info-wp .col-md-12{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 #customer-info-wp .form-row .form-col {
     width: 50%;
     padding-right: 30px;
@@ -63,9 +66,9 @@
     padding-right: 0;
 }
 
-#customer-info-wp .form-row .form-col input[type="text"],
-#customer-info-wp .form-row .form-col input[type="email"],
-#customer-info-wp .form-row .form-col input[type="tel"],
+#customer-info-wp   input[type="text"],
+#customer-info-wp   input[type="email"],
+#customer-info-wp   input[type="tel"],
 #customer-info-wp .form-row:nth-child(3) .form-col textarea {
     width: 100%;
     padding: 6px 12px;

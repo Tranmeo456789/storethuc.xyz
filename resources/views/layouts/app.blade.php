@@ -117,7 +117,7 @@
                                     <form method="GET" action="{{url('tim-kiem')}}" class="d-flex justify-content-center">
                                         <div class="wp-input-search">
                                             <div class="input-search">
-                                                <input type="text" name="key" value="{{request()->input('key')}}" id="s" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
+                                                <input type="text" name="key" value="{{request()->input('key')}}" id="s" data-href="{{route('searchProductAjax')}}" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
                                             </div>                       
                                             <button type="submit" name="" id="sm-s"><i class="fa fa-search" aria-hidden="true"></i></button>
                                             <div class="search-result">
@@ -279,97 +279,10 @@
 
         </div>
 
-        {{-- <script src="{{asset('js/sweetalert.min.js')}}"></script>
-        <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script> --}}
         <script src="{{asset('js/sweetalert.min.js')}}"></script>
         <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
-        {{-- <script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id))
-        return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=849340975164592";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>  --}}
 
         <script>
-            $(document).ready(function() {
-
-                $('.choose1').change(function() {
-                    var action = $(this).attr('id');
-                    var maid = $(this).val();
-                    var _token = $('input[name="_token"]').val();
-                    var result = '';
-                    if (action == 'city') {
-                        result = 'province';
-                    } else {
-                        result = 'wards';
-                    }
-                    $.ajax({
-                        url: "{{route('locationAjax')}}",
-                        method: "POST",
-                        dataType: 'html',
-                        data: {
-                            action: action,
-                            maid: maid,
-                            _token: _token
-                        },
-
-                        success: function(data) {
-                            $('#' + result).html(data);
-                        },
-                        error: function(xhr, ajaxOptions, thrownError) {
-                            alert(xhr.status);
-                            alert(thrownError);
-                        }
-                    });
-
-                });
-
-                $('#s').keyup(function() {
-                    var key_word = $('#s').val();
-                    var _token = $('input[name="_token"]').val();
-
-                    if (key_word != '') {
-                        $.ajax({
-                            url: "{{route('searchProductAjax')}}",
-                            method: "GET",
-                            dataType: 'html',
-                            data: {
-                                key_word: key_word,
-                                _token: _token
-                            },
-
-                            success: function(data) {
-                                $(".suggest-search").html(data);
-                            },
-                        });
-                    } else {
-                        $(".suggest-search").html("");
-                    }
-
-                });
-                //content product
-                $('#show-hidden-content').click(function() {
-                    $('#post-product-wp').toggleClass('show-full');
-
-                    var x = $('#show-hidden-content').text();
-                    if (x === "Thu gọn") {
-                        $('#show-hidden-content').text('Xem thêm');
-                        $('#show-hidden-content').css('top', '92%');
-                        $('.bg-blur').css('display', 'block');
-                        $('body,html').stop().animate({
-                            scrollTop: 700
-                        }, 900);
-                    } else {
-                        $('#show-hidden-content').css('top', '100%');
-                        $('#show-hidden-content').text('Thu gọn');
-                        $('.bg-blur').css('display', 'none');
-                    }
-                });
-            });
             //update cart ajax
             $('.minus1').click(function() {
                 if (Number($(this).next('.num-order').val()) > 1) {
@@ -452,11 +365,8 @@
                 });
             });
             $('.add-cart').click(function() {
-                //swal("Here's a message!", "It's pretty, isn't it?")
-                //alert('ok');
                 var id = $(this).attr("data-id");
                 var _token = $('input[name="_token"]').val();
-                //alert(id);
                 $.ajax({
                     url: "{{url('saveAjax/cart')}}",
                     method: "GET",

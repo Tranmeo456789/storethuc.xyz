@@ -264,6 +264,9 @@
     #customer-info-wp .form-row .form-col {
         padding-right: 10px;
     }
+    #customer-info-wp,#order-review-wp{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 768px) {
     .head-ls-product-cart{
