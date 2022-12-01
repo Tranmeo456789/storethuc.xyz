@@ -45,7 +45,7 @@
                         </div>   
                         <div class="col-12 col-md-12 pb-2">
                             <label for="email">Email</label>
-                            <input type="email" name="email" value="{{old('email')}}" id="email">
+                            <input type="text" name="email" value="{{old('email')}}" id="email">
                             @error('email')
                                     <small class="text-danger">{{ $message }}</small>
                             @enderror

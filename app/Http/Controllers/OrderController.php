@@ -89,32 +89,58 @@ class OrderController extends Controller
         echo $output;
     }
     function OrderSuccess(Request $request){
-        $request->validate(
-            [
-            'fullname' => 'required|string|min:1',
-            'phone' => 'required|numeric|min:1',
-            //'email' => 'email',
-            'city'=> 'required',
-            'province' =>'required',
-            'wards' =>'required',
-            'address'=>'required|string|min:1',
-            ],
-            [
-                'numeric' => 'Số điện thoại không hợp lệ',
-                'required'=>'Vui lòng :attribute',
-                'email'=> ':attribute không hợp lệ',
-                'min'=>':attribute có độ dài ít nhất :min ký tự',                  
-            ],
-            [
-                'fullname'=>'nhập họ và tên',
-                'phone'=>'nhập số điện thoại',
-                'email'=>'Email',
-                'city'=> 'chọn tỉnh thành phố',
-                'province' =>'chọn quận huyện',
-                'wards' =>'chọn xã phường thị trấn',
-                'address' => 'nhập địa chỉ'
-            ]
-        );
+        if($request->input('email')==''){
+            $request->validate(
+                [
+                'fullname' => 'required|string|min:1',
+                'phone' => 'required|numeric|min:1',
+                'city'=> 'required',
+                'province' =>'required',
+                'wards' =>'required',
+                'address'=>'required|string|min:1',
+                ],
+                [
+                    'numeric' => 'Số điện thoại không hợp lệ',
+                    'required'=>'Vui lòng :attribute',
+                    'min'=>':attribute có độ dài ít nhất :min ký tự',                  
+                ],
+                [
+                    'fullname'=>'nhập họ và tên',
+                    'phone'=>'nhập số điện thoại',
+                    'city'=> 'chọn tỉnh thành phố',
+                    'province' =>'chọn quận huyện',
+                    'wards' =>'chọn xã phường thị trấn',
+                    'address' => 'nhập địa chỉ'
+                ]
+            );
+        }else{
+            $request->validate(
+                [
+                'fullname' => 'required|string|min:1',
+                'phone' => 'required|numeric|min:1',
+                'city'=> 'required',
+                'email' => 'email',
+                'province' =>'required',
+                'wards' =>'required',
+                'address'=>'required|string|min:1',
+                ],
+                [
+                    'numeric' => 'Số điện thoại không hợp lệ',
+                    'required'=>'Vui lòng :attribute',
+                    'email'=> ':attribute không hợp lệ',
+                    'min'=>':attribute có độ dài ít nhất :min ký tự',                  
+                ],
+                [
+                    'fullname'=>'nhập họ và tên',
+                    'phone'=>'nhập số điện thoại',
+                    'city'=> 'chọn tỉnh thành phố',
+                    'province' =>'chọn quận huyện',
+                    'wards' =>'chọn xã phường thị trấn',
+                    'address' => 'nhập địa chỉ',
+                    'email'=>'Email',
+                ]
+            );
+        }
         $city=Tinhthanhpho::where('matp',$request->input('city'))->get();
         $province=Quanhuyen::where('maqh',$request->input('province'))->get();
         $wards=Xaphuongthitran::where('xaid',$request->input('wards'))->get();

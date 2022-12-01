@@ -153,6 +153,8 @@
 
 .place-order-wp {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .place-order-wp input[type="submit"] {

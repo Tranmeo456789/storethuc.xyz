@@ -276,6 +276,15 @@
         padding-left: 6px;
         padding-right: 6px;
     }
+    .hidden-when-768{
+        display: none;
+    }
+    .view-when-768{
+        display: inline;
+    }
+    .mt-table-1{
+        margin-top: -1px;
+    }
 }
 @media screen and (max-width: 600px) {
     /*HEADER*/

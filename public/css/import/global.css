@@ -34,10 +34,24 @@ img {
     word-break: break-word;
     display: -webkit-box;
 }
+.truncate3 {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    display: -webkit-box;
+}
 .fl-right {
     float: right;
 }
-
+.wp-item-table{
+border: 1px solid #ddd;
+padding: 8px 0px;
+}
+.view-when-768{
+    display: none;
+}
 #btn-top {
     position: fixed;
     bottom: 50px;
