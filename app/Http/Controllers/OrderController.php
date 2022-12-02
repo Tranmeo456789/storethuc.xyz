@@ -14,6 +14,7 @@ use App\Tinhthanhpho;
 use App\Xaphuongthitran;
 use App\Guest;
 use App\Mail\MailOrder;
+use App\Mail\MailToAdmin;
 use App\Order;
 use App\Product_order;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -200,7 +201,7 @@ class OrderController extends Controller
         if($request->input('email')){
             Mail::to($request->input('email'))->send(new MailOrder( $data));
         }  
-        Mail::to('storethuc@gmail.com')->send(new MailOrder( $data));    
+        Mail::to('storethuc@gmail.com')->send(new MailToAdmin( $data));    
         return redirect()->route('order.success', ['id'=>Str::lower(Order::latest('id')->first()['code_order'])]);
     }
     function OrderSuccess1($id){

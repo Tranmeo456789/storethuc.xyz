@@ -1,11 +1,7 @@
-
-
-                   
+                  
 <div style="width:800px;margin: 0px auto;border: solid 1px #dbd8d8;padding:5px 20px 5px 20px">
     <div style="font-size: 14px">
-        <p style="font-style: italic;font-weight: bold">Cảm ơn Quý khách <span style="font-style: normal;color:#067461" >{{$data['fullname']}}</span> đã đặt hàng tại STORE THỨC</p>
-        <p>STORE THỨC rất vui được thông báo đơn hàng <span style="font-weight: bold">{{$data['code_order']}}</span> của Quý khách đã được tiếp nhận và đang trong quá trình xử lý.
-            STORE THỨC sẽ thông báo cho Quý khách khi đơn hàng chuẩn bị giao hàng.</p>
+        <p style="font-style: italic;font-weight: bold">Thông báo STORE THỨC có đơn hàng mới</p>     
     </div>
     <p style="font-size: 18px">THÔNG TIN ĐƠN HÀNG: {{$data['code_order']}}</p>
     <hr style="border:solid 1px #dbd8d8">
@@ -55,11 +51,6 @@
                 </tr>
             </tfoot>
         </table>
-        <div style="width:100%;clear:both;display:block;overflow:hidden;margin:30px 0px 0px">
-            <p style="display:block;font-size:14px;color:#333333;margin:0px 0px 5px;line-height:20px"><span style="font-family:Arial,sans-serif">Nếu cần hỗ trợ, Quý khách chỉ cần gửi email đến <a href="mailto:storethuc@gmail.com" target="_blank">storethuc@<wbr>gmail.com</a> hoặc gọi số <strong>0983195167</strong>.</span></p>
-            <p style="display:block;font-size:14px;color:#333333;margin:0px 0px 5px;line-height:20px">Cảm ơn Quý
-                Khách!&nbsp;</p><div class="yj6qo"></div><div class="adL">
-        </div></div>
     </div>                                                                                                                                              
 </div>                                              
 
