@@ -275,6 +275,7 @@
                 </div>
             </div>
             <div id="btn-top"><img src="{{asset('images/icon-to-top.png')}}" alt="" /></div>
+            <div id="btn-zalo-me"><a href="https://zalo.me/0983195167"><img src="{{asset('images/zalo.png')}}" alt="" /></a></div>
             <div id="fb-root"></div>
 
         </div>

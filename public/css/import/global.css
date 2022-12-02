@@ -77,7 +77,18 @@ padding: 8px 0px;
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
 }
-
+#btn-zalo-me{
+    position: fixed;
+    bottom: 50px;
+    left: 15px;
+    cursor: pointer;
+    transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    width: 35px;
+    cursor: pointer;
+}
 
 /*RESET BOOTSTRAP*/
 
