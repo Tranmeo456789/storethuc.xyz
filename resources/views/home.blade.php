@@ -110,7 +110,7 @@
                                                     <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ / {{$smartphone['unit']}}</span>
                                                 </div>
                                                 <div class="action clearfix">
-                                                    <button href="" title="Thêm giỏ hàng" data-id="{{$smartphone->id}}" class="add-cart fl-left">Thêm giỏ hàng</button>
+                                                    <button title="Thêm giỏ hàng" data-id="{{$smartphone->id}}" class="add-cart fl-left">Thêm giỏ hàng</button>
                                                     <a href="{{url('thanh-toan')}}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
                                                 </div>
                                             </li>
