@@ -86,7 +86,10 @@ padding: 8px 0px;
     -moz-transition: all .3s ease;
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
-    width: 35px;
+    width: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    background: #839d1e7a;
     cursor: pointer;
 }
 

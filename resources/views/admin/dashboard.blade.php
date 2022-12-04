@@ -87,7 +87,7 @@
                             @endphp
                             <tr>
                             <td>{{$temp}}</td>
-                            <td>{{$order['code_order']}}</td>
+                            <td><a href="{{route('order.detail',$order->id)}}" class="text-primary">{{$order['code_order']}}</a></td>
                             <td>{{$order['fullname']}}</td>   
                             <td>{{number_format($order['price_total'], 0, "" ,"." )}}đ</td>
                             @if($order['status']=='Hủy')
