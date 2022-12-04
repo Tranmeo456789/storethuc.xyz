@@ -83,7 +83,7 @@ class ProductController extends Controller
                 ['id','<>',$product->id],
             ])->inRandomOrder()->limit(7)->get();
            
-            return view('client.product.detail',compact('product','page_contact','page_introduce','posts','image_products','product_like_cat'));
+            return view('client.product.detail',compact('slug1','product','page_contact','page_introduce','posts','image_products','product_like_cat'));
          }
          else{
             return view('client.page404');
@@ -96,13 +96,8 @@ class ProductController extends Controller
         $cat0_id_products=Product_cat::where('slug',$slug)->get();
         $cat0_id_product=$cat0_id_products[0];
         if(!empty($cat0_id_product)){
-            $_SESSION['cat_product']=Product_cat::all();
-            $_SESSION['cat_product_child']=Product_cat_child::all();
-            $_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
             $product_sellign_like_cats=Product::where('cat_id',$cat0_id_product['id'])->inRandomOrder()->limit(8)->get();
-            $_SESSION['product']=Product::all();
-            ///return($cat0_id_product);
-            return view('client.product.list_product_cat0',compact('cat0_id_product','page_contact','page_introduce','posts','product_sellign_like_cats'));
+            return view('client.product.list_product_cat0',compact('slug','page_contact','page_introduce','posts','product_sellign_like_cats'));
         }
         else{
             return view('client.page404');

@@ -8,7 +8,6 @@ use App\Product_cat;
 use App\Product_cat_child;
 use App\Page;
 use App\Post;
-use App\Slider;
 class HomeController extends Controller
 {
     /**
@@ -35,7 +34,7 @@ class HomeController extends Controller
         $_SESSION['cat_product']=Product_cat::all();
         $_SESSION['cat_product_child']=Product_cat_child::all();
         $_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
-        $_SESSION['slider']=Slider::orderBy('location')->where('status','Công khai')->get();
+        
         $_SESSION['product']=Product::all();
         return view('home',compact('pages','page_contact','page_introduce'));
     }

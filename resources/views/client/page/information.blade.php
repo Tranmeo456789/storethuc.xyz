@@ -44,7 +44,7 @@
                             @if ($item['cat_id']==4)
                                 <li class="pt-3 pb-3">
                                     <div>
-                                        <div class="" style=""><a href="{{route('post.detail', $item->slug)}}" class="p-r-4"><img  src="{{asset($item->thumbnail)}}" alt=""></a></div>
+                                        <div class=""><a href="{{route('post.detail', $item->slug)}}" class="p-r-4"><img  src="{{asset($item->thumbnail)}}" alt=""></a></div>
                                     
                                         <h5 class="title-post mt-3"><a href="{{route('post.detail', $item->slug)}}">{{$item->title}}</a></h5>
                                     </div>       

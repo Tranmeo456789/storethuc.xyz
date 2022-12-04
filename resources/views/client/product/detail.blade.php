@@ -77,14 +77,12 @@
                             <div id="num-order-wp">
                                 <form action="{{route('cart.add')}}" method="POST" id="detail-add-product" >
                                     @csrf
-                                    {{-- <input type="hidden" name="_token" value="">           --}}
                                     <div class="d-flex">
                                         <div class="d-inline-block mr-3"><span style="font-size:18px;padding-top: 5px">Số lượng:</span></div>
                                         <a title="" id="minus"><i class="fa fa-minus"></i></a>
                                         <input type="text" name="num_order" value="1" min="1" max="10" id="num-order" readonly>
                                         <a title="" id="plus"><i class="fa fa-plus"></i></a>
                                         <input type="hidden" name="id_product" value="{{$product->id}}">
-                                        
                                     </div>
                                     <div><input type="submit" title="Thêm giỏ hàng" value="Thêm giỏ hàng" class="add-cart3 mt-3" style="border:none;display: block"></div>
                                 </form>
@@ -103,66 +101,11 @@
                 <div id="show-hidden-content" class="">Xem thêm</div>
             </div>
             <div class="section" id="same-category-wp">
-                @if ($product_like_cat->count()>0)
-                <div class="section-head">
-                    <h3 class="section-title">Cùng chuyên mục</h3>
-                </div>
-                <div class="section-detail">
-                    <ul class="list-item">
-                        
-                        @foreach ($product_like_cat as $item5)
-                            <li>
-                                @if ($item5->thumbnail)
-                                <a href="{{route('cat1.product',$item5->slug)}}" title="" class="thumb wp-img-50pt">
-                                    <img src="{{asset($item5->thumbnail)}}">
-                                </a>
-                                @endif
-                                <a href="{{route('cat1.product',$item5->slug)}}" title="" class="product-name truncate2">{{$item5->name}}</a>
-                                <div class="price">
-                                    <span class="new">{{number_format($item5['price_current'], 0, "" ,"." )}}đ / {{$item5['unit']}}</span>
-                                    @if ($item5->price_old)
-                                        <span class="old">{{number_format($item5['price_old'], 0, "" ,"." )}}đ</span>
-                                    @endif                            
-                                </div>
-                                <div class="action clearfix">
-                                    <a href="" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                    <a href="" title="" class="buy-now fl-right">Mua ngay</a>
-                                </div>
-                            </li>
-                        @endforeach                            
-                    </ul>
-                </div>
-                @endif
-                
+            @include("client.product.child_detail.list_product_like_cat")
             </div>
         </div>
         <div class="sidebar fl-left">
-            <div class="section" id="category-product-wp">
-                <div class="section-head">
-                    <h3 class="section-title">Danh mục sản phẩm</h3>
-                </div>
-                <div class="secion-detail">
-                    <ul class="list-item">
-                        @foreach ($_SESSION['cat_product'] as $item2)
-                            @if ($item2['parent_id']==0)
-                            <li>
-                                <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value="{{$item2['id']}}" >{{$item2['title']}}</a>
-                            </li>
-                            @endif  
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            <div class="section" id="banner-wp">
-                <div class="section-detail">
-                    <a href="" title="" class="thumb">
-                        <img src="{{asset('images/banner_doc3.png')}}" alt="">
-                    </a>
-                    <a href="" title="" class="thumb">
-                        <img src="{{asset('images/banner.png')}}" alt="">
-                    </a>
-                </div>
-            </div>
+        @include("client.block.sidebar")
         </div>
     </div>
 </div>

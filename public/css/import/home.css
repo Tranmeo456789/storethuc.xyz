@@ -21,6 +21,7 @@
 
 #category-product-wp {
     border: 1px solid #ececec;
+    border-top: none;
 }
 #main-menu{
     margin-bottom: 0px;
@@ -151,7 +152,7 @@
 }
 
 #support-wp {
-    margin-top: 25px;
+    margin: 25px 0px; 
 }
 
 #support-wp .section-detail {
@@ -211,7 +212,7 @@
     padding: 5px 15px;
     background-color: #239b3d;
     line-height: normal;
-    margin: 40px 0px 0px 0px;
+    margin-bottom: 0px;
 }
 
 #feature-product-wp .list-item li,

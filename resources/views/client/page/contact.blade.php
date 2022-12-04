@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div style="margin-left: 100px">
+<div class="wp-inner">
     {!!$page_contact->content!!}
 </div>
 

@@ -18,6 +18,7 @@ body {
 }
 img {
     max-width: 100%;
+    height: auto;
     max-height: 100%;
     display: block;
 }
@@ -89,7 +90,7 @@ padding: 8px 0px;
     width: 40px;
     padding: 10px;
     border-radius: 50%;
-    background: #839d1e7a;
+    background: #5AC5EF;
     cursor: pointer;
 }
 
