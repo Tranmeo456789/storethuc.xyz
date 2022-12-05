@@ -27,7 +27,7 @@ Auth::routes();
 
 //Route::get('admin/user/add', 'AdminUserController@add');
 //Route::post('admin/user/store', 'AdminUserController@store');
-
+include_once 'routes/shopBackEnd.php';
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
@@ -46,12 +46,6 @@ Route::get('san-pham', 'ProductController@all_product');
 Route::get('tim-kiem', 'ProductController@list_search');
 Route::get('thanh-toan', 'OrderController@checkout');
 Route::middleware('auth')->group(function(){
-    // Route::get('/admin', function () {
-    //     return view('admin.dashboard');
-    // });
-
-    
-
     Route::get('dashboard', 'DashboardController@show');
     Route::get('admin', 'DashboardController@show')->name('backend.dashboard');
         
