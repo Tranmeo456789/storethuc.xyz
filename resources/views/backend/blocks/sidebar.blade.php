@@ -8,7 +8,14 @@
     <nav>
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             
-           
+            <li class="nav-item has-treeview">
+                <a href="{{route('catProduct')}}" class="nav-link">
+                    <i class="nav-icon fas fa-dumpster-fire"></i>
+                    <p>
+                        Danh mục sản phẩm
+                    </p>
+                </a>
+            </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-dumpster-fire"></i>
