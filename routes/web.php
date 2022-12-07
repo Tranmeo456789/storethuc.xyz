@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Gate;
 |
 */
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');
 //  Route::get('/', function () {
@@ -23,7 +22,6 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 //Route::get('/', 'HomeController@index')->name('home');
 //Route::get('dashboard', 'DashboardController@show')->middleware('auth');
-
 
 //Route::get('admin/user/add', 'AdminUserController@add');
 //Route::post('admin/user/store', 'AdminUserController@store');
@@ -34,7 +32,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 Route::get('/getInfo-facebook/{social}','SocialController@getInfo');
 Route::get('/check-info-facebook/{social}','SocialController@checkInfo');
-
 
 Route::get('san-pham-{slug}', 'ProductController@list_product')->name('cat0.product');
 // Route::get('san-pham/{slugproduct}', 'ProductController@show_detail')->name('product.detail');

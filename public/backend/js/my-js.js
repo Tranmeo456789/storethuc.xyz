@@ -478,6 +478,16 @@ $(document).on('click', ".filter-revenue-in-time", function(event) {
     }
     
 });
+show_upload_image=function(){
+    var upload_image=document.getElementById("file")
+    if(upload_image.files && upload_image.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('#image-thumbnail').attr('src', e.target.result)
+        };
+        reader.readAsDataURL(upload_image.files[0]);
+    }
+}
 $(document).on('keypress', "input[name='search_value']", function(event) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode == '13') {

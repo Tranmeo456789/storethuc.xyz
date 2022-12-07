@@ -22,6 +22,7 @@ class Form
         $widthInput =  isset($element['widthInput']) ? $element['widthInput'] : (isset($params['widthInput']) ? $params['widthInput'] : "col-md-9 col-sm-9 col-xs-12");
         $widthElement = isset($element['widthElement']) ? $element['widthElement'] : "col-12";
         $xhtml = null;
+        $imageSelect=isset($element['imageSelect']) ? $element['imageSelect'] : '';
         $styleFormGroup = isset($element['styleFormGroup']) ? $element['styleFormGroup'] : '';
         switch ($type) {
             case 'input':
@@ -165,6 +166,25 @@ class Form
                     $element['label']
                 );
                 break;
+                case 'input-file-show':
+                    $xhtml .= sprintf(
+                        "<div class='%s'>
+                        <div class='form-group row'>
+                            %s
+                            <div class='%s'>
+                                %s
+                                <div class='col-12 col-md-4 mt-1'><img src='%s' id='image-thumbnail' class='border img-fluid'></div>
+                            <span class='help-block'></span>
+                        </div>
+                    </div>
+                 </div>",
+                    $widthElement,
+                    $element['label'],
+                    $widthInput,
+                    $element['element'],
+                    $imageSelect
+                );
+                    break;
             case 'fileAttachPreview':
                 $fileAttach = ($element['fileAttach'] == null) ? null : $element['fileAttach'];
                 $xhtml .= sprintf(

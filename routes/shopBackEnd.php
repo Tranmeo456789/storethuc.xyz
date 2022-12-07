@@ -27,5 +27,12 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-danh-muc-thuoc', 'CatProductController@save')->name('catProduct.save');
         Route::get('/xoa-danh-muc-thuoc/{id}', 'CatProductController@delete')->name('catProduct.delete');
         Route::get('move-{type}/{id}',   'CatProductController@move')->name('catProduct.move');
+
+        Route::get('/danh-sach-san-pham', 'ProductController@index')->name('product');
+        Route::get('/them-san-pham', 'ProductController@form')->name('product.add');
+        Route::get('/sua-san-pham/{id}', 'ProductController@form')->name('backend.product.edit');
+        Route::post('/luu-san-pham', 'ProductController@save')->name('product.save');
+        Route::get('/xoa-san-pham/{id}', 'ProductController@delete')->name('backend.product.delete');
+        Route::get('/chi-tiet-san-pham/{id}', 'ProductController@getItem')->name('product.getItem');
    
 });

@@ -51,23 +51,24 @@ class CatProductModel extends BackEndModel
         //         $result[$value['id']] = str_repeat(config('myconfig.template.char_level'), $value['depth']) . $value['name'];
         //     }
         // }
-        // if ($options['task'] == "admin-list-items-in-selectbox") {
-        //     $query = self::select('id', 'name')
-        //         ->withDepth()->defaultOrder()
-        //         ->where('id', '<>', 1);
-        //     $nodes = $query->get()->toFlatTree();
-        //     foreach ($nodes as $value) {
-        //         $result[$value['id']] = str_repeat(config('myconfig.template.char_level'), $value['depth'] - 1) . $value['name'];
-        //     }
-        // }
-        if ($options['task'] == "frontend-list-items-by-parent-id"){
-            $query = self::select('id','name','image','slug','parent_id')
-                         ->where('status','=','active')
-                         ->where('parent_id',$params['parent_id'])
-                         ->orderBy('_lft');
-            $result = $query->get()
-                            ->toArray();
+        if ($options['task'] == "admin-list-items-in-selectbox") {
+            $query = self::select('id', 'name')
+                ->where('parent_id', 1);
+            // $nodes = $query->get()->toFlatTree();
+            // foreach ($nodes as $value) {
+            //     $result[$value['id']] = str_repeat(config('myconfig.template.char_level'), $value['depth'] - 1) . $value['name'];
+            // }
+            $result = $query->orderBy('name', 'asc')
+            ->pluck('name', 'id')->toArray();
         }
+        // if ($options['task'] == "frontend-list-items-by-parent-id"){
+        //     $query = self::select('id','name','image','slug','parent_id')
+        //                  ->where('status','=','active')
+        //                  ->where('parent_id',$params['parent_id'])
+        //                  ->orderBy('_lft');
+        //     $result = $query->get()
+        //                     ->toArray();
+        // }
         return $result;
     }
     public function countItems($params = null, $options  = null)
