@@ -35,4 +35,8 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/xoa-san-pham/{id}', 'ProductController@delete')->name('backend.product.delete');
         Route::get('/chi-tiet-san-pham/{id}', 'ProductController@getItem')->name('product.getItem');
    
+        Route::get('/danh-sach-don-hang', 'OrderController@index')->name('order');
+        Route::get('/chi-tiet-don-hang/{id}', 'OrderController@detail')->name('backend.order.detail');
+        Route::get('/cap-nhat-trang-thai-don-hang-{value}/{id}', 'OrderController@changeStatusOrder')->name('order.changeStatusOrder');
+        Route::post('/luu-don-hang', 'OrderController@save')->name('order.save');
 });

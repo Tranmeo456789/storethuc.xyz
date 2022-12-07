@@ -27,10 +27,10 @@ class Template {
         $tmplStatus = Config::get('myconfig.template.column.' .$column);
 
         if (count($tmplStatus) > 0) {
-            // array_unshift($itemsStatusCount , [
-            //     "$column"  => 'all',
-            //     'count'   => array_sum(array_column($itemsStatusCount, 'count'))
-            // ]);
+            array_unshift($itemsStatusCount , [
+                "$column"  => 'all',
+                'count'   => array_sum(array_column($itemsStatusCount, 'count'))
+            ]);
 
             $xhtml =  "<ul class='nav nav-tabs bar_tabs'>";
             foreach ($tmplStatus as $keyStatus => $itemStatus) {  // $item = [count,status]

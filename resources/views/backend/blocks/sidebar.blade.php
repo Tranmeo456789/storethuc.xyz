@@ -39,7 +39,14 @@
                     </li>
                 </ul>
             </li>
-            
+            <li class="nav-item has-treeview">
+                <a href="{{route('order')}}" class="nav-link">
+                <i class="nav-icon far fa-list-alt"></i>
+                    <p>
+                        Quản lý đơn hàng
+                    </p>
+                </a>
+            </li>
            
         </ul>
     </nav>
