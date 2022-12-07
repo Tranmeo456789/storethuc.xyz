@@ -41,7 +41,7 @@ class ProductModel extends BackEndModel
        // $user = Session::get('user');
         if ($options['task'] == "user-list-items") {
             $query = $this::with('unitProduct')
-                            ->select('id','name','thumbnail','price','unit_id','describe','content','status','slug','cat_id','image','created_at', 'updated_at')->where('id','>=',1);
+                            ->select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')->where('id','>=',1);
             
             if ((isset($params['filter']['status_product'])) && ($params['filter']['status_product'] != 'all')) {
                 $query = $query->where('status_product',$params['filter']['status_product']);
@@ -145,7 +145,7 @@ class ProductModel extends BackEndModel
     {
         $result = null;
         if ($options['task'] == 'get-item') {
-            $result = self::select('id','name','thumbnail','price','unit_id','describe','content','status','slug','cat_id','image','created_at', 'updated_at')
+            $result = self::select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                             ->where('id', $params['id'])
                             ->first();
         }
@@ -158,7 +158,7 @@ class ProductModel extends BackEndModel
 
         if ($options['task'] == 'frontend-get-item') {
             $result = self::with('unitProduct')
-                            ->select('id','name','thumbnail','price','unit_id','describe','content','status','slug','cat_id','image','created_at', 'updated_at')
+                            ->select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                             ->where('id', $params['id'])
                             ->first();
         }
@@ -207,6 +207,34 @@ class ProductModel extends BackEndModel
         if($options['task'] == 'delete-item') {
            self::where('id', $params['id'])->delete();
         }
+    }
+    public function countItems($params = null, $options  = null) {
+
+        $result = null;
+        if($options['task'] == 'admin-count-items-group-by-user-id') {
+            $query = $this::groupBy('user_id')
+                            ->select(DB::raw('user_id , COUNT(id) as count'))
+                            ->where('id','>',1)->where('user_id',$params['user_id']);
+            if(isset($params['filter_in_day'])){
+                $query->whereBetween('created_at', ["{$params['filter_in_day']['day_start']}", "{$params['filter_in_day']['day_end']}"]);
+            }
+            $result = $query->get()->toArray();
+        }
+        if($options['task'] == 'admin-count-items-group-by-status-product') {
+            $query = $this::groupBy('status_product')
+                            ->select(DB::raw('status_product , COUNT(id) as count') )
+                            ->where('id','>=',1);
+            
+            $result = $query->get()->toArray();
+        }
+        if ($options['task'] == "count-number-product-in-cat") {
+            $query = $this::select('id','name')
+                            ->where('status_product','da_duyet')
+                            ->whereIn('cat_product_id', CatProductModel::getChild($params['cat_product_id']))->get();
+
+            $result =  count($query);
+        }
+        return $result;
     }
     public function unitProduct(){
         return $this->belongsTo('App\Model\UnitModel','unit_id','id');

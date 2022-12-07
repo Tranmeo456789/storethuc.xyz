@@ -14,7 +14,7 @@
                 <div class="card card-outline card-primary">
                     @include("$moduleName.blocks.x_title", ['title' => 'Danh sách'])
                     <div class="card-body p-0">
-                        {!! Template::showTabFilter($controllerName, [], $params['filter']['typeProduct'], $params,'typeProduct'); !!}
+                    {!! Template::showTabFilter($controllerName, $itemStatusProductCount, $params['filter']['status_product'], $params,'status_product'); !!}
 
                         @include("$moduleName.pages.$controllerName.list")
                     </div>

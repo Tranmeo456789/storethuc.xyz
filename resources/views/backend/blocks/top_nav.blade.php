@@ -3,8 +3,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"
-                role="button"><i class="fas fa-bars" style="color: #212529;"></i></a>
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: #212529;"></i></a>
         </li>
         <li class="nav-item d-none d-md-block">
             <a class="nav-link text-uppercase"><strong>{{$pageTitle}}</strong></a>
@@ -28,4 +27,16 @@
             </li>
         @endif
     </ul> -->
+    <ul class="navbar-nav ml-auto">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ Auth::user()->name }}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Tài khoản</a>
+            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
+    </ul>
 </nav>

@@ -33,8 +33,8 @@ class ProductController extends BackEndController
         } else {
             $session->put('currentController', $this->controllerName);
         }
-        $session->put('params.filter.typeProduct', $request->has('filter_typeProduct') ? $request->get('filter_typeProduct') : ($session->has('params.filter.typeProduct') ? $session->get('params.filter.typeProduct') : 'all'));
-
+        $session->put('params.filter.status_product', $request->has('filter_status_product') ? $request->get('filter_status_product') : ($session->has('params.filter.status_product') ? $session->get('params.filter.status_product') : 'con_hang'));
+        
         $session->put('params.pagination.totalItemsPerPage', $this->totalItemsPerPage);
         $this->params     = $session->get('params');
 
@@ -47,10 +47,13 @@ class ProductController extends BackEndController
             });
             $items              = $this->model->listItems($this->params, ['task'  => 'user-list-items']);
         }
+        $itemStatusProductCount = $this->model->countItems($this->params, ['task' => 'admin-count-items-group-by-status-product']);
+      // return($itemStatusProductCount);
         $pathView = $request->ajax() ? 'ajax' : 'index';
         return view($this->pathViewController .  $pathView, [
             'params'           => $this->params,
-            'items'            => $items
+            'items'            => $items,
+            'itemStatusProductCount' => $itemStatusProductCount
          ]);     
     }
     public function form(Request $request)

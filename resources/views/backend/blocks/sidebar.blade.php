@@ -10,7 +10,7 @@
             
             <li class="nav-item has-treeview">
                 <a href="{{route('catProduct')}}" class="nav-link">
-                    <i class="nav-icon fas fa-dumpster-fire"></i>
+                <i class="nav-icon far fa-folder-open"></i>
                     <p>
                         Danh mục sản phẩm
                     </p>
@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-dumpster-fire"></i>
+                    <i class="nav-icon fab fa-product-hunt"></i>
                     <p>
                         Quản lý sản phẩm
                         <i class="right fas fa-angle-left"></i>

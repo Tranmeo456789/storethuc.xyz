@@ -93,8 +93,8 @@
                 'status_order' => 'Trạng thái đơn hàng'
             ],
             'status_product' => [
-                '1' => 'Còn hàng',
-                '2' => 'Hết hàng',
+                'con_hang' => 'Còn hàng',
+                'het_hang' => 'Hết hàng',
             ],
             'type_gender' => [
                 '1' => 'Anh',
@@ -126,15 +126,10 @@
 
             'char_level' => "|---",
             'column' => [
-                'typeProduct'      => [
-                    'all'           => ['name' => 'Tất cả', 'class' => 'item-tab'],
-                    'con_hang'      => ['name' => 'Còn hàng', 'class'      => 'item-tab'],
-                    'het_hang'      => ['name' => 'Hết hàng', 'class'      => 'item-tab'],                   
-                ],
-                'status_product'      => [                 
-                    'cho_kiem_duyet' => ['name' => 'Chờ kiểm duyệt', 'class' => 'item-tab'],
-                    'da_duyet' => ['name' => 'Đã duyệt', 'class' => 'item-tab'],
-                    'tu_choi' => ['name' => 'Từ chối', 'class' => 'item-tab'],
+                'status_product'      => [
+                   
+                    'con_hang'      => ['name' => 'Còn hàng', 'class' => 'item-tab'],
+                    'het_hang'      => ['name' => 'Hết hàng', 'class'  => 'item-tab']                   
                 ],
                 'status_order' => [
                     'all'          => ['name' => 'Tất cả', 'class' => 'item-tab'],

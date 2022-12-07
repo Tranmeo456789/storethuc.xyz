@@ -58,7 +58,7 @@
     foreach($arrStatusProduct as $key => $val){
         $elements[] = [
             'label'   => Form::label('name', $val, $formLabelAttr),
-            'element' => Form::radio('status', $key, $key==1?'true':'' ,array_merge($formInputAttr)),
+            'element' => Form::radio('status_product', $key, $key=='con_hang'?'true':'' ,array_merge($formInputAttr)),
             'type' =>'inline-text-right',
             'widthElement' => 'col-6',
             'styleFormGroup' => 'mb-2 h-35 label-radio',
