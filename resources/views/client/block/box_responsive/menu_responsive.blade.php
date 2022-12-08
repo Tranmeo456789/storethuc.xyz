@@ -1,6 +1,8 @@
 @php
-use App\Product_cat;
-$_SESSION['cat_product']=Product_cat::all();
+use App\Model\CatProductModel;
+
+$listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
+
 @endphp
 <a href="{{route('home')}}" title="" class="logo">STORE</a>
 <div id="menu-respon-wp">
@@ -10,10 +12,10 @@ $_SESSION['cat_product']=Product_cat::all();
         </li>
 
         <li>
-            @foreach ($_SESSION['cat_product'] as $item2)
-            @if ($item2['parent_id']==0)
+            @foreach ($listCatProduct as $item2)
+            @if ($item2['parent_id']==1)
         <li>
-            <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value="{{$item2['id']}}">{{$item2['title']}}</a>
+            <a href="{{route('cat0.product',$item2->slug)}}" title="" name='cat0_product' value="{{$item2['id']}}">{{$item2['name']}}</a>
         </li>
         @endif
         @endforeach

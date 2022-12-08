@@ -40,6 +40,7 @@ Route::get('san-pham/{slug1}.html', 'ProductController@list_product1')->name('ca
 Route::get('searchProduct', 'ProductController@searchProductAjax')->name('searchProductAjax');
 Route::post('cart/updateCartAjax', 'CartController@updateCartAjax')->name('updateCartAjax');
 Route::get('san-pham', 'ProductController@all_product');
+Route::get('chi-tiet-san-pham/{slug}', 'ProductController@detail')->name('frontend.product.detail');
 Route::get('tim-kiem', 'ProductController@list_search');
 Route::get('thanh-toan', 'OrderController@checkout');
 Route::middleware('auth')->group(function(){

@@ -79,18 +79,13 @@ class ProductModel extends BackEndModel
                                     ->toArray();
         }
         if ($options['task'] == "frontend-list-items") {
-            $query = $this::select('id','name','type','code','cat_product_id','producer_id',
-                                    'tick','type_price','price','price_vat','coefficient',
-                                    'type_vat','packing','unit_id','sell_area','amout_max',
-                                    'inventory','inventory_min','general_info','prescribe','dosage','trademark_id',
-                                    'dosage_forms','country_id','specification','benefit',
-                                    'preserve','note','image','albumImage','albumImageHash','user_id','featurer','long','wide','high',
-                                    'mass')
-                                ->where('id','>',1)->where('status_product','da_duyet');
-            if (isset($params['cat_product_id']) && ($params['cat_product_id'] != 0)){
-                $query->whereIn('cat_product_id', CatProductModel::getChild($params['cat_product_id']));
+            $query = $this::select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+                                ->where('id','>=',1)->where('status_product','con_hang');
+            if (isset($params['cat_id'])){
+                $query->where('cat_id', $params['cat_id']);
+                //$query->whereIn('cat_id', CatProductModel::getChild($params['cat_id']));
             }
-            $query->OfCollaboratorCode()->orderBy('id', 'desc');
+            //$query->OfCollaboratorCode()->orderBy('id', 'desc');
             if(isset($params['limit'])){
                 $result=$query->paginate($params['limit']);
             }else{
@@ -147,6 +142,11 @@ class ProductModel extends BackEndModel
         if ($options['task'] == 'get-item') {
             $result = self::select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                             ->where('id', $params['id'])
+                            ->first();
+        }
+        if ($options['task'] == 'get-item-in-slug') {
+            $result = self::select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+                            ->where('slug', $params['slug'])
                             ->first();
         }
         if ($options['task'] == 'get-item-simple') {
@@ -229,8 +229,9 @@ class ProductModel extends BackEndModel
         }
         if ($options['task'] == "count-number-product-in-cat") {
             $query = $this::select('id','name')
-                            ->where('status_product','da_duyet')
-                            ->whereIn('cat_product_id', CatProductModel::getChild($params['cat_product_id']))->get();
+                            ->where('status_product','con_hang')
+                            ->where('cat_id',$params['cat_id']);
+                            //->whereIn('cat_product_id', CatProductModel::getChild($params['cat_product_id']))->get();
 
             $result =  count($query);
         }

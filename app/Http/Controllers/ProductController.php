@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Model\ProductModel;
 use App\Product;
 use App\Product_cat;
 use App\Product_cat_child;
@@ -56,7 +57,8 @@ class ProductController extends Controller
         $page_introduce=Page::find(21);
         $posts=Post::all();
          $cat1_id_products=Product_cat::where('slug',$slug1)->get();
-         $products=Product::where('slug',$slug1)->get();
+         
+         $products=ProductModel::where('slug',$slug1)->get();
          foreach($products as $product1){
              $product=$product1;
          }
@@ -71,7 +73,7 @@ class ProductController extends Controller
             $_SESSION['product']=Product::all();
             return view('client.product.list_product_cat1',compact('cat1_id_product','page_contact','page_introduce','posts'));
          }else if(!empty($product)){
-           
+            //return($slug1);
             $images=Image_product::all();
             $image_products=[];
             foreach($images as $image2){
@@ -88,6 +90,13 @@ class ProductController extends Controller
          else{
             return view('client.page404');
          }  
+    }
+    function detail($slug){
+        $page_contact=Page::find(15);
+        $page_introduce=Page::find(21);
+        $posts=Post::all();   
+        $productCurrent=(new ProductModel)->getItem(['slug'=>$slug],['task'=>'get-item-in-slug']);
+        return view('client.product.detail',compact('slug','productCurrent','page_contact','page_introduce','posts'));
     }
     function list_product($slug){
         $page_contact=Page::find(15);

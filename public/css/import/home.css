@@ -265,7 +265,7 @@
 #feature-product-wp .list-item li .action button,
 #list-product-wp .list-item li .action a,
 #list-product-wp .list-item li .action button,
-#same-category-wp .list-item li .action a {
+#same-category-wp .list-item li .action a,#same-category-wp .list-item li .add-cart {
     display: block;
     border-radius: 5px;
     padding: 3px 9px;

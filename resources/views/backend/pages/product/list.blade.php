@@ -30,6 +30,7 @@
                         </div>                     
                         <div class="info-product ml-1">
                             <p class="text-primary font-weight-bold mb-1">{{$val->name}}</p>
+                            <p><small><span class="font-weight-bold">Đơn giá: </span><span>{{number_format($val['price'], 0, "" ,"." )}}đ</span></small></p>
                             <small><span class="font-weight-bold">Đơn vị: </span><span>{{$val->unitProduct->name}}</span></small>
                         </div>
                     </div>

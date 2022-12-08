@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Model\ProductModel;
 use App\Page;
 use App\Product_cat;
 use App\Product_cat_child;
@@ -40,7 +41,7 @@ class CartController extends Controller
     }
     function add(Request $request){
         $ida= (int)$request->input('id_product');
-        $product1 = Product::find($ida);
+        $product1 = ProductModel::find($ida);
         $qty_exist=0;
         foreach(Cart::content() as $row4){
                 if($ida==$row4->id){
@@ -51,33 +52,31 @@ class CartController extends Controller
         $qty1= (int)($request->input('num_order'));
         $qty_total=$qty_exist+$qty1;
              
-        if($qty_total<11){
+        if($qty_total < 11){
             Cart::add([
                 'id' => $product1->id,
                 'name' => $product1->name,
                 'qty' => $qty1,
-                'price' => $product1->price_current,
-                'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail,'unit'=>$product1->unit],
+                'price' => $product1->price,
+                'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail,'unit'=>$product1->unitProduct->name],
             ]);
         }else{
             //return   $qty_total;
             Cart::update($rowId_exist,10);
-        }
-            
-        
+        }         
             //return Cart::content();
             return redirect('show/cart');
     }
     function saveAjax(Request $request){
         $data=$request->all();
         $id=$data['id'];
-        $product = Product::find($id);
+        $product = ProductModel::find($id);
         Cart::add([
             'id' => $product->id,
             'name' => $product->name,
             'qty' => 1,
-            'price' => $product->price_current,
-            'options' => ['slug'=>$product->slug,'thumbnail'=>$product->thumbnail,'unit'=>$product->unit],
+            'price' => $product->price,
+            'options' => ['slug'=>$product->slug,'thumbnail'=>$product->thumbnail,'unit'=>$product->unitProduct->name],
         ]);
     }
     function remove($rowId){

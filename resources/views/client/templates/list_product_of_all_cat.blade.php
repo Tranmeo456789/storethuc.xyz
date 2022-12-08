@@ -1,39 +1,28 @@
 @php
-use App\Product_cat;
-use App\Product;
-$_SESSION['cat_product']=Product_cat::all();
-$_SESSION['product']=Product::all();
+use App\Model\CatProductModel;
+use App\Model\ProductModel;
+$listAllCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
 @endphp
 <div class="ls-product-of-home">
-    @foreach ($_SESSION['cat_product'] as $cat_product)
-    @if ($cat_product['parent_id']==0)
+    @foreach ($listAllCatProduct as $itemCat)
+    @if ($itemCat['parent_id']==1)
+    @php
+        $catId=$itemCat['id'];
+        $item=(new ProductModel)->listItems(['cat_id'=>$catId,'limit'=>8],['task'=>'frontend-list-items']);
+    @endphp
+    @if (count($item) > 0)
     <div class="section-head">
-        <h3 class="section-title">{{$cat_product['title']}}</h3>
+        <h3 class="section-title">{{$itemCat['name']}}</h3>
         <span class="border-bottom-title "></span>
     </div>
     <div class="section-detail">
         <ul class="list-item clearfix">
-            @php
-            $count = 1;
-            @endphp
-            @foreach ($_SESSION['product'] as $smartphone)
-            @if ($smartphone['cat_id']==$cat_product['id'] && $count < 9 ) @php $count++; @endphp <li>
-                <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="thumb wp-img-50pt">
-                    <img src="{{asset($smartphone['thumbnail'])}}">
-                </a>
-                <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name truncate2">{{$smartphone['name']}}</a>
-                <div class="price">
-                    <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ / {{$smartphone['unit']}}</span>
-                </div>
-                <div class="action clearfix">
-                    <button title="Thêm giỏ hàng" data-id="{{$smartphone->id}}" class="add-cart fl-left">Thêm giỏ hàng</button>
-                    <a href="{{url('thanh-toan')}}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
-                </div>
-                </li>
-                @endif
-                @endforeach
+            @foreach ($item as $val)
+            @include("client.partial.product_in_content")
+            @endforeach
         </ul>
     </div>
+    @endif
     @endif
     @endforeach
 </div>

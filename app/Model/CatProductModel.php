@@ -23,18 +23,11 @@ class CatProductModel extends BackEndModel
             $result =  $query->orderBy('id', 'desc')
                             ->paginate($params['pagination']['totalItemsPerPage']);
         }
-        // if ($options['task'] == "list-items-front-end") {
-        //     $query = self::withDepth()
-        //         ->having('depth', '>', 0)
-        //         ->defaultOrder();
-        //     if(isset($params['depth'])){
-        //         $query->where('depth',$params['depth']);
-        //     }
-        //     $query = $query->get()
-        //         ->toFlatTree();
-
-        //     $result = $query;
-        // }
+        if ($options['task'] == "list-items-front-end") {
+            $query = $this::select('id', 'name','slug','parent_id', 'created_at', 'updated_at');
+            $query=$query->where('parent_id',1)->orderBy('id', 'asc')->get();
+            $result = $query;
+        }
         // if ($options['task'] == "admin-list-items-in-selectbox-quan-ly") {
         //     $query = self::select('id', 'name')
         //         ->withDepth()->defaultOrder();
@@ -87,11 +80,11 @@ class CatProductModel extends BackEndModel
     {
         $result = null;
         if ($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'parent_id', 'slug')
+            $result = self::select('id', 'name','slug','parent_id', 'created_at', 'updated_at')
                 ->where('id', $params['id'])->first();
         }
         if ($options['task'] == 'get-item-parent') {
-            $result = self::select('id', 'name', 'parent_id', 'image', 'slug')->where('id', $params['parent_id'])->first();
+            $result = self::select('id', 'name','slug','parent_id', 'created_at', 'updated_at')->where('id', $params['parent_id'])->first();
             if(isset($params['up_level'])){
                 $catParent=$result;
                 for ($i = 1; $i < $params['up_level']; $i++){
@@ -101,7 +94,7 @@ class CatProductModel extends BackEndModel
             }                   
         }
         if ($options['task'] == 'get-item-slug') {
-            $result = self::select('id', 'name', 'parent_id', 'image', 'slug')
+            $result = self::select('id', 'name','slug','parent_id', 'created_at', 'updated_at')
                 ->where('slug', $params['slug'])->first();
         }
         return $result;
@@ -154,9 +147,7 @@ class CatProductModel extends BackEndModel
     public static function getChild($id='')
     {
         $item = self::find($id);
-        $query = self::select('id','name')
-                    ->where('_lft','>=',$item->_lft)
-                    ->where('_lft','<=',$item->_rgt);
+        $query = self::select('id','name');
 
         return $result = $query->pluck('id')->toArray();
     }

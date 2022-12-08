@@ -219,7 +219,7 @@
     .policy {
         padding-left: 0!important;
     }
-    #list-product-wp .list-item li .action button ,#feature-product-wp .list-item li .action button{
+    #list-product-wp .list-item li .action button ,#feature-product-wp .list-item li .action button, #same-category-wp .list-item li .add-cart {
         padding: 3px;
     }
     /*CART*/

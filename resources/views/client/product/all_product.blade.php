@@ -5,7 +5,7 @@
     <div class="wp-inner">
         <div class="main-content fl-right">
             <div class="section" id="feature-product-wp">
-            @include("client.partial.product_featured")
+            @include("client.templates.list_product_featured")
             </div>
             <div class="section" id="list-product-wp">
             @include("client.templates.list_product_of_all_cat")
