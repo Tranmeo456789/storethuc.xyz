@@ -13,6 +13,7 @@
     $statusOrderValue = array_combine(array_keys(config("myconfig.template.column.status_order")),array_column(config("myconfig.template.column.status_order"),'name'));
     unset($statusOrderValue['all']);
     $ngayDatHang = MyFunction::formatDateFrontend($item['created_at']);
+    $shiper='Nhân viên cửa hàng ship';
     $elements = [
         [
             'label'   => HTML::decode(Form::label('code_order', $label['code_order'], $formLabelAttr)),
@@ -39,8 +40,8 @@
             'element' => Form::text('', 'Thanh toán tại nhà', array_merge($formInputAttr,['readonly' =>true])),
             'widthElement' => 'col-4'
         ],[
-            'label'   => HTML::decode(Form::label('', 'Hình thức giao hàng', $formLabelAttr)),
-            'element' => Form::text('', 'Giao hàng tiêu chuẩn', array_merge($formInputAttr,['readonly' =>true])),
+            'label'   => HTML::decode(Form::label('', 'Đơn vị vận chuyển', $formLabelAttr)),
+            'element' => Form::text('', $shiper, array_merge($formInputAttr,['readonly' =>true])),
             'widthElement' => 'col-4'
         ],[
             'label'   => HTML::decode(Form::label('', 'Thời gian đặt hàng', $formLabelAttr)),
@@ -67,7 +68,7 @@
                     <div class="card-body">
                         {{ Form::open([
                             'method'         => 'POST',
-                            'url'            => route("$controllerName.save"),
+                            'url'            => route("$controllerName.changeStatusOrder"),
                             'accept-charset' => 'UTF-8',
                             'class'          => 'form-horizontal form-label-left',
                             'enctype'        => 'multipart/form-data',

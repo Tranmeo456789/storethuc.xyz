@@ -28,16 +28,16 @@ class BackEndModel extends Model
     }
     public function setCreatedHistory(&$params){
       $params['created_at']    = date('Y-m-d H:i:s');
-      if(Session::has('user')){
-        $params['created_by'] = \Session::get('user')['user_id'];
-      }
+      // if(Session::has('user')){
+      //   $params['created_by'] = \Session::get('user')['user_id'];
+      // }
       
     }
     public function setModifiedHistory(&$params){
       $params['updated_at']    = date('Y-m-d H:i:s');
-      if(Session::has('user')){
-        $params['updated_by'] = \Session::get('user')['user_id'];
-      }
+      // if(Session::has('user')){
+      //   $params['updated_by'] = \Session::get('user')['user_id'];
+      // }
     }
     public function getMaxCode($params = null, $options = null){
       $member =  DB::connection('mysql_share_data')

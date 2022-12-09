@@ -37,6 +37,6 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
    
         Route::get('/danh-sach-don-hang', 'OrderController@index')->name('order');
         Route::get('/chi-tiet-don-hang/{id}', 'OrderController@detail')->name('backend.order.detail');
-        Route::get('/cap-nhat-trang-thai-don-hang-{value}/{id}', 'OrderController@changeStatusOrder')->name('order.changeStatusOrder');
+        Route::post('/cap-nhat-trang-thai-don-hang', 'OrderController@changeStatusOrder')->name('order.changeStatusOrder');
         Route::post('/luu-don-hang', 'OrderController@save')->name('order.save');
 });

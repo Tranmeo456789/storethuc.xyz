@@ -24,7 +24,7 @@
             </div>
             <div class="section" id="thank-wp">
                 <div class="section-head mb-1">
-                    <h5 class="section-title">Mã đơn hàng: <span class="text-success">{{$data['code_order']}}</span></h5>
+                    <h5 class="section-title">Mã đơn hàng: <span class="text-success">{{$order['code_order']}}</span></h5>
                 </div>
             </div>
         </div>
@@ -54,16 +54,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-2 wp-item-table">
-                                    <span class="font-weight-bold view-when-768">Họ tên: </span><span class="">{{$data['fullname']}}</span>
+                                    <span class="font-weight-bold view-when-768">Họ tên: </span><span class="">{{$order['buyer']['fullname']}}</span>
                                 </div>
                                 <div class="col-md-2 wp-item-table mt-table-1">
-                                    <span class="font-weight-bold view-when-768">Số điện thoại: </span><span class="">{{$data['phone']}}</span>
+                                    <span class="font-weight-bold view-when-768">Số điện thoại: </span><span class="">{{$order['buyer']['phone']}}</span>
                                 </div>
                                 <div class="col-md-5 wp-item-table mt-table-1">
-                                    <span class="font-weight-bold view-when-768">Địa chỉ: </span><span class="">{{$data['address']}}</span>
+                                    <span class="font-weight-bold view-when-768">Địa chỉ: </span><span class="">{{$order['buyer']['address']}}</span>
                                 </div>
                                 <div class="col-md-3 wp-item-table mt-table-1">
-                                    <span class="font-weight-bold view-when-768">Email: </span><span class="">{{$data['email']}}</span>
+                                    <span class="font-weight-bold view-when-768">Email: </span><span class="">{{$order['buyer']['email']}}</span>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             @php
                             $temp=0;
                             @endphp
-                            @foreach ($product as $item8)
+                            @foreach ($order['info_product'] as $item8)
                             @php
                             $temp++;
                             @endphp
@@ -105,20 +105,20 @@
                                 </div>
                                 <div class="col-3 col-md-2 col-item-info">
                                     <div class="wp-img-ordersuccess">
-                                        <img src="{{asset($item8['thumbnail'])}}" alt="" class="img-fluid">
+                                        <img src="{{asset($item8['image'])}}" alt="" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="col-8 col-md-9 col-item-info">
                                     <div class="row row-mr0">
                                         <div class="col-12 col-md-6 col-item-info">
                                             <p class="truncate3 text-primary mb-0">{{$item8['name']}}</p>
-                                            <small><span class="font-weight-bold">Đơn giá: </span><span class="text-dart">{{number_format($item8['price_current'], 0, "" ,"." )}}đ / {{$item8['unit']}}</span></small>
+                                            <small><span class="font-weight-bold">Đơn giá: </span><span class="text-dart">{{number_format($item8['price'], 0, "" ,"." )}}đ / {{$item8['unit']}}</span></small>
                                         </div>
                                         <div class="col-6 col-md-3 item-center-768 col-item-info">
-                                            <span class="font-weight-bold view-when-768">Số lượng: </span><span>{{$item8['qty']}}</span>
+                                            <span class="font-weight-bold view-when-768">Số lượng: </span><span>{{$item8['quantity']}}</span>
                                         </div>
                                         <div class="col-6 col-md-3 col-item-info monney-item">
-                                            <span class="font-weight-bold">{{number_format($item8['price_current']*$item8['qty'], 0, "" ,"." )}}đ</span>
+                                            <span class="font-weight-bold">{{number_format($item8['total_money'], 0, "" ,"." )}}đ</span>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@
                                     Giá trị đơn hàng
                                 </div>
                                 <div class="col-6 text-right">
-                                    <span class="text-danger font-weight-bold">{{number_format($order['price_total'], 0, "" ,"." )}}đ</span>
+                                    <span class="text-danger font-weight-bold">{{number_format($order['total'], 0, "" ,"." )}}đ</span>
                                 </div>
                             </div>
                         </div>

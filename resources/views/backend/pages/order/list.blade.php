@@ -36,11 +36,11 @@
             @endphp
             <tr>
                 <td style="width: 3%">{{$index}}</td>
-                <td style="width: 15%">{{$val['code_order']}} </td>
-                <td style="width: 17%;text-align:right">{{MyFunction::formatNumber($val['total'])}} đ</td>
-                <td style="width: 20%" class="text-justify">{{$val['buyer']['fullname']??''}}</td>
-                <td style="width: 15%" class="text-right">{{$ngayDatHang}}</td>
-                <td style="width:15%" class="font-weight-bold">
+                <td style="width: 15%"><a href="{{route('backend.order.detail',$val['id'])}}">{{$val['code_order']}}</a></td>
+                <td style="width: 17%" class="text-center">{{MyFunction::formatNumber($val['total'])}} đ</td>
+                <td style="width: 20%" class="text-center">{{$val['buyer']['fullname']??''}}</td>
+                <td style="width: 15%" class="text-center">{{$ngayDatHang}}</td>
+                <td style="width:15%" class="font-weight-bold text-success text-center">
                     {!! $statusOrderValue[$val['status_order']]!!}
                 </td>
                 

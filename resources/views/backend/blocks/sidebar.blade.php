@@ -7,10 +7,10 @@
     <!-- Sidebar Menu -->
     <nav>
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            
+
             <li class="nav-item has-treeview">
                 <a href="{{route('catProduct')}}" class="nav-link">
-                <i class="nav-icon far fa-folder-open"></i>
+                    <i class="nav-icon far fa-folder-open"></i>
                     <p>
                         Danh mục sản phẩm
                     </p>
@@ -26,9 +26,15 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
+                        <a href="{{route('product.add')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Thêm mới sản phẩm</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('product')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Danh sản phẩm</p>
+                            <p>Danh sách sản phẩm</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -41,13 +47,13 @@
             </li>
             <li class="nav-item has-treeview">
                 <a href="{{route('order')}}" class="nav-link">
-                <i class="nav-icon far fa-list-alt"></i>
+                    <i class="nav-icon far fa-list-alt"></i>
                     <p>
                         Quản lý đơn hàng
                     </p>
                 </a>
             </li>
-           
+
         </ul>
     </nav>
 </div>

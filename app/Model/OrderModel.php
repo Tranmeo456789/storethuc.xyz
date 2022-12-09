@@ -4,7 +4,7 @@ use App\Http\Requests\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\BackEndModel;
 use Illuminate\Support\Str;
-use Kalnoy\Nestedset\NodeTrait;
+
 use App\Model\ProductModel;
 
 use App\Model\CustomerShopModel;
@@ -14,16 +14,14 @@ use Session;
 class OrderModel extends BackEndModel
 {
     protected $casts = [
-        'info_product'   => 'array',
-        'pharmacy' =>'array',
+        'info_product'   => 'array',       
         'buyer'   => 'array',
-        'receive' => 'array'
     ];
     public function __construct() {
         $this->table               = 'order';
         $this->controllerName      = 'order';
         $this->folderUpload        = '' ;
-        $this->crudNotAccepted     = ['_token','btn_save','quantity','currentValue','warehouse_id'];
+        $this->crudNotAccepted     = ['_token','btn_save'];
     }
     public function search($query,$params){
         if (isset($params['search']['value'] ) && ($params['search']['value'] !== "")) {
@@ -39,19 +37,19 @@ class OrderModel extends BackEndModel
         }
         return $query;
     }
-    public function scopeOfUser($query)
-    {
-        if (\Session::has('user')){
-            $user = \Session::get('user');
-            if($user['is_admin']==1){
-                return  $query;
-            }else{
-                return  $query->where('user_sell',$user->user_id);
-            }
+    // public function scopeOfUser($query)
+    // {
+    //     if (\Session::has('user')){
+    //         $user = \Session::get('user');
+    //         if($user['is_admin']==1){
+    //             return  $query;
+    //         }else{
+    //             return  $query->where('user_sell',$user->user_id);
+    //         }
             
-        }
-        return $query;
-    }
+    //     }
+    //     return $query;
+    // }
 
     public function listItems($params = null, $options = null)
     {
@@ -80,10 +78,8 @@ class OrderModel extends BackEndModel
             $result =  $query->orderBy('id', 'desc')->get();
         }
         if ($options['task'] == "user-list-items") {
-            $query = $this::with('userBuy')
-                                ->select('id','code_order','total','buyer','created_at','status_order','user_id')
-                                ->where('id','>',1)
-                                ->OfUser();
+            $query = $this::select('id','code_order','total','buyer','created_at','status_order','user_id')
+                                ->where('id','>',1);
             if ((isset($params['filter']['status_order'])) && ($params['filter']['status_order'] != 'all')) {
                 $query = $query->where('status_order',$params['filter']['status_order']);
             }
@@ -114,7 +110,7 @@ class OrderModel extends BackEndModel
         $result = null;
         if ($options['task'] == 'get-item-frontend') {
             $result = self::select('id','code_order','total','created_at','status_order','user_id',
-                            'info_product','buyer','pharmacy','total_product','delivery_method','receive')
+                            'info_product','buyer','pharmacy','total_product','delivery_method','receive','note')
                             ->where('id', $params['id'])
                             ->first();
         }
@@ -162,16 +158,14 @@ class OrderModel extends BackEndModel
         if($options['task'] == 'admin-count-items-group-by-status-order') {
             $query = $this::groupBy('status_order')
                             ->select(DB::raw('status_order , COUNT(id) as count') )
-                            ->where('id','>',1)
-                            ->OfUser();
+                            ->where('id','>',1);
             $query = $this->search($query, $params);
             $result = $query->get()->toArray();
         }
         if($options['task'] == 'admin-count-items-status-order') {
             $query = $this::groupBy('status_order')
                             ->select(DB::raw('status_order , COUNT(id) as count') )
-                            ->where('id','>',1)->where('status_order',$params['status_order'])
-                            ->OfUser();
+                            ->where('id','>',1)->where('status_order',$params['status_order']);
             $result = $query->get()->toArray();
         }
         if($options['task'] == 'admin-count-items-of-user-sell') {
@@ -195,39 +189,41 @@ class OrderModel extends BackEndModel
         if ($options['task'] == 'frontend-save-item'){
             DB::beginTransaction();
             try {
+
+                //$params['invoice'] = isset($params['export_tax'])?json_encode($params['invoice']) :null;
+                // if ($params['delivery_method'] == 1){ //Nhận hàng tại nhà thuốc
+                //     $params['pharmacy'] = json_encode($params['pharmacy']);
+                //     $params['receive'] = null;
+                // }else{
+                //     $params['pharmacy'] = null;
+                //     $params['receive'] = json_encode($params['receive']);
+                // }
+                //$cart = \Session::get('cart');
+                //$params['info_product'] = $cart[$params['user_sell']]['product'];
                 $this->setCreatedHistory($params);
                 $params['buyer'] = json_encode($params['buyer']);
-                $params['invoice'] = isset($params['export_tax'])?json_encode($params['invoice']) :null;
-                if ($params['delivery_method'] == 1){ //Nhận hàng tại nhà thuốc
-                    $params['pharmacy'] = json_encode($params['pharmacy']);
-                    $params['receive'] = null;
-                }else{
-                    $params['pharmacy'] = null;
-                    $params['receive'] = json_encode($params['receive']);
-                }
-                $cart = \Session::get('cart');
-                $params['info_product'] = $cart[$params['user_sell']]['product'];
                 $params['info_product'] = json_encode($params['info_product']);
-                $params['total'] = $cart[$params['user_sell']]['total'];
-                $params['total_product'] = $cart[$params['user_sell']]['total_product'];
+                $params['total'] = $params['total'];
+                $params['status_order']='dangXuLy';
+                $params['total_product'] = $params['total_product'];
                 $paramsCode = [
                     'type' => 'order',
                     'value' => date('Ymd')
                 ];
-                $params['code_order'] ='DHTD' . date('Ymd') . sprintf("%05d",self::getMaxCode($paramsCode));
+                $params['code_order'] ='DHTD' . date('Ymd') . sprintf("%05d",'123');
                 self::insert($this->prepareParams($params));
 
                 //Cập nhật khách hàng
-                $customer = CustomerShopModel::where('user_id',$params['user_id'])
-                                            ->where('user_sell',$params['user_sell'])
-                                            ->first();
-                if (empty($customer)){
-                    CustomerShopModel::insert([
-                        'user_id' => $params['user_id'],
-                        'user_sell' => $params['user_sell']
-                    ]);
-                }
-
+                // $customer = CustomerShopModel::where('user_id',$params['user_id'])
+                //                             ->where('user_sell',$params['user_sell'])
+                //                             ->first();
+                // if (empty($customer)){
+                //     CustomerShopModel::insert([
+                //         'user_id' => $params['user_id'],
+                //         'user_sell' => $params['user_sell']
+                //     ]);
+                // }
+                
                 DB::commit();
                 return true;
             } catch (\Throwable $th) {
@@ -235,7 +231,13 @@ class OrderModel extends BackEndModel
                 throw $th;
                 return false;
             }
+
         }
+        if ($options['task'] == 'frontend-save-code-order'){
+            
+            $params['code_order'] ='DHTD' . date('Ymd') . sprintf("%05d",$params['id']);
+            self::where('id', $params['id'])->update($this->prepareParams($params));
+         }
         if ($options['task'] == 'api-save-item'){
             DB::beginTransaction();
             try {
@@ -283,12 +285,12 @@ class OrderModel extends BackEndModel
             }
         }
         if($options['task'] == 'change-status-order') {
-            $params['status_order'] = $params['currentValue'];
+            $params['status_order'] = $params['status_order'];
             $this->setModifiedHistory($params);
             self::where('id', $params['id'])->update($this->prepareParams($params));
-            if ($params['currentValue'] == 'hoanTat'){ // Cập nhật lại số lượng đơn hàng
+            // if ($params['currentValue'] == 'hoanTat'){ // Cập nhật lại số lượng đơn hàng
 
-            }
+            // }
         }
         if ($options['task'] == 'update-item'){
             DB::beginTransaction();
@@ -296,11 +298,11 @@ class OrderModel extends BackEndModel
                 $this->setModifiedHistory($params);
                 self::where('id', $params['id'])->update($this->prepareParams($params));
                 $item = self::getItem(['id' => $params['id']], ['task' => 'get-item']);
-                if ($params['status_order'] == 'hoanTat'){ // Cập nhật lại số lượng đơn hàng
-                    (new ProductWarehouseModel())->saveItem(['warehouse_id'=>$params['warehouse_id'],
-                    'list_products'=>$item->info_product],
-                    ['task' => 'output-warehouse']);
-                }
+                // if ($params['status_order'] == 'hoanTat'){ // Cập nhật lại số lượng đơn hàng
+                //     (new ProductWarehouseModel())->saveItem(['warehouse_id'=>$params['warehouse_id'],
+                //     'list_products'=>$item->info_product],
+                //     ['task' => 'output-warehouse']);
+                // }
                 DB::commit();
                 return true;
             } catch (\Throwable $th) {

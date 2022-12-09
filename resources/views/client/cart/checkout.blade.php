@@ -54,32 +54,29 @@
                             <label for="address">Địa chỉ <small class="text-danger">(*)</small></label>
                         </div> 
                         <div class="col-12 col-md-6 pb-3">
-                            <select name="city" class="form-control choose1 city" id="city" data-href="{{route('locationAjax')}}">
+                            <select name="province" class="form-control choose1 city" id="city" data-href="{{route('locationAjax')}}">
                                 <option value="">--Chọn tỉnh thành phố--</option>
-                                @error('city')
-                                <small class="text-danger">{{ $message }}</small>
-                                @enderror
                                 @foreach ($city as $item)
                                     <option value="{{$item->matp}}">{{$item->name_tinh}}</option>
                                 @endforeach                                  
                             </select>
-                            @error('city')
+                            @error('province')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>  
                         <div class="col-12 col-md-6 pb-3">
-                            <select name="province" class="form-control choose1 province" id="province" data-href="{{route('locationAjax')}}">
+                            <select name="district" class="form-control choose1 province" id="province" data-href="{{route('locationAjax')}}">
                                 <option value="">--Chọn quận huyện--</option>   
                             </select>
-                            @error('province')
+                            @error('district')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 pb-3">
-                            <select name="wards" class="form-control wards" id="wards">
+                            <select name="ward" class="form-control wards" id="wards">
                                 <option value="">--Chọn xã phường--</option>   
                             </select>
-                            @error('wards')
+                            @error('ward')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -128,7 +125,7 @@
                     <ul id="payment_methods">
                         
                         <li>
-                            <input type="radio" id="payment-home" name="payment-method" value="Thanh toán tại nhà" checked="checked">
+                            <input type="radio" id="payment-home" name="delivery_method" value="Thanh toán tại nhà" checked="checked">
                             <label for="payment-home">Thanh toán tại nhà</label>
                         </li>
                     </ul>

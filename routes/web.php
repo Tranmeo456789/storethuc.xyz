@@ -165,4 +165,4 @@ Route::get('cart/destroy','CartController@destroy')->name('cart.destroy');
 Route::post('cart/udate','CartController@update')->name('cart.update');
 Route::post('cart/location','OrderController@locationAjax')->name('locationAjax');
 Route::post('OrderSuccess','OrderController@OrderSuccess')->name('OrderSuccess');
-Route::get('dat-hang-thanh-cong/{id}','OrderController@OrderSuccess1')->name('order.success');
+Route::get('dat-hang-thanh-cong/{id}','OrderController@viewOrderSuccess')->name('order.success');

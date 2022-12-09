@@ -72,7 +72,7 @@ class OrderController extends BackEndController
         if ($request->method() == 'POST') {
             $params['id'] = intval($request->id);
             $params['status_order'] = $request->status_order;
-            $params['warehouse_id'] = intval($request->warehouse_id);
+            //$params['warehouse_id'] = intval($request->warehouse_id);
             $task   = "update-item";
             $notify = "Cập nhật $this->pageTitle thành công!";
             $this->model->saveItem($params, ['task' => $task]);
@@ -86,16 +86,16 @@ class OrderController extends BackEndController
     }
     public function changeStatusOrder(Request $request)
     {
-        $params["currentValue"]  = $request->value;
+        $params["status_order"]  = $request->status_order;
         $params["id"]             = $request->id;
         $this->model->saveItem($params, ['task' => 'change-status-order']);
         $notify = "Cập nhật Trạng thái đơn hàng thành công!";
         $request->session()->put('app_notify', $notify);
-        return redirect()->back();
-        // return response()->json([
-        //     'fail'         => false,
-        //     'redirect_url' => route($this->controllerName),
-        //     'message'      => $notify
-        // ]);
+       // return redirect()->route($this->controllerName);
+         return response()->json([
+             'fail'         => false,
+             'redirect_url' => route($this->controllerName),
+             'message'      => $notify
+         ]);
     }
 }

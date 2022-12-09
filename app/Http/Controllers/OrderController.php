@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Product;
+use App\Model\CatProductModel;
+use App\Model\ProductModel;
+use App\Model\OrderModel;
 use App\Page;
 use App\Product_cat;
 use App\Product_cat_child;
 use App\Quanhuyen;
 use App\Slider;
 use App\Tinhthanhpho;
+use App\Model\ProvinceModel;
 use App\Xaphuongthitran;
 use App\Guest;
 use App\Mail\MailOrder;
 use App\Mail\MailToAdmin;
+use App\Model\DistrictModel;
+use App\Model\WardModel;
 use App\Order;
 use App\Product_order;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -95,9 +101,9 @@ class OrderController extends Controller
                 [
                 'fullname' => 'required|string|min:1',
                 'phone' => 'required|numeric|min:1',
-                'city'=> 'required',
-                'province' =>'required',
-                'wards' =>'required',
+                'province'=> 'required',
+                'district' =>'required',
+                'ward' =>'required',
                 'address'=>'required|string|min:1',
                 ],
                 [
@@ -108,9 +114,9 @@ class OrderController extends Controller
                 [
                     'fullname'=>'nhập họ và tên',
                     'phone'=>'nhập số điện thoại',
-                    'city'=> 'chọn tỉnh thành phố',
-                    'province' =>'chọn quận huyện',
-                    'wards' =>'chọn xã phường thị trấn',
+                    'province'=> 'chọn tỉnh thành phố',
+                    'district' =>'chọn quận huyện',
+                    'ward' =>'chọn xã phường thị trấn',
                     'address' => 'nhập địa chỉ'
                 ]
             );
@@ -119,10 +125,10 @@ class OrderController extends Controller
                 [
                 'fullname' => 'required|string|min:1',
                 'phone' => 'required|numeric|min:1',
-                'city'=> 'required',
+                'province'=> 'required',
+                'district' =>'required',
+                'ward' =>'required',
                 'email' => 'email',
-                'province' =>'required',
-                'wards' =>'required',
                 'address'=>'required|string|min:1',
                 ],
                 [
@@ -134,125 +140,112 @@ class OrderController extends Controller
                 [
                     'fullname'=>'nhập họ và tên',
                     'phone'=>'nhập số điện thoại',
-                    'city'=> 'chọn tỉnh thành phố',
-                    'province' =>'chọn quận huyện',
-                    'wards' =>'chọn xã phường thị trấn',
+                    'province'=> 'chọn tỉnh thành phố',
+                    'district' =>'chọn quận huyện',
+                    'ward' =>'chọn xã phường thị trấn',
                     'address' => 'nhập địa chỉ',
                     'email'=>'Email',
                 ]
             );
         }
-        $city=Tinhthanhpho::where('matp',$request->input('city'))->get();
-        $province=Quanhuyen::where('maqh',$request->input('province'))->get();
-        $wards=Xaphuongthitran::where('xaid',$request->input('wards'))->get();
         
-        $price_total=0;
-        foreach(Cart::content() as $item9){
-            $price_total+=$item9->total;
-        }
+        $params['note']=$request->input('note');
+        $params['delivery_method']=$request->input('delivery_method');
+        $params['total']=0;
+        $params['total_product']=0;
         
-        Order::create(
-            [    
-                'fullname' => $request->input('fullname'),
-                'price_total' => $price_total,
-                'status'=> 'Đang xử lý',
-                'note'=>$request->input('note'),  
-                'payments'=>$request->input('payment-method'),      
-            ]
-          );
-           $order_id_last=Order::latest('id')->first();
-           $order_code='ISM-'.($order_id_last['id']).Str::upper(Str::random(9));
-          Order::where('id', $order_id_last['id'])->update(
-            [    
-                'code_order' => $order_code,     
-            ]
-          );
-        Guest::create(
-            [                
-                'fullname' => $request->input('fullname'),
-                'phone' => $request->input('phone'),
-                'email' => $request->input('email'),
-                'address' => $request->input('address').', '.$wards[0]['name_xa'].', '.$province[0]['name_huyen'].', '.$city[0]['name_tinh'],
-                'order_id' => $order_id_last['id'],                  
-            ]
-          );
-        foreach(Cart::content() as $item7){
-            Product_order::create(
-                [                
-                    'order_id' => $order_id_last['id'],
-                    'product_id' => $item7->id,
-                    'qty' => $item7->qty,                  
-                ]
-            );
+        foreach(Cart::content() as $itemCart){           
+            $params['info_product'][$itemCart->id]['product_id']=$itemCart->id;
+            $params['info_product'][$itemCart->id]['name']=$itemCart->name;
+            $params['info_product'][$itemCart->id]['price']=$itemCart->price;
+            $params['info_product'][$itemCart->id]['total_money']=(int)$itemCart->subtotal;
+            $params['info_product'][$itemCart->id]['quantity']=$itemCart->qty;
+            $params['info_product'][$itemCart->id]['image']=$itemCart->options->thumbnail;
+            $params['info_product'][$itemCart->id]['unit']=$itemCart->options->unit;
+
+            $params['total']+=$itemCart->subtotal;
+            $params['total_product']+=$itemCart->qty;
         }
-        $guests=Guest::where('order_id',$order_id_last['id'])->get();
-        $guest=$guests[0];
-        $order=Order::where('id',$order_id_last['id'])->get();
+        $province=(new ProvinceModel)->getItem(['matp'=>$request->input('province')],['task'=>'get-item-full']);
+        $district=(new DistrictModel)->getItem(['maqh'=>$request->input('district')],['task'=>'get-item-full']);
+        $ward=(new WardModel)->getItem(['xaid'=>$request->input('ward')],['task'=>'get-item-full']);
+        $params['buyer']['gender']='Nam';
+        $params['buyer']['fullname']=$request->input('fullname');
+        $params['buyer']['phone']=$request->input('phone');
+        $params['buyer']['email']=$request->input('email');
+        $params['buyer']['address']=$request->input('address').', '.$ward['name_xa'].', '.$district['name_huyen'].', '.$province['name_tinh'];
+        
+        (new OrderModel)->saveItem($params,['task'=>'frontend-save-item']);
+        $OrderLast=OrderModel::latest('id')->first();
+        (new OrderModel)->saveItem(['id' => $OrderLast->id],['task'=>'frontend-save-code-order']);
+        $OrderLast=OrderModel::latest('id')->first();
+       
+       
         $data=[
-            'code_order' => $order[0]->code_order,
-            'fullname'=>$guest->fullname,
-            'email'=>$guest->email,
-            'address'=>$guest->address,
-            'phone'=>$guest->phone,
-            'phone'=>$guest->phone,
-            'note'=>$order[0]->note,
-            'payments'=>$order[0]->payments,
+            'code_order' => $OrderLast['code_order'],
+            'fullname'=>$OrderLast['buyer']['fullname'],
+            'email'=>$OrderLast['buyer']['email'],
+            'address'=>$OrderLast['buyer']['address'],
+            'phone'=>$OrderLast['buyer']['phone'],
+            'note'=>$OrderLast['note'],
+            'payments'=>$OrderLast['delivery_method'],
         ];
+        
         if($request->input('email')){
             Mail::to($request->input('email'))->send(new MailOrder( $data));
         }  
-        Mail::to('storethuc@gmail.com')->send(new MailToAdmin( $data));    
-        return redirect()->route('order.success', ['id'=>Str::lower(Order::latest('id')->first()['code_order'])]);
+        //return($data);
+        //Mail::to('storethuc@gmail.com')->send(new MailToAdmin( $data));    
+        return redirect()->route('order.success', ['id'=>$OrderLast['id']]);
     }
-    function OrderSuccess1($id){
-        if($id==Str::lower(Order::latest('id')->first()['code_order'])){
+    function viewOrderSuccess($id){
+        //if($id==Str::lower(Order::latest('id')->first()['code_order'])){
             $pages=Page::all();
             $page_contact=Page::find(15);
             $page_introduce=Page::find(21);
-            $guests=Guest::where('order_id',Order::latest('id')->first()['id'])->get();
-        $guest=$guests[0];
-        $order=Order::where('id',Order::latest('id')->first()['id'])->get();
-            $data=[
-                'code_order' => $order[0]->code_order,
-                'fullname'=>$guest->fullname,
-                'email'=>$guest->email,
-                'address'=>$guest->address,
-                'phone'=>$guest->phone,
-                'phone'=>$guest->phone,
-                'note'=>$order[0]->note,
-                'payments'=>$order[0]->payments,
-            ];
-            $id=Order::latest('id')->first()['id'];
-            $product_order=[];
-        $product_orders=Product_order::all();
-        foreach($product_orders as $item7){
-            if($id==$item7->order_id){
-                $product_order[]=$item7;
-            }
-        }
+           // $guests=Guest::where('order_id',Order::latest('id')->first()['id'])->get();
+        // $guest=$guests[0];
+        // $order=Order::where('id',Order::latest('id')->first()['id'])->get();
+        //     $data=[
+        //         'code_order' => $order[0]->code_order,
+        //         'fullname'=>$guest->fullname,
+        //         'email'=>$guest->email,
+        //         'address'=>$guest->address,
+        //         'phone'=>$guest->phone,
+        //         'phone'=>$guest->phone,
+        //         'note'=>$order[0]->note,
+        //         'payments'=>$order[0]->payments,
+        //     ];
+        //     $id=Order::latest('id')->first()['id'];
+        //     $product_order=[];
+        // $product_orders=Product_order::all();
+        // foreach($product_orders as $item7){
+        //     if($id==$item7->order_id){
+        //         $product_order[]=$item7;
+        //     }
+        // }
         
-        $product=[];
-        $qty_total=0;
-        $products=Product::all();
-        foreach($product_order as $item9){
-            foreach($products as $item10){
-                if($item9->product_id==$item10->id){
-                    $qty_total+=$item9->qty;
-                   $itema= json_decode($item9, true);
-                   $itemb=json_decode($item10, true);
-                    $product[]= array_merge($itema,$itemb);
-                }
-            }
-        }
-         $orders=Order::withTrashed()->where('id',$id)->get();
-         foreach($orders as $itemorder){
-             $order=$itemorder;
-         }
-             Cart::destroy();
-            return view('client.order.orderSuccess',compact('pages','page_contact','page_introduce','data','product','qty_total','order'));
-        }else{
-            return view('client.page404');
-        }
+        // $product=[];
+        // $qty_total=0;
+        // $products=Product::all();
+        // foreach($product_order as $item9){
+        //     foreach($products as $item10){
+        //         if($item9->product_id==$item10->id){
+        //             $qty_total+=$item9->qty;
+        //            $itema= json_decode($item9, true);
+        //            $itemb=json_decode($item10, true);
+        //             $product[]= array_merge($itema,$itemb);
+        //         }
+        //     }
+        // }
+         
+        $order=(new OrderModel)->getItem(['id'=>$id],['task'=>'get-item-frontend']);
+       // return($order);
+             //Cart::destroy();
+            return view('client.order.orderSuccess',compact('pages','page_contact','page_introduce','order'));
+        // }else{
+        //     return view('client.page404');
+        // }
     }
         
 
