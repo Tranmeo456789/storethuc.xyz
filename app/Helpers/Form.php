@@ -24,6 +24,7 @@ class Form
         $xhtml = null;
         $imageSelect=isset($element['imageSelect']) ? $element['imageSelect'] : '';
         $styleFormGroup = isset($element['styleFormGroup']) ? $element['styleFormGroup'] : '';
+        $linkService = isset($element['linkService']) ? $element['linkService'] : "";
         switch ($type) {
             case 'input':
                 $xhtml .= sprintf(
@@ -217,6 +218,16 @@ class Form
                     $element['element']
                 );
                 break;
+
+            case 'tag-a-link-service':
+                $xhtml .= sprintf(
+                    '<div class="%s">
+                            <a href="%s" target="_blank"><small>Xem trạng thái đơn hàng của dịch vụ</small></a>
+                        </div>',
+                    $widthElement,
+                    $linkService
+                    );
+                 break;
         }
         return $xhtml;
     }

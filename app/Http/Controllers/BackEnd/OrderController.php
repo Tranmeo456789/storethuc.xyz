@@ -57,6 +57,7 @@ class OrderController extends BackEndController
         //$itemsWarehouse = (new WarehouseModel())->listItems(['user_id'=>$item['user_sell']],['task' => 'admin-list-items-in-selectbox']);
         $params['group_id'] = array_keys($item['info_product']);
         $itemsProduct = (new ProductModel())->listItems($params,['task' => 'user-list-items']);
+        
         return view($this->pathViewController .  'detail',
                  compact('id','item','itemsProduct','pageTitle'));
     }
@@ -87,14 +88,16 @@ class OrderController extends BackEndController
     public function changeStatusOrder(Request $request)
     {
         $params["status_order"]  = $request->status_order;
+        $params['delivery_service']=$request->delivery_service;
+        $params['code_service'] =$request->code_service;
         $params["id"]             = $request->id;
         $this->model->saveItem($params, ['task' => 'change-status-order']);
-        $notify = "Cập nhật Trạng thái đơn hàng thành công!";
+        $notify = "Cập nhật thông tin đơn hàng thành công!";
         $request->session()->put('app_notify', $notify);
        // return redirect()->route($this->controllerName);
          return response()->json([
              'fail'         => false,
-             'redirect_url' => route($this->controllerName),
+             'redirect_url' => route('backend.order.detail',['id'=>$request->id]),
              'message'      => $notify
          ]);
     }

@@ -90,7 +90,8 @@
                 'quantity' => 'Số lượng',
                 'price_import' => 'Giá nhập',
                 'code_order' => 'Mã đơn hàng',
-                'status_order' => 'Trạng thái đơn hàng'
+                'status_order' => 'Trạng thái đơn hàng',
+                'delivery_service'=>'Đơn vị vận chuyển'
             ],
             'status_product' => [
                 'con_hang' => 'Còn hàng',
@@ -140,6 +141,14 @@
                     'daHuy'        => ['name' => 'Đã hủy', 'class' => 'item-tab'],
                     'hoanTat'      => ['name' => 'Hoàn tất', 'class' => 'item-tab']
                 ],
+                'delivery_service'=> [
+                    ''     => ['name' => 'Cửa hàng tự ship', 'class' => 'item-tab','link'=>''],
+                    'viettel_post'     => ['name' => 'Viettel Post', 'class' => 'item-tab','link'=>'https://viettelpost.com.vn/tra-cuu-hanh-trinh-don/'],
+                    'buu_dien' => ['name' => 'Bưu điện', 'class' => 'item-tab','link'=>'http://www.vnpost.vn/vi-vn/dinh-vi/buu-pham?key='],
+                    'giao_hang_tiet_kiem' => ['name' => 'Giao hàng tiết kiệm', 'class' => 'item-tab','link'=>'https://i.ghtk.vn/'],
+                    'giao_hang_nhanh' => ['name' => 'Giao hàng nhanh', 'class' => 'item-tab','link'=>'https://donhang.ghn.vn/?order_code='],
+                    'j_and_t' => ['name' => 'J&T', 'class' => 'item-tab','link'=>'https://jtexpress.vn/vi/tracking?type=track&billcode=']                   
+                ]
             ],
             'search'       => [
                 'all'      => ['name'=>'Tìm kiếm Tất cả'],

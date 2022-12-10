@@ -78,7 +78,7 @@ class OrderModel extends BackEndModel
             $result =  $query->orderBy('id', 'desc')->get();
         }
         if ($options['task'] == "user-list-items") {
-            $query = $this::select('id','code_order','total','buyer','created_at','status_order','user_id')
+            $query = $this::select('id','code_order','total','buyer','created_at','status_order','user_id','code_service')
                                 ->where('id','>',1);
             if ((isset($params['filter']['status_order'])) && ($params['filter']['status_order'] != 'all')) {
                 $query = $query->where('status_order',$params['filter']['status_order']);
@@ -110,19 +110,19 @@ class OrderModel extends BackEndModel
         $result = null;
         if ($options['task'] == 'get-item-frontend') {
             $result = self::select('id','code_order','total','created_at','status_order','user_id',
-                            'info_product','buyer','pharmacy','total_product','delivery_method','receive','note')
+                            'info_product','buyer','pharmacy','total_product','delivery_method','receive','note','delivery_service','code_service')
                             ->where('id', $params['id'])
                             ->first();
         }
         if ($options['task'] == 'get-item-frontend-code') {
             $result = self::select('id','code_order','total','created_at','status_order','user_id','delivery_method','receive',
-                            'info_product','buyer','pharmacy','total_product')
+                            'info_product','buyer','pharmacy','total_product','delivery_service','code_service')
                             ->where('code_order', $params['code_order'])
                             ->first();
         }
         if ($options['task'] == 'get-item') {
             $result = self::select('id','code_order','total','created_at','status_order','user_id','buyer',
-                            'info_product','pharmacy','total_product')
+                            'info_product','pharmacy','total_product','delivery_service','code_service')
                             ->where('id', $params['id'])
                             ->first();
 
@@ -286,6 +286,8 @@ class OrderModel extends BackEndModel
         }
         if($options['task'] == 'change-status-order') {
             $params['status_order'] = $params['status_order'];
+            $params['delivery_service'] = $params['delivery_service'];
+            $params['code_service'] = $params['code_service'];
             $this->setModifiedHistory($params);
             self::where('id', $params['id'])->update($this->prepareParams($params));
             // if ($params['currentValue'] == 'hoanTat'){ // Cập nhật lại số lượng đơn hàng

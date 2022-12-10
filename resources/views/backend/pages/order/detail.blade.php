@@ -13,7 +13,11 @@
     $statusOrderValue = array_combine(array_keys(config("myconfig.template.column.status_order")),array_column(config("myconfig.template.column.status_order"),'name'));
     unset($statusOrderValue['all']);
     $ngayDatHang = MyFunction::formatDateFrontend($item['created_at']);
-    $shiper='Nhân viên cửa hàng ship';
+
+    $linkServiceArr = array_combine(array_keys(config("myconfig.template.column.delivery_service")),array_column(config("myconfig.template.column.delivery_service"),'link'));
+    $linkService= isset($linkServiceArr[$item['delivery_service']]) ? $linkServiceArr[$item['delivery_service']].$item['code_service'] : '';
+    
+    $deliveryService=array_combine(array_keys(config("myconfig.template.column.delivery_service")),array_column(config("myconfig.template.column.delivery_service"),'name'));
     $elements = [
         [
             'label'   => HTML::decode(Form::label('code_order', $label['code_order'], $formLabelAttr)),
@@ -40,14 +44,26 @@
             'element' => Form::text('', 'Thanh toán tại nhà', array_merge($formInputAttr,['readonly' =>true])),
             'widthElement' => 'col-4'
         ],[
-            'label'   => HTML::decode(Form::label('', 'Đơn vị vận chuyển', $formLabelAttr)),
-            'element' => Form::text('', $shiper, array_merge($formInputAttr,['readonly' =>true])),
+            'label'   => HTML::decode(Form::label('', $label['delivery_service'], $formLabelAttr)),
+            'element' => Form::select('delivery_service',$deliveryService, $item['delivery_service']??null, array_merge($formSelect2Attr,['style' =>'width:100%'])),
             'widthElement' => 'col-4'
-        ],[
+        ],
+        [
+            'label'   => HTML::decode(Form::label('', 'Mã Bill dịch vụ(điền chính xác mã)', $formLabelAttr)),
+            'element' => Form::text('code_service', $item['code_service']??'', array_merge($formInputAttr,['readonly' =>false])),
+            'widthElement' => 'col-4'
+        ],
+        [
             'label'   => HTML::decode(Form::label('', 'Thời gian đặt hàng', $formLabelAttr)),
             'element' => Form::text('', $ngayDatHang, array_merge($formInputAttr,['readonly' =>true])),
             'widthElement' => 'col-4'
-        ],[
+        ],
+        [
+            'widthElement' => 'col-12',
+            'linkService' => $linkService,
+            'type'    => "tag-a-link-service",
+        ],
+        [
             'element' => $inputHiddenID  .Form::submit('Cập nhật', ['class'=>'btn btn-primary']),
             'type'    => "btn-submit-center"
         ]
@@ -59,6 +75,7 @@
 @section('title',$pageTitle)
 @section('content')
 @include ("$moduleName.blocks.page_header", ['pageIndex' => false])
+@include("$moduleName.blocks.notify")
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -89,4 +106,5 @@
         </div>
     </div>
 </section>
+
 @endsection
