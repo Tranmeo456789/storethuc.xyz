@@ -23,9 +23,9 @@
 @section('content')
 @include ("$moduleName.blocks.page_header", ['pageIndex' => false])
 <section class="content">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6 col-12">
                 <div class="card card-primary">
                     @include("$moduleName.blocks.x_title", ['title' => $title])
                     <div class="card-body">

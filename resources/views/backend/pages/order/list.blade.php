@@ -10,7 +10,8 @@
     $statusOrderValue = array_combine(array_keys(config("myconfig.template.column.status_order")),array_column(config("myconfig.template.column.status_order"),'name'));
     unset($statusOrderValue['all']);
 @endphp
-    <table class="table table-bordered table-striped table-hover table-head-fixed text-wrap" id="tbList">
+<div class="set-withscreen">
+<table class="table table-bordered table-striped table-hover table-head-fixed text-wrap" id="tbList">
         <thead>
             <tr class="row-heading">
                 <th>STT</th></th>
@@ -54,3 +55,5 @@
         @endif
     </tbody>
 </table>
+</div>
+    

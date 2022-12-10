@@ -125,7 +125,9 @@ form div[class*=col-]:last-child .form-group {
 .bar_tabs {
     border: 0px;
 }
-
+.navbar-nav .show{
+    right: 10px!important;
+}
 .bar_tabs li.btn-primary a.btn-filter {
     color: #fff;
 }
@@ -343,7 +345,16 @@ span.highlight {
         flex-basis: 50%;
     }
     .card-body.p-0 .table thead > tr > th:first-of-type,.card-body.p-0 .table thead > tr > th:last-of-type{
-        padding: 00.5rem;
+        padding: 0.5rem;
+    }
+    .table td {
+        padding: 5px;
+    }
+    .card-body.p-0 .table tbody > tr > td:first-of-type {
+        padding-left: 5px;
+    }
+    .card-body.p-0 .table tbody > tr > td:last-of-type {
+        padding-right: 5px;
     }
 }
 

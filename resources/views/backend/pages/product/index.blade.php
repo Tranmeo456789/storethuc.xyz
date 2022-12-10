@@ -1,5 +1,5 @@
 @php
-    use App\Helpers\Template;
+use App\Helpers\Template;
 @endphp
 @extends('layouts.backend')
 
@@ -8,20 +8,16 @@
 @include ("$moduleName.blocks.page_header", ['pageIndex' => true])
 <section class="content">
     @include("$moduleName.blocks.notify")
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-outline card-primary">
-                    @include("$moduleName.blocks.x_title", ['title' => 'Danh sách'])
-                    <div class="card-body p-0">
-                    {!! Template::showTabFilter($controllerName, $itemStatusProductCount, $params['filter']['status_product'], $params,'status_product'); !!}
+    <div class="">
+        <div class="card card-outline card-primary">
+            @include("$moduleName.blocks.x_title", ['title' => 'Danh sách'])
+            <div class="card-body p-0">
+                {!! Template::showTabFilter($controllerName, $itemStatusProductCount, $params['filter']['status_product'], $params,'status_product'); !!}
 
-                        @include("$moduleName.pages.$controllerName.list")
-                    </div>
-                    <div class="card-footer my-card-pagination clearfix">
-                        @include("$moduleName.blocks.pagination",['paginator'=>$items])
-                    </div>
-                </div>
+                @include("$moduleName.pages.$controllerName.list")
+            </div>
+            <div class="card-footer my-card-pagination clearfix">
+                @include("$moduleName.blocks.pagination",['paginator'=>$items])
             </div>
         </div>
     </div>

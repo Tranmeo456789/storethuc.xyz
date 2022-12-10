@@ -96,10 +96,8 @@ class OrderModel extends BackEndModel
             $result =  $query;
         }
         if($options['task'] == "user-list-items-in-day"){
-            $query = $this::with('userBuy')
-            ->select('id','code_order','total','created_at','status_order','user_id')
-            ->where('id','>',1)->where('created_at','LIKE', "%{$params['day']}%")
-            ->OfUser();
+            $query = $this::select('id','code_order','total','created_at','status_order','user_id')
+            ->where('id','>=',1)->where('created_at','LIKE', "%{$params['day']}%");
             $result =  $query->orderBy('id', 'desc')->get();
         }
 

@@ -7,7 +7,14 @@
     <!-- Sidebar Menu -->
     <nav>
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+            <li class="nav-item has-treeview">
+                <a href="{{route('dashboard')}}" class="nav-link">
+                    <i class="nav-icon fas fa-chart-line"></i>
+                    <p>
+                        Thống kê bán hàng
+                    </p>
+                </a>
+            </li>
             <li class="nav-item has-treeview">
                 <a href="{{route('catProduct')}}" class="nav-link">
                     <i class="nav-icon far fa-folder-open"></i>
@@ -53,7 +60,17 @@
                     </p>
                 </a>
             </li>
-
+            <li class="nav-item has-treeview">
+                <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    <p>
+                        Đăng xuất
+                    </p>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

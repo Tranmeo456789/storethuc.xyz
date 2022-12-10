@@ -15,6 +15,10 @@
 $prefixShopBackEnd = '/backend';
 Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middleware' => ['auth']], function () { 
    
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('/loc-doanh-thu-theo-thoi-gian', 'DashboardController@filterInDay')->name('dashboard.filterInDay');
+
+
         Route::get('/danh-sach-don-vi-tinh', 'UnitController@index')->name('unit');
         Route::get('/them-don-vi-tinh', 'UnitController@form')->name('unit.add');
         Route::get('/sua-don-vi-tinh/{id}', 'UnitController@form')->name('unit.edit');
