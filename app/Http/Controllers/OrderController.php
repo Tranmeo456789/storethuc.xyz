@@ -242,7 +242,8 @@ class OrderController extends Controller
        // return($order);
         Cart::destroy();
         $data='';
-        Mail::to('kieptuattuat@gmail.com')->send(new MailToAdmin($data));   
+        //Mail::to('kieptuattuat@gmail.com')->send(new MailToAdmin($data));  
+        //Mail::to('kieptuattuat@gmail.com')->later(now()->addSecond(5), new MailToAdmin($data)); 
         return view('client.order.orderSuccess',compact('pages','page_contact','page_introduce','order'));
         // }else{
         //     return view('client.page404');
