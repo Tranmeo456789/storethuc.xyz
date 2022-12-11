@@ -307,7 +307,7 @@
 @media screen and (max-width: 600px) {
     /*HEADER*/
     #head-body #logo {
-        width: 44%;
+        width: 120px;
         padding: 10px 0px;
         font-size: 18px;
     }
@@ -317,7 +317,14 @@
     #search-wp {
         display: none;
     }
+    .show-min-600{
+        display: block;
+    }
     /*MAIN CONTENT*/
+    #main-content-wp {
+        background: #c1e3e74d;
+        padding-top: 10px;
+    }
     #list-product-wp .section-detail .list-item li {
         width: 49%;
         margin-right: 2%;
@@ -332,6 +339,14 @@
     #list-product-wp .section-detail .list-item li:nth-child(2n) {
         margin-right: 0!important;
     }
+    .set-width-screen{
+        width: 100%;
+        overflow-x:scroll;
+    }
+
+    /* .set-width-screen .list-item{
+        min-width: 600px;
+    } */
     /*DETAIL PRODUCT*/
     #detail-product-wp .add-cart {
         font-size: 14px;
@@ -430,6 +445,24 @@
     #list-news-wp .info .desc {
         line-height: 24px;
     }
+    .owl-pagination{
+        display: none;
+    }
+    #support-wp .section-detail .list-item li .title{
+        font-size: 12px;
+    }
+    #support-wp .section-detail .list-item li .desc{
+        font-size: 10px;
+    }
+    #support-wp .section-detail .list-item li .thumb{
+        width: 30px;
+    }
+    #slider-wp{
+        margin-top: 10px;
+    }
+    #support-wp .section-detail .list-item li{
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 414px) {
@@ -444,26 +477,23 @@
     .home-page#main-content-wp {
         padding-top: 0;
     }
-    #slider-wp {
+    /* #slider-wp {
         display: none;
-    }
-    #support-wp .section-detail .list-item li {
-        width: 100%;
-        margin-bottom: 25px;
-    }
+    } */
+    
     #support-wp .section-detail .list-item li:before {
         display: none;
     }
-    .home-page #main-content-wp {
+    /* .home-page #main-content-wp {
         padding-top: 0;
-    }
+    } */
     #main-content-wp {
         padding-bottom: 50px;
     }
     #feature-product-wp .list-item li .action a,
     #list-product-wp .list-item li .action a,
     #same-category-wp .list-item li .action a {
-        padding: 2px 5px;
+        padding: 2px;
     }
     #feature-product-wp .list-item li .price,
     #list-product-wp .list-item li .price,
@@ -536,6 +566,10 @@
     #newfeed .title,
     #info-company .title {
         font-size: 21px;
+    }
+    .section-head{
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
 

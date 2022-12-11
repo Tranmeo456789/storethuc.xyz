@@ -167,10 +167,36 @@ position: relative;
 #head-body #search-wp #sm-s:hover {
     background: #e0dddd;
 }
-
+.show-min-600{
+    display: none;
+}
+#search-wp-responsive .wp-input-search{
+    width: 100%;
+    position: relative;
+}
+#search-wp-responsive .wp-input-search input{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: none;
+}
+#search-wp-responsive button{
+    position: absolute;
+    background: #fff;
+    border: none;
+    top: 4px;
+    right: 4px;
+    outline: none;
+}
+#search-wp-responsive button i{
+    color: #584747;
+}
 #advisory-wp {
     position: relative;
     padding: 15px 30px 15px 50px;
+}
+#support-wp{
+    margin-bottom: 10px;
 }
 
 #advisory-wp:before {

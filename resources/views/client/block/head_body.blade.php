@@ -80,3 +80,19 @@
         </div>
     </div>
 </div>
+<div class="wp-inner pb-2">
+    <div class="wp-form-search show-min-600" id="search-wp-responsive">
+        <form method="GET" action="{{url('tim-kiem')}}" class="d-flex justify-content-center">
+            <div class="wp-input-search">
+                <div class="input-search">
+                    <input type="text" name="key" value="{{request()->input('key')}}" id="s" data-href="{{route('searchProductAjax')}}" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
+                </div>
+                <button type="submit" name="" id="sm-s"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <div class="search-result">
+                    <ul class="suggest-search mb-0">
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

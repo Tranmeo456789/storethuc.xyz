@@ -1,5 +1,6 @@
-<div class="section-detail">
-    <ul class="list-item clearfix">
+
+<div class="section-detail set-width-screen">
+    <ul class="list-item clearfix mb-0">
         <li>
             <div class="thumb">
                 <img src="{{asset('images/icon-1.png')}}">

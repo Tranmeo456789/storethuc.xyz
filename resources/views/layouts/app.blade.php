@@ -15,7 +15,7 @@
                         @include("client.block.head_body")
                         </div>
                     </div>
-                    <main class="py-4">
+                    <main class="">
                         @yield('content')
                     </main>
                     <div id="footer-wp">
