@@ -11,6 +11,6 @@
                 <span class="old">{{number_format($val['price_old'], 0, "" ,"." )}}đ</span>
             @endif-->
         </div>
-        <a href="{{url('thanh-toan')}}" title="" class="buy-now">Mua ngay</a>
+        <a href="{{route('order.buynow',$val['id'])}}" title="" class="buy-now">Mua ngay</a>
     </div>
 </li>

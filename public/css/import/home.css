@@ -1,7 +1,7 @@
 /*MAIN CONTENT*/
 
 #main-content-wp {
-    background: #f7f7f7;
+    background: #fff;
     padding-top: 25px;
     padding-bottom: 75px;
 }
@@ -52,7 +52,9 @@
 #category-product-wp .list-item {
     background: #fff;
 }
-
+#feature-product-wp .owl-carousel .owl-item{
+    box-shadow: rgb(0 0 0 / 4%) 0px 6px 6px 0px;
+}
 #category-product-wp .list-item li a {
     display: block;
     color: #333;
@@ -317,6 +319,7 @@
     padding: 10px 10px 30px 10px;
     border: 1px solid transparent;
     height: 292px;
+    box-shadow: rgb(0 0 0 / 28%) 0px 6px 12px 0px;
 }
 
 #list-product-wp .section-detail .list-item li>a>img {

@@ -40,29 +40,28 @@ class OrderController extends Controller
     }
     
     function buynow($id){
-        $product1 = Product::find($id);
+        $product1 = ProductModel::find($id);
         $qty_exist=0;
         foreach(Cart::content() as $row4){
-                if($id==$row4->id){
-                    $qty_exist=$row4->qty;
-                    $rowId_exist=$row4->rowId;
+                if((int)$id == (int)$row4->id){
+                    $qty_exist = (int)$row4->qty;
+                    $rowId_exist = $row4->rowId;
+                    
                 }
             }    
-        $qty1= 1;
-        $qty_total=$qty_exist+$qty1;
-             
-        if($qty_total<11){
+           if(isset($rowId_exist)){
+            Cart::content()[$rowId_exist]->qty = $qty_exist;
+           }
+            else{
             Cart::add([
-                'id' => $product1->id,
+                'id' => (int)$product1->id,
                 'name' => $product1->name,
-                'qty' => $qty1,
-                'price' => $product1->price_current,
-                'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail],
+                'qty' => 1,
+                'price' => $product1->price,
+                'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail, 'unit' => $product1->unitProduct->name],
             ]);
-        }else{
-            Cart::update($rowId_exist,10);
         }
-
+        //return(Cart::content());
             return redirect('thanh-toan');
     }
     function checkout(){
@@ -181,21 +180,21 @@ class OrderController extends Controller
         $OrderLast=OrderModel::latest('id')->first();
        
        
-        $data=[
-            'code_order' => $OrderLast['code_order'],
-            'fullname'=>$OrderLast['buyer']['fullname'],
-            'email'=>$OrderLast['buyer']['email'],
-            'address'=>$OrderLast['buyer']['address'],
-            'phone'=>$OrderLast['buyer']['phone'],
-            'note'=>$OrderLast['note'],
-            'payments'=>$OrderLast['delivery_method'],
-        ];
+        // $data=[
+        //     'code_order' => $OrderLast['code_order'],
+        //     'fullname'=>$OrderLast['buyer']['fullname'],
+        //     'email'=>$OrderLast['buyer']['email'],
+        //     'address'=>$OrderLast['buyer']['address'],
+        //     'phone'=>$OrderLast['buyer']['phone'],
+        //     'note'=>$OrderLast['note'],
+        //     'payments'=>$OrderLast['delivery_method'],
+        // ];
         
-        if($request->input('email')){
-            Mail::to($request->input('email'))->send(new MailOrder( $data));
-        }  
+        // if($request->input('email')){
+        //     Mail::to($request->input('email'))->send(new MailOrder( $data));
+        // }  
         //return($data);
-        //Mail::to('storethuc@gmail.com')->send(new MailToAdmin( $data));    
+         
         return redirect()->route('order.success', ['id'=>$OrderLast['id']]);
     }
     function viewOrderSuccess($id){
@@ -241,8 +240,10 @@ class OrderController extends Controller
          
         $order=(new OrderModel)->getItem(['id'=>$id],['task'=>'get-item-frontend']);
        // return($order);
-             //Cart::destroy();
-            return view('client.order.orderSuccess',compact('pages','page_contact','page_introduce','order'));
+        Cart::destroy();
+        $data='';
+        Mail::to('kieptuattuat@gmail.com')->send(new MailToAdmin($data));   
+        return view('client.order.orderSuccess',compact('pages','page_contact','page_introduce','order'));
         // }else{
         //     return view('client.page404');
         // }

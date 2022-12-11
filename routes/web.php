@@ -43,6 +43,7 @@ Route::get('san-pham', 'ProductController@all_product');
 Route::get('chi-tiet-san-pham/{slug}', 'ProductController@detail')->name('frontend.product.detail');
 Route::get('tim-kiem', 'ProductController@list_search');
 Route::get('thanh-toan', 'OrderController@checkout');
+Route::get('mua-ngay-san-pham/{id}', 'OrderController@buynow')->name('order.buynow');
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', 'DashboardController@show');
     Route::get('admin', 'DashboardController@show')->name('backend.dashboard');

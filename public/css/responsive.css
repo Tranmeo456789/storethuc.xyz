@@ -322,8 +322,14 @@
     }
     /*MAIN CONTENT*/
     #main-content-wp {
-        background: #c1e3e74d;
+        background: #fff;
         padding-top: 10px;
+    }
+    #feature-product-wp .owl-controls .owl-buttons div.owl-prev,#feature-product-wp .owl-controls .owl-buttons div.owl-next{
+        display: none;
+    }
+    #feature-product-wp .section-title, #list-product-wp .section-title{
+        font-size: 12px;
     }
     #list-product-wp .section-detail .list-item li {
         width: 49%;

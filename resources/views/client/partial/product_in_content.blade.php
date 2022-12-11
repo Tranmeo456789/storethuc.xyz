@@ -8,6 +8,6 @@
     </div>
     <div class="action clearfix">
         <button title="Thêm giỏ hàng" data-id="{{$val->id}}" class="add-cart fl-left">Thêm giỏ hàng</button>
-        <a href="{{url('thanh-toan')}}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+        <a href="{{route('order.buynow',$val['id'])}}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
     </div>
 </li>

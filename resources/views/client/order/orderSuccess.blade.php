@@ -19,7 +19,7 @@
         <div id="content">
             <div class="thanks text-center">
                 <h4 class="text-success">Đặt hàng thành công!</h4>
-                <p class="mb-0">Cảm ơn quý khách đã đặt hàng tại hệ thống Ismart!</p>
+                <p class="mb-0">Cảm ơn quý khách đã đặt hàng tại đây!</p>
                 <p>Nhân viên chăm sóc sẽ liên hệ tới bạn sớm nhất.</p>
             </div>
             <div class="section" id="thank-wp">
