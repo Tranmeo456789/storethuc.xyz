@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Jobs\SendMailToAdmin;
 use App\Product;
 use App\Model\CatProductModel;
 use App\Model\ProductModel;
@@ -40,6 +43,7 @@ class OrderController extends Controller
     }
     
     function buynow($id){
+        
         $product1 = ProductModel::find($id);
         $qty_exist=0;
         foreach(Cart::content() as $row4){
@@ -194,7 +198,10 @@ class OrderController extends Controller
         //     Mail::to($request->input('email'))->send(new MailOrder( $data));
         // }  
         //return($data);
-         
+        $data=[];
+        $emailJob = new SendMailToAdmin();
+        dispatch($emailJob);
+
         return redirect()->route('order.success', ['id'=>$OrderLast['id']]);
     }
     function viewOrderSuccess($id){

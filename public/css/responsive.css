@@ -581,11 +581,7 @@
 
 @media screen and (max-width: 375px) {
     /*HOME*/
-    #list-product-wp .section-detail .list-item li {
-        width: 100%;
-        margin-right: 0!important;
-        margin-bottom: 4%;
-    }
+   
     #list-product-wp .section-detail .list-item li:last-child {
         margin-bottom: 0!important;
     }
@@ -633,5 +629,19 @@
     /*CART & CHECKOUT*/
     .place-order-wp input[type="submit"] {
         padding: 15px 30px;
+    }
+    #feature-product-wp .list-item li .action a, #list-product-wp .list-item li .action a, #same-category-wp .list-item li .action a{
+        display: none;
+    }
+    #list-product-wp .list-item li .action button, #feature-product-wp .list-item li .action button, #same-category-wp .list-item li .add-cart{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #list-product-wp .section-detail .list-item li {
+        width: 100%;
+        margin-right: 0!important;
+        margin-bottom: 4%;
     }
 }
