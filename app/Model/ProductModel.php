@@ -121,13 +121,13 @@ class ProductModel extends BackEndModel
             $result = $query->pluck('name', 'id')->toArray();
         }
         if($options['task'] == "list-items-search") {
-            $query = $this::with('unitProduct')->select('id', 'name','image','price','unit_id');
+            $query = $this::with('unitProduct')->select('id','name','thumbnail','price','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at');
             if(isset($params['keyword'])){
                 $query->where('name','LIKE', "%{$params['keyword']}%");
             }
-            if(isset($params['user_sell'])){
-                $query->where('user_id',$params['user_sell']);
-            }
+            // if(isset($params['user_sell'])){
+            //     $query->where('user_id',$params['user_sell']);
+            // }
             $query->orderBy('id', 'asc');
             if(isset($params['limit'])){
                 $query->limit($params['limit']);

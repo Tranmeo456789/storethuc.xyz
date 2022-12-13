@@ -13,7 +13,7 @@ class CatProductController extends BackEndController
     {
         $this->controllerName     = 'catProduct';
         $this->pathViewController = "$this->moduleName.pages.$this->controllerName.";
-        $this->pageTitle          = 'Danh mục thuốc';
+        $this->pageTitle          = 'Danh mục sản phẩm';
         $this->model = new MainModel();
         parent::__construct();
     }

@@ -9,20 +9,8 @@
                 <p style="font-size:18px">Tìm thấy <span class="font-weight-bold">{{$product_searchs->count()}}</span> kết quả</p>
                 <div class="section-detail">
                     <ul class="list-item clearfix">
-                        @foreach ($product_searchs as $smartphone)
-                        <li>
-                            <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="thumb wp-img-50pt">
-                                <img src="{{asset($smartphone['thumbnail'])}}">
-                            </a>
-                            <a href="{{route('cat1.product',$smartphone->slug)}}" title="" class="product-name truncate2">{{$smartphone['name']}}</a>
-                            <div class="price">
-                                <span class="new">{{number_format($smartphone['price_current'], 0, "" ,"." )}}đ / {{$smartphone['unit']}}</span>
-                            </div>
-                            <div class="action clearfix">
-                                <a href="?page=cart" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
-                            </div>
-                        </li>
+                        @foreach ($product_searchs as $val)
+                        @include("client.partial.product_in_content")
                         @endforeach
                     </ul>
                 </div>

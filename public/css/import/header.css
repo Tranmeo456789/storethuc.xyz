@@ -110,9 +110,9 @@ position: relative;
 }
 
 #head-body #search-wp .search-result .suggest-search .product-suggest a .item-info .product-name {
-    font-size: 16px;
+    font-size: 14px;
     color: blue;
-    padding: 5px 5px 0px 0px;
+    padding: 0px 5px 0px 0px;
     font-weight: 400;
     margin-bottom: 0px;
 }
@@ -121,6 +121,7 @@ position: relative;
     color: #333;
     display: inline-block;
     padding-right: 10px;
+    font-size: 14px;
 }
 
 #head-body #search-wp .search-result .suggest-search .product-suggest a .item-info .price-old {
@@ -135,12 +136,12 @@ position: relative;
 
 #head-body #search-wp .search-result .suggest-search li:not(:last-child).product-suggest {
     border-bottom: 1px solid rgb(239 233 233);
-    height: 120px;
+    height: 100px;
 }
 
 #head-body #search-wp .search-result .suggest-search li.product-suggest {
     padding: 8px 0;
-    height: 120px;
+    height: 100px;
 }
 #head-body #search-wp .search-result .suggest-search li:first-child.product-suggest{
     padding-top: 25px;
@@ -177,7 +178,8 @@ position: relative;
 #search-wp-responsive .wp-input-search input{
     width: 100%;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 0px;
+    text-indent: 10px;
     border: none;
 }
 #search-wp-responsive button{

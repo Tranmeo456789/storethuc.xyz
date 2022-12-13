@@ -10,6 +10,7 @@ use App\Post;
 use App\Page;
 use App\Color_product;
 use App\Image_product;
+use App\Model\CatProductModel;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -32,7 +33,8 @@ class ProductController extends Controller
         $key="";
         if($request->input('key')){
             $key=$request->input('key');
-            $product_searchs=Product::where('name','LIKE',"%{$key}%")->get();
+            $params['keyword']=$key;
+            $product_searchs=(new ProductModel)->listItems($params,['task'=>'list-items-search']);
              return view('client.product.list_search',compact('pages','page_contact','page_introduce','product_searchs'));
         }else{
             if(Auth::check()){
@@ -102,11 +104,11 @@ class ProductController extends Controller
         $page_contact=Page::find(15);
         $page_introduce=Page::find(21);
         $posts=Post::all();
-        $cat0_id_products=Product_cat::where('slug',$slug)->get();
-        $cat0_id_product=$cat0_id_products[0];
-        if(!empty($cat0_id_product)){
-            $product_sellign_like_cats=Product::where('cat_id',$cat0_id_product['id'])->inRandomOrder()->limit(8)->get();
-            return view('client.product.list_product_cat0',compact('slug','page_contact','page_introduce','posts','product_sellign_like_cats'));
+        $itemCatProduct=(new CatProductModel)->getItem(['slug'=>$slug],['task'=>'get-item-slug']);
+        
+        if($itemCatProduct){
+            //$product_sellign_like_cats=ProductModel::where('cat_id',$cat0_id_product['id'])->inRandomOrder()->limit(8)->get();
+            return view('client.product.list_product_cat0',compact('slug','page_contact','page_introduce','posts'));
         }
         else{
             return view('client.page404');
@@ -117,10 +119,11 @@ class ProductController extends Controller
         $data=$request->all();
         $keyword=$data['key_word'];
         if($keyword){
-            $result=Product::where('name','LIKE',"%{$keyword}%")->inRandomOrder()->limit(4)->get();
+            $params['keyword']=$keyword;
+            $params['limit']=4;
+            $result=(new ProductModel)->listItems($params,['task'=>'list-items-search']);
             $output='';
             foreach($result as $item){
-                if(!empty($item->price_old)){
                     $output.='
                     <li class="product-suggest">
                         <a href="">
@@ -130,32 +133,12 @@ class ProductController extends Controller
                                 </div>
                             </div>
                             <div class="item-info">
-                                <h3 class="product-name">'.$item->name.'</h3>
-                                <strong class="price-new">'.number_format($item->price_current, 0, "" ,"." ).'đ</strong>
-                                <span class="price-old">'.number_format($item->price_old, 0, "" ,"." ).'đ</span> 
-                            </div>    
-                        </a>  
-                    </li> 
-                    '; 
-                }else{
-                    $output.='
-                    <li class="product-suggest">
-                        <a href="">
-                            <div class="item-img">
-                                <div class="wp-img-search">
-                                    <img src="'.asset($item->thumbnail).'">
-                                </div>
-                            </div>
-                            <div class="item-info">
-                                <h3 class="product-name truncate2">'.$item->name.'</h3>
-                                <strong class="price-new mt-2">'.number_format($item->price_current, 0, "" ,"." ).'đ / '.$item->unit.'</strong>
-                                 
+                                <p class="product-name truncate2">'.$item->name.'</p>
+                                <strong class="price-new">'.number_format($item->price, 0, "" ,"." ).'đ/'.$item->unitProduct->name.'</strong>
                             </div>    
                         </a>  
                     </li> 
                     ';
-                }
-                
             }
             echo $output;
         }

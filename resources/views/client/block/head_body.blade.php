@@ -85,7 +85,7 @@
         <form method="GET" action="{{url('tim-kiem')}}" class="d-flex justify-content-center">
             <div class="wp-input-search">
                 <div class="input-search">
-                    <input type="text" name="key" value="{{request()->input('key')}}" id="s" data-href="{{route('searchProductAjax')}}" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
+                    <input type="search" name="key" value="{{request()->input('key')}}" id="s" data-href="{{route('searchProductAjax')}}" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
                 </div>
                 <button type="submit" name="" id="sm-s"><i class="fa fa-search" aria-hidden="true"></i></button>
                 <div class="search-result">
