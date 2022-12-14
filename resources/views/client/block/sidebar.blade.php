@@ -14,15 +14,6 @@ $listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front
             @if ($itemCat['parent_id']==1)
             <li>
                 <a href="{{route('cat0.product',$itemCat->slug)}}" title="" name='cat0_product' value="{{$itemCat['id']}}">{{$itemCat['name']}}</a>
-                <!-- <ul class="sub-menu">
-                    @foreach ($_SESSION['cat_product_child'] as $item3)
-                    @if ($item3['parent_id']==$itemCat['id'])
-                    <li>
-                        <a href="{{route('cat1.product',$item3->slug)}}" title="">{{$item3['title']}}</a>
-                        </li> 
-                        @endif
-                    @endforeach                                   
-                </ul> -->
             </li>
             @endif
             @endforeach

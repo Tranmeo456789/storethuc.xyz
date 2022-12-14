@@ -3,43 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+
 use App\Model\ProductModel;
-use App\Page;
-use App\Product_cat;
-use App\Product_cat_child;
-use App\Quanhuyen;
-use App\Slider;
-use App\Tinhthanhpho;
-use App\Xaphuongthitran;
+
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
     function __construct()
     {
-        $pages = Page::all();
-        $page_contact = Page::find(15);
-        $page_introduce = Page::find(21);
-        $_SESSION['cat_product'] = Product_cat::all();
-        $_SESSION['cat_product_child'] = Product_cat_child::all();
-        $_SESSION['product_sellign'] = Product::inRandomOrder()->limit(8)->get();
-        $_SESSION['slider'] = Slider::orderBy('location')->where('status', 'Công khai')->get();
-        $_SESSION['product'] = Product::all();
+        
     }
-
-
     function show()
     {
-        $pages = Page::all();
-        $page_contact = Page::find(15);
-        $page_introduce = Page::find(21);
-        // $_SESSION['cat_product']=Product_cat::all();
-        // $_SESSION['cat_product_child']=Product_cat_child::all();
-        // $_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
-        // $_SESSION['slider']=Slider::orderBy('location')->where('status','Công khai')->get();
-        // $_SESSION['product']=Product::all();
-        return view('client.cart.show', compact('pages', 'page_contact', 'page_introduce'));
+        return view('client.cart.show');
     }
     function add(Request $request)
     {
@@ -122,7 +99,6 @@ class CartController extends Controller
     {
         $data = $request->all();
         $id = $data['id'];
-        //$item=Product::find($id);
         $qty = $data['qty'];
         $rowId = $data['rowId'];
         Cart::update($rowId, $qty);

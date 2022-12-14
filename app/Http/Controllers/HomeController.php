@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use App\Product_cat;
-use App\Product_cat_child;
+
 use App\Page;
 use App\Post;
 class HomeController extends Controller
@@ -28,18 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {   
-       $pages=Page::all();
-       $page_contact=Page::find(15);
-       $page_introduce=Page::find(21);
-        $_SESSION['cat_product']=Product_cat::all();
-        $_SESSION['cat_product_child']=Product_cat_child::all();
-        $_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
-        
-        $_SESSION['product']=Product::all();
-        return view('home',compact('pages','page_contact','page_introduce'));
+        //$_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
+        return view('home');
     }
     function pages($slugpage){
-        //return $slug_contact;
+        
         $page_contact=Page::find(15);
         $page_introduce=Page::find(21);
         if($slugpage==$page_contact['slug']){

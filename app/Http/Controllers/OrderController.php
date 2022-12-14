@@ -7,25 +7,20 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Jobs\SendMailToAdmin;
-use App\Product;
 use App\Model\CatProductModel;
 use App\Model\ProductModel;
 use App\Model\OrderModel;
-use App\Page;
-use App\Product_cat;
-use App\Product_cat_child;
+
 use App\Quanhuyen;
-use App\Slider;
 use App\Tinhthanhpho;
 use App\Model\ProvinceModel;
 use App\Xaphuongthitran;
-use App\Guest;
 use App\Mail\MailOrder;
 use App\Mail\MailToAdmin;
 use App\Model\DistrictModel;
 use App\Model\WardModel;
 use App\Order;
-use App\Product_order;
+
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Mail;
 
@@ -34,12 +29,6 @@ class OrderController extends Controller
 {
     function __construct()
     {
-       
-        $_SESSION['cat_product']=Product_cat::all();
-        $_SESSION['cat_product_child']=Product_cat_child::all();
-        $_SESSION['product_sellign']=Product::inRandomOrder()->limit(8)->get();
-        $_SESSION['slider']=Slider::orderBy('location')->where('status','Công khai')->get();
-        $_SESSION['product']=Product::all();
     }
     
     function buynow($id){
@@ -65,18 +54,14 @@ class OrderController extends Controller
                 'options' => ['slug'=>$product1->slug,'thumbnail'=>$product1->thumbnail, 'unit' => $product1->unitProduct->name],
             ]);
         }
-        //return(Cart::content());
             return redirect('thanh-toan');
     }
     function checkout(){
-        $pages=Page::all();
-       $page_contact=Page::find(15);
-       $page_introduce=Page::find(21);
        $order_id_last=Order::latest('id')->first();
        $order_id=$order_id_last['id']+1;
        $city= Tinhthanhpho::orderBy('matp','asc')->get();
        
-        return view('client.cart.checkout',compact('pages','page_contact','page_introduce','city','order_id'));
+        return view('client.cart.checkout',compact('city','order_id'));
     }
     function locationAjax(Request $request){
         $data=$request->all();
@@ -206,52 +191,13 @@ class OrderController extends Controller
     }
     function viewOrderSuccess($id){
         //if($id==Str::lower(Order::latest('id')->first()['code_order'])){
-            $pages=Page::all();
-            $page_contact=Page::find(15);
-            $page_introduce=Page::find(21);
-           // $guests=Guest::where('order_id',Order::latest('id')->first()['id'])->get();
-        // $guest=$guests[0];
-        // $order=Order::where('id',Order::latest('id')->first()['id'])->get();
-        //     $data=[
-        //         'code_order' => $order[0]->code_order,
-        //         'fullname'=>$guest->fullname,
-        //         'email'=>$guest->email,
-        //         'address'=>$guest->address,
-        //         'phone'=>$guest->phone,
-        //         'phone'=>$guest->phone,
-        //         'note'=>$order[0]->note,
-        //         'payments'=>$order[0]->payments,
-        //     ];
-        //     $id=Order::latest('id')->first()['id'];
-        //     $product_order=[];
-        // $product_orders=Product_order::all();
-        // foreach($product_orders as $item7){
-        //     if($id==$item7->order_id){
-        //         $product_order[]=$item7;
-        //     }
-        // }
-        
-        // $product=[];
-        // $qty_total=0;
-        // $products=Product::all();
-        // foreach($product_order as $item9){
-        //     foreach($products as $item10){
-        //         if($item9->product_id==$item10->id){
-        //             $qty_total+=$item9->qty;
-        //            $itema= json_decode($item9, true);
-        //            $itemb=json_decode($item10, true);
-        //             $product[]= array_merge($itema,$itemb);
-        //         }
-        //     }
-        // }
          
         $order=(new OrderModel)->getItem(['id'=>$id],['task'=>'get-item-frontend']);
-       // return($order);
         Cart::destroy();
         $data='';
         //Mail::to('kieptuattuat@gmail.com')->send(new MailToAdmin($data));  
         //Mail::to('kieptuattuat@gmail.com')->later(now()->addSecond(5), new MailToAdmin($data)); 
-        return view('client.order.orderSuccess',compact('pages','page_contact','page_introduce','order'));
+        return view('client.order.orderSuccess',compact('order'));
         // }else{
         //     return view('client.page404');
         // }

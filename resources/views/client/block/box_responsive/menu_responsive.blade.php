@@ -1,8 +1,12 @@
 @php
 use App\Model\CatProductModel;
+use App\Page;
+use App\Post;
 
 $listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
 
+$page_contact=Page::find(15);
+$page_introduce=Page::find(21);
 @endphp
 <a href="{{route('home')}}" title="" class="logo">STORE</a>
 <div id="menu-respon-wp">

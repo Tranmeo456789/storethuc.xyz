@@ -1,3 +1,12 @@
+@php
+use App\Model\CatProductModel;
+use App\Page;
+use App\Post;
+
+$listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
+$page_contact=Page::find(15);
+$page_introduce=Page::find(21);
+@endphp
 <div class="wp-inner clearfix">
     <!-- <a href="" title="" id="payment-link" class="fl-left">Hình thức thanh toán</a> -->
     <div id="main-menu-wp" class="fl-left">
