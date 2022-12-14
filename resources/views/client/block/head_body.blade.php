@@ -21,10 +21,10 @@
         </div>
     </div>
     <div id="action-wp" class="fl-right">
-        <div id="advisory-wp" class="fl-left">
+        <a id="advisory-wp" class="fl-left" href="tel:0983195167">
             <span class="title">Tư vấn</span>
             <span class="phone">0983.195.167</span>
-        </div>
+        </a>
         <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
         <a href="{{url('show/cart')}}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
             <div class="wp-cart-respon">
