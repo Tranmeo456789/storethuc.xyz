@@ -54,7 +54,7 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                                 @endif
-                                <div class="float-right"><a style="font-size: 14px;" class="" href="{{ route('register') }}">Đăng ký</a></div>
+                                <!-- <div class="float-right"><a style="font-size: 14px;" class="" href="">Đăng ký</a></div> -->
                             </div>
                         </div>
                     </form>
