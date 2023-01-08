@@ -24,6 +24,29 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-file-audio"></i>
+                    <p>
+                        Tin tức
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('product')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Danh sách bài viết</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('catPost')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Danh mục bài viết</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('catProduct')}}" class="nav-link">
                     <i class="nav-icon far fa-folder-open"></i>
                     <p>
