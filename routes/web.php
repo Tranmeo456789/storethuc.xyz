@@ -155,7 +155,8 @@ Route::middleware('auth')->group(function(){
 
 });
 //Route::get('{slugIntroduce}', 'HomeController@introduce')->name('introduce');
-Route::get('{slugpage}', 'HomeController@pages')->name('pages');
+Route::get('{slugpage}.html', 'HomeController@pages')->name('pages');
+Route::get('tin-tuc', 'HomeController@posts')->name('posts');
 
 Route::get('tin-tuc/{slugpost}.html', 'PostController@showDetail')->name('post.detail');
 

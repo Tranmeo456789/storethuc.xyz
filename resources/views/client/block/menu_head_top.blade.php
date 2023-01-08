@@ -1,11 +1,12 @@
 @php
 use App\Model\CatProductModel;
-use App\Page;
+
+use App\Model\PageModel;
 use App\Post;
 
 $listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
-$page_contact=Page::find(15);
-$page_introduce=Page::find(21);
+$pages=PageModel::all();
+
 @endphp
 <div class="wp-inner clearfix">
     <!-- <a href="" title="" id="payment-link" class="fl-left">Hình thức thanh toán</a> -->
@@ -22,15 +23,13 @@ $page_introduce=Page::find(21);
                 <a href="{{url('san-pham')}}" title="">Sản phẩm</a>
             </li>
             <li>
-                <a href="{{route('pages','tin-tuc')}}" title="">Tin tức</a>
+                <a href="{{route('posts')}}" title="">Tin tức</a>
             </li>
-            <li>
-                <a href="{{route('pages',$page_introduce->slug)}}" title="">Giới thiệu</a>
-            </li>
-
-            <li>
-                <a href="{{route('pages',$page_contact->slug)}}" title="">Liên hệ</a>
-            </li>
+            @foreach($pages as $page)
+                <li>
+                    <a href="{{route('pages',$page->slug)}}" title="">{{$page->name}}</a>
+                </li>
+            @endforeach
         </ul>
     </div>
     <div id="main-menu2-wp" class="fl-right">

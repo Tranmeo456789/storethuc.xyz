@@ -103,17 +103,11 @@ class PageModel extends BackEndModel
                             ->first();
         }
         if ($options['task'] == 'get-item-in-slug') {
-            $result = self::select('id','name','thumbnail','price','unit_id','describe','content','status_page','slug','cat_id','image','created_at', 'updated_at')
+            $result = self::select('id','name','content','status_page','slug','user_id','created_at', 'updated_at')
                             ->where('slug', $params['slug'])
                             ->first();
         }
-        if ($options['task'] == 'get-item-simple') {
-            $result = self::with('unitpage')->select('id','name','unit_id','price')
-                            ->where('id', $params['id'])
-                            ->OfUser()
-                            ->first();
-        }
-
+        
         if ($options['task'] == 'frontend-get-item') {
             $result = self::with('unitpage')
                             ->select('id','name','thumbnail','price','unit_id','describe','content','status_page','slug','cat_id','image','created_at', 'updated_at')
