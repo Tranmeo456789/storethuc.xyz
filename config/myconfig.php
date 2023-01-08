@@ -73,7 +73,7 @@
                 'person_represent' =>'Người đại diện pháp luật',
                 'address' => 'Địa chỉ',
                 'parent_id' => 'Danh mục cha',
-                'cat_id' => 'Danh mục sản phẩm',
+                'cat_id' => 'Danh mục',
                 'user_type_id' => 'Đối tượng',
                 'price' => 'Giá bán',
                 'unit_id' => 'Đơn vị',
@@ -98,6 +98,10 @@
                 'het_hang' => 'Hết hàng',
             ],
             'status_page' => [
+                'cong_khai' => 'Công khai',
+                'cho_duyet' => 'Chờ duyệt',
+            ],
+            'status_post' => [
                 'cong_khai' => 'Công khai',
                 'cho_duyet' => 'Chờ duyệt',
             ],
@@ -137,6 +141,11 @@
                     'het_hang'      => ['name' => 'Hết hàng', 'class'  => 'item-tab']                   
                 ],
                 'status_page'      => [
+                   
+                    'cong_khai'      => ['name' => 'Công khai', 'class' => 'item-tab'],
+                    'cho_duyet'      => ['name' => 'Chờ duyệt', 'class'  => 'item-tab']                   
+                ],
+                'status_post'      => [
                    
                     'cong_khai'      => ['name' => 'Công khai', 'class' => 'item-tab'],
                     'cho_duyet'      => ['name' => 'Chờ duyệt', 'class'  => 'item-tab']                   

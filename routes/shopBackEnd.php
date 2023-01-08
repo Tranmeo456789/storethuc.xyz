@@ -55,5 +55,11 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/sua-danh-muc-bai-viet/{id}', 'CatPostController@form')->name('catPost.edit');
         Route::post('/luu-danh-muc-bai-viet', 'CatPostController@save')->name('catPost.save');
         Route::get('/xoa-danh-muc-bai-viet/{id}', 'CatPostController@delete')->name('catPost.delete');
+
+        Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
+        Route::get('/them-bai-viet', 'PostController@form')->name('post.add');
+        Route::get('/sua-bai-viet/{id}', 'PostController@form')->name('backend.post.edit');
+        Route::post('/luu-bai-viet', 'PostController@save')->name('post.save');
+        Route::get('/xoa-bai-viet/{id}', 'PostController@delete')->name('backend.post.delete');
         
 });
