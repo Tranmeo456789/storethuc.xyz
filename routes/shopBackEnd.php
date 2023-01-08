@@ -25,11 +25,11 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-don-vi-tinh', 'UnitController@save')->name('unit.save');
         Route::get('/xoa-don-vi-tinh/{id}', 'UnitController@delete')->name('unit.delete');
 
-        Route::get('/danh-sach-danh-muc-thuoc', 'CatProductController@index')->name('catProduct');
-        Route::get('/them-danh-muc-thuoc', 'CatProductController@form')->name('catProduct.add');
-        Route::get('/sua-danh-muc-thuoc/{id}', 'CatProductController@form')->name('catProduct.edit');
-        Route::post('/luu-danh-muc-thuoc', 'CatProductController@save')->name('catProduct.save');
-        Route::get('/xoa-danh-muc-thuoc/{id}', 'CatProductController@delete')->name('catProduct.delete');
+        Route::get('/danh-sach-danh-muc-san-pham', 'CatProductController@index')->name('catProduct');
+        Route::get('/them-danh-muc-san-pham', 'CatProductController@form')->name('catProduct.add');
+        Route::get('/sua-danh-muc-san-pham/{id}', 'CatProductController@form')->name('catProduct.edit');
+        Route::post('/luu-danh-muc-san-pham', 'CatProductController@save')->name('catProduct.save');
+        Route::get('/xoa-danh-muc-san-pham/{id}', 'CatProductController@delete')->name('catProduct.delete');
         Route::get('move-{type}/{id}',   'CatProductController@move')->name('catProduct.move');
 
         Route::get('/danh-sach-san-pham', 'ProductController@index')->name('product');
@@ -43,4 +43,10 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/chi-tiet-don-hang/{id}', 'OrderController@detail')->name('backend.order.detail');
         Route::post('/cap-nhat-trang-thai-don-hang', 'OrderController@changeStatusOrder')->name('order.changeStatusOrder');
         Route::post('/luu-don-hang', 'OrderController@save')->name('order.save');
+
+        Route::get('/danh-sach-trang', 'PageController@index')->name('page');
+        Route::get('/them-trang', 'PageController@form')->name('page.add');
+        Route::get('/sua-trang/{id}', 'PageController@form')->name('backend.page.edit');
+        Route::post('/luu-trang', 'PageController@save')->name('page.save');
+        Route::get('/xoa-trang/{id}', 'PageController@delete')->name('backend.page.delete');
 });

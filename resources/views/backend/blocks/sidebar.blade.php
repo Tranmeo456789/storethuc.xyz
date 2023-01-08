@@ -16,6 +16,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('page')}}" class="nav-link">
+                    <i class="nav-icon far fa-file-alt"></i>
+                    <p>
+                        Quản lý trang
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('catProduct')}}" class="nav-link">
                     <i class="nav-icon far fa-folder-open"></i>
                     <p>

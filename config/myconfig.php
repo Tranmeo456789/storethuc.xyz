@@ -79,7 +79,7 @@
                 'unit_id' => 'Đơn vị',
                 'thumbnail'=>'Chọn ảnh đại diện cho sản phẩm',
                 'status'=>'Trạng thái sản phẩm',
-                'content' =>'Thông tin chung về sản phẩm',
+                'content' =>'Thông tin chung',
                 'describe' => 'Mô tả ngắn',
                 'prescribe' => 'Chỉ định',
                 'dosage' => 'Cách dùng, liều lượng',
@@ -96,6 +96,10 @@
             'status_product' => [
                 'con_hang' => 'Còn hàng',
                 'het_hang' => 'Hết hàng',
+            ],
+            'status_page' => [
+                'cong_khai' => 'Công khai',
+                'cho_duyet' => 'Chờ duyệt',
             ],
             'type_gender' => [
                 '1' => 'Anh',
@@ -131,6 +135,11 @@
                    
                     'con_hang'      => ['name' => 'Còn hàng', 'class' => 'item-tab'],
                     'het_hang'      => ['name' => 'Hết hàng', 'class'  => 'item-tab']                   
+                ],
+                'status_page'      => [
+                   
+                    'cong_khai'      => ['name' => 'Công khai', 'class' => 'item-tab'],
+                    'cho_duyet'      => ['name' => 'Chờ duyệt', 'class'  => 'item-tab']                   
                 ],
                 'status_order' => [
                     'all'          => ['name' => 'Tất cả', 'class' => 'item-tab'],
