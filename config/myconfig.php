@@ -101,6 +101,10 @@
                 'cong_khai' => 'Công khai',
                 'cho_duyet' => 'Chờ duyệt',
             ],
+            'status_user' => [
+                'kich_hoat' => 'Kích hoạt',
+                'vo_hieu_hoa' => 'Vô hiệu hóa',
+            ],
             'status_post' => [
                 'cong_khai' => 'Công khai',
                 'cho_duyet' => 'Chờ duyệt',
@@ -144,6 +148,11 @@
                    
                     'cong_khai'      => ['name' => 'Công khai', 'class' => 'item-tab'],
                     'cho_duyet'      => ['name' => 'Chờ duyệt', 'class'  => 'item-tab']                   
+                ],
+                'status_user'      => [
+                   
+                    'kich_hoat'      => ['name' => 'Kích hoạt', 'class' => 'item-tab'],
+                    'vo_hieu_hoa'      => ['name' => 'Vô hiệu hóa', 'class'  => 'item-tab']                   
                 ],
                 'status_post'      => [
                    

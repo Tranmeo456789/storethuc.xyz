@@ -110,15 +110,17 @@ class Form
                 $xhtml = sprintf(
                     "
                         <div class='%s'>
-                            <div class='form-group row'>
+                            <div class='form-group row $styleFormGroup'>
                                 %s
                                 <div class='%s'>
                                     <div class='input-group align-self-center'>
                                         %s
+                                        <span class='help-block error-password'></span>
                                         <div class='input-group-append'>
                                             <span class='input-group-text changeTypePassword'><i class='fa fa-eye'></i></span>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>",

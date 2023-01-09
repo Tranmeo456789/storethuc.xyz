@@ -92,6 +92,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('user')}}" class="nav-link">
+                    <i class="nav-icon fas fa-user-tie"></i>
+                    <p>
+                        Quản lý người dùng
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
