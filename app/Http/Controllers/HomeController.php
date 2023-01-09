@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Model\PageModel;
-use App\Post;
+
 class HomeController extends Controller
 {
     /**
@@ -28,11 +28,7 @@ class HomeController extends Controller
     {   
         return view('home');
     }
-    public function posts()
-    {   
-        $posts=Post::all();
-        return view('client.page.information',compact('posts'));
-    }
+    
     function pages($slugpage){
         
        

@@ -156,9 +156,9 @@ Route::middleware('auth')->group(function(){
 });
 //Route::get('{slugIntroduce}', 'HomeController@introduce')->name('introduce');
 Route::get('{slugpage}.html', 'HomeController@pages')->name('pages');
-Route::get('tin-tuc', 'HomeController@posts')->name('posts');
+Route::get('tin-tuc', 'PostController@list')->name('posts');
 
-Route::get('tin-tuc/{slugpost}.html', 'PostController@showDetail')->name('post.detail');
+Route::get('tin-tuc/{slug}.html', 'PostController@detail')->name('post.detail');
 
 Route::get('show/cart', 'CartController@show')->name('cart.show');
 Route::post('add/cart', 'CartController@add')->name('cart.add');

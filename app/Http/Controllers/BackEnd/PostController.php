@@ -98,7 +98,7 @@ class PostController extends BackEndController
                 $thumbnail='uploads/images/post/'.$filename;   
             }
             $params['thumbnail']=$thumbnail;
-            $params['slug']=Str::slug($request->input('name')).'.html';
+            $params['slug']=Str::slug($request->input('name'));
             $this->model->saveItem($params, ['task' => $task]);
             $request->session()->put('app_notify', $notify);
                 return response()->json([

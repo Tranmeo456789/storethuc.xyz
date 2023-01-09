@@ -56,14 +56,12 @@ class PostModel extends BackEndModel
                                     ->get()
                                     ->toArray();
         }
-        if ($options['task'] == "frontend-list-items") {
+        if ($options['task'] == "get-list-items-of-one-cat") {
             $query = $this::select('id','name','thumbnail','content','status_post','slug','cat_id','user_id','created_at', 'updated_at')
-                                ->where('id','>=',1)->where('status_post','con_hang');
+                                ->where('id','>=',1)->where('status_post','cong_khai');
             if (isset($params['cat_id'])){
                 $query->where('cat_id', $params['cat_id']);
-                //$query->whereIn('cat_id', CatpageModel::getChild($params['cat_id']));
             }
-            //$query->OfCollaboratorCode()->orderBy('id', 'desc');
             if(isset($params['limit'])){
                 $result=$query->paginate($params['limit']);
             }else{
@@ -144,5 +142,8 @@ class PostModel extends BackEndModel
     }
     public function catPost(){
         return $this->belongsTo('App\Model\CatPostModel','cat_id','id');
+    }
+    public function userPost(){
+        return $this->belongsTo('App\Model\UserModel','user_id','id');
     }
 }

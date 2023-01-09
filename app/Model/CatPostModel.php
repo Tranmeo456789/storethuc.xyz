@@ -15,7 +15,6 @@ class CatPostModel extends BackEndModel
     public function listItems($params = null, $options = null)
     {
         $result = null;
-        $result = null;
 
         if ($options['task'] == "admin-list-items") {
             $query = $this::select('id', 'name','slug','parent_id', 'created_at', 'updated_at');
@@ -35,6 +34,7 @@ class CatPostModel extends BackEndModel
             $result = $query->orderBy('name', 'asc')
             ->pluck('name', 'id')->toArray();
         }
+
         return $result;
     }
     public function countItems($params = null, $options  = null)
@@ -129,9 +129,8 @@ class CatPostModel extends BackEndModel
         $item = self::where('id', $parent_id)->first();
         return $item;
     }
-    
     public function postsOfChild()
     {
-        return $this->hasMany('App\Model\ProductModel','cat_product_parent_id');
+        return $this->hasMany('App\Model\PostModel','cat_post_parent_id');
     }
 }
