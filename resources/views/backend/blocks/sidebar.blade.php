@@ -100,6 +100,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('backend.role.list')}}" class="nav-link">
+                    <i class="nav-icon fab fa-gg-circle"></i>
+                    <p>
+                        Quản lý quyền
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

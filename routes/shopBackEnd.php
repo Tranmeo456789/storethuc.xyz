@@ -67,5 +67,7 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/sua-nguoi-dung/{id}', 'UserController@form')->name('backend.user.edit');
         Route::post('/luu-nguoi-dung', 'UserController@save')->name('user.save');
         Route::get('/xoa-nguoi-dung/{id}', 'UserController@delete')->name('backend.user.delete');
+
+       
         
 });

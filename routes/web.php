@@ -153,6 +153,13 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/role/update/{id}', 'AdminRoleController@update')->name('role.update');
     Route::get('admin/role/delete/{id}', 'AdminRoleController@delete')->name('role.delete');
 
+    Route::get('backend/danh-sach-quyen', 'RoleController@list')->name('backend.role.list')->middleware('can:list_role');
+    Route::get('backend/them-quyen', 'RoleController@add')->name('backend.role.add')->middleware('can:add_role');
+    Route::post('backend/luu-quyen', 'RoleController@store')->name('backend.role.store');
+    Route::get('backend/sua-quyen/{id}', 'RoleController@edit')->name('backend.role.edit')->middleware('can:edit_role');
+    Route::post('backend/cap-nhat-quyen/{id}', 'RoleController@update')->name('backend.role.update');
+    Route::get('backend/xoa-quyen/{id}', 'RoleController@delete')->name('backend.role.delete');
+
 });
 //Route::get('{slugIntroduce}', 'HomeController@introduce')->name('introduce');
 Route::get('{slugpage}.html', 'HomeController@pages')->name('pages');
