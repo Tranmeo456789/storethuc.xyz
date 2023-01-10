@@ -100,6 +100,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('slider')}}" class="nav-link">
+                    <i class="nav-icon fas fa-sliders-h"></i>
+                    <p>
+                        Quản lý slider
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('backend.role.list')}}" class="nav-link">
                     <i class="nav-icon fab fa-gg-circle"></i>
                     <p>

@@ -91,13 +91,18 @@
                 'price_import' => 'Giá nhập',
                 'code_order' => 'Mã đơn hàng',
                 'status_order' => 'Trạng thái đơn hàng',
-                'delivery_service'=>'Đơn vị vận chuyển'
+                'delivery_service'=>'Đơn vị vận chuyển',
+                'image'=>'Hình ảnh'
             ],
             'status_product' => [
                 'con_hang' => 'Còn hàng',
                 'het_hang' => 'Hết hàng',
             ],
             'status_page' => [
+                'cong_khai' => 'Công khai',
+                'cho_duyet' => 'Chờ duyệt',
+            ],
+            'status_slider' => [
                 'cong_khai' => 'Công khai',
                 'cho_duyet' => 'Chờ duyệt',
             ],
@@ -145,6 +150,11 @@
                     'het_hang'      => ['name' => 'Hết hàng', 'class'  => 'item-tab']                   
                 ],
                 'status_page'      => [
+                   
+                    'cong_khai'      => ['name' => 'Công khai', 'class' => 'item-tab'],
+                    'cho_duyet'      => ['name' => 'Chờ duyệt', 'class'  => 'item-tab']                   
+                ],
+                'status_slider'      => [
                    
                     'cong_khai'      => ['name' => 'Công khai', 'class' => 'item-tab'],
                     'cho_duyet'      => ['name' => 'Chờ duyệt', 'class'  => 'item-tab']                   

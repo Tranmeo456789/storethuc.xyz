@@ -1,11 +1,13 @@
 @php
-use App\Slider;
-$_SESSION['slider']=Slider::orderBy('location')->where('status','Công khai')->get();
+use App\Model\SliderModel;
+
+$items=(new SliderModel)->listItems(null, ['task'  => 'frontend-list-items']);
+
 @endphp
 <div class="section-detail">
-    @foreach ($_SESSION['slider'] as $slider)
+    @foreach ($items as $val)
     <div class="item">
-        <img src="{{asset($slider->image)}}" alt="" class="img-fluid">
+        <img src="{{asset($val['image'])}}" alt="" class="img-fluid">
     </div>
     @endforeach
 </div>

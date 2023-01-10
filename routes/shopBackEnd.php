@@ -68,6 +68,11 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-nguoi-dung', 'UserController@save')->name('user.save');
         Route::get('/xoa-nguoi-dung/{id}', 'UserController@delete')->name('backend.user.delete');
 
-       
+        Route::get('/danh-sach-slider', 'SliderController@index')->name('slider');
+        Route::get('/them-slider', 'SliderController@form')->name('slider.add');
+        Route::get('/sua-slider/{id}', 'SliderController@form')->name('backend.slider.edit');
+        Route::post('/luu-slider', 'SliderController@save')->name('slider.save');
+        Route::get('/up-vi-tri-slider/{id}', 'SliderController@up')->name('backend.slider.up');
+        Route::get('/xoa-slider/{id}', 'SliderController@delete')->name('backend.slider.delete');
         
 });
