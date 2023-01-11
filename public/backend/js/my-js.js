@@ -494,3 +494,13 @@ $(document).on('keypress', "input[name='search_value']", function(event) {
         $("button#btn-search").click();
     }
 });
+$(document).on('change', "#colorpicker", function(event) {
+    $('#hexcolor').val(this.value);
+});
+$(document).on('click', ".checkbox_wp", function(event) {
+    $(this).parents('.role_detail').find('.checkbox_child').prop('checked',$(this).prop('checked'));
+});
+$(document).on('click', ".checkall_role", function(event) {
+    $(this).parents('.card').find('.checkbox_child').prop('checked',$(this).prop('checked'));
+    $(this).parents('.card').find('.checkbox_wp').prop('checked',$(this).prop('checked'));
+});

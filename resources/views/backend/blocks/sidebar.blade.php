@@ -108,6 +108,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('color')}}" class="nav-link">
+                    <i class="nav-icon fas fa-palette"></i>
+                    <p>
+                        Quản lý màu
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('backend.role.list')}}" class="nav-link">
                     <i class="nav-icon fab fa-gg-circle"></i>
                     <p>

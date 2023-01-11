@@ -25,6 +25,12 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-don-vi-tinh', 'UnitController@save')->name('unit.save');
         Route::get('/xoa-don-vi-tinh/{id}', 'UnitController@delete')->name('unit.delete');
 
+        Route::get('/danh-sach-mau', 'ColorController@index')->name('color');
+        Route::get('/them-mau', 'ColorController@form')->name('color.add');
+        Route::get('/sua-mau/{id}', 'ColorController@form')->name('color.edit');
+        Route::post('/luu-mau', 'ColorController@save')->name('color.save');
+        Route::get('/xoa-mau/{id}', 'ColorController@delete')->name('color.delete');
+
         Route::get('/danh-sach-danh-muc-san-pham', 'CatProductController@index')->name('catProduct');
         Route::get('/them-danh-muc-san-pham', 'CatProductController@form')->name('catProduct.add');
         Route::get('/sua-danh-muc-san-pham/{id}', 'CatProductController@form')->name('catProduct.edit');
