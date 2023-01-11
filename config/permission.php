@@ -11,7 +11,14 @@ return [
         'edit_cat_product'=>'edit_cat_product',
         'delete_cat_product'=>'delete_cat_product',
 
+        'list_unit'=>'list_unit',
+        'add_unit'=>'add_unit',
+        'edit_unit'=>'edit_unit',
+        'delete_unit'=>'delete_unit',
+
         'list_color'=>'list_color',
+        'add_color'=>'add_color',
+        'edit_color'=>'edit_color',
         'delete_color'=>'delete_color',
 
         'add_img' => 'add_img',

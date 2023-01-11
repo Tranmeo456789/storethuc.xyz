@@ -41,7 +41,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit_cat_product','App\Policies\Product_catPolicy@update');
         Gate::define('delete_cat_product','App\Policies\Product_catPolicy@delete');
 
+        Gate::define('list_unit','App\Policies\UnitPolicy@view');
+        Gate::define('add_unit','App\Policies\UnitPolicy@create');
+        Gate::define('edit_unit','App\Policies\UnitPolicy@update');
+        Gate::define('delete_unit','App\Policies\UnitPolicy@delete');
+
         Gate::define('list_color','App\Policies\ColorPolicy@view');
+        Gate::define('add_color','App\Policies\ColorPolicy@create');
+        Gate::define('edit_color','App\Policies\ColorPolicy@update');
         Gate::define('delete_color','App\Policies\ColorPolicy@delete');
 
         Gate::define('list_post','App\Policies\PostPolicy@view');

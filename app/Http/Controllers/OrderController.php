@@ -10,11 +10,7 @@ use App\Jobs\SendMailToAdmin;
 use App\Model\CatProductModel;
 use App\Model\ProductModel;
 use App\Model\OrderModel;
-
-use App\Quanhuyen;
-use App\Tinhthanhpho;
 use App\Model\ProvinceModel;
-use App\Xaphuongthitran;
 use App\Mail\MailOrder;
 use App\Mail\MailToAdmin;
 use App\Model\DistrictModel;
@@ -59,7 +55,7 @@ class OrderController extends Controller
     function checkout(){
        $order_id_last=Order::latest('id')->first();
        $order_id=$order_id_last['id']+1;
-       $city= Tinhthanhpho::orderBy('matp','asc')->get();
+       $city= ProvinceModel::orderBy('matp','asc')->get();
        
         return view('client.cart.checkout',compact('city','order_id'));
     }
@@ -69,13 +65,13 @@ class OrderController extends Controller
         if($data['action']){
             if($data['action']=='city'){
                 $output.='<option value="">--Chọn quận huyện--</option>';
-                $select_province=Quanhuyen::where('matp', $data['maid'])->orderBy('maqh','asc')->get();
+                $select_province=DistrictModel::where('matp', $data['maid'])->orderBy('maqh','asc')->get();
                 foreach($select_province as $item6){
                     $output.='<option value="'.$item6->maqh.'">'.$item6->name_huyen.'</option>';
                 }
             }else{
                 $output.='<option value="">--Chọn xã phường--</option>';
-                $select_wards=Xaphuongthitran::where('maqh', $data['maid'])->orderBy('xaid','asc')->get();
+                $select_wards=WardModel::where('maqh', $data['maid'])->orderBy('xaid','asc')->get();
                 foreach($select_wards as $item7){
                     $output.='<option value="'.$item7->xaid.'">'.$item7->name_xa.'</option>';
                 }

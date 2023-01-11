@@ -1,12 +1,10 @@
 @php
 use App\Model\CatProductModel;
-use App\Page;
-use App\Post;
+use App\Model\PageModel;
 
 $listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
+$pages=PageModel::all();
 
-$page_contact=Page::find(15);
-$page_introduce=Page::find(21);
 @endphp
 <a href="{{route('home')}}" title="" class="logo">STORE</a>
 <div id="menu-respon-wp">
@@ -30,12 +28,10 @@ $page_introduce=Page::find(21);
         <li>
             <a href="{{route('pages','tin-tuc')}}" title="">Tin tức</a>
         </li>
-        <li>
-            <a href="{{route('pages',$page_introduce->slug)}}" title="">Giới thiệu</a>
-        </li>
-
-        <li>
-            <a href="{{route('pages',$page_contact->slug)}}" title="">Liên hệ</a>
-        </li>
+        @foreach($pages as $page)
+            <li>
+                <a href="{{route('pages',$page->slug)}}" title="">{{$page->name}}</a>
+            </li>
+        @endforeach
     </ul>
 </div>

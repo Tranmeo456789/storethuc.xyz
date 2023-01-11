@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Color_product;
+use App\Model\ColorModel;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class ColorPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Color_product  $colorProduct
+     * @param  \App\Model\ColorModel  $color
      * @return mixed
      */
     public function view(User $user)
@@ -48,7 +48,7 @@ class ColorPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Color_product  $colorProduct
+     * @param  \App\Model\ColorModel  $color
      * @return mixed
      */
     public function update(User $user)
@@ -60,7 +60,7 @@ class ColorPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Color_product  $colorProduct
+     * @param  \App\Model\ColorModel  $color
      * @return mixed
      */
     public function delete(User $user)
@@ -72,10 +72,10 @@ class ColorPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Color_product  $colorProduct
+     * @param  \App\Model\ColorModel  $color
      * @return mixed
      */
-    public function restore(User $user, Color_product $colorProduct)
+    public function restore(User $user, ColorModel $color)
     {
         //
     }
@@ -84,10 +84,10 @@ class ColorPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Color_product  $colorProduct
+     * @param  \App\Model\ColorModel  $color
      * @return mixed
      */
-    public function forceDelete(User $user, Color_product $colorProduct)
+    public function forceDelete(User $user, ColorModel $color)
     {
         //
     }

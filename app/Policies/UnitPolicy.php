@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Model\PageModel;
+use App\Model\UnitModel;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PagePolicy
+class UnitPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class PagePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  App\Model\PageModel  $page
+     * @param  \App\Model\UnitModel  $unit
      * @return mixed
      */
     public function view(User $user)
     {
-        return $user->checkPermissionAccess(config('permission.access.list_page'));
+        return $user->checkPermissionAccess(config('permission.access.list_unit'));
     }
 
     /**
@@ -41,53 +41,53 @@ class PagePolicy
      */
     public function create(User $user)
     {
-        return $user->checkPermissionAccess(config('permission.access.add_page'));
+        return $user->checkPermissionAccess(config('permission.access.add_unit'));
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  App\Model\PageModel  $page
+     * @param  \App\Model\UnitModel  $unit
      * @return mixed
      */
     public function update(User $user)
     {
-        return $user->checkPermissionAccess(config('permission.access.edit_page'));
+        return $user->checkPermissionAccess(config('permission.access.edit_unit'));
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  App\Model\PageModel  $page
+     * @param  \App\Model\UnitModel  $unit
      * @return mixed
      */
     public function delete(User $user)
     {
-        return $user->checkPermissionAccess(config('permission.access.delete_page'));
+        return $user->checkPermissionAccess(config('permission.access.delete_unit'));
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  App\Model\PageModel  $page
+     * @param  \App\Model\UnitModel  $unit
      * @return mixed
      */
-    public function action(User $user)
+    public function restore(User $user, UnitModel $unit)
     {
-        return $user->checkPermissionAccess(config('permission.access.action_page'));
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Model\PageModel  $page
+     * @param  \App\Model\UnitModel  $unit
      * @return mixed
      */
-    public function forceDelete(User $user, PageModel $page)
+    public function forceDelete(User $user, UnitModel $unit)
     {
         //
     }

@@ -102,17 +102,6 @@
                         aria-expanded="false">
                         <i class="plus-icon fas fa-plus-circle"></i>
                     </button>
-                    <div class="dropdown-menu">
-                        
-                            <a class="dropdown-item" href="{{url('admin/post/add')}}">Thêm bài viết</a>
-                      
-                        
-                            <a class="dropdown-item" href="{{url('admin/product/add')}}">Thêm sản phẩm</a>
-                      
-                       
-                            <a class="dropdown-item" href="{{url('admin/order/list')}}">Xem đơn hàng</a>
-                                 
-                    </div>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -144,22 +133,6 @@
                             Dashboard
                         </a>
                     </li>
-
-                   
-                        <li class="nav-link {{$module_active=='page'?'active':''}}">
-                            <a href="{{url('admin/page/list')}}">
-                                <div class="nav-link-icon d-inline-flex">
-                                    <i class="far fa-folder"></i>
-                                </div>
-                                Trang
-                            </a>
-                            <i class="arrow fas {{$module_active=='page'?'fa-angle-down':'fa-angle-right'}}"></i>
-
-                            <ul class="sub-menu">
-                                <li><a href="{{url('admin/page/add')}}">Thêm mới</a></li>
-                                <li><a href="{{url('admin/page/list')}}">Danh sách</a></li>
-                            </ul>
-                        </li>
 
                         <li class="nav-link {{$module_active=='post'?'active':''}}">
                             <a href="{{url('admin/post/list')}}">
