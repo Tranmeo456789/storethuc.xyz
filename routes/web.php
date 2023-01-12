@@ -60,34 +60,6 @@ Route::middleware('auth')->group(function(){
 
     Route::get('admin/user/check_role', 'AdminUserController@list_roles');
 
-    Route::get('admin/product/cat', 'AdminProductCatController@list')->middleware('can:list_cat_product');
-    Route::get('admin/product/list', 'AdminProductController@list')->middleware('can:list_product');
-    Route::get('admin/product/add', 'AdminProductController@add')->middleware('can:add_product');
-    Route::post('admin/product/selectCat', 'AdminProductController@selectCat');
-    Route::post('admin/product/cat/add', 'AdminProductCatController@add');
-    Route::get('admin/product/cat/edit/{id}', 'AdminProductCatController@edit')->name('product_cat.edit');
-    Route::post('admin/product/cat/update/{id}', 'AdminProductCatController@update')->name('admin.product.cat.update');
-    Route::get('admin/product/cat/delete/{id}', 'AdminProductCatController@delete')->name('product_cat.delete');
-
-    Route::post('admin/product/store', 'AdminProductController@store');
-    Route::get('admin/product/edit/{id}', 'AdminProductController@edit')->name('product.edit')->middleware('can:edit_product');
-    Route::get('admin/product/delete/{id}', 'AdminProductController@delete')->name('product.delete')->middleware('can:delete_product');
-    Route::get('admin/product/forcedelete/{id}', 'AdminProductController@forcedelete')->name('product.forcedelete');
-    Route::post('admin/product/update/{id}', 'AdminProductController@update')->name('product.update');
-    Route::get('admin/product/delete/{id}', 'AdminProductController@delete')->name('product.delete');
-    Route::get('admin/product/list_still', 'AdminProductController@list_still');
-    Route::get('admin/product/list_wait', 'AdminProductController@list_wait')->name('product.list_wait');
-    Route::get('admin/product/list_trash', 'AdminProductController@list_trash');
-    Route::get('admin/product/action', 'AdminProductController@action');
-        
-    Route::get('admin/product/list_color', 'AdminProductController@list_color')->middleware('can:list_color');
-    Route::post('admin/product/add_color', 'AdminProductController@add_color');
-    Route::get('admin/product/delete_color/{id}', 'AdminProductController@delete_color')->name('delete.color');
-
-    Route::get('admin/unit/list', 'AdminUnitController@list')->name('backend.unit.list');
-    Route::post('admin/unit/store', 'AdminUnitController@store')->name('backend.unit.store');
-    Route::get('admin/unit/delete/{id}', 'AdminUnitController@forcedelete')->name('backend.unit.delete');
-
     Route::get('admin/product/list_image', 'AdminProductController@list_image');
     Route::get('admin/product/add_img/{id}', 'AdminProductController@add_img')->name('product.add_img')->middleware('can:add_img');
     Route::post('admin/product/update_img/{id}', 'AdminProductController@update_img')->name('product.update_img');

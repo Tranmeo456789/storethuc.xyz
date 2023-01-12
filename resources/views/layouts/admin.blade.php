@@ -133,24 +133,7 @@
                             Dashboard
                         </a>
                     </li>
-                        <li class="nav-link {{$module_active=='product'?'active':''}}">
-                            <a href="{{url('admin/product/list')}}">
-                                <div class="nav-link-icon d-inline-flex">
-                                    <i class="far fa-folder"></i>
-                                </div>
-                                Sản phẩm
-                            </a>
-                            <i class="arrow fas {{$module_active=='product'?'fa-angle-down':'fa-angle-right'}}"></i>
-                            <ul class="sub-menu">
-                                <li><a href="{{url('admin/product/add')}}">Thêm sản phẩm</a></li>
-                                <li><a href="{{url('admin/product/list')}}">Danh sách sản phẩm</a></li>
-                                <li><a href="{{url('admin/product/cat')}}">Danh mục</a></li>
-                                <li><a href="{{route('backend.unit.list')}}">Đơn vị tính</a></li>
-                                <li><a href="{{url('admin/product/list_color')}}">Danh sách màu</a></li>
-                            </ul>
-                        </li>
-                  
-                    
+                        
                     
                         <li class="nav-link {{$module_active=='order'?'active':''}}">
                             <a href="{{url('admin/order/list')}}">
