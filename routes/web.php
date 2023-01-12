@@ -24,8 +24,6 @@ Auth::routes(['register' => false]);
 //Route::get('/', 'HomeController@index')->name('home');
 //Route::get('dashboard', 'DashboardController@show')->middleware('auth');
 
-//Route::get('admin/user/add', 'AdminUserController@add');
-//Route::post('admin/user/store', 'AdminUserController@store');
 include_once 'routes/shopBackEnd.php';
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -61,20 +59,6 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/user/update/{id}', 'AdminUserController@update')->name('user.update');
 
     Route::get('admin/user/check_role', 'AdminUserController@list_roles');
-
-    Route::get('admin/page/list', 'AdminPageController@list')->middleware('can:list_page');
-    Route::get('admin/page/list_open', 'AdminPageController@list_open');
-    Route::get('admin/page/list_wait', 'AdminPageController@list_wait');
-    Route::get('admin/page/list_trash', 'AdminPageController@list_trash');
-    Route::get('admin/page/add', 'AdminPageController@add')->middleware('can:add_page');
-    // Route::get('admin/page/{slug}-{id}.html', 'AdminPageController@detail')->name('page.detail');
-    Route::post('admin/page/store', 'AdminPageController@store');
-    Route::get('admin/page/delete/{id}', 'AdminPageController@delete')->name('delete_page');
-    Route::get('admin/page/forcedelete/{id}', 'AdminPageController@forcedelete')->name('forcedelete_page');
-    Route::get('admin/page/edit/{id}', 'AdminPageController@edit')->name('page.edit')->middleware('can:edit_page');
-    Route::post('admin/page/update/{id}', 'AdminPageController@update')->name('page.update');
-    Route::get('admin/page/search', 'AdminPageController@search');
-    Route::get('admin/page/action', 'AdminPageController@action');
 
     Route::get('admin/post/list', 'AdminPostController@list')->middleware('can:list_post');
     Route::get('admin/post/list_open', 'AdminPostController@list_open');
@@ -133,7 +117,7 @@ Route::middleware('auth')->group(function(){
     Route::get('admin/order/list_processing', 'AdminOrderController@list_processing');
     Route::get('admin/order/list_cancel', 'AdminOrderController@list_cancel');
     Route::get('admin/order/list_trash', 'AdminOrderController@list_trash');
-    //Route::get('admin/order/search_order', 'AdminOrderController@search_order');
+    
     Route::get('admin/order/delete/{id}', 'AdminOrderController@delete')->name('order.delete');
     Route::get('admin/order/forcedelete/{id}', 'AdminOrderController@forcedelete')->name('order.forcedelete');
     Route::get('admin/order/action', 'AdminOrderController@action');
@@ -161,7 +145,7 @@ Route::middleware('auth')->group(function(){
     Route::get('backend/xoa-quyen/{id}', 'RoleController@delete')->name('backend.role.delete');
 
 });
-//Route::get('{slugIntroduce}', 'HomeController@introduce')->name('introduce');
+
 Route::get('{slugpage}.html', 'HomeController@pages')->name('pages');
 Route::get('tin-tuc', 'PostController@list')->name('posts');
 
