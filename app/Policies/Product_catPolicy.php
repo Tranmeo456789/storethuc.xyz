@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Product_cat;
+use App\Model\CatProductModel;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class Product_catPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Product_cat  $productCat
+     * @param  \App\Model\CatProductModel  $productCat
      * @return mixed
      */
     public function view(User $user)
@@ -48,7 +48,7 @@ class Product_catPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Product_cat  $productCat
+     * @param  \App\Model\CatProductModel  $productCat
      * @return mixed
      */
     public function update(User $user)
@@ -60,7 +60,7 @@ class Product_catPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Product_cat  $productCat
+     * @param  \App\Model\CatProductModel  $productCat
      * @return mixed
      */
     public function delete(User $user)
@@ -72,10 +72,10 @@ class Product_catPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Product_cat  $productCat
+     * @param  \App\Model\CatProductModel  $productCat
      * @return mixed
      */
-    public function restore(User $user, Product_cat $productCat)
+    public function restore(User $user, CatProductModel $productCat)
     {
         //
     }
@@ -84,10 +84,10 @@ class Product_catPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Product_cat  $productCat
+     * @param  \App\Model\CatProductModel  $productCat
      * @return mixed
      */
-    public function forceDelete(User $user, Product_cat $productCat)
+    public function forceDelete(User $user, CatProductModel $productCat)
     {
         //
     }
