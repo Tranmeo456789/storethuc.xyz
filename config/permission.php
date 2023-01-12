@@ -51,7 +51,8 @@ return [
 
         'list_slider'=>'list_slider',
         'change_localtion'=>'change_localtion',
-        'change_status'=>'change_status',
+        'add_slider'=>'add_slider',
+        'edit_slider'=>'edit_slider',
         'delete_slider'=>'delete_slider',
 
         'list_role'=>'list_role',

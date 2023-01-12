@@ -78,12 +78,6 @@ Route::middleware('auth')->group(function(){
     Route::get('admin/order/detail/{id}', 'AdminOrderController@detail')->name('order.detail')->middleware('can:detail_order');
     Route::post('admin/order/update_status/{id}', 'AdminOrderController@update_status')->name('order.update_status');
 
-    Route::get('admin/slider/list', 'AdminSliderController@list')->middleware('can:list_slider');
-    Route::get('admin/slider/up/{id}', 'AdminSliderController@up')->name('slider.up')->middleware('can:change_localtion');
-    Route::get('admin/slider/change_status/{id}', 'AdminSliderController@change_status')->name('slider.change_status')->middleware('can:change_status');
-    Route::post('admin/slider/add', 'AdminSliderController@add')->name('admin.slider');
-    Route::get('admin/slider/delete/{id}', 'AdminSliderController@forcedelete')->name('slider.delete');
-
     Route::get('admin/role/list', 'AdminRoleController@list')->middleware('can:list_role');
     Route::get('admin/role/add', 'AdminRoleController@add')->middleware('can:add_role');
     Route::post('admin/role/store', 'AdminRoleController@store')->name('role.store');

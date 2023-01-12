@@ -73,11 +73,11 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-nguoi-dung', 'UserController@save')->name('user.save');
         Route::get('/xoa-nguoi-dung/{id}', 'UserController@delete')->name('backend.user.delete');
 
-        Route::get('/danh-sach-slider', 'SliderController@index')->name('slider');
-        Route::get('/them-slider', 'SliderController@form')->name('slider.add');
-        Route::get('/sua-slider/{id}', 'SliderController@form')->name('backend.slider.edit');
+        Route::get('/danh-sach-slider', 'SliderController@index')->name('slider')->middleware('can:list_slider');
+        Route::get('/them-slider', 'SliderController@form')->name('slider.add')->middleware('can:add_slider');
+        Route::get('/sua-slider/{id}', 'SliderController@form')->name('backend.slider.edit')->middleware('can:edit_slider');
         Route::post('/luu-slider', 'SliderController@save')->name('slider.save');
-        Route::get('/up-vi-tri-slider/{id}', 'SliderController@up')->name('backend.slider.up');
-        Route::get('/xoa-slider/{id}', 'SliderController@delete')->name('backend.slider.delete');
+        Route::get('/up-vi-tri-slider/{id}', 'SliderController@up')->name('backend.slider.up')->middleware('can:change_localtion');
+        Route::get('/xoa-slider/{id}', 'SliderController@delete')->name('backend.slider.delete')->middleware('can:delete_slider');
         
 });

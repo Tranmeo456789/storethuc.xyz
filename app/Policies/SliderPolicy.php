@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Slider;
+use App\Model\SliderModel;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class SliderPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Slider  $slider
+     * @param  \App\Model\SliderModel  $slider
      * @return mixed
      */
     public function view(User $user)
@@ -48,19 +48,31 @@ class SliderPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Slider  $slider
+     * @param  \App\Model\SliderModel  $slider
      * @return mixed
      */
-    public function change_status(User $user)
+    public function create(User $user)
     {
-        return $user->checkPermissionAccess(config('permission.access.change_status'));
+        return $user->checkPermissionAccess(config('permission.access.add_slider'));
+    }
+
+/**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Model\SliderModel  $slider
+     * @return mixed
+     */
+    public function update(User $user)
+    {
+        return $user->checkPermissionAccess(config('permission.access.edit_slider'));
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Slider  $slider
+     * @param  \App\Model\SliderModel  $slider
      * @return mixed
      */
     public function delete(User $user)
@@ -72,10 +84,10 @@ class SliderPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Slider  $slider
+     * @param  \App\Model\SliderModel  $slider
      * @return mixed
      */
-    public function restore(User $user, Slider $slider)
+    public function restore(User $user, SliderModel $slider)
     {
         //
     }
@@ -84,10 +96,10 @@ class SliderPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Slider  $slider
+     * @param  \App\Model\SliderModel  $slider
      * @return mixed
      */
-    public function forceDelete(User $user, Slider $slider)
+    public function forceDelete(User $user, SliderModel $slider)
     {
         //
     }

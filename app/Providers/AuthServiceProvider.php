@@ -77,7 +77,8 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('list_slider','App\Policies\SliderPolicy@view');
         Gate::define('change_localtion','App\Policies\SliderPolicy@change_localtion');
-        Gate::define('change_status','App\Policies\SliderPolicy@change_status');
+        Gate::define('add_slider','App\Policies\SliderPolicy@create');
+        Gate::define('edit_slider','App\Policies\SliderPolicy@update');
         Gate::define('delete_slider','App\Policies\SliderPolicy@delete');
 
         Gate::define('list_role','App\Policies\RolePolicy@view');
