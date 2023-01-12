@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\BackEndModel;
 use Illuminate\Support\Str;
 use DB;
+use App\Role;
+use App\Model\RoleUserModel;
 class UserModel extends BackEndModel
 {
    // protected $casts = [];
@@ -15,7 +17,7 @@ class UserModel extends BackEndModel
         $this->table               = 'users';
         $this->controllerName      = 'user';
         $this->folderUpload        = 'user';
-        $this->crudNotAccepted     = ['_token', 'btn_save','file-del','file','password_confirmation'];
+        $this->crudNotAccepted     = ['_token', 'btn_save','file-del','file','password_confirmation','role_id'];
     }
    
     // public function scopeOfUser($query)
@@ -91,7 +93,9 @@ class UserModel extends BackEndModel
                             ->where('slug', $params['slug'])
                             ->first();
         }
-       
+        if ($options['task'] == 'get-item-last') {
+            $result = self::orderBy('id', 'DESC')->first()->toArray();
+        }
         return $result;
     }
     public function saveItem($params = null, $options = null)
@@ -114,6 +118,7 @@ class UserModel extends BackEndModel
     {
         if($options['task'] == 'delete-item') {
            self::where('id', $params['id'])->delete();
+           RoleUserModel::where('user_id', $params['id'])->delete();
         }
     }
     public function countItems($params = null, $options  = null) {
@@ -138,5 +143,8 @@ class UserModel extends BackEndModel
        
         return $result;
     }
-   
+    public function roleUser(){
+        $result = $this->belongsToMany(Role::class,'role_user','user_id','role_id');
+        return $result;
+    }
 }

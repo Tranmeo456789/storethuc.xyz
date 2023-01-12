@@ -92,7 +92,8 @@
                 'code_order' => 'Mã đơn hàng',
                 'status_order' => 'Trạng thái đơn hàng',
                 'delivery_service'=>'Đơn vị vận chuyển',
-                'image'=>'Hình ảnh'
+                'image'=>'Hình ảnh',
+                'role_id'=>'Chọn nhóm quyền'
             ],
             'status_product' => [
                 'con_hang' => 'Còn hàng',

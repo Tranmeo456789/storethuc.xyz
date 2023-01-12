@@ -32,4 +32,15 @@ class Role extends Model
     public function permissions(){
         return $this->belongsToMany(Permission::class,"permission_role","role_id","permission_id");
     }
+    public function listItems($params = null, $options = null)
+    {
+        $result = null;
+        if ($options['task'] == "admin-list-items-in-selectbox") {
+            $query = self::select('id', 'display_name');
+            $result = $query->orderBy('display_name', 'asc')
+            ->pluck('display_name', 'id')->toArray();
+        }
+
+        return $result;
+    }
 }

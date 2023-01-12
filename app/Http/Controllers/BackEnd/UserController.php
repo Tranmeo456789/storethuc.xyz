@@ -9,7 +9,8 @@ use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\UserRequest as MainRequest;
 
 use App\Helpers\MyFunction;
-
+use App\Role;
+use App\Model\RoleUserModel;
 use DB;
 use Session;
 use Hash;
@@ -59,14 +60,19 @@ class UserController extends BackEndController
     }
     public function form(Request $request)
     {
-        $item = null;
+        $item = null;$roleIdOfUser=null;
         if ($request->id !== null) {
             $params["id"] = $request->id;
             $item = $this->model->getItem($params, ['task' => 'get-item']);
+            $roleOfUser = $item->roleUser->toArray();
+            
+            if($roleOfUser!=null){
+                $roleIdOfUser=$roleOfUser[0]['pivot']['role_id'];
+            }
         }
-      
+       
         return view($this->pathViewController . 'form', compact(
-            'item',
+            'item','roleIdOfUser'
         ));
     }
     public function save(MainRequest $request)
@@ -92,6 +98,12 @@ class UserController extends BackEndController
                 $notify = "Cập nhật $this->pageTitle thành công!";
             }
             $this->model->saveItem($params, ['task' => $task]);
+            $idUser=$this->model->getItem($params, ['task' => 'get-item-last'])['id'];
+            if ($params['id'] != null) {
+                $idUser=$item['id'];     
+            }
+            
+            (new RoleUserModel())->saveItem(['user_id'=>$idUser,'role_id'=>$params['role_id']], ['task' => $task]);
             $request->session()->put('app_notify', $notify);
                 return response()->json([
                     'fail' => false,

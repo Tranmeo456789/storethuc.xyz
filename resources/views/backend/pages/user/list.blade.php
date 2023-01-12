@@ -1,6 +1,6 @@
 @php
     use App\Helpers\Template;
-
+    use App\Model\UserModel;
 @endphp
     <table class="table table-bordered table-striped table-hover table-head-fixed text-wrap" id="tbList">
         <thead>
@@ -20,13 +20,15 @@
     @if (count($items) > 0)
         @foreach ($items as $val)
             @php
-                $temp++;
+                $temp++;              
+                $nameRole=$val->roleUser->toArray();   
+                    
             @endphp
             <tr>
                 <td style="width: 5%">{{$temp}}</td>
                 <td style="width: 25%" class="img-in-table"><div>{{$val->name}}</div></td>
                 <td style="width: 20%">{{$val->email}}</td>
-                <td style="width: 25%">tên quyền</td>
+                <td style="width: 25%">{{$nameRole[0]['display_name']??null}}</td>
                 <td style="width: 10%" class="text-center">{{$val->created_at}}</td>
                 <td style="width: 15%">
                     <a href="{{route("backend.$controllerName.edit",$val->id)}}" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a>

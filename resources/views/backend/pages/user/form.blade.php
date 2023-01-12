@@ -2,10 +2,14 @@
     use App\Helpers\Form as FormTemplate;
     use App\Helpers\Template as Template;
     use App\Helpers\MyFunction;
+    use App\Role;
 
     $label = config('myconfig.template.label');
     $formLabelAttr = MyFunction::array_fill_muti_values(array_merge_recursive(config('myconfig.template.form_element.label'),['class' => 'col-12 ']));
+    $formSelect2Attr = config('myconfig.template.form_element.select2');
 
+    $itemsRole = (new Role())->listItems(null, ['task' => 'admin-list-items-in-selectbox']);
+    
     $formInputAttr = config('myconfig.template.form_element.input');
     $formEditorAttr = config('myconfig.template.form_element.editor');
     $star = config('myconfig.template.star');
@@ -47,6 +51,11 @@ $elements = array_merge($elements,
             'label'   => HTML::decode(Form::label('password_confirmation', 'Nhập lại Mật khẩu mới' .  $star, $formLabelAttr)),
             'element' => Form::password('password_confirmation', array_merge($formInputAttr,['placeholder'=>'Nhập lại Mật khẩu mới','style'=>'border-right:0px'])),
             'type' => 'input-password',
+            'widthElement' => 'col-12'
+        ],
+        [
+            'label' => HTML::decode(Form::label('role_id', $label['role_id'] , $formLabelAttr)),
+            'element' => Form::select('role_id',$itemsRole, $roleIdOfUser??null, array_merge($formSelect2Attr,['style' =>'width:100%'])),
             'widthElement' => 'col-12'
         ],
         [

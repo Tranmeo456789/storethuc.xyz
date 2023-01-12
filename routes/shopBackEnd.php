@@ -50,10 +50,10 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-don-hang', 'OrderController@save')->name('order.save');
 
         Route::get('/danh-sach-trang', 'PageController@index')->name('page')->middleware('can:list_page');
-        Route::get('/them-trang', 'PageController@form')->name('page.add');
-        Route::get('/sua-trang/{id}', 'PageController@form')->name('backend.page.edit');
+        Route::get('/them-trang', 'PageController@form')->name('page.add')->middleware('can:add_page');
+        Route::get('/sua-trang/{id}', 'PageController@form')->name('backend.page.edit')->middleware('can:edit_page');
         Route::post('/luu-trang', 'PageController@save')->name('page.save');
-        Route::get('/xoa-trang/{id}', 'PageController@delete')->name('backend.page.delete');
+        Route::get('/xoa-trang/{id}', 'PageController@delete')->name('backend.page.delete')->middleware('can:delete_page');
 
         Route::get('/danh-sach-danh-muc-bai-viet', 'CatPostController@index')->name('catPost')->middleware('can:list_cat_post');
         Route::get('/them-danh-muc-bai-viet', 'CatPostController@form')->name('catPost.add');
