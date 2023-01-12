@@ -57,6 +57,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete_post','App\Policies\PostPolicy@delete');
 
         Gate::define('list_cat_post','App\Policies\Post_catPolicy@view');
+        Gate::define('add_cat_post','App\Policies\Post_catPolicy@create');
         Gate::define('edit_cat_post','App\Policies\Post_catPolicy@update');
         Gate::define('delete_cat_post','App\Policies\Post_catPolicy@delete');
 

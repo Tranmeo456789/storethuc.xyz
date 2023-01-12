@@ -133,20 +133,6 @@
                             Dashboard
                         </a>
                     </li>
-
-                        <li class="nav-link {{$module_active=='post'?'active':''}}">
-                            <a href="">
-                                <div class="nav-link-icon d-inline-flex">
-                                    <i class="far fa-folder"></i>
-                                </div>
-                                Bài viết
-                            </a>
-                            <i class="arrow fas {{$module_active=='post'?'fa-angle-down':'fa-angle-right'}}"></i>
-                            <ul class="sub-menu">
-                                <li><a href="{{url('admin/post/cat')}}">Danh mục</a></li>
-                            </ul>
-                        </li>                                    
-                    
                         <li class="nav-link {{$module_active=='product'?'active':''}}">
                             <a href="{{url('admin/product/list')}}">
                                 <div class="nav-link-icon d-inline-flex">

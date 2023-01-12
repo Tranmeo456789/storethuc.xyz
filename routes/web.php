@@ -59,12 +59,6 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/user/update/{id}', 'AdminUserController@update')->name('user.update');
 
     Route::get('admin/user/check_role', 'AdminUserController@list_roles');
-    
-    Route::get('admin/post/cat', 'AdminPostCatController@list')->middleware('can:list_cat_post');
-    Route::post('admin/post/cat/add', 'AdminPostCatController@add');
-    Route::get('admin/post/cat/edit/{id}', 'AdminPostCatController@edit')->name('post_cat.edit')->middleware('can:edit_cat_post');
-    Route::post('admin/post/cat/update/{id}', 'AdminPostCatController@update')->name('admin.post.cat.update');
-    Route::get('admin/post/cat/delete/{id}', 'AdminPostCatController@delete')->name('post_cat.delete');
 
     Route::get('admin/product/cat', 'AdminProductCatController@list')->middleware('can:list_cat_product');
     Route::get('admin/product/list', 'AdminProductController@list')->middleware('can:list_product');

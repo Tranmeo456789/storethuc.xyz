@@ -56,10 +56,10 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/xoa-trang/{id}', 'PageController@delete')->name('backend.page.delete')->middleware('can:delete_page');
 
         Route::get('/danh-sach-danh-muc-bai-viet', 'CatPostController@index')->name('catPost')->middleware('can:list_cat_post');
-        Route::get('/them-danh-muc-bai-viet', 'CatPostController@form')->name('catPost.add');
-        Route::get('/sua-danh-muc-bai-viet/{id}', 'CatPostController@form')->name('catPost.edit');
+        Route::get('/them-danh-muc-bai-viet', 'CatPostController@form')->name('catPost.add')->middleware('can:add_cat_post');
+        Route::get('/sua-danh-muc-bai-viet/{id}', 'CatPostController@form')->name('catPost.edit')->middleware('can:edit_cat_post');
         Route::post('/luu-danh-muc-bai-viet', 'CatPostController@save')->name('catPost.save');
-        Route::get('/xoa-danh-muc-bai-viet/{id}', 'CatPostController@delete')->name('catPost.delete');
+        Route::get('/xoa-danh-muc-bai-viet/{id}', 'CatPostController@delete')->name('catPost.delete')->middleware('can:delete_cat_post');
 
         Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post')->middleware('can:list_post');
         Route::get('/them-bai-viet', 'PostController@form')->name('post.add')->middleware('can:add_post');

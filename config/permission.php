@@ -30,6 +30,7 @@ return [
         'delete_post'=>'delete_post',
 
         'list_cat_post'=>'list_cat_post',
+        'add_cat_post'=>'add_cat_post',
         'edit_cat_post'=>'edit_cat_post',
         'delete_cat_post'=>'delete_cat_post',
 
