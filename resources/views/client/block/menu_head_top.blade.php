@@ -2,7 +2,6 @@
 use App\Model\CatProductModel;
 
 use App\Model\PageModel;
-use App\Post;
 
 $listCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-front-end']);
 $pages=PageModel::all();

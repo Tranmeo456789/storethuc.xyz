@@ -135,7 +135,7 @@
                     </li>
 
                         <li class="nav-link {{$module_active=='post'?'active':''}}">
-                            <a href="{{url('admin/post/list')}}">
+                            <a href="">
                                 <div class="nav-link-icon d-inline-flex">
                                     <i class="far fa-folder"></i>
                                 </div>
@@ -143,13 +143,9 @@
                             </a>
                             <i class="arrow fas {{$module_active=='post'?'fa-angle-down':'fa-angle-right'}}"></i>
                             <ul class="sub-menu">
-                                <li><a href="{{url('admin/post/add')}}">Thêm mới</a></li>
-                                <li><a href="{{url('admin/post/list')}}">Danh sách</a></li>
                                 <li><a href="{{url('admin/post/cat')}}">Danh mục</a></li>
                             </ul>
-                        </li>
-                   
-                    
+                        </li>                                    
                     
                         <li class="nav-link {{$module_active=='product'?'active':''}}">
                             <a href="{{url('admin/product/list')}}">

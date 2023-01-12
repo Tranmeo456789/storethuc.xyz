@@ -59,18 +59,6 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/user/update/{id}', 'AdminUserController@update')->name('user.update');
 
     Route::get('admin/user/check_role', 'AdminUserController@list_roles');
-
-    Route::get('admin/post/list', 'AdminPostController@list')->middleware('can:list_post');
-    Route::get('admin/post/list_open', 'AdminPostController@list_open');
-    Route::get('admin/post/list_wait', 'AdminPostController@list_wait');
-    Route::get('admin/post/list_trash', 'AdminPostController@list_trash');
-    Route::get('admin/post/add', 'AdminPostController@add')->middleware('can:add_post');
-    Route::post('admin/post/store', 'AdminPostController@store');
-    Route::get('admin/post/edit/{id}', 'AdminPostController@edit')->name('post.edit')->middleware('can:edit_post');
-    Route::post('admin/post/update/{id}', 'AdminPostController@update')->name('post.update');
-    Route::get('admin/post/delete/{id}', 'AdminPostController@delete')->name('post.delete');
-    Route::get('admin/post/action', 'AdminPostController@action');
-    Route::get('admin/post/forcedelete/{id}', 'AdminPostController@forcedelete')->name('post.forcedelete');
     
     Route::get('admin/post/cat', 'AdminPostCatController@list')->middleware('can:list_cat_post');
     Route::post('admin/post/cat/add', 'AdminPostCatController@add');
