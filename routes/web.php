@@ -65,19 +65,6 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/product/update_img/{id}', 'AdminProductController@update_img')->name('product.update_img');
     Route::get('admin/product/delete_img/{id}/{id_img}', 'AdminProductController@delete_img')->name('product.delete_img');
 
-    Route::get('admin/order/list', 'AdminOrderController@list')->middleware('can:list_order');
-    Route::get('admin/order/list_complete', 'AdminOrderController@list_complete');
-    Route::get('admin/order/list_move', 'AdminOrderController@list_move');
-    Route::get('admin/order/list_processing', 'AdminOrderController@list_processing');
-    Route::get('admin/order/list_cancel', 'AdminOrderController@list_cancel');
-    Route::get('admin/order/list_trash', 'AdminOrderController@list_trash');
-    
-    Route::get('admin/order/delete/{id}', 'AdminOrderController@delete')->name('order.delete');
-    Route::get('admin/order/forcedelete/{id}', 'AdminOrderController@forcedelete')->name('order.forcedelete');
-    Route::get('admin/order/action', 'AdminOrderController@action');
-    Route::get('admin/order/detail/{id}', 'AdminOrderController@detail')->name('order.detail')->middleware('can:detail_order');
-    Route::post('admin/order/update_status/{id}', 'AdminOrderController@update_status')->name('order.update_status');
-
     Route::get('admin/role/list', 'AdminRoleController@list')->middleware('can:list_role');
     Route::get('admin/role/add', 'AdminRoleController@add')->middleware('can:add_role');
     Route::post('admin/role/store', 'AdminRoleController@store')->name('role.store');

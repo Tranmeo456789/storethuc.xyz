@@ -6,8 +6,6 @@ use App\Model\ProductModel;
 
 use Illuminate\Http\Request;
 
-use App\Color_product;
-use App\Image_product;
 use App\Model\CatProductModel;
 use Illuminate\Support\Facades\Auth;
 

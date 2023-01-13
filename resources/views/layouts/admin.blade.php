@@ -134,19 +134,6 @@
                         </a>
                     </li>
                         
-                    
-                        <li class="nav-link {{$module_active=='order'?'active':''}}">
-                            <a href="{{url('admin/order/list')}}">
-                                <div class="nav-link-icon d-inline-flex">
-                                    <i class="far fa-folder"></i>
-                                </div>
-                                Bán hàng
-                            </a>
-                            <i class="arrow fas {{$module_active=='order'?'fa-angle-down':'fa-angle-right'}}"></i>
-                            <ul class="sub-menu">
-                                <li><a href="{{url('admin/order/list')}}">Đơn hàng</a></li>
-                            </ul>
-                        </li>
                         <li class="nav-link {{$module_active=='user'?'active':''}}">
                             <a href="{{url('admin/user/list')}}">
                                 <div class="nav-link-icon d-inline-flex">

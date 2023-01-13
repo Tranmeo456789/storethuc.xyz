@@ -314,7 +314,7 @@ class OrderModel extends BackEndModel
     }
 
     public function userBuy(){
-        return $this->belongsTo('App\Model\UsersModel','user_id','id');
+        return $this->belongsTo('App\Model\UserModel','user_id','id');
     }
     
 }

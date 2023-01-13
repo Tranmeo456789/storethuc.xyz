@@ -15,7 +15,6 @@ use App\Mail\MailOrder;
 use App\Mail\MailToAdmin;
 use App\Model\DistrictModel;
 use App\Model\WardModel;
-use App\Order;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Mail;
@@ -53,7 +52,7 @@ class OrderController extends Controller
             return redirect('thanh-toan');
     }
     function checkout(){
-       $order_id_last=Order::latest('id')->first();
+       $order_id_last=OrderModel::latest('id')->first();
        $order_id=$order_id_last['id']+1;
        $city= ProvinceModel::orderBy('matp','asc')->get();
        

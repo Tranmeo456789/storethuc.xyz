@@ -87,7 +87,7 @@
                             @endphp
                             <tr>
                             <td>{{$temp}}</td>
-                            <td><a href="{{route('order.detail',$order->id)}}" class="text-primary">{{$order['code_order']}}</a></td>
+                            <td><a href="" class="text-primary">{{$order['code_order']}}</a></td>
                             <td>{{$order['fullname']}}</td>   
                             <td>{{number_format($order['price_total'], 0, "" ,"." )}}đ</td>
                             @if($order['status']=='Hủy')
@@ -99,7 +99,7 @@
                                 <td class="text-center"><span class="badge {{$order['status']=='Hoàn thành'?"badge-success":"badge-warning"}}">{{$order['status']}}</span></td> 
                             @endif 
                             <td>{{$order['created_at']}}</td>
-                            <td class="text-center"><a href="{{route('order.detail',$order->id)}}" class="text-primary border rounded-circle px-1"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a></td>                 
+                            <td class="text-center"><a href="" class="text-primary border rounded-circle px-1"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a></td>                 
                         </tr>
                         @endforeach                   
                     @else

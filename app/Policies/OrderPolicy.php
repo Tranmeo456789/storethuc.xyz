@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Order;
+use App\Model\OrderModel;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class OrderPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Order  $order
+     * @param  \App\Model\OrderModel  $order
      * @return mixed
      */
     public function view(User $user)
@@ -48,7 +48,7 @@ class OrderPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Order  $order
+     * @param  \App\Model\OrderModel  $order
      * @return mixed
      */
     public function detail(User $user)
@@ -60,7 +60,7 @@ class OrderPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Order  $order
+     * @param  \App\Model\OrderModel  $order
      * @return mixed
      */
     public function delete(User $user)
@@ -72,10 +72,10 @@ class OrderPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Order  $order
+     * @param  \App\Model\OrderModel  $order
      * @return mixed
      */
-    public function restore(User $user, Order $order)
+    public function restore(User $user, OrderModel $order)
     {
         //
     }
@@ -84,10 +84,10 @@ class OrderPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Order  $order
+     * @param  \App\Model\OrderModel  $order
      * @return mixed
      */
-    public function forceDelete(User $user, Order $order)
+    public function forceDelete(User $user, OrderModel $order)
     {
         //
     }
