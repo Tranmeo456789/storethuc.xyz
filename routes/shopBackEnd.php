@@ -67,11 +67,11 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::post('/luu-bai-viet', 'PostController@save')->name('post.save');
         Route::get('/xoa-bai-viet/{id}', 'PostController@delete')->name('backend.post.delete')->middleware('can:delete_post');
 
-        Route::get('/danh-sach-nguoi-dung', 'UserController@index')->name('user');
-        Route::get('/them-nguoi-dung', 'UserController@form')->name('user.add');
-        Route::get('/sua-nguoi-dung/{id}', 'UserController@form')->name('backend.user.edit');
+        Route::get('/danh-sach-nguoi-dung', 'UserController@index')->name('user')->middleware('can:list_user');
+        Route::get('/them-nguoi-dung', 'UserController@form')->name('user.add')->middleware('can:add_user');
+        Route::get('/sua-nguoi-dung/{id}', 'UserController@form')->name('backend.user.edit')->middleware('can:edit_user');
         Route::post('/luu-nguoi-dung', 'UserController@save')->name('user.save');
-        Route::get('/xoa-nguoi-dung/{id}', 'UserController@delete')->name('backend.user.delete');
+        Route::get('/xoa-nguoi-dung/{id}', 'UserController@delete')->name('backend.user.delete')->middleware('can:delete_user');
 
         Route::get('/danh-sach-slider', 'SliderController@index')->name('slider')->middleware('can:list_slider');
         Route::get('/them-slider', 'SliderController@form')->name('slider.add')->middleware('can:add_slider');

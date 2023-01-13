@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\Model\OrderModel;
+use App\Model\UserModel;
 use App\User;
+
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +29,8 @@ class AdminUserController extends Controller
         if($request->input('keyword')){
             $keyword=$request->input('keyword');
         }        
-        $users=User::where('name', 'LIKE', "%{$keyword}%")->paginate(10);
-         $count_user_active=User::count();
+        $users=UserModel::where('name', 'LIKE', "%{$keyword}%")->paginate(10);
+         $count_user_active=UserModel::count();
          $count_user_trash=User::onlyTrashed()->count();   
          $count=[$count_user_active, $count_user_trash];        
         return view('admin.user.list', compact('users', 'count', 'list_act','active','trash'));
@@ -40,8 +42,8 @@ class AdminUserController extends Controller
             $keyword=$request->input('keyword');
         }
         $list_act=['delete' => 'Xóa tạm thời'];
-        $users=User::where('name', 'LIKE', "%{$keyword}%")->paginate(10);
-        $count_user_active=User::count();
+        $users=UserModel::where('name', 'LIKE', "%{$keyword}%")->paginate(10);
+        $count_user_active=UserModel::count();
          $count_user_trash=User::onlyTrashed()->count();   
          $count=[$count_user_active, $count_user_trash];        
         return view('admin.user.list', compact('users', 'count', 'list_act','active','trash'));
@@ -56,8 +58,8 @@ class AdminUserController extends Controller
                 'restore' => 'Khôi phục',
                 'forceDelete'=>'Xóa vĩnh viễn'
             ];
-        $users=User::onlyTrashed()->where('name', 'LIKE', "%{$keyword}%")->paginate(10);
-        $count_user_active=User::count();
+        $users=UserModel::onlyTrashed()->where('name', 'LIKE', "%{$keyword}%")->paginate(10);
+        $count_user_active=UserModel::count();
          $count_user_trash=User::onlyTrashed()->count();   
          $count=[$count_user_active, $count_user_trash];        
         return view('admin.user.list', compact('users', 'count', 'list_act','active','trash'));
@@ -88,7 +90,7 @@ class AdminUserController extends Controller
                 'password'=>'Mật khẩu'
             ]
         );
-        $user=User::create(
+        $user=UserModel::create(
             [                
                 'name'=>$request->input('name'),
                 'email'=>$request->input('email'),
@@ -103,11 +105,11 @@ class AdminUserController extends Controller
      function delete($id){
         $this->authorize('delete_user');
          if(Auth::id()!=$id){
-             User::find($id)->delete();
-             $orders=Order::withTrashed()->get();
+            UserModel::find($id)->delete();
+             $orders=OrderModel::all();
              foreach($orders as $order){
                 if($order['user_id']==$id){
-                    Order::withTrashed()->where('id',$id)->update(['status_user' => "User đã bị xóa"]);
+                    OrderModel::where('id',$id)->update(['status_user' => "User đã bị xóa"]);
                 }
              }
              return redirect('admin/user/list')->with('status', 'Đã xóa thành viên thành công');
@@ -149,7 +151,7 @@ class AdminUserController extends Controller
                      }
                     if($act == 'delete'){
                         $this->authorize('delete_user');
-                        User::destroy($list_check);
+                        UserModel::destroy($list_check);
                         return redirect('admin/user/list')->with('status', 'Bạn đã xóa thành công');
                     }
                     if($act=='restore'){
@@ -160,7 +162,7 @@ class AdminUserController extends Controller
                     }
                     if($act=='forceDelete'){
                         $this->authorize('delete_user');
-                       User::withTrashed()
+                        User::withTrashed()
                        ->whereIn('id', $list_check)
                        ->forceDelete();
                        return redirect('admin/user/list')->with('status', 'Tài khoản lựa chọn đã xóa vĩnh viễn');
@@ -172,7 +174,7 @@ class AdminUserController extends Controller
      }
      // sửa dữ liệu user
      function edit($id){
-         $user=User::find($id);
+         $user=UserModel::find($id);
          $roles=Role::all();
          $roleUser=$user->roles1;
          return view('admin.user.edit', compact('user','roles','roleUser'));
@@ -195,13 +197,13 @@ class AdminUserController extends Controller
                 'password'=>'Mật khẩu'
             ]
         );
-        User::where('id',$id)->update(
+        UserModel::where('id',$id)->update(
             [                
                 'name'=>$request->input('name'),
                 'password' => Hash::make($request->input('password')),
             ]
           );
-          $user=User::find($id);
+          $user=UserModel::find($id);
           $role_user=$request->input('role_user');
           $user->roles1()->sync($role_user);  
           return redirect('admin/user/list')->with('status', 'Đã cập nhật thành công');

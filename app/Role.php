@@ -27,7 +27,7 @@ class Role extends Model
         'email_verified_at' => 'datetime',
     ];
     function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\Model\UserModel');
     }
     public function permissions(){
         return $this->belongsToMany(Permission::class,"permission_role","role_id","permission_id");

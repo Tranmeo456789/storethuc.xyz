@@ -9,8 +9,12 @@ use Illuminate\Support\Str;
 use DB;
 use App\Role;
 use App\Model\RoleUserModel;
+
+
 class UserModel extends BackEndModel
 {
+    
+
    // protected $casts = [];
     public function __construct()
     {
@@ -147,7 +151,20 @@ class UserModel extends BackEndModel
         $result = $this->belongsToMany(Role::class,'role_user','user_id','role_id');
         return $result;
     }
+    function roles(){
+        return $this->belongsToMany('App\Role');
+    }
     public function roles1(){
         return $this->belongsToMany(Role::class,'role_user','user_id','role_id');
+    }
+    public function checkPermissionAccess($permissionCheck){
+        $roles=auth()->user()->roles;
+        foreach($roles as $role){
+            $permissions=$role->permissions;
+            if($permissions->contains('key_code',$permissionCheck)){
+                return true;
+            }
+        }
+        return false;
     }
 }
