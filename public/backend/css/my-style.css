@@ -220,6 +220,9 @@ span.highlight {
     position: absolute;
     bottom: -20px;
 }
+.card-header.card-header-role::after{
+    content: none;
+}
 @media screen and (max-width: 1400px) {
     .business-results li {
         width: 50%;

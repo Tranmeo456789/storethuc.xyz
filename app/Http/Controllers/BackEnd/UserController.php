@@ -91,19 +91,26 @@ class UserController extends BackEndController
             $notify = "Thêm mới $this->pageTitle thành công!";
             $params['user_id']=Auth::id();
             $params['password'] = Hash::make($params['password']);
+           
             if ($params['id'] != null) {
                 $task   = "edit-item";
                 $params["id"] = $request->id;
                 $item = $this->model->getItem($params, ['task' => 'get-item']);
+                $item->roleUser()->sync($params['role_id']); 
                 $notify = "Cập nhật $this->pageTitle thành công!";
             }
-            $this->model->saveItem($params, ['task' => $task]);
-            $idUser=$this->model->getItem($params, ['task' => 'get-item-last'])['id'];
-            if ($params['id'] != null) {
-                $idUser=$item['id'];     
-            }
+            $this->model->saveItem($params, ['task' => $task]);//create user new
+              if ($params['id'] == null) {
+                $user=$this->model->getItem(null, ['task' => 'get-item-last']);//get user last
+                $user->roleUser()->attach($params['role_id']);     
+             }
+
+            // $idUser=$this->model->getItem($params, ['task' => 'get-item-last'])['id'];
+            // if ($params['id'] != null) {
+            //     $idUser=$item['id'];     
+            // }
             
-            (new RoleUserModel())->saveItem(['user_id'=>$idUser,'role_id'=>$params['role_id']], ['task' => $task]);
+            //(new RoleUserModel())->saveItem(['user_id'=>$idUser,'role_id'=>$params['role_id']], ['task' => $task]);
             $request->session()->put('app_notify', $notify);
                 return response()->json([
                     'fail' => false,

@@ -65,13 +65,6 @@ Route::middleware('auth')->group(function(){
     Route::post('admin/product/update_img/{id}', 'AdminProductController@update_img')->name('product.update_img');
     Route::get('admin/product/delete_img/{id}/{id_img}', 'AdminProductController@delete_img')->name('product.delete_img');
 
-    Route::get('admin/role/list', 'AdminRoleController@list')->middleware('can:list_role');
-    Route::get('admin/role/add', 'AdminRoleController@add')->middleware('can:add_role');
-    Route::post('admin/role/store', 'AdminRoleController@store')->name('role.store');
-    Route::get('admin/role/edit/{id}', 'AdminRoleController@edit')->name('role.edit')->middleware('can:edit_role');
-    Route::post('admin/role/update/{id}', 'AdminRoleController@update')->name('role.update');
-    Route::get('admin/role/delete/{id}', 'AdminRoleController@delete')->name('role.delete');
-
     Route::get('backend/danh-sach-quyen', 'RoleController@list')->name('backend.role.list')->middleware('can:list_role');
     Route::get('backend/them-quyen', 'RoleController@add')->name('backend.role.add')->middleware('can:add_role');
     Route::post('backend/luu-quyen', 'RoleController@store')->name('backend.role.store');

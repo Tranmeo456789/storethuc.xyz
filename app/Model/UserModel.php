@@ -94,7 +94,7 @@ class UserModel extends BackEndModel
                             ->first();
         }
         if ($options['task'] == 'get-item-last') {
-            $result = self::orderBy('id', 'DESC')->first()->toArray();
+            $result = self::orderBy('id', 'DESC')->first();
         }
         return $result;
     }
@@ -146,5 +146,8 @@ class UserModel extends BackEndModel
     public function roleUser(){
         $result = $this->belongsToMany(Role::class,'role_user','user_id','role_id');
         return $result;
+    }
+    public function roles1(){
+        return $this->belongsToMany(Role::class,'role_user','user_id','role_id');
     }
 }

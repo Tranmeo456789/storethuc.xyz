@@ -148,21 +148,6 @@
                                 <li><a href="{{url('admin/user/list')}}">Danh sách</a></li>
                             </ul>
                         </li>
-                   
-                        <li class="nav-link {{$module_active=='role'?'active':''}}">
-                            <a href="{{url('admin/role/list')}}">
-                                <div class="nav-link-icon d-inline-flex">
-                                    <i class="far fa-folder"></i>
-                                </div>
-                                Quản lý quyền
-                            </a>
-                            <i class="arrow fas {{$module_active=='role'?'fa-angle-down':'fa-angle-right'}}"></i>
-
-                            <ul class="sub-menu">
-                                <li><a href="{{url('admin/role/list')}}" style="font-size: 15px">Danh sách nhóm quyền</a></li>
-                            </ul>
-                        </li>
-
                 </ul>
             </div>
             <div id="wp-content">

@@ -2,8 +2,8 @@
 @section('content')
 <div id="content" class="container-fluid">
     <div class="card">     
-        <div class="card-header font-weight-bold d-flex justify-content-between align-items-center">
-            <h5 class="m-0 "><a href="">Danh sách nhóm quyền</a></h5> 
+        <div class="card-header card-header-role font-weight-bold d-flex justify-content-between align-items-center">
+            <h6 class="m-0 "><a href="">Danh sách nhóm quyền</a></h6> 
             @if (session('status'))
                 <div class="alert alert-success text-center mb-0 py-1">
                     {{session('status')}}
