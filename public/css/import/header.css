@@ -81,7 +81,7 @@ position: relative;
     z-index: 9;
     top: 20px;
     border-radius: 4px;
-    width: 82%;
+    width: 85%;
     background: rgb(255, 255, 255);
     box-shadow: 0 1px 8px rgb(0 0 0 / 30%);
     
@@ -153,9 +153,9 @@ position: relative;
     display: inline-block;
     border: none;
     outline: none;
-    background: #d3d3d3;
+    background: #edefeaad;
     color: #fff;
-    width: 18%;
+    width: 15%;
     line-height: 13px;
     font-size: 16px;
     height: 40px;
@@ -163,10 +163,10 @@ position: relative;
 }
 #head-body #search-wp #sm-s i{
     font-size: 20px;
-    color: #584747;
+    color: #6445af;
 }
 #head-body #search-wp #sm-s:hover {
-    background: #e0dddd;
+    background: rgb(231, 228, 228)ad;
 }
 .show-min-600{
     display: none;

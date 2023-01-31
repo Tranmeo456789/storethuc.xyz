@@ -504,3 +504,7 @@ $(document).on('click', ".checkall_role", function(event) {
     $(this).parents('.card').find('.checkbox_child').prop('checked',$(this).prop('checked'));
     $(this).parents('.card').find('.checkbox_wp').prop('checked',$(this).prop('checked'));
 });
+$(document).on('change', '.wp-select-color select', function() {
+    let selectValue = $(this).val();
+    $(this).closest('.wp-select-color').next().find('.form-control').css('background-color', selectValue);
+});

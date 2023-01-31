@@ -80,4 +80,6 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/up-vi-tri-slider/{id}', 'SliderController@up')->name('backend.slider.up')->middleware('can:change_localtion');
         Route::get('/xoa-slider/{id}', 'SliderController@delete')->name('backend.slider.delete')->middleware('can:delete_slider');
         
+        Route::get('/theme-trang-chu', 'SettingController@formInfomation')->name('setting.infomation');
+        Route::post('/luu-theme-trang-chu', 'SettingController@saveInfomation')->name('setting.infomation.save');
 });

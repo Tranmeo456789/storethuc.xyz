@@ -25,7 +25,7 @@ class ColorModel extends BackEndModel
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name','code','user_id', 'created_at', 'updated_at');
             $result = $query->orderBy('name', 'asc')
-                            ->pluck('name', 'id')->toArray();
+                            ->pluck('name','code', 'id')->toArray();
         }
         return $result;
     }

@@ -234,3 +234,7 @@ iframe {
 #same-category-wp .owl-controls .owl-buttons div.owl-prev {
     right: 25px;
 }
+.fb_dialog_content iframe{
+    box-shadow: none!important;
+    margin: 0px!important;
+}
