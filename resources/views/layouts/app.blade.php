@@ -4,20 +4,57 @@
 <head>
     @include("client.block.head")
 </head>
+
 @php
 
-$colorBackground='#0E7346';
+    use App\Model\SettingModel;
+
+    $params['id']=1;
+    $infoSetting=(new SettingModel)->getItem($params, ['task' => 'frontend-get-item']);
+    $colorHeaderFooter=$infoSetting['color_bg_header'];
 
 @endphp
+
+<style>
+    :root {
+        --bg-header-color: {{$colorHeaderFooter}};
+    }
+
+    #head-top {
+        background: var(--bg-header-color);
+    }
+    #head-body {
+        background: var(--bg-header-color);
+    }
+    #foot-bot {
+        background: var(--bg-header-color);
+    }
+    #category-product-wp .section-title,
+    #selling-wp .section-title,
+    #filter-product-wp .section-title {
+        background: var(--bg-header-color);
+        color: #fff;
+    }
+    #feature-product-wp .section-title, #list-product-wp .section-title {
+        color: rgb(255, 255, 255);
+        background-color: var(--bg-header-color);
+    }
+    .border-bottom-title {
+        display: block;
+        width: 80%;
+        border-top: 2px solid var(--bg-header-color);
+    }
+</style>
+
 <body>
     <div id="app">
         <div id="site">
             <div id="container">
                 <div id="header-wp">
-                    <div id="head-top" style="background: {{$colorBackground}}">
+                    <div id="head-top">
                         @include("client.block.menu_head_top")
                     </div>
-                    <div id="head-body" style="background: {{$colorBackground}}">
+                    <div id="head-body">
                         @include("client.block.head_body")
                     </div>
                 </div>
