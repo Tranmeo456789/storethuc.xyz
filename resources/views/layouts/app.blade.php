@@ -52,7 +52,7 @@ $colorBackground='#0E7346';
     </div>
         @include("client.block.script")
 </body>
-<script type='text/javascript'>
+<!-- <script type='text/javascript'>
     //<![CDATA[
     var pictureSrc = "https://1.bp.blogspot.com/-CXx9jt2JMRk/Vq-Lh5fm88I/AAAAAAAASwo/XivooDn_oSY/s1600/hoamai.png"; //Link ảnh hoa muốn hiển thị trên web
     var pictureWidth = 20; //Chiều rộng của hoa mai or đào
@@ -163,5 +163,5 @@ $colorBackground='#0E7346';
 
     window.setInterval('flakeFall();', 100);
     //]]>
-</script>
+</script> -->
 </html>
