@@ -13,10 +13,10 @@
             <h3 class="title">Thông tin cửa hàng</h3>
             <ul class="list-item">
                 <li>
-                    <p>106 - Nguyễn Chí Thanh - Cam Ranh - Khánh Hòa</p>
+                    <p>{{$addressAdmin}}</p>
                 </li>
                 <li>
-                    <p>0983.195.167</p>
+                    <p>{{$phoneAdmin}}</p>
                 </li>
                 <li>
                     <p>storethuc@gmail.com</p>

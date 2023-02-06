@@ -12,12 +12,16 @@
     $params['id']=1;
     $infoSetting=(new SettingModel)->getItem($params, ['task' => 'frontend-get-item']);
     $colorHeaderFooter=$infoSetting['color_bg_header'];
+    $colorBody=$infoSetting['color_bg_body'];
+    $phoneAdmin=$infoSetting['phone'];
+    $addressAdmin=$infoSetting['address'];
 
 @endphp
 
 <style>
     :root {
         --bg-header-color: {{$colorHeaderFooter}};
+        --bg-body-color: {{$colorBody}};
     }
 
     #head-top {
@@ -44,6 +48,9 @@
         width: 80%;
         border-top: 2px solid var(--bg-header-color);
     }
+    #main-content-wp {
+        background: var(--bg-body-color);
+    }
 </style>
 
 <body>
@@ -69,13 +76,13 @@
                 @include("client.block.box_responsive.menu_responsive")
             </div>
             <div id="btn-top"><img src="{{asset('images/icon-to-top.png')}}" alt="" /></div>
-            <div id="btn-zalo-me"><a href="https://zalo.me/0983195167"><img src="{{asset('images/zalo.png')}}" alt="" /></a></div>
+            <div id="btn-zalo-me"><a href="https://zalo.me/{{$phoneAdmin}}"><img src="{{asset('images/zalo.png')}}" alt="" /></a></div>
             <div class="hotline-phone-ring-wrap">
                 <div class="hotline-phone-ring">
                     <div class="hotline-phone-ring-circle"></div>
                     <div class="hotline-phone-ring-circle-fill"></div>
                     <div class="hotline-phone-ring-img-circle">
-                        <a href="tel:0983195167" class="pps-btn-img">
+                        <a href="tel:{{$phoneAdmin}}" class="pps-btn-img">
                             <img src="{{asset('images/icon-call-nh.png')}}" alt="Gọi điện thoại" width="50">
                         </a>
                     </div>
