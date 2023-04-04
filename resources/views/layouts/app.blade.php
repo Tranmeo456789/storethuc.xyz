@@ -58,6 +58,16 @@
         <div id="site">
             <div id="container">
                 <div id="header-wp">
+                    <div class="head_topon">
+                        <div class="wp-inner">
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="d-flex align-items-center"><span class="circle-ripple"></span></div>
+                                    <p>Kết nối mua sắm online</p>                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div id="head-top">
                         @include("client.block.menu_head_top")
                     </div>
