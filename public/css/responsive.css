@@ -10,12 +10,25 @@
 
 @media screen and (max-width: 1024px) {
     /*HEADER*/
+    .show-over1024{
+        display: none;
+    }
+    .show-below1024{
+        display: block;
+    }
     #head-body #search-wp {
         padding: 22px 0px 22px 90px;
     }
     #advisory-wp {
         display: none;
         padding: 15px 10px 15px 50px;
+    }
+    #menu-responsive {
+        display: block;
+        transform: translateX(-101%);
+    }
+    #menu-responsive.slider {
+        transform: translateX(0px);
     }
     #cart-wp {
         margin-left: 10px;
@@ -310,9 +323,6 @@
         width: 120px;
         padding: 10px 0px;
         font-size: 18px;
-    }
-    #main-menu-wp {
-        display: none;
     }
     #search-wp {
         display: none;

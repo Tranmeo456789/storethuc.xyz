@@ -30,6 +30,9 @@
     #head-body {
         background: var(--bg-header-color);
     }
+    #head-body-resposive{
+        background: var(--bg-header-color);
+    }
     #foot-bot {
         background: var(--bg-header-color);
     }
@@ -68,13 +71,18 @@
                             </div>
                         </div>
                     </div>
-                    <div id="head-top">
+                    <div id="head-top" class="show-over1024">
                         @include("client.block.menu_head_top")
                     </div>
-                    <div id="head-body">
+                    <div id="head-body" class="show-over1024">
                         @include("client.block.head_body")
                     </div>
-                </div>
+                    <div id="head-body-resposive" class="show-below1024">
+                        @include("client.block.box_responsive.head_body_responsive")
+                    </div>
+                    <div id="menu-responsive">
+                        @include("client.block.box_responsive.menu_responsive")
+                    </div>
                 <main class="">
                     @yield('content')
                 </main>
@@ -102,6 +110,7 @@
             <div id="fb-root"></div>
             <!-- Your Plugin chat code -->
             <div id="fb-customer-chat" class="fb-customerchat"></div>
+            <div id="fixscreen-respon"></div>
         </div>
     </div>
         @include("client.block.script")

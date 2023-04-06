@@ -1,8 +1,8 @@
 <div class="wp-inner clearfix">
     @if (Auth::check())
-    <a href="{{url('/home')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logokieutrang.png')}}" /></a>
+    <a href="{{url('/home')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logo.png')}}" /></a>
     @else
-    <a href="{{url('/')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logokieutrang.png')}}" /></a>
+    <a href="{{url('/')}}" title="" id="logo" class="fl-left"><img src="{{asset('images/logo.png')}}" /></a>
     @endif
     <div id="search-wp" class="fl-left">
         <div class="wp-form-search">
@@ -25,21 +25,11 @@
             <span class="title">Tư vấn</span>
             <span class="phone">{{$phoneAdmin}}</span>
         </a>
-        <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
-        <a href="{{url('show/cart')}}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
-            <div class="wp-cart-respon">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                @if (Cart::count() >0)
-                <span id="num1" class="num-cart-res">{{Cart::count()}}</span>
-                @endif
-            </div>
-        </a>
         <div id="cart-wp" class="fl-right">
             <div id="btn-cart">
-                <a href="{{url('show/cart')}}" class="text-light"><i id="trash-header" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <a href="{{url('show/cart')}}" class="text-light"><img src="{{asset('images/cart.png')}}" alt="">
                     @if (Cart::count() >0)
                     <span id="num">{{Cart::count()}}</span>
-
                     @endif
                 </a>
             </div>
@@ -78,21 +68,5 @@
             </div>
             @endif
         </div>
-    </div>
-</div>
-<div class="wp-inner pb-2">
-    <div class="wp-form-search show-min-600" id="search-wp-responsive">
-        <form method="GET" action="{{url('tim-kiem')}}" class="d-flex justify-content-center">
-            <div class="wp-input-search">
-                <div class="input-search">
-                    <input type="search" name="key" value="{{request()->input('key')}}" id="s" data-href="{{route('searchProductAjax')}}" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
-                </div>
-                <button type="submit" name="" id="sm-s"><i class="fa fa-search" aria-hidden="true"></i></button>
-                <div class="search-result">
-                    <ul class="suggest-search mb-0">
-                    </ul>
-                </div>
-            </div>
-        </form>
     </div>
 </div>

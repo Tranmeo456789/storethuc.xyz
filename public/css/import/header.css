@@ -70,7 +70,9 @@
     padding: 13px 0px;
     width: 12%;
 }
-
+#head-body-resposive #logo {
+    width: 100px;
+}
 #head-body #search-wp {
     padding: 22px 10px 22px 100px;
     position: relative;
@@ -176,7 +178,7 @@ position: relative;
     display: inline-block;
     border: none;
     outline: none;
-    background: #edefeaad;
+    background: #fdf8f8ad;
     color: #fff;
     width: 15%;
     line-height: 13px;
@@ -193,6 +195,13 @@ position: relative;
 }
 .show-min-600{
     display: none;
+}
+.show-below1024{
+    display: none;
+}
+#btnmenu-resp{
+    width: 30px;
+    align-self: center;
 }
 #search-wp-responsive .wp-input-search{
     width: 100%;
@@ -266,15 +275,121 @@ position: relative;
     font-family: 'Roboto Bold';
     font-size: 16px;
 }
+#menu-responsive {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 90vw;
+    z-index: 10000;
+    padding-bottom: 20px;
+    background: #F1F8FF;
+    transition: all 0.5s ease-in-out;
+    display: none;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: -9px;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+#menu-responsive .tlogo-menu {
+    background: #072D94;
+    padding: 10px;
+}
+.tlogo-menu .closem {
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+}
+#menu-responsive .body-responhoder {
+    border-bottom: 5px solid #F1F8FF;
+    background: #FFFFFF;
+    padding: 6px 0px;
+}
+.container-menures h2 {
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    color: #05AFE3;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+#menu-responsive h3 {
+    border-bottom: 1px solid #B0C1DB;
+}
+#menu-responsive a {
+    padding: 6px 6px 6px 0px;
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #1E1E1E;
+    position: relative;
+}
+#menu-responsive a.dropdown-item{
+    padding-left: 10px;
+}
+#menu-responsive h3 a {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 30px;
+    color: #05AFE3;
+    padding: 6px 6px;
+}
+#menu-responsive .icon-arrow{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    width: 12px;
+    display: block;
+}
+#menu-responsive .submenu1res {
+    background: #F1F8FF;
+    border-radius: 10px;
+    height: 0;
+    visibility: hidden;
+    padding: 0px 10px;
+    transition: all 50ms ease-in-out;
+}
+#menu-responsive .submenu1res.display-vis {
+    height: auto;
+    visibility:visible;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+}
 
+#menu-responsive .icon-arrow.arrow-rotate {
+    transform: rotate(-180deg);
+    top: 17px;
+}
 #cart-wp,
 #cart-respon-wp {
     position: relative;
     display: block;
     color: #fff;
-    padding: 20px 0px 20px 30px;
+    padding: 30px 0px 20px 30px;
 }
-
+#wp-cart-respon{
+    position: relative;
+    padding-right: 10px;
+    align-self: center;
+}
+#btn-cart{
+    width: 30px;
+}
 #cart-wp i,
 #cart-respon-wp i {
     font-size: 20px;
@@ -287,18 +402,43 @@ position: relative;
     border-radius: 50%;
 }
 
-#cart-wp #num,
-#cart-respon-wp #num {
+#cart-wp #num{
     position: absolute;
-    top: 4px;
-    right: -10px;
-    font-size: 16px;
+    top: 22px;
+    right: -18px;
+    font-size: 15px;
     font-family: 'Roboto Medium';
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f59e0b;
+    color: #1E1E1E;
+    border-radius: 100px;
+    padding: 3px 8px;
+    line-height: 100%;
+    font-weight: bold;
+}
+#wp-cart-respon #num {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 15px;
+    font-family: 'Roboto Medium';
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f59e0b;
+    color: #1E1E1E;
+    border-radius: 100px;
+    padding: 3px 8px;
+    line-height: 100%;
+    font-weight: bold;
 }
 
-#cart-respon-wp {
-    display: none;
-}
 
 #cart-wp {
     position: relative;

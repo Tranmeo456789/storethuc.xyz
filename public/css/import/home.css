@@ -422,8 +422,8 @@ figure.zoom img {
 
 .hotline-phone-ring-wrap {
     position: fixed;
-    bottom: 75px;
-    left: 0;
+    bottom: 35px;
+    right: 63px;
     z-index: 999999;
   }
   .hotline-phone-ring {
