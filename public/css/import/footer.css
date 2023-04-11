@@ -1,5 +1,6 @@
 /*FOOTER*/
-#footer-wp #foot-body{ padding: 50px 0px;}
+#footer-wp #foot-body{ padding: 50px 0px;
+    border-top: 1px solid #f1f1f1;}
 #footer-wp #foot-body .block{ float: left; width: 25%; padding-left: 30px;}
 #footer-wp #foot-body .block:first-child{ padding-left: 0;}
 #info-company .title{

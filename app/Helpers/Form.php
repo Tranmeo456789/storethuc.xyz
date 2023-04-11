@@ -91,8 +91,8 @@ class Form
                             %s
                             <div class='%s'>
                                 <div class='input-group align-self-center'>
-                                    <div class='input-group-prepend'>
-                                        <span class='input-group-text'><img src='%s'></span>
+                                    <div class='input-icon'>
+                                        <img src='%s'>
                                     </div>
                                     %s
                                 </div>

@@ -37,6 +37,15 @@ class OrderModel extends BackEndModel
         }
         return $query;
     }
+    public function searchPhone($params=null, $options=null){
+        if($options['task'] == "search-phone-order"){
+            if(isset($params['search'])){
+                $query=$this::where('buyer','LIKE', "%{$params['search']}%");
+                $result=$query->get()->toArray();
+            }         
+        }
+        return $result;
+    }
     // public function scopeOfUser($query)
     // {
     //     if (\Session::has('user')){
@@ -54,9 +63,11 @@ class OrderModel extends BackEndModel
     public function listItems($params = null, $options = null)
     {
         $result = null;
-        if($options['task'] == "user-list-items-frontend"){
-            $query = $this::select('id','code_order','total','total_product','created_at','status_order','user_id')
-                                ->where('user_id',$params['user_id']);                           
+        if($options['task'] == "list-order-flow-status"){
+            $query = $this::select('id','code_order','total','total_product','created_at','status_order','user_id'); 
+            if(isset($params['phone'])){
+                $query=$this::where('buyer','LIKE', "%{$params['phone']}%");
+            }                           
             switch ($params['status'])
             {
                 case 'chua_hoan_tat' :
@@ -107,10 +118,9 @@ class OrderModel extends BackEndModel
     {
         $result = null;
         if ($options['task'] == 'get-item-frontend') {
-            $result = self::select('id','code_order','total','created_at','status_order','user_id',
-                            'info_product','buyer','pharmacy','total_product','delivery_method','receive','note','delivery_service','code_service')
+            $result = self::select('id','code_order','total_product','total','info_product','user_id','buyer','status_order','created_at')
                             ->where('id', $params['id'])
-                            ->first();
+                            ->first()->toArray();
         }
         if ($options['task'] == 'get-item-frontend-code') {
             $result = self::select('id','code_order','total','created_at','status_order','user_id','delivery_method','receive',

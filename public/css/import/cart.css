@@ -1,3 +1,228 @@
+/* order */
+.header-tab {
+    box-shadow: inset 0px 2px 4px rgb(4 4 4 / 15%);
+    padding: 4px;
+    background-color: #edf2f8;
+    border-radius: 6px;
+    font-weight: 500;
+}
+.table-list-order {
+    box-shadow: 0 0 0 1px #d8e0e8;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.header-list-order, .content-list-order {
+    padding: 12px 20px;
+    box-shadow: inset 0px -1px 0px #d8e0e8;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.header-list-order p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #718198;
+}
+.content-list-order p {
+    font-size: 16px;
+    color: #718198;
+}
+.content-list-order p a {
+    color: rgb(18, 18, 233) !important;
+    cursor: pointer;
+}
+.wp-detail-order {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 505;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 5px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+    width: 800px;
+    padding-bottom: 20px;
+}
+.wp-detail-order .header {
+    border-bottom: 1px solid #f3f3f3;
+}
+.wp-detail-order .wp-content .top-tab-order {
+    padding: 15px;
+}
+.wp-detail-order .wp-content .top-tab-order h4 {
+    font-weight: 600;
+    font-size: 20px;
+}
+.wp-detail-order .tab-header {
+    padding: 15px;
+    background-color: #edf2f8;
+    box-shadow: inset 0px -1px 0px #d8e0e8;
+}
+.wp-detail-order .tab-header p {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+}
+.wp-status-order {
+    padding: 15px;
+}
+.wp-status-order .ls-status-order li:not(:last-child) {
+    padding-bottom: 38px;
+    position: relative;
+}
+.wp-status-order .ls-status-order li:not(:last-child) {
+    padding-bottom: 38px;
+    position: relative;
+}
+.wp-status-order .ls-status-order li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    box-shadow: inset 0px -1px 0px #e4eaf1;
+    width: calc(100% - 28px);
+    bottom: 18px;
+    right: 0;
+    height: 1px;
+}
+.wp-status-order .ls-status-order .stepper-circle {
+    width: 20px;
+    height: 20px;
+    cursor: default;
+    transition: all 0.3s ease-in-out;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 100%;
+    background: #fff;
+    border: 1px solid;
+    border-color: #b6c0ce;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+.stepper-circle .stepper-circle-icon {
+    width: 12px;
+    height: 12px;
+    background-color: blue;
+    border-radius: 100%;
+}
+.wp-status-order .stepper-label {
+    font-weight: 600;
+    color: #52637a;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    line-height: 21px;
+    font-size: 16px;
+}
+.wp-status-order .ls-status-order li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 9px;
+    z-index: 1;
+    width: 2px;
+    height: 100%;
+    background: #d8e0e8;
+}
+.wp-content .item-info {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    margin-top: -1px;
+}
+.pd-order {
+    padding: 0px 0.75rem 0px 0.75rem;
+    margin: 0px;
+}
+.bb_order {
+    border-bottom: 1px solid #e3d5d587;
+}
+.wp-content .item-info td {
+    color: #718198;
+}
+.money-order-detail ul li {
+    padding: 15px;
+    color: #718198;
+}
+.wp-detail-order .tshorder {
+    color: #1e293b;
+    font-size: 20px;
+    padding: 18px;
+    font-weight: 600;
+}
+.btn-closenk {
+    width: 60px;
+    height: 60px;
+    outline: none;
+    border: none;
+    background: #F3F3F3;
+    border-radius: 0px 20px 0px 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-closenk:hover {
+    background: #eee9e9;
+}
+.wp-search-phone-order .d1 {
+    padding: 60px 70px;
+    border-radius: 12px;
+    box-shadow: 0 0 16px rgba(0,0,0,.11);
+    background-color: #fff;
+    text-align: center;
+    align-items: center;
+    font-family: ROBOTO LIGHT;
+    width: 600px;
+    background: #f7f2f2;
+}
+
+.wp-search-phone-order form .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    z-index: 5;
+    transform: translate(0,-50%);
+    height: 21px;
+}
+.wp-search-phone-order>div>form input {
+    border: 1px solid #e0e0e0;
+    border-radius: 100px!important;
+    height: 48px;
+    padding: 0 50px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.wp-search-phone-order>.d1>span {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    display: block;
+    margin-bottom: 25px;
+    color: blue;
+}
+.wp-search-phone-order form .btn {
+    cursor: pointer;
+    margin: auto;
+    font-family: ROBOTO LIGHT;
+    background-color: orangered;
+    box-shadow: unset;
+    border-radius: 100px;
+    width: 302px;
+    height: 50px;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 17px;
+    max-width: 100%;
+}
+
 /*RESET BOOTSTRAP*/
 
 .table {

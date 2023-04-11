@@ -1,4 +1,30 @@
+
 $(document).ready(function () {
+    //jquery validate
+    function isPhoneNumberVN(value) {
+        var flag = false;
+        var phone = value.trim(); // ID của trường Số điện thoại
+        phone = phone.replace('(+84)', '0');
+        phone = phone.replace('+84', '0');
+        phone = phone.replace('0084', '0');
+        phone = phone.replace(/ /g, '');
+        if (phone != '') {
+            var firstNumber = phone.substring(0, 2);
+            if ((firstNumber == '09' || firstNumber == '08' || firstNumber == '07' || firstNumber == '05' || firstNumber == '03') && phone.length == 10) {
+                if (phone.match(/^\d{10}/)) {
+                    flag = true;
+                }
+            } else if (firstNumber == '02' && phone.length == 11) {
+                if (phone.match(/^\d{11}/)) {
+                    flag = true;
+                }
+            }
+        }
+        return flag;
+    }
+    $.validator.methods.checkPhone = function (value, element, param) {
+        return isPhoneNumberVN(value);
+    };
     //  SLIDER
     var slider = $('#slider-wp .section-detail');
     slider.owlCarousel({
@@ -132,6 +158,38 @@ $(document).ready(function () {
             //            $(this).parent('li').find('.sub-menu').slideDown();
         }
     });
+    $(".form-search-phone-order").validate({
+        ignore: ".ignore",
+        rules: {
+            phone: {
+                required: true,
+                checkPhone: true,
+            }
+        },
+        messages: {
+            phone: {
+                required: "Nhập số điện thoại",
+                checkPhone: "Số điện thoại không đúng định dạng"
+            }
+        },
+        errorPlacement: function (error, element) {
+            // Add the `invalid-feedback` class to the error element
+            error.addClass("invalid-feedback");
+            element.closest(".input-group").addClass('has-error');
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.next("label"));
+            } else {
+                error.insertAfter(element.closest(".input-group"));
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+            $(element).closest(".input-group").removeClass('has-error');
+        }
+    });
 });
 function tab() {
     var tab_menu = $('#tab-menu li');
@@ -166,4 +224,90 @@ fixscreen_respon.addEventListener('click', (e) => {
 $(document).on('click', ".icon-arrow", function () {
     $(this).parents('.parentsmenu').children('.submenu1res').toggleClass('display-vis');
     $(this).toggleClass('arrow-rotate');
+});
+
+
+$(document).on('submit', "#main-form", function (event) {
+    event.preventDefault();
+    url = $(this).attr("action");
+    method = $(this).attr('method');
+    data = new FormData($(this)[0]);
+    $.ajax({
+        type: method,
+        url: url,
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if (response.success == false) {
+                if (response.error != null) {
+                    for (control in response.errors) {
+                        eleError = "<label id='" + control + "-error' class='error invalid-feedback' for='" + control + "' style='display:inline-block'>" + response.errors[control] + "</label>";
+                        $('[name=' + control + ']').closest(".form-group").find("label[for='" + control + "']").remove();
+                        $('[name=' + control + ']').closest(".input-group").addClass('has-error').after(eleError);
+                        $('[name=' + control + ']').addClass("is-invalid").removeClass('is-valid');
+                    }
+                } else {
+                    alert(response.message);
+                }
+            } else {
+                alert(response.message);
+                window.location.replace(response.redirect_url);
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            alert("Error: " + errorThrown);
+        }
+    });
+});
+$(document).on('click', ".select-status-order", function (event) {
+    var status = $(this).attr("data-status");
+    var url = $(this).attr("data-href");
+    var _token = $('input[name="_token"]').val();
+    var phone = $(this).attr("data-phone");
+    $.ajax({
+        url: url,
+        cache: false,
+        method: "GET",
+        dataType: 'html',
+        data: {
+            status: status,
+            phone: phone,
+            _token: _token
+        },
+        success: function(data) {
+            //console.log(data);
+            $('.table-order-frontend').html(data);
+        },
+    }); 
+});
+$(document).on('click', ".view-detail-order", function (event) {
+    $('.wp-detail-order').css("display", "block");
+    $('.black-screen').css("display", "block");
+    //$('#container').addClass("fixed-hbd");
+    var id = $(this).attr("data-id");
+    var url = $(this).attr("data-href");
+    var _token = $('input[name="_token"]').val();
+    //alert(url);
+    $.ajax({
+        url: url,
+        cache: false,
+        method: "GET",
+        dataType: 'html',
+        data: {
+            id: id,
+            _token: _token,
+        },
+        success: function(data) {
+            //console.log(data['test']['fullname']);
+            $('.wp-detail-order').html(data);
+        },
+    }); 
+});
+$(document).on('click', ".btn-closenk", function (event) {
+    $('.wp-detail-order').css("display", "none");
+    $('.black-screen').css("display", "none");
+    $('.titlek').removeClass("fixed-hbd");
+   
 });

@@ -227,7 +227,7 @@ position: relative;
 }
 #advisory-wp {
     position: relative;
-    padding: 15px 30px 15px 50px;
+    padding: 15px 20px 15px 50px;
 }
 #support-wp{
     margin-bottom: 10px;
@@ -235,7 +235,7 @@ position: relative;
 
 #advisory-wp:before {
     position: absolute;
-    content: '\f2a0';
+    content: '\f15c';
     font-family: 'FontAwesome';
     top: 50%;
     left: 0px;
@@ -349,12 +349,13 @@ position: relative;
 }
 #menu-responsive .icon-arrow{
     position: absolute;
-    top: 12px;
+    top: 5px;
     right: 12px;
     cursor: pointer;
     transition: all 100ms ease-in-out;
-    width: 12px;
+    width: 30px;
     display: block;
+    padding: 10px;
 }
 #menu-responsive .submenu1res {
     background: #F1F8FF;
@@ -380,7 +381,8 @@ position: relative;
     position: relative;
     display: block;
     color: #fff;
-    padding: 30px 0px 20px 30px;
+    padding: 30px 0px 20px 20px;
+    cursor: pointer;
 }
 #wp-cart-respon{
     position: relative;
@@ -439,11 +441,6 @@ position: relative;
     font-weight: bold;
 }
 
-
-#cart-wp {
-    position: relative;
-    cursor: pointer;
-}
 .wp-cart-respon{
     position: relative;
 }

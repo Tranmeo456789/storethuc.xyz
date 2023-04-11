@@ -24,8 +24,33 @@ class OrderController extends Controller
 {
     function __construct()
     {
+        
     }
-    
+    function viewSearchPhoneOrder(){
+       return view('client.order.search_phone_order');
+    }
+    function searchPhoneOrder(Request $request){
+        if ($request->method() == 'POST') {
+            $params = $request->all();
+            $phone = trim((string)$params['phone']);
+            $listOrder=(new OrderModel)->searchPhone(['search'=>$phone],['task'=>'search-phone-order']);
+            return(view('client.order.list_order',['listOrder'=>$listOrder,'phone'=>$phone]));
+        }  
+    }
+    public function ajaxFliter(Request $request){
+        $data = $request->all();
+        $params['phone']=$request->phone;
+        $params['status']=$request->status;
+        $listOrder=(new OrderModel)->listItems($params, ['task' => 'list-order-flow-status']);
+        return view("client.order.partial.product_order_frontend",compact('listOrder'));
+    }
+    public function detail(Request $request){
+        $data = $request->all();
+        $params['id']=intval($request->id);
+        $order_detail=(new OrderModel)->getItem(['id'=>$params['id']], ['task' => 'get-item-frontend']);
+        
+        return view("client.order.child_list_order.detail_order",compact('order_detail'));
+    }
     function buynow($id){
         
         $product1 = ProductModel::find($id);

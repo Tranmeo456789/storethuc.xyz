@@ -1,15 +1,13 @@
-<script src="https://connect.facebook.net/vi_VN/sdk.js?hash=ce25f2a893e29e713de6a0e16d3a901f" async="" crossorigin="anonymous"></script>
-<script id="facebook-jssdk" src="//connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v2.8&amp;appId=849340975164592"></script>
-<script src="{{asset('js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('js/jquery-3.1.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/elevatezoom-master/jquery.elevatezoom.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/bootstrap/popper.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/bootstrap/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/carousel/owl.carousel.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
-
-{{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  --}}
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="http://localhost/shop.tdoctor.vn/shop/frontend/js/additional-methods.min.js" type="text/javascript"></script>
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
 <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
 
@@ -137,7 +135,8 @@
 
     });
 </script>
-
+<script src="https://connect.facebook.net/vi_VN/sdk.js?hash=ce25f2a893e29e713de6a0e16d3a901f" async="" crossorigin="anonymous"></script>
+<script id="facebook-jssdk" src="//connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v2.8&amp;appId=849340975164592"></script>
 <script>
   var chatbox = document.getElementById('fb-customer-chat');
   chatbox.setAttribute("page_id", "111239241882176");

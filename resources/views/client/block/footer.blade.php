@@ -49,10 +49,10 @@
         </div>
     </div>
 </div>
-<div id="foot-bot">
+<!-- <div id="foot-bot">
     <div class="wp-inner">
         <p id="copyright">
             Copyright 2022 © CHCT; all rights reserved. Powered by CHCT
         </p>
     </div>
-</div>
+</div> -->

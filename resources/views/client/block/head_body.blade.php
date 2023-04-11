@@ -21,9 +21,13 @@
         </div>
     </div>
     <div id="action-wp" class="fl-right">
-        <a id="advisory-wp" class="fl-left" href="tel:{{$phoneAdmin}}">
+        <!-- <a id="advisory-wp" class="fl-left" href="tel:{{$phoneAdmin}}">
             <span class="title">Tư vấn</span>
             <span class="phone">{{$phoneAdmin}}</span>
+        </a> -->
+        <a id="advisory-wp" class="fl-left" href="{{route('order.view_search_phone_order')}}">
+            <span class="phone">Tra cứu</span>
+            <span class="phone">đơn hàng</span>
         </a>
         <div id="cart-wp" class="fl-right">
             <div id="btn-cart">

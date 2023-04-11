@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     @include("client.block.head")
@@ -66,7 +66,7 @@
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex justify-content-center">
                                     <div class="d-flex align-items-center"><span class="circle-ripple"></span></div>
-                                    <p>Kết nối mua sắm online</p>                                  
+                                    <p lang="en">@lang('Kết nối mua sắm online')</p>                                  
                                 </div>
                             </div>
                         </div>
@@ -111,6 +111,7 @@
             <!-- Your Plugin chat code -->
             <div id="fb-customer-chat" class="fb-customerchat"></div>
             <div id="fixscreen-respon"></div>
+            <div class="black-screen"></div>
         </div>
     </div>
         @include("client.block.script")

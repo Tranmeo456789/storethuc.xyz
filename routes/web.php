@@ -43,6 +43,13 @@ Route::get('chi-tiet-san-pham/{slug}', 'ProductController@detail')->name('fronte
 Route::get('tim-kiem', 'ProductController@list_search');
 Route::get('thanh-toan', 'OrderController@checkout');
 Route::get('mua-ngay-san-pham/{id}', 'OrderController@buynow')->name('order.buynow');
+Route::get('tra-cuu-thong-tin-don-hang', 'OrderController@viewSearchPhoneOrder')->name('order.view_search_phone_order');
+Route::post('kiem-tra-thong-tin-so-dien-thoai', 'OrderController@searchPhoneOrder')->name('order.search.phone_order');
+
+Route::get('loc-don-hang-ajax/theo-trang-thai', 'OrderController@ajaxFliter')->name('order.ajaxFliter');
+
+Route::get('xem-don-hang-chi-tiet-ajax/theo-so-dien-thoai', 'OrderController@detail')->name('order.detail');
+
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', 'DashboardController@show');
     Route::get('admin', 'DashboardController@show')->name('backend.dashboard');
