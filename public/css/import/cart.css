@@ -147,7 +147,8 @@
     color: #718198;
 }
 .money-order-detail ul li {
-    padding: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
     color: #718198;
 }
 .wp-detail-order .tshorder {

@@ -8,7 +8,7 @@
     $elements = [
         [
             'label'   => '',
-            'element' => Form::text('phone', null,['class'=>'form-control','placeholder'=>'Nhập số điện thoại mua hàng','autocomplete'=>'off','id'=>'phone']),
+            'element' => Form::tel('phone', null,['class'=>'form-control','placeholder'=>'Nhập số điện thoại mua hàng','autocomplete'=>'off','id'=>'phone']),
             'type' => 'input-group-addon-image-before',
             'image' => asset('images/phone_mini.png'),
             'widthElement' => 'col-12 p-0',

@@ -13,7 +13,7 @@ $pages=PageModel::all();
     <div class="closem" id="closem"><img src="{{asset('images/closem.png')}}"></div>
 </div>
 <div class="body-responhoder">
-    <a href="">
+    <a href="{{route('order.view_search_phone_order')}}">
         <div class="container-menures d-flex">
             <div class="width-20 img-center"><img src="{{asset('images/news1.png')}}"></div>
             <h2>Tra cứu lịch sử đơn hàng</h2>

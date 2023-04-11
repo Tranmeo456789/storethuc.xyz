@@ -280,6 +280,11 @@
     #customer-info-wp,#order-review-wp{
         width: 100%;
     }
+    .wp-detail-order {
+        width: 100%;
+        border-radius: 0px;
+    }
+
 }
 @media screen and (max-width: 768px) {
     .head-ls-product-cart{
@@ -316,6 +321,42 @@
     .checkout-page .card .card-body{
        padding: 10px;
     }
+    .header-list-order p {
+        font-size: 12px;
+    }
+    .view-detail-order a {
+        font-size: 12px;
+    }
+    .content-list-order p {
+        font-size: 12px;
+    }
+    .wp-detail-order .btn-closenk {
+        background-color: white;
+    }
+    .wp-detail-order .wp-content .top-tab-order h4 {
+        font-size: 16px;
+    }
+    .wp-status-order .stepper-label {
+        font-size: 14px;
+    }
+    .wp-detail-order .tab-header p {
+        font-size: 15px;
+    }
+    .namep-order {
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 2px;
+    }
+    .font-md-14 {
+        font-size: 14px!important;
+    }
+    .wp-content .item-info {
+        font-size: 14px;
+    }
+    .money-order-detail ul li {
+        padding-top: 8px;
+        padding-right: 10px;
+    }
 }
 @media screen and (max-width: 600px) {
     /*HEADER*/
@@ -326,6 +367,13 @@
     }
     #search-wp {
         display: none;
+    }
+    .set-screen-600 {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .set-screen-600 .nav-pills {
+        width: 600px;
     }
     .show-min-600{
         display: block;
@@ -359,7 +407,10 @@
         width: 100%;
         overflow-x:scroll;
     }
-
+    .header-tab {
+        font-size: 12px;
+    }
+    
     /* .set-width-screen .list-item{
         min-width: 600px;
     } */
