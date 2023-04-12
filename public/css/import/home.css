@@ -219,9 +219,9 @@
 #feature-product-wp .list-item li,
 #same-category-wp .list-item li {
     background: #fff;
-    padding: 10px 10px 30px 10px;
+    padding: 4px 4px 6px 4px;
     margin: 0% 2%;
-    height: 292px;
+    border: 1px solid transparent;
 }
 
 #feature-product-wp .list-item li .product-name,
@@ -250,12 +250,61 @@
 #same-category-wp .list-item li .price .new {
     display: inline-block;
     font-family: 'Roboto Medium';
-    color: #f12a43;
-    font-size: 15px;
+    color: #ee4d2d;
+    font-size: 18px;
     font-weight: normal;
-    margin-right: 5px;
+    position: relative;
+    margin-right: 6px;
 }
-
+.unit-in-content{
+    color: #ee4d2d;
+    margin-left: -3px;
+}
+.C\+nQBU {
+    top: -3px;
+    right: -1px;
+    position: absolute;
+    z-index: 3;
+}
+.heigth-img-content{
+    height: 150px;
+}
+.m2nQX2 {
+    background-color: rgba(255,212,36,.9);
+    width: 36px;
+    height: 32px;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    padding: 4px 2px 3px;
+    font-weight: 700;
+}
+.WsnY7I {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    font-weight: 400;
+    line-height: .8125rem;
+    color: #ee4d2d;
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+.bsTk4f {
+    color: #fff;
+}
+.m2nQX2:after {
+    content: "";
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: -4px;
+    position: absolute;
+    border-color: transparent rgba(255,212,36,.9);
+    border-style: solid;
+    border-width: 0 18px 4px;
+}
 #feature-product-wp .list-item li .price .old,
 #list-product-wp .list-item li .price .old,
 #same-category-wp .list-item li .price .old {
@@ -279,9 +328,10 @@
 #feature-product-wp .list-item li .action .add-cart,
 #list-product-wp .list-item li .action .add-cart,
 #same-category-wp .list-item li .action .add-cart {
-    border: 1px solid #ddd1d1;
-    color: rgb(59, 57, 57);
+    border: none;
+    color:rgb(44 164 191);
     transition: all 0.2s ease-in-out;
+    width: 100%;
 }
 
 #feature-product-wp .list-item li .action .buy-now,
@@ -302,8 +352,8 @@
 #feature-product-wp .list-item li .action .add-cart:hover,
 #list-product-wp .list-item li .action .add-cart:hover,
 #same-category-wp .list-item li .action .add-cart:hover {
-    background: rgb(153, 143, 143);
-    color: #fff;
+    background: rgb(238, 234, 234);
+    color:rgb(44 164 191);
 }
 
 .border-bottom-title {
@@ -318,12 +368,12 @@
     margin-right: 1%;
     margin-bottom: 1%;
     background: #fff;
-    padding: 10px 4px 15px 4px;
     border: 1px solid transparent;
-    height: 292px;
     box-shadow: rgb(0 0 0 / 28%) 0px 6px 12px 0px;
 }
-
+#list-product-wp .section-detail .list-item li>div {
+    padding: 5px 4px 6px 4px;
+}
 #list-product-wp .section-detail .list-item li>a>img {
     transition: all 0.4s ease-in-out;
 }
@@ -339,10 +389,6 @@
 
 /* #list-product-wp .section-detail .list-item li>a>img {} */
 
-#feature-product-wp .section-detail .list-item li {
-    border: 1px solid transparent;
-    height: 292px;
-}
 
 #feature-product-wp .section-detail .list-item li:hover {
     border: 1px solid #ddd;
@@ -507,7 +553,13 @@ figure.zoom img {
       width: 20px;
       height: 20px;
   }
-  
+  .dmini{
+    font-size: 12px;
+    text-decoration: underline;
+    position: absolute;
+    top: -2px;
+    right: -9px;
+  }
   @-webkit-keyframes phonering-alo-circle-anim {
     0% {
       -webkit-transform: rotate(0) scale(0.5) skew(1deg);

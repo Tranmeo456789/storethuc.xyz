@@ -434,6 +434,7 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
   $(document).on('click', ".add-cart", function (event){
+    event.preventDefault();
     var id = $(this).attr("data-id");
     var _token = $('input[name="_token"]').val();
     var url = $(this).attr("data-url");
