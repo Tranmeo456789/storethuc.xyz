@@ -88,7 +88,7 @@ Route::get('tin-tuc/{slug}.html', 'PostController@detail')->name('post.detail');
 
 Route::get('show/cart', 'CartController@show')->name('cart.show');
 Route::post('add/cart', 'CartController@add')->name('cart.add');
-Route::get('saveAjax/cart', 'CartController@saveAjax');
+Route::get('saveAjax/cart', 'CartController@saveAjax')->name('cart.saveAjax');
 Route::get('remove/cart/{id}', 'CartController@remove')->name('cart.remove');
 Route::get('cart/destroy','CartController@destroy')->name('cart.destroy');
 Route::post('cart/udate','CartController@update')->name('cart.update');

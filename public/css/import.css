@@ -2,7 +2,6 @@
 
 @import '../../public/css/import/fonts.css';
 @import '../../public/css/import/global.css';
-@import '../../public/css/import/header.css';
 @import '../../public/css/import/footer.css';
 @import '../../public/css/import/home.css';
 @import '../../public/css/import/category_product.css';
@@ -14,3 +13,4 @@
 @import '../../public/css/import/page404.css';
 @import '../../public/css/import/post.css';
 @import '../../public/css/import/product.css';
+@import '../../public/css/import/header.css';

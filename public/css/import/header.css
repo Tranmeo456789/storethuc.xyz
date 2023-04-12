@@ -558,6 +558,38 @@ position: relative;
 #cart-wp #dropdown .action-cart a.checkout:hover {
     background: #af1427;
 }
+/* bien setting */
+#head-top {
+    background: var(--bg-header-color);
+}
+#head-body {
+    background: var(--bg-header-color);
+}
+#head-body-resposive{
+    background: var(--bg-header-color);
+}
+#foot-bot {
+    background: var(--bg-header-color);
+}
+#category-product-wp .section-title,
+#selling-wp .section-title,
+#filter-product-wp .section-title {
+    background: var(--bg-header-color);
+    color: #fff;
+}
+#feature-product-wp .section-title, #list-product-wp .section-title {
+    color: rgb(255, 255, 255);
+    background-color: var(--bg-header-color);
+}
+.border-bottom-title {
+    display: block;
+    width: 80%;
+    border-top: 2px solid var(--bg-header-color);
+}
+#main-content-wp {
+    background: var(--bg-body-color);
+}
+/* end bien setting */
 @keyframes ripple {
     0% {
         box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3), 0 0 0 0.1em rgba(239, 68, 68, 0.3), 0 0 0 0.5em rgba(239, 68, 68, 0.3), 0 0 0 1em rgba(239, 68, 68, 0.3);

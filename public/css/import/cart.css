@@ -290,13 +290,13 @@
     text-align: center;
     border: none;
     margin: 0px -4px;
-    background-color: #efe8e8;
+    background-color: #f9f9f9;
 }
 .item-product-cart .num-order{
     width: 32px;
     text-align: center;
     border: none;
-    background-color: #efe8e8;
+    background-color: #f9f9f9;
 }
 .wp-num-cart{
     display: flex;
@@ -401,7 +401,7 @@
 }
 .minus1,
 .plus1 {
-    border: 1px solid #d3cccc;
+    border: 1px solid #f1eded;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -419,17 +419,17 @@
 }
 .minus1:hover,
 .plus1:hover {
-    background-color: rgb(241, 235, 235);
+    background-color: rgb(252, 252, 252);
 }
 .head-ls-product-cart{
     text-transform: uppercase;
-    padding: 12px 0px;
+    padding: 12px 15px;
     background: rgb(236, 232, 232);
     border-top: 1px solid #d7cfcf;
     font-size: 14px;
 }
 .item-product-cart{
-    padding: 10px 2px;
+    padding: 10px 15px;
     border-bottom: 1px solid #d7cfcf;
     border-top: 1px solid #d7cfcf;
     margin-top: -1px;

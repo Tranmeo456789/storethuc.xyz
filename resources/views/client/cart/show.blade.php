@@ -27,8 +27,7 @@
                 <!-- <div class="section-detail table-responsive">
                 <table class="table">
                     <thead>
-                        <tr>
-                            
+                        <tr>                           
                             <td>Ảnh sản phẩm</td>
                             <td>Tên sản phẩm</td>
                             
@@ -42,8 +41,7 @@
                                 $temp = 0;
                         @endphp
                         @foreach (Cart::content() as $row)
-                        <tr>                          
-                            
+                        <tr>                                                     
                             <td>
                                 <a href="" title="" class="thumb">
                                     <img src="{{asset($row->options->thumbnail)}}" alt="">
@@ -139,7 +137,7 @@
                                                 <div class="col-12 col-md-5">
                                                     <div class="wp-num-cart">
                                                         <span title="" class="minus1"><i class="fa fa-minus"></i></span>
-                                                        <input type="text" data-id="{{$row->id}}" data-rowId="{{$row->rowId}}" name="qty[{{$row->rowId}}]" value="{{$row->qty}}" class="num-order" readonly>
+                                                        <input type="text" data-id="{{$row->id}}" data-rowId="{{$row->rowId}}" data-url="{{route('updateCartAjax')}}" name="qty[{{$row->rowId}}]" value="{{$row->qty}}" class="num-order" readonly>
                                                         <span title="" class="plus1"><i class="fa fa-plus"></i></span>
                                                     </div>
                                                 </div>

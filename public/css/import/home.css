@@ -227,14 +227,17 @@
 #feature-product-wp .list-item li .product-name,
 #list-product-wp .list-item li .product-name,
 #same-category-wp .list-item li .product-name {
-    min-height: 40px;
     text-align: center;
     color: #222;
     font-family: 'Roboto Medium';
     margin: 15px 0px 0px 0px;
     line-height: normal;
 }
-
+#feature-product-wp .list-item li .product-name>div,
+#list-product-wp .list-item li .product-name>div,
+#same-category-wp .list-item li .product-name>div {
+    min-height: 50px;
+}
 #feature-product-wp .list-item li .price,
 #list-product-wp .list-item li .price,
 #same-category-wp .list-item li .price {

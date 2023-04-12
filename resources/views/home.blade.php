@@ -8,13 +8,13 @@
             <div class="section" id="slider-wp">
             @include("client.templates.slider")
             </div>
-            <div class="section" id="support-wp">
+            <div class="section mb-3" id="support-wp">
                 @include("client.templates.support")
             </div>
-            <div class="section" id="feature-product-wp">
+            <div class="section mb-3" id="feature-product-wp">
             @include("client.templates.list_product_featured")
             </div>
-            <div class="section" id="list-product-wp">
+            <div class="section mb-3" id="list-product-wp">
             @include("client.templates.list_product_of_all_cat")
             </div>          
         </div>

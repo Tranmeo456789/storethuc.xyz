@@ -9,26 +9,18 @@
         <div class="main-content fl-right">
             <div class="section" id="detail-product-wp">
                 <div class="section-detail clearfix">
-
                     <!-- chỗ để list hình ảnh  -->
                     <div class="thumb-wp fl-left">
-                        
                         <figure id="main-thumb" class="zoom" style="background-image:url({{asset($productCurrent['thumbnail'])}})" onmousemove="zoom(event)" ontouchmove="zoom(event)">
                             <img src="{{asset($productCurrent['thumbnail'])}}">
-                        </figure>
-                    
-                        <div id="list-thumb">
-                           
-                            <div>
-                               
+                        </figure>                   
+                        <div id="list-thumb">                           
+                            <div>                              
                                 <div class="image-click" href="" data-image="" data-zoom-image="">
                                     <img style="padding: 2px" src="{{asset($productCurrent['thumbnail'])}}" />
-                                </div>
-                               
-                                <div class="text-center small" style="min-height: 100px"></div>
-                                
-                            </div>
-                            
+                                </div>                              
+                                <div class="text-center small" style="min-height: 100px"></div>                               
+                            </div>                           
                         </div>
                     </div>
                     <!-- chỗ để list hình ảnh  -->
@@ -42,11 +34,11 @@
                             <span class="status">{{$productCurrent['status']}}</span>
                         </div>
                         <span class="text-dark mr-5" style="font-size:20px;">Giá:</span><span class="price">{{number_format($productCurrent['price'], 0, "" ,"." )}}đ / {{$productCurrent->unitProduct->name}}</span>
-                        <div id="num-order-wp">
+                        <div id="num-order-wp" class="mt-3">
                             <form action="{{route('cart.add')}}" method="POST" id="detail-add-product">
                                 @csrf
                                 <div class="d-flex">
-                                    <div class="d-inline-block mr-3"><span style="font-size:18px;padding-top: 5px">Số lượng:</span></div>
+                                    <div class="d-inline-block mr-3 align-self-center"><span style="font-size:18px;padding-top: 5px">Số lượng:</span></div>
                                     <a title="" id="minus"><i class="fa fa-minus"></i></a>
                                     <input type="text" name="num_order" value="1" min="1" max="10" id="num-order" readonly>
                                     <a title="" id="plus"><i class="fa fa-plus"></i></a>
