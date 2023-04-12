@@ -530,11 +530,23 @@ $(document).on('click', ".plus1", function (event){
     }
 });
 $(document).on('change', ".num-order", function (event){
-    var qty = $(this).val();
+    var qty = Number($(this).val());
+    var qtyFrist = $(this).attr("data-qtyFrist");
+    if(qty<1){
+        qty=1;
+    }else if(qty>10){
+        qty=10;
+    }else if(qty>=1 && qty<=10){
+        qty=qty;
+    }else{
+        qty=qtyFrist;
+    }
+    $(this).val(qty);
     var id = $(this).attr("data-id");
     var url=$(this).attr("data-url");
     var rowId = $(this).attr("data-rowId");
     var _token = $('input[name="_token"]').val();
+        
     $.ajax({
         url: url,
         method: "POST",
@@ -549,9 +561,10 @@ $(document).on('change', ".num-order", function (event){
             $(".sub-total" + id).text(data.sub_total);
             $("#num").text(data.num_order);
             $("#total-cart").text(data.total_cart);
-            $('#dropdown').html(data.list_cart);
+             $('#dropdown').html(data.list_cart);
         },
     });
+    
 });
 
 
