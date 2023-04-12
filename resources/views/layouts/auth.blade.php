@@ -22,8 +22,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/import/global.css') }}" rel="stylesheet">
 </head>
-<body style="background: #E0F7FA">
-    <div id="app" >
+<body>
+    <div id="app" class="container-login100" style="background-image: url(public/images/bg_login.jpg)">
         <main class="py-4" >
             @yield('content')
         </main>
