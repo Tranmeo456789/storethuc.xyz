@@ -42,8 +42,8 @@
         cursor: pointer;
     }
     #site {
-        position: relative;
-        overflow: hidden;
+        /* position: relative;
+        overflow: hidden; */
     }
     #container {
         position: relative;
@@ -54,7 +54,7 @@
         -o-transition: all .5s ease;
     }
     #menu-respon {
-        display: block;
+        /* display: block; */
         position: absolute;
         top: 0;
         right: -250px;
@@ -287,6 +287,9 @@
 
 }
 @media screen and (max-width: 768px) {
+    #btn-zalo-me,#btn-top{
+        display: none!important;
+    }
     .head-ls-product-cart{
         display: none;
     }

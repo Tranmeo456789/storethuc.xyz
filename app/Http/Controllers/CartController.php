@@ -50,14 +50,17 @@ class CartController extends Controller
         $id = $data['id'];
         $product = ProductModel::find($id);
         $qty_exist = 0;
-        foreach (Cart::content() as $row4) {
-            if ((int)$id == (int)$row4->id) {
-                $qty_exist = (int)$row4->qty;
-                $rowId_exist = $row4->rowId;
+        if(Cart::count() > 0){
+            foreach (Cart::content() as $row4) {
+                if ((int)$id == (int)$row4->id) {
+                    $qty_exist = (int)$row4->qty;
+                    $rowId_exist = $row4->rowId;
+                }
             }
-        }
+        }        
         if (isset($rowId_exist)) {
             Cart::content()[$rowId_exist]->qty = $qty_exist;
+            Cart::update($rowId_exist, ['qty' => $qty_exist+1]);
         } else {
             Cart::add([
                 'id' => $product->id,
@@ -67,6 +70,8 @@ class CartController extends Controller
                 'options' => ['slug' => $product->slug, 'thumbnail' => $product->thumbnail, 'unit' => $product->unitProduct->name],
             ]);
         }
+        $num_order = Cart::count();
+        return view('client.partial.icon_cart');
     }
     function remove($rowId)
     {

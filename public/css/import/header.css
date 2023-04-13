@@ -60,6 +60,9 @@
 
 #head-body {
     background: #147a4d;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 #head-body #logo {
@@ -567,6 +570,9 @@ position: relative;
 }
 #head-body-resposive{
     background: var(--bg-header-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 #foot-bot {
     background: var(--bg-header-color);

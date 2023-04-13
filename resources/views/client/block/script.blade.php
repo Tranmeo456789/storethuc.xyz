@@ -1,4 +1,6 @@
 <script src="{{asset('js/jquery-3.1.1.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/jquery-ui.min.js')}}" type="text/javascript"></script>
+
 <script src="{{asset('js/elevatezoom-master/jquery.elevatezoom.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/bootstrap/popper.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/bootstrap/bootstrap.min.js')}}" type="text/javascript"></script>

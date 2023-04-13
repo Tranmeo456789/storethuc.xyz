@@ -82,7 +82,7 @@ padding: 8px 0px;
 }
 #btn-zalo-me{
     position: fixed;
-    bottom: 65px;
+    bottom: 10px;
     left: 10px;
     cursor: pointer;
     transition: all .3s ease;

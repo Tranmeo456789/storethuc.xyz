@@ -1,6 +1,6 @@
 <li>
     <div class="position-relative" style="height:100%">
-        <a href="{{route('frontend.product.detail',$val->slug)}}">
+        <a href="{{route('frontend.product.detail',$val->slug)}}" class="wp-effect-cart">
             <div class="heigth-img-content">
                 <div class="thumb img-center-100">
                     <img src="{{asset($val['thumbnail'])}}">
@@ -20,7 +20,7 @@
                 <span class="unit-in-content">{{$val->unitProduct->name}}</span>
             </div>
             <div class="action d-flex justify-content-center">
-                <button title="Thêm giỏ hàng" data-id="{{$val->id}}" data-url="{{route('cart.saveAjax')}}" data-urlShowCart="{{route('cart.show')}}" class="add-cart">Thêm giỏ hàng</button>
+            <button title="Thêm giỏ hàng" data-id="{{$val->id}}" data-url="{{route('cart.saveAjax')}}" data-urlShowCart="{{route('cart.show')}}" class="add-cart">Thêm giỏ hàng</button>
                 <!-- <a href="{{route('order.buynow',$val['id'])}}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a> -->
             </div>
             <div class="C+nQBU uOQMgX _43c7xw">

@@ -489,14 +489,14 @@ figure.zoom img {
     display: block;
   }
   .hotline-phone-ring-circle {
-      width: 85px;
-    height: 85px;
-    top: 10px;
-    left: -10px;
+    width: 60px;
+    height: 60px;
+    top: 23px;
+    left: 2px;
     position: absolute;
     background-color: transparent;
     border-radius: 100%;
-    border: 2px solid #d3ad23;
+    border: 2px solid #e60808;
     -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
     animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
     transition: all .5s;
@@ -511,7 +511,7 @@ figure.zoom img {
     top: 25px;
     left: 4px;
     position: absolute;
-    background-color: #d3ad23a6;
+    background-color: rgba(230, 8, 8, 0.7);
     border-radius: 100%;
     border: 2px solid transparent;
     -webkit-animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
@@ -522,7 +522,7 @@ figure.zoom img {
     transform-origin: 50% 50%;
   }
   .hotline-phone-ring-img-circle {
-      background-color: #d3ad23;
+      background-color: #e60808;
       width: 32px;
     height: 32px;
     top: 37px;

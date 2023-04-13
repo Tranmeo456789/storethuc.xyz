@@ -30,12 +30,8 @@
             <span class="phone">đơn hàng</span>
         </a>
         <div id="cart-wp" class="fl-right">
-            <div id="btn-cart">
-                <a href="{{url('show/cart')}}" class="text-light"><img src="{{asset('images/cart.png')}}" alt="">
-                    @if (Cart::count() >0)
-                    <span id="num">{{Cart::count()}}</span>
-                    @endif
-                </a>
+            <div class="wp-icon-cart">
+                @include("client.partial.icon_cart")
             </div>
             @if (Cart::count() >0)
             <div id="dropdown">

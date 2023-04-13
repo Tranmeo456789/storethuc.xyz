@@ -190,6 +190,65 @@ $(document).ready(function () {
             $(element).closest(".input-group").removeClass('has-error');
         }
     });
+    $('.add-cart').on('click', function (event) {
+        event.preventDefault();
+        var cart = $('.wp-icon-cart');
+        var imgtodrag = $(this).parents('.wp-effect-cart').find("img").eq(0);
+        var id = $(this).attr("data-id");
+        var _token = $('input[name="_token"]').val();
+        var url = $(this).attr("data-url");
+            
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                    top: imgtodrag.offset().top,
+                    left: imgtodrag.offset().left
+                })
+                .css({
+                    'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '150px',
+                    'width': '150px',
+                    'z-index': '100'
+                })
+                .appendTo($('body'))
+                .animate({
+                    'top': cart.offset().top + 10,
+                    'left': cart.offset().left + 10,
+                    'width': 75,
+                    'height': 75
+                }, 1000, 'easeInOutExpo');
+
+            setTimeout(function () {
+                cart.effect("shake", {
+                    times: 2
+                }, 200);
+            }, 1500);
+
+            imgclone.animate({
+                'width': 0,
+                'height': 0
+            }, function () {
+                $(this).detach()
+            });
+        }
+        setTimeout(addCartAjax, 1000);
+        function addCartAjax(){
+            $.ajax({
+                url: url,
+                method: "GET",
+                dataType: 'html',
+                data: {
+                    id: id,
+                    _token: _token
+                },
+                success: function(data) {
+                    $(".wp-icon-cart").html(data);
+                },
+            });
+        }
+        
+    });
 });
 function tab() {
     var tab_menu = $('#tab-menu li');
@@ -433,7 +492,7 @@ window.fbAsyncInit = function() {
     js.src = 'https://storethuc.xyz/public/js/chat-facebook.js';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-  $(document).on('click', ".add-cart", function (event){
+  $(document).on('click', ".add-cart1", function (event){
     event.preventDefault();
     var id = $(this).attr("data-id");
     var _token = $('input[name="_token"]').val();
@@ -492,8 +551,7 @@ $(document).on('click', ".minus1", function (event){
             },
             success: function(data) {
                 $(".sub-total" + id).text(data.sub_total);
-                $("#num").text(data.num_order);
-                $("#num1").text(data.num_order);
+                $(".num-cart").text(data.num_order);
                 $("#total-cart").text(data.total_cart);
                 $('#dropdown').html(data.list_cart);
             },
@@ -522,8 +580,7 @@ $(document).on('click', ".plus1", function (event){
             },
             success: function(data) {
                 $(".sub-total" + id).text(data.sub_total);
-                $("#num").text(data.num_order);
-                $("#num1").text(data.num_order);
+                $(".num-cart").text(data.num_order);
                 $("#total-cart").text(data.total_cart);
                 $('#dropdown').html(data.list_cart);
             },
@@ -560,7 +617,7 @@ $(document).on('change', ".num-order", function (event){
         },
         success: function(data) {
             $(".sub-total" + id).text(data.sub_total);
-            $("#num").text(data.num_order);
+            $(".num-cart").text(data.num_order);
             $("#total-cart").text(data.total_cart);
              $('#dropdown').html(data.list_cart);
         },
