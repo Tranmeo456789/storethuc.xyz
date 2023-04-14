@@ -28,6 +28,8 @@ include_once 'routes/shopBackEnd.php';
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+Route::get('district/get-list', 'BackEnd\DistrictController@getListByParentID')->name('district.getListByParentID');
+Route::get('ward/get-list', 'BackEnd\WardController@getListByParentID')->name('ward.getListByParentID');
 
 Route::get('/getInfo-facebook/{social}','SocialController@getInfo');
 Route::get('/check-info-facebook/{social}','SocialController@checkInfo');

@@ -58,8 +58,8 @@ img {
     float: right;
 }
 .wp-item-table{
-border: 1px solid #ddd;
-padding: 8px 0px;
+    border: 1px solid #ddd;
+    padding: 8px 5px;
 }
 .view-when-768{
     display: none;

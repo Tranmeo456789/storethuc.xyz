@@ -9,7 +9,7 @@ class WardModel extends BackEndModel
 {
     //protected $connection = 'mysql_share_data';
     public function __construct() {
-        $this->table               = 'xaphuongthitrans';
+        $this->table               = 'ward';
     }
 
     public function listItems($params = null, $options = null) {
@@ -35,8 +35,9 @@ class WardModel extends BackEndModel
     public function getItem($params = null, $options = null) {
         $result = null;
         if($options['task'] == 'get-item-full') {
-            $result = self::select('xaid', 'name_xa','maqh')
-                            ->where('xaid', $params['xaid'])->first();
+            $result = self::with(['district','district.province'])
+                            ->select('id', 'name','district_id')
+                            ->where('id', $params['id'])->first();
         }
         return $result;
     }

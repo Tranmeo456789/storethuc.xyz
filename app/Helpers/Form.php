@@ -24,6 +24,7 @@ class Form
         $xhtml = null;
         $imageSelect=isset($element['imageSelect']) ? $element['imageSelect'] : '';
         $styleFormGroup = isset($element['styleFormGroup']) ? $element['styleFormGroup'] : '';
+        $start=isset($element['start']) ? $element['start'] : '';
         $linkService = isset($element['linkService']) ? $element['linkService'] : "";
         switch ($type) {
             case 'input':
@@ -60,13 +61,15 @@ class Form
                 case 'input-border-radius-blue':
                     $xhtml .= sprintf(
                         "<div class='%s'>
+                            <label>%s <span class='text-danger'>$start</span></label>
                             <div class='form-group $styleFormGroup'>                           
                                 <div class='wp-input'>
                                     %s                                  
                                 </div>
                             </div>
                         </div>",
-                        $widthElement,                     
+                        $widthElement, 
+                        $element['label'],            
                         $element['element']
                     );
                     break;

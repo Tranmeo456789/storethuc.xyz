@@ -9,7 +9,7 @@ class ProvinceModel extends BackEndModel
 {
     //protected $connection = 'mysql_share_data';
     public function __construct() {
-        $this->table               = 'tinhthanhphos';
+        $this->table               = 'province';
         $this->folderUpload        = '' ;
 
     }
@@ -17,9 +17,9 @@ class ProvinceModel extends BackEndModel
     public function listItems($params = null, $options = null) {
         $result = null;
         if($options['task'] == "admin-list-items-in-selectbox") {
-            $query = $this->select('matp', 'name')
+            $query = $this->select('id', 'name')
                         ->orderBy('name', 'asc');
-            $result = $query->pluck('name', 'matp')->toArray();
+            $result = $query->pluck('name', 'id')->toArray();
         }
 
         return $result;
@@ -27,7 +27,7 @@ class ProvinceModel extends BackEndModel
     public function getItem($params = null, $options = null) {
         $result = null;
         if($options['task'] == 'get-item-full') {
-            $result = self::where('matp', $params['matp'])->first();
+            $result = self::where('id', $params['id'])->first();
         }
         return $result;
     }

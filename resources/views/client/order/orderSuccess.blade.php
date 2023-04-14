@@ -17,14 +17,14 @@
     </div>
     <div id="wrapper" class="wp-inner clearfix">
         <div id="content">
-            <div class="thanks text-center">
-                <h4 class="text-success">Đặt hàng thành công!</h4>
+            <div class="thanks text-center mb-4">
+                <h4 class="text-success font-weight-bold">Đặt hàng thành công!</h4>
                 <p class="mb-0">Cảm ơn quý khách đã đặt hàng tại đây!</p>
                 <p>Nhân viên chăm sóc sẽ liên hệ tới bạn sớm nhất.</p>
             </div>
             <div class="section" id="thank-wp">
                 <div class="section-head mb-1">
-                    <h5 class="section-title">Mã đơn hàng: <span class="text-success">{{$order['code_order']}}</span></h5>
+                    <h5 class="section-title font-weight-bold">Mã đơn hàng: <span class="text-success">{{$order['code_order']}}</span></h5>
                 </div>
             </div>
         </div>
@@ -32,9 +32,9 @@
     <div class="section-detail wp-inner-fluid">
         <div class="section">
             <div class="section-head mt-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="d-block ml-2">Thông tin khách hàng:</h5>
+                <div class="">
+                    <div class="">
+                        <h5 class="d-block mb-2 font-weight-bold">Thông tin khách hàng:</h5>
                         <div class="container-fluid">
                             <div class="hidden-when-768">
                                 <div class="row">
@@ -69,9 +69,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-table-1">
-                    <div class="card-body">
-                        <h5 class="d-block ml-2">Thông tin đơn hàng:</h5>
+                <div class="mt-table-1 mt-3">
+                    <div class="">
+                        <h5 class="d-block mb-2 font-weight-bold">Thông tin đơn hàng:</h5>
                         <div class="container-fluid">
                             <div class="hidden-when-768">
                                 <div class="row wp-item-table">
@@ -125,10 +125,10 @@
                             </div>
                             @endforeach
                             <div class="row wp-item-table">
-                                <div class="col-6 font-weight-bold">
-                                    Giá trị đơn hàng
+                                <div class="col-6 font-weight-bold text-right">
+                                   Tổng giá trị đơn hàng:
                                 </div>
-                                <div class="col-6 text-right">
+                                <div class="col-6 text-left">
                                     <span class="text-danger font-weight-bold">{{number_format($order['total'], 0, "" ,"." )}}đ</span>
                                 </div>
                             </div>

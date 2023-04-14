@@ -8,7 +8,7 @@ use DB;
 class DistrictModel extends BackEndModel
 {
     public function __construct() {
-        $this->table               = 'quanhuyens';
+        $this->table               = 'district';
     }
 
     public function listItems($params = null, $options = null) {
@@ -27,7 +27,7 @@ class DistrictModel extends BackEndModel
     public function getItem($params = null, $options = null) {
         $result = null;
         if($options['task'] == 'get-item-full') {
-            $result = self::where('maqh', $params['maqh'])->first();
+            $result = self::where('id', $params['id'])->first();
         }
         return $result;
     }

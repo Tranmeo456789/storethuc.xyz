@@ -79,83 +79,83 @@ class OrderController extends Controller
     function checkout(){
        $order_id_last=OrderModel::latest('id')->first();
        $order_id=$order_id_last['id']+1;
-       $city= ProvinceModel::orderBy('matp','asc')->get();
+       $itemsProvince= (new ProvinceModel)->listItems(null,['task'=>'admin-list-items-in-selectbox']);
        
-        return view('client.cart.checkout',compact('city','order_id'));
+        return view('client.cart.checkout',compact('itemsProvince','order_id'));
     }
-    function locationAjax(Request $request){
-        $data=$request->all();
-        $output='';
-        if($data['action']){
-            if($data['action']=='city'){
-                $output.='<option value="">--Chọn quận huyện--</option>';
-                $select_province=DistrictModel::where('matp', $data['maid'])->orderBy('maqh','asc')->get();
-                foreach($select_province as $item6){
-                    $output.='<option value="'.$item6->maqh.'">'.$item6->name_huyen.'</option>';
-                }
-            }else{
-                $output.='<option value="">--Chọn xã phường--</option>';
-                $select_wards=WardModel::where('maqh', $data['maid'])->orderBy('xaid','asc')->get();
-                foreach($select_wards as $item7){
-                    $output.='<option value="'.$item7->xaid.'">'.$item7->name_xa.'</option>';
-                }
-            }
-        }
-        echo $output;
-    }
+    // function locationAjax(Request $request){
+    //     $data=$request->all();
+    //     $output='';
+    //     if($data['action']){
+    //         if($data['action']=='city'){
+    //             $output.='<option value="">--Chọn quận huyện--</option>';
+    //             $select_province=DistrictModel::where('id', $data['maid'])->orderBy('id','asc')->get();
+    //             foreach($select_province as $item6){
+    //                 $output.='<option value="'.$item6->maqh.'">'.$item6->name_huyen.'</option>';
+    //             }
+    //         }else{
+    //             $output.='<option value="">--Chọn xã phường--</option>';
+    //             $select_wards=WardModel::where('maqh', $data['maid'])->orderBy('xaid','asc')->get();
+    //             foreach($select_wards as $item7){
+    //                 $output.='<option value="'.$item7->xaid.'">'.$item7->name_xa.'</option>';
+    //             }
+    //         }
+    //     }
+    //     echo $output;
+    // }
     function OrderSuccess(Request $request){
-        if($request->input('email')==''){
-            $request->validate(
-                [
-                'fullname' => 'required|string|min:1',
-                'phone' => 'required|numeric|min:1',
-                'province'=> 'required',
-                'district' =>'required',
-                'ward' =>'required',
-                'address'=>'required|string|min:1',
-                ],
-                [
-                    'numeric' => 'Số điện thoại không hợp lệ',
-                    'required'=>'Vui lòng :attribute',
-                    'min'=>':attribute có độ dài ít nhất :min ký tự',                  
-                ],
-                [
-                    'fullname'=>'nhập họ và tên',
-                    'phone'=>'nhập số điện thoại',
-                    'province'=> 'chọn tỉnh thành phố',
-                    'district' =>'chọn quận huyện',
-                    'ward' =>'chọn xã phường thị trấn',
-                    'address' => 'nhập địa chỉ'
-                ]
-            );
-        }else{
-            $request->validate(
-                [
-                'fullname' => 'required|string|min:1',
-                'phone' => 'required|numeric|min:1',
-                'province'=> 'required',
-                'district' =>'required',
-                'ward' =>'required',
-                'email' => 'email',
-                'address'=>'required|string|min:1',
-                ],
-                [
-                    'numeric' => 'Số điện thoại không hợp lệ',
-                    'required'=>'Vui lòng :attribute',
-                    'email'=> ':attribute không hợp lệ',
-                    'min'=>':attribute có độ dài ít nhất :min ký tự',                  
-                ],
-                [
-                    'fullname'=>'nhập họ và tên',
-                    'phone'=>'nhập số điện thoại',
-                    'province'=> 'chọn tỉnh thành phố',
-                    'district' =>'chọn quận huyện',
-                    'ward' =>'chọn xã phường thị trấn',
-                    'address' => 'nhập địa chỉ',
-                    'email'=>'Email',
-                ]
-            );
-        }
+        // if($request->input('email')==''){
+        //     $request->validate(
+        //         [
+        //         'fullname' => 'required|string|min:1',
+        //         'phone' => 'required|numeric|min:1',
+        //         'province'=> 'required',
+        //         'district' =>'required',
+        //         'ward' =>'required',
+        //         'address'=>'required|string|min:1',
+        //         ],
+        //         [
+        //             'numeric' => 'Số điện thoại không hợp lệ',
+        //             'required'=>'Vui lòng :attribute',
+        //             'min'=>':attribute có độ dài ít nhất :min ký tự',                  
+        //         ],
+        //         [
+        //             'fullname'=>'nhập họ và tên',
+        //             'phone'=>'nhập số điện thoại',
+        //             'province'=> 'chọn tỉnh thành phố',
+        //             'district' =>'chọn quận huyện',
+        //             'ward' =>'chọn xã phường thị trấn',
+        //             'address' => 'nhập địa chỉ'
+        //         ]
+        //     );
+        // }else{
+        //     $request->validate(
+        //         [
+        //         'fullname' => 'required|string|min:1',
+        //         'phone' => 'required|numeric|min:1',
+        //         'province'=> 'required',
+        //         'district' =>'required',
+        //         'ward' =>'required',
+        //         'email' => 'email',
+        //         'address'=>'required|string|min:1',
+        //         ],
+        //         [
+        //             'numeric' => 'Số điện thoại không hợp lệ',
+        //             'required'=>'Vui lòng :attribute',
+        //             'email'=> ':attribute không hợp lệ',
+        //             'min'=>':attribute có độ dài ít nhất :min ký tự',                  
+        //         ],
+        //         [
+        //             'fullname'=>'nhập họ và tên',
+        //             'phone'=>'nhập số điện thoại',
+        //             'province'=> 'chọn tỉnh thành phố',
+        //             'district' =>'chọn quận huyện',
+        //             'ward' =>'chọn xã phường thị trấn',
+        //             'address' => 'nhập địa chỉ',
+        //             'email'=>'Email',
+        //         ]
+        //     );
+        // }
         
         $params['note']=$request->input('note');
         $params['delivery_method']=$request->input('delivery_method');
@@ -170,19 +170,17 @@ class OrderController extends Controller
             $params['info_product'][$itemCart->id]['quantity']=$itemCart->qty;
             $params['info_product'][$itemCart->id]['image']=$itemCart->options->thumbnail;
             $params['info_product'][$itemCart->id]['unit']=$itemCart->options->unit;
-
             $params['total']+=$itemCart->subtotal;
             $params['total_product']+=$itemCart->qty;
         }
-        $province=(new ProvinceModel)->getItem(['matp'=>$request->input('province')],['task'=>'get-item-full']);
-        $district=(new DistrictModel)->getItem(['maqh'=>$request->input('district')],['task'=>'get-item-full']);
-        $ward=(new WardModel)->getItem(['xaid'=>$request->input('ward')],['task'=>'get-item-full']);
-        $params['buyer']['gender']='Nam';
+        $province=(new ProvinceModel)->getItem(['id'=>$request->input('province_id')],['task'=>'get-item-full']);
+        $district=(new DistrictModel)->getItem(['id'=>$request->input('district_id')],['task'=>'get-item-full']);
+        $ward=(new WardModel)->getItem(['id'=>$request->input('ward_id')],['task'=>'get-item-full']);
+        $params['buyer']['gender']=$request->gender;
         $params['buyer']['fullname']=$request->input('fullname');
         $params['buyer']['phone']=$request->input('phone');
         $params['buyer']['email']=$request->input('email');
-        $params['buyer']['address']=$request->input('address').', '.$ward['name_xa'].', '.$district['name_huyen'].', '.$province['name_tinh'];
-        
+        $params['buyer']['address']=$request->input('address').', '.$ward['name'].', '.$district['name'].', '.$province['name'];
         (new OrderModel)->saveItem($params,['task'=>'frontend-save-item']);
         $OrderLast=OrderModel::latest('id')->first();
         (new OrderModel)->saveItem(['id' => $OrderLast->id],['task'=>'frontend-save-code-order']);

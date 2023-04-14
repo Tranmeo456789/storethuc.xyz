@@ -49,9 +49,8 @@
 
 #customer-info-wp label {
     display: block;
-    font-family: 'Roboto Medium';
     font-weight: normal;
-    margin-bottom: 3px;
+    padding-left: 5px;
 }
 #customer-info-wp .col-md-6,#customer-info-wp .col-md-12{
     padding-left: 5px;
@@ -66,15 +65,59 @@
     padding-right: 0;
 }
 
-#customer-info-wp   input[type="text"],
-#customer-info-wp   input[type="email"],
-#customer-info-wp   input[type="tel"],
+
 #customer-info-wp .form-row:nth-child(3) .form-col textarea {
     width: 100%;
     padding: 6px 12px;
     border: 1px solid #cccccc;
 }
-
+.input-prescrip, .input-frontend {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-family: inherit;
+    padding: 7.5px 11px;
+    color: #334155;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d8e0e8;
+    border-radius: 6px;
+    transition: all .3s;
+    height: 40px;
+}
+.wp-input.has-error .select2-container--default .select2-selection--single {
+    border: 1px solid red;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid rgb(121, 175, 236);
+    outline: none;
+    font-size: 18px;
+}
+.input-prescrip:focus,
+.input-frontend:focus {
+    border: 1px solid rgb(121, 175, 236);
+    box-shadow: none;
+    outline: none;
+}
+.form-group .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 37px;
+}
+.body-prescrip {
+    box-shadow: 0px 1px 4px rgb(10 10 10 / 15%);
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.form-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 34px;
+    line-height: 34px;
+}
+.form-group .select2-container--default .select2-selection--single {
+    height: 37px;
+    border: 1px solid #d8e0e8;
+}
 #customer-info-wp .form-row:nth-child(3) .form-col {
     width: 100%;
     padding-right: 0;

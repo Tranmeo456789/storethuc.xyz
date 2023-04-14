@@ -23,6 +23,7 @@
 <link href="{{asset('css/carousel/owl.theme.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
 <link href="{{asset('css/carousel/owl.carousel.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
 <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+<link href="{{asset('css/select2.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css"/>
 <link href="{{asset('css/import.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
 <link href="{{asset('css/sweetalert.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css">
 <link href="{{asset('css/responsive.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />

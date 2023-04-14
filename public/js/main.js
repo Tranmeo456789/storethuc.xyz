@@ -22,6 +22,13 @@ $(document).ready(function () {
         }
         return flag;
     }
+    function isEmail(value) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(value);
+    }
+    $.validator.methods.checkEmail = function (value, element, param) {
+        return (value.trim() == '') || (isEmail(value.trim()));
+    };
     $.validator.methods.checkPhone = function (value, element, param) {
         return isPhoneNumberVN(value);
     };
@@ -190,6 +197,70 @@ $(document).ready(function () {
             $(element).closest(".input-group").removeClass('has-error');
         }
     });
+    $(".form-complete-order").validate({
+        ignore: ".ignore",
+        rules: {
+            fullname:{
+                required: true,
+            },
+            phone: {
+                required: true,
+                checkPhone: true,
+            },
+            email: {
+                checkEmail: true,
+            },
+            province_id:{
+                required: true,
+            },
+            district_id:{
+                required: true,
+            },
+            ward_id:{
+                required: true,
+            },
+            address:{
+                required: true,
+            },    
+        },
+        messages: {
+            fullname:{
+                required: "Thông tin bắt buộc", 
+            },
+            phone: {
+                required: "Thông tin bắt buộc", 
+                checkPhone: "Số điện thoại không đúng định dạng",             
+            },
+            email: {
+                checkEmail: "Email không đúng định dạng",             
+            },
+            province_id:{
+                required:"Thông tin bắt buộc",
+            },
+            district_id:{
+                required: "Thông tin bắt buộc",
+            },
+            ward_id:{
+                required: "Thông tin bắt buộc",
+            },
+            address:{
+                required: "Thông tin bắt buộc",
+            },                             
+        },
+        errorPlacement: function (error, element) {
+            // Add the `invalid-feedback` class to the error element
+            error.addClass("invalid-feedback");
+            element.closest(".wp-input").addClass('has-error');                  
+            error.insertAfter(element.closest(".wp-input"));          
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+            $(element).closest(".wp-input").removeClass('has-error');
+        }
+    });
     $('.add-cart').on('click', function (event) {
         event.preventDefault();
         var cart = $('.wp-icon-cart');
@@ -249,6 +320,7 @@ $(document).ready(function () {
         }
         
     });
+    $(".select2").select2();
 });
 function tab() {
     var tab_menu = $('#tab-menu li');
@@ -624,7 +696,87 @@ $(document).on('change', ".num-order", function (event){
     });
     
 });
+$(document).on('change', "select.get_child", function (event) {
+    event.preventDefault();
+    url = $(this).data('href');
 
+    target = $(this).data('target');
+    $selectValue = $(this).val();
+
+    if (($selectValue == '') && (url != '') && (url.indexOf('value_new') !== -1)) {
+        options = $(target).find('option')[0].outerHTML;
+        $(target).html(options);
+        $(target).trigger("change");
+    } else {
+        url = url.replace('value_new', $selectValue);
+        let addtion = $(this).data('addtion');
+        if (addtion !== undefined) {
+            addtion = addtion.split('|');
+            addtion.forEach(function (elem, index) {
+                elemValue = $('#' + elem).val();
+                if (elemValue != '') {
+                    if (url.indexOf('?') === -1) {
+                        url += "?filter_" + elem + "=" + elemValue;
+                    } else {
+                        url += "&filter_" + elem + "=" + elemValue;
+                    }
+                }
+            });
+        }
+        $.get({
+            url: url,
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                options = '';
+                if ($(target + " option").length > 0) {
+                    options = $(target).find('option')[0].outerHTML;
+                }
+                $.each(data, function (id, item) {
+                    options += "<option value= '" + id + "'>" + item + "</option>";
+                });
+
+                $(target).html(options);
+                if ($(target).hasClass('get_data')) $(target).trigger("change");
+                if ($(target).hasClass('get_child')) $(target).trigger("change");
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("Error: " + errorThrown);
+            }
+        });
+    }
+});
+$(document).on('change', "select.get_data", function (event) {
+    event.preventDefault();
+    let selectValue = $(this).val();
+    target = $(this).data('target');
+    let url = $(this).data('href');
+
+    url = url.replace('value_new', selectValue);
+
+    let addtion = $(this).data('addtion');
+    if (addtion !== undefined) {
+        addtion = addtion.split('|');
+        addtion.forEach(function (elem) {
+            elemValue = $('#' + elem).val();
+            url += "&filter_" + elem + "=" + elemValue;
+        });
+    }
+
+    $.get({
+        url: url,
+        cache: false,
+        dataType: 'html',
+        success: function (data) {
+            $(target).html(data);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            alert("Error: " + errorThrown);
+        }
+    });
+
+
+});
 
 
 
