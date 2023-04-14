@@ -19,7 +19,7 @@
 <meta name="description" content="Sản phẩm của cửa hàng bao gồm các mặt hàng như: Yến, Đồ ngâm rượu, Rượu ngâm, Nước mắm ... ">
 
 <link href="{{asset('css/bootstrap/bootstrap.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css"/>
-<link href="{{asset('css/reset.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
+<!-- <link href="{{asset('css/reset.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" /> -->
 <link href="{{asset('css/carousel/owl.theme.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
 <link href="{{asset('css/carousel/owl.carousel.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />
 <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}?t=@php echo time() @endphp" rel="stylesheet" type="text/css" />

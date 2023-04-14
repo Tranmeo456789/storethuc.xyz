@@ -9,6 +9,7 @@
 }
 
 @media screen and (max-width: 1024px) {
+    
     /*HEADER*/
     .show-over1024{
         display: none;

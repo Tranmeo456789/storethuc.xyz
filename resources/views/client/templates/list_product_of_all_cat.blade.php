@@ -11,7 +11,7 @@ $listAllCatProduct=(new CatProductModel)->listItems(null,['task'=>'list-items-fr
         $item=(new ProductModel)->listItems(['cat_id'=>$catId,'limit'=>8],['task'=>'frontend-list-items']);
     @endphp
     @if (count($item) > 0)
-    <div class="section-head">
+    <div class="section-head mb-2 mt-3">
         <h3 class="section-title">{{$itemCat['name']}}</h3>
         <span class="border-bottom-title "></span>
     </div>

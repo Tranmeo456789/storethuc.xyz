@@ -9,7 +9,7 @@
             @endif
         </div>
         <div id="wp-cart-respon">
-            <div class="wp-icon-cart">
+            <div class="wp-icon-cart wp-icon-cart-respon">
                 @include("client.partial.icon_cart")
             </div>
         </div>

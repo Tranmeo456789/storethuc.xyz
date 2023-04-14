@@ -4,7 +4,7 @@ use App\Model\ProductModel;
 $itemCatProduct=(new CatProductModel)->getItem(['slug'=>$slug],['task'=>'get-item-slug']);
 @endphp
 <div class="ls-product-of-home">
-    <div class="section-head">
+    <div class="section-head mb-2">
         <h3 class="section-title">{{$itemCatProduct['name']}}</h3>
         <span class="border-bottom-title "></span>
     </div>

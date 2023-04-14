@@ -263,12 +263,16 @@ $(document).ready(function () {
     });
     $('.add-cart').on('click', function (event) {
         event.preventDefault();
-        var cart = $('.wp-icon-cart');
         var imgtodrag = $(this).parents('.wp-effect-cart').find("img").eq(0);
         var id = $(this).attr("data-id");
         var _token = $('input[name="_token"]').val();
         var url = $(this).attr("data-url");
-            
+        var widthScreen = window.innerWidth;
+        if(widthScreen <= 1024){
+            var cart = $('.wp-icon-cart-respon');
+        }else{
+            var cart = $('.wp-icon-cart');
+        }
         if (imgtodrag) {
             var imgclone = imgtodrag.clone()
                 .offset({
@@ -280,14 +284,16 @@ $(document).ready(function () {
                     'position': 'absolute',
                     'height': '150px',
                     'width': '150px',
+                    'overflow':'hidden',
+                    'border-radius':'50%',
                     'z-index': '100'
                 })
                 .appendTo($('body'))
                 .animate({
                     'top': cart.offset().top + 10,
-                    'left': cart.offset().left + 10,
-                    'width': 75,
-                    'height': 75
+                    'left': cart.offset().left + 15,
+                    'width': 10,
+                    'height': 10
                 }, 1000, 'easeInOutExpo');
 
             setTimeout(function () {
