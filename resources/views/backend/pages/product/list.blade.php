@@ -8,7 +8,7 @@
                 <th>STT</th>
                 <th>Sản phẩm</th>
                 <th>Danh mục</th>
-                <th>Trạng thái</th>
+                <th>SL tồn kho</th>
                 <th>Tác vụ</th>
             </tr>
         </thead>
@@ -36,7 +36,7 @@
                     </div>
                 </td>
                 <td style="width: 20%">{{$val->catProduct->name}}</td>
-                <td style="width: 15%" class="text-center"><span class="badge {{$val->status_product=='con_hang'?'badge-success':'badge-danger'}} ">{{$val->status_product=='con_hang'?'Còn hàng':'Hết hàng'}}</span></td>
+                <td style="width: 15%" class="text-center"><span class="badge {{$val['inventory']==0?'badge-danger':'badge-info'}} ">{{$val['inventory']}}</span></td>
                 <td style="width: 15%">
                     <a href="{{route("backend.$controllerName.edit",$val->id)}}" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a>
                     <a data-href="{{route("backend.$controllerName.delete",$val->id)}}" class="btn btn-sm btn-danger btn-delete text-white" data-id="{{$val->id}}" data-toggle="tooltip" data-placement="top" title="Xóa" data-token="{{csrf_token()}}">

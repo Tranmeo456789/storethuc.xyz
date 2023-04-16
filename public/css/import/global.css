@@ -109,7 +109,9 @@ p{
 a {
     text-decoration: none!important;
 }
-
+input{
+    outline: none;
+}
 .dropdown-menu {
     border-radius: 0;
     -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.15);

@@ -112,8 +112,12 @@
     display: inline-block;
     background: #ddd;
     padding: 0px 10px;
+    border-radius: 4px;
 }
-
+#detail-product-wp .info .num-product .status {
+    background: blue;
+    color: #fff;
+}
 #detail-product-wp .info .price {
     font-size: 28px;
     font-family: 'Roboto Medium';
@@ -135,6 +139,7 @@
     color: #545454;
     border-left: none;
     border-right: none;
+    outline: none;
 }
 
 #minus,

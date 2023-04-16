@@ -111,14 +111,16 @@ $(document).ready(function () {
 
     // CHOOSE NUMBER ORDER
     var value = Number(parseInt($('#num-order').attr('value')));
-    $('#plus').click(function () {
-        if (value < 10) {
+    
+    $('#plus').on('click', function (event) {
+        var qtyMax  = $(this).prev('#num-order').attr("max");
+        if (value < qtyMax) {
             value++;
             $('#num-order').attr('value', value);
         }
         //update_href(value);
     });
-    $('#minus').click(function () {
+    $('#minus').on('click', function (event) {
         if (value > 1) {
             value--;
             $('#num-order').attr('value', value);
@@ -638,7 +640,8 @@ $(document).on('click', ".minus1", function (event){
 
 });
 $(document).on('click', ".plus1", function (event){
-    if (Number($(this).prev('.num-order').val()) < 10) {
+    var qtyMax = $(this).prev('.num-order').attr("max");
+    if (Number($(this).prev('.num-order').val()) < qtyMax) {
         var num_per_product = Number($(this).prev('.num-order').val()) + 1;
         $(this).prev('.num-order').val(num_per_product);
         var qty = $(this).prev('.num-order').val();
@@ -653,6 +656,7 @@ $(document).on('click', ".plus1", function (event){
             data: {
                 qty: qty,
                 id: id,
+                qtyMax: qtyMax,
                 rowId: rowId,
                 _token: _token
             },
@@ -668,11 +672,12 @@ $(document).on('click', ".plus1", function (event){
 $(document).on('change', ".num-order", function (event){
     var qty = Number($(this).val());
     var qtyFrist = $(this).attr("data-qtyFrist");
+    var qtyMax = $(this).attr("max");
     if(qty<1){
         qty=1;
-    }else if(qty>10){
-        qty=10;
-    }else if(qty>=1 && qty<=10){
+    }else if(qty>qtyMax){
+        qty=qtyMax;
+    }else if(qty>=1 && qty<=qtyMax){
         qty=qty;
     }else{
         qty=qtyFrist;

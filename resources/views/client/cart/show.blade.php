@@ -137,7 +137,7 @@
                                                 <div class="col-12 col-md-5">
                                                     <div class="wp-num-cart">
                                                         <span title="" class="minus1"><i class="fa fa-minus"></i></span>
-                                                        <input type="text" data-id="{{$row->id}}" data-rowId="{{$row->rowId}}" data-url="{{route('updateCartAjax')}}" data-qtyFrist="{{$row->qty}}" name="qty[{{$row->rowId}}]" value="{{$row->qty}}" class="num-order" maxlength="2">
+                                                        <input type="text" data-id="{{$row->id}}" data-rowId="{{$row->rowId}}" data-url="{{route('updateCartAjax')}}" data-qtyFrist="{{$row->qty}}" name="qty[{{$row->rowId}}]" value="{{$row->qty}}" class="num-order" min="1" max="{{$row->options->inventory}}" maxlength="{{strlen($row->options->inventory)}}">
                                                         <span title="" class="plus1"><i class="fa fa-plus"></i></span>
                                                     </div>
                                                 </div>

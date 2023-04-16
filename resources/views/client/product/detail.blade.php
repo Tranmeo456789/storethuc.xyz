@@ -31,7 +31,7 @@
                         </div>
                         <div class="num-product">
                             <span class="title">Sản phẩm: </span>
-                            <span class="status">{{$productCurrent['status']}}</span>
+                            <span class="status {{$productCurrent['status_product']=='con_hang'?'active':''}}">{{$productCurrent['status_product']=='con_hang'?'Còn hàng':'Hết hàng'}}</span>
                         </div>
                         <span class="text-dark mr-5" style="font-size:20px;">Giá:</span><span class="price">{{number_format($productCurrent['price'], 0, "" ,"." )}}đ / {{$productCurrent->unitProduct->name}}</span>
                         <div id="num-order-wp" class="mt-3">
@@ -40,7 +40,7 @@
                                 <div class="d-flex">
                                     <div class="d-inline-block mr-3 align-self-center"><span style="font-size:18px;padding-top: 5px">Số lượng:</span></div>
                                     <a title="" id="minus"><i class="fa fa-minus"></i></a>
-                                    <input type="text" name="num_order" value="1" min="1" max="10" id="num-order" readonly>
+                                    <input type="text" name="num_order" value="1" min="1" max="{{$productCurrent['inventory']}}" id="num-order" readonly>
                                     <a title="" id="plus"><i class="fa fa-plus"></i></a>
                                     <input type="hidden" name="id_product" value="{{$productCurrent->id}}">
                                 </div>

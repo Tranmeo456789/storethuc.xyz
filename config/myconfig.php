@@ -93,7 +93,8 @@
                 'status_order' => 'Trạng thái đơn hàng',
                 'delivery_service'=>'Đơn vị vận chuyển',
                 'image'=>'Hình ảnh',
-                'role_id'=>'Chọn nhóm quyền'
+                'role_id'=>'Chọn nhóm quyền',
+                'inventory'=>'Số lượng tồn kho'
             ],
             'status_product' => [
                 'con_hang' => 'Còn hàng',
