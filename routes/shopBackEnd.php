@@ -82,4 +82,10 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         
         Route::get('/theme-trang-chu', 'SettingController@formInfomation')->name('setting.infomation');
         Route::post('/luu-theme-trang-chu', 'SettingController@saveInfomation')->name('setting.infomation.save');
+
+        Route::get('/danh-sach-phi-ship', 'FeeShipController@index')->name('feeShip')->middleware('can:list_unit');
+        Route::get('/them-phi-ship', 'FeeShipController@form')->name('feeShip.add')->middleware('can:add_unit');
+        Route::get('/sua-phi-ship/{id}', 'FeeShipController@form')->name('feeShip.edit')->middleware('can:edit_unit');
+        Route::post('/luu-phi-ship', 'FeeShipController@save')->name('feeShip.save');
+        Route::get('/xoa-phi-ship/{id}', 'FeeShipController@delete')->name('feeShip.delete')->middleware('can:delete_unit');
 });

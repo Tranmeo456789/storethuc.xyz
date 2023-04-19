@@ -92,6 +92,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('feeShip')}}" class="nav-link">
+                    <i class="fas fa-shipping-fast"></i>
+                    <p>
+                        Quản lý phí vận chuyển
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('user')}}" class="nav-link">
                     <i class="nav-icon fas fa-user-tie"></i>
                     <p>

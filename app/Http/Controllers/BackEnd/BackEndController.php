@@ -16,10 +16,6 @@ class BackEndController extends Controller
     protected $pageTitle          = '';
     public function __construct()
     {
-        // $this->middleware(function ($request, $next) {
-
-        //     return $next($request);
-        // });
         view()->share([
             'moduleName'                => $this->moduleName,
             'controllerName'            => $this->controllerName,

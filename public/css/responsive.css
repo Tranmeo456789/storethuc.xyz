@@ -30,6 +30,7 @@
     }
     #menu-responsive.slider {
         transform: translateX(0px);
+        position: fixed;
     }
     #cart-wp {
         margin-left: 10px;

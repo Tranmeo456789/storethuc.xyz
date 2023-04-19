@@ -48,13 +48,15 @@ class Form
                     $xhtml .= sprintf(
                         "<div class='%s'>
                             <div class='form-group $styleFormGroup'>
+                                %s
                                 <div class='%s'>
                                     %s
                                 </div>
                             </div>
                         </div>",
                         $widthElement,
-                        $widthInput,
+                        $element['label'],
+                        $widthInput,                    
                         $element['element']
                     );
                     break;
