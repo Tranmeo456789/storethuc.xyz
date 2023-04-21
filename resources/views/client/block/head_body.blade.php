@@ -11,7 +11,7 @@
                     <div class="input-search">
                         <input type="text" name="key" value="{{request()->input('key')}}" id="s" data-href="{{route('searchProductAjax')}}" placeholder="Nhập từ khóa tìm kiếm tại đây!" autocomplete="off">
                     </div>
-                    <button type="submit" name="" id="sm-s"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button type="submit" name="" id="sm-s"><img src="{{asset('images/icon-search.png')}}"></button>
                     <div class="search-result">
                         <ul class="suggest-search mb-0">
                         </ul>

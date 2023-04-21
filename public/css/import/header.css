@@ -108,11 +108,13 @@ position: relative;
     position: absolute;
     z-index: 9;
     top: 20px;
-    border-radius: 4px;
-    width: 85%;
-    background: rgb(255, 255, 255);
-    box-shadow: 0 1px 8px rgb(0 0 0 / 30%);
+    border-radius: 0px 0px 20px 20px;
+    background: oldlace;
+    box-shadow: 0 3px 20px rgb(0 0 0 / 80%);
     
+}
+.suggest-search{
+    background: transparent;
 }
 /* .suggest-search{
     padding-top: 25px;
@@ -181,9 +183,9 @@ position: relative;
     display: inline-block;
     border: none;
     outline: none;
-    background: #fdf8f8ad;
+    background: #fff;
     color: #fff;
-    width: 15%;
+    width: 10%;
     line-height: 13px;
     font-size: 16px;
     height: 40px;

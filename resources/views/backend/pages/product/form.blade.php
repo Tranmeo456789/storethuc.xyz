@@ -49,8 +49,11 @@ $elements = [
         'label' => HTML::decode(Form::label('inventory',$label['inventory'].':' . $star, $formLabelAttr)),
         'element' => Form::text('inventory', $item['inventory']??null, array_merge($formInputAttr,['placeholder'=>$label['inventory']])),
         'widthElement' => 'col-md-6 col-12'
-        ]
-        
+        ],[
+        'label' => HTML::decode(Form::label('promotion',$label['promotion'].':' . $star, $formLabelAttr)),
+        'element' => Form::text('promotion', $item['promotion']??0, array_merge($formInputAttr,['placeholder'=>$label['promotion']])),
+        'widthElement' => 'col-12'
+        ]       
     ]);
     $arrStatusProduct = config('myconfig.template.status_product');
     foreach($arrStatusProduct as $key => $val){

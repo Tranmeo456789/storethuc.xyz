@@ -34,6 +34,7 @@ class ProductRequest extends AjaxFormRequest
         //$condCatPrduct  =  "bail|required|exists:$this->tableCatProduct,id";
         $condPrice  =  "bail|required|numeric";
         $condInventory ="bail|required|numeric";
+        $condPromotion="bail|numeric";
         $condContent  =  "bail|required";
         $condDescribe =  "bail|required";
         $condUnit  =  "bail|required|exists:$this->tableUnit,id";
@@ -54,6 +55,7 @@ class ProductRequest extends AjaxFormRequest
             //'image'          => $condImage,          
             //'cat_id' => $condCatPrduct,         
             'price'          => $condPrice,
+            'promotion'=>$condPromotion,
             'inventory' => $condInventory,
             'unit_id'        => $condUnit,
             'content'   => $condContent,

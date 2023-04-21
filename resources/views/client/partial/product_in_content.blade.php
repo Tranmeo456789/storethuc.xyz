@@ -23,14 +23,18 @@
             <button title="Thêm giỏ hàng" data-id="{{$val->id}}" data-url="{{route('cart.saveAjax')}}" data-urlShowCart="{{route('cart.show')}}" class="add-cart">Thêm giỏ hàng</button>
                 <!-- <a href="{{route('order.buynow',$val['id'])}}" title="Mua ngay" class="buy-now fl-right">Mua ngay</a> -->
             </div>
-            <div class="C+nQBU uOQMgX _43c7xw">
-                <div class="m2nQX2">
-                    <div class="WsnY7I">
-                        <span class="percent">19%</span>
-                        <span class="bsTk4f">giảm</span>
+            @if(isset($val['promotion']))
+                @if($val['promotion']>0)
+                <div class="C+nQBU uOQMgX _43c7xw">
+                    <div class="m2nQX2">
+                        <div class="WsnY7I">
+                            <span class="percent">{{$val['promotion']}}%</span>
+                            <span class="bsTk4f">giảm</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+                @endif
+            @endif
         </a>
     </div>
 </li>
