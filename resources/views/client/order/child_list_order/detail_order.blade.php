@@ -142,7 +142,7 @@ foreach($status_order as $value){
         </table>
         <div class="money-order-detail">
             <ul>
-                <li><div class="font-md-14 text-right">Tổng tiền: {{MyFunction::formatNumber($order_detail['total'])}} đ</div></li>
+                <li><div class="font-md-14 text-right">Phí vận chuyển: {{MyFunction::formatNumber($order_detail['value_fee_ship'])}} đ</div></li>
                 <li><div class="font-md-14 text-right font-weight-bold">Cần thanh toán: {{MyFunction::formatNumber($order_detail['total'])}} đ</div></li>
             </ul>
         </div>

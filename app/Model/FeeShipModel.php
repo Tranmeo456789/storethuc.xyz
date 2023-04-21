@@ -34,10 +34,22 @@ class FeeShipModel extends BackEndModel
     }
     public function getItem($params = null, $options = null) {
         $result = null;
+        $query = $this->select('id', 'province_id','district_id','ward_id','fee_ship','created_at','updated_at');
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'province_id','district_id','ward_id','fee_ship','created_at','updated_at')
-                            ->where('id', $params['id'])->first();
+            $query = $query->where('id', $params['id']);
         }
+        if($options['task'] == 'get-item-follow-address') {
+            if(isset($params['province_id']) && $params['province_id'] != null){
+                $query = $query->where('province_id', $params['province_id']);
+            }
+            if(isset($params['district_id']) && $params['district_id'] != null){
+                $query = $query->where('district_id', $params['district_id']);
+            }
+            if(isset($params['ward_id']) && $params['ward_id'] != null){
+                $query = $query->where('ward_id', $params['ward_id']);
+            }
+        }
+        $result = $query->first();
         return $result;
     }
     public function saveItem($params = null, $options = null) {

@@ -4,19 +4,19 @@
     $label = config('myconfig.template.label');
     $formLabelAttr    = config('myconfig.template.form_element.label');
     $formInputAttr = config('myconfig.template.form_element.input');
-    $formSelect2Attr = config('myconfig.template.form_element.select2');
+    $formSelect2Attr = config('myconfig.template.form_element.select2_feeship');
     $formSelect2GetChildAttr = array_merge_recursive(
-                                    config('myconfig.template.form_element.select2'),
-                                    config('myconfig.template.form_element.get_child')
-                                    );
+                                    config('myconfig.template.form_element.select2_feeship'),
+                                    config('myconfig.template.form_element.get_child'));
     $formSelect2GetChildAttr = MyFunction::array_fill_muti_values($formSelect2GetChildAttr);
     $formSelect2GetDataAttr = array_merge_recursive(
-                                    config('myconfig.template.form_element.select2'),
-                                    config('myconfig.template.form_element.get_data')
-                                    );
+                                    config('myconfig.template.form_element.select2_feeship'),
+                                    config('myconfig.template.form_element.get_data'));
     $formSelect2GetDataAttr = MyFunction::array_fill_muti_values($formSelect2GetDataAttr);
     $linkGetListDistrict = route('district.getListByParentID',['parentID' => 'value_new']);
     $linkGetListWard = route('ward.getListByParentID',['parentID' => 'value_new']);
+
+    $linkGetFeeShip = route('cart.feeAjax');
     
     $formInputWidth['widthInput'] = 'col-12';
     
@@ -73,17 +73,17 @@
     $elementLocals = [
         [
             'label'   => '',
-            'element' => Form::select('province_id',$itemsProvince, $user->province_id??null, array_merge($formSelect2GetChildIgnoreAttr,['id' =>'province_id','style' =>'width:100%','data-href'=>$linkGetListDistrict,'data-target' => '#district_id'])),
+            'element' => Form::select('province_id',[null=>"-- Chọn {$label['province_id']} --"] + $itemsProvince, $user->province_id??null, array_merge($formSelect2GetChildIgnoreAttr,['id' =>'province_id','style' =>'width:100%','data-href'=>$linkGetListDistrict,'data-href_fee'=>$linkGetFeeShip,'data-target' => '#district_id'])),
             'type' =>'select',
             'widthElement' => 'col-lg-6 col-md-12 mb1024-5'
         ],[
             'label'   => '',
-            'element' => Form::select('district_id',[null=>"-- Chọn {$label['district_id']} --"], $details['district_id']??null, array_merge($formSelect2GetChildIgnoreAttr,['id' =>'district_id','data-href'=>$linkGetListWard,'data-target' => '#ward_id','style' =>'width:100%'])),
+            'element' => Form::select('district_id',[null=>"-- Chọn {$label['district_id']} --"], $details['district_id']??null, array_merge($formSelect2GetChildIgnoreAttr,['id' =>'district_id','data-href'=>$linkGetListWard,'data-href_fee'=>$linkGetFeeShip,'data-target' => '#ward_id','style' =>'width:100%'])),
             'type' =>'select',
             'widthElement' => 'col-lg-6 col-md-12 mb1024-5'
         ],[
             'label'   => '',
-            'element' => Form::select('ward_id',[null=>"-- Chọn {$label['ward_id']} --"],  $details['ward_id']??null, array_merge($formSelect2GetChildIgnoreAttr,['id' =>'ward_id','style' =>'width:100%'])),
+            'element' => Form::select('ward_id',[null=>"-- Chọn {$label['ward_id']} --"],  $details['ward_id']??null, array_merge($formSelect2Attr,['id' =>'ward_id','data-href_fee'=>$linkGetFeeShip,'style' =>'width:100%'])),
             'type' =>'select',
             'widthElement' => 'col-md-12 my-1'
         ],[
@@ -116,7 +116,7 @@
             </div>
         </div>
     </div>
-    <div class="section" id="order-review-wp">
+    <div class="section checkout-list-product" id="order-review-wp">
         @include('client.cart.child_checkout.list_product_cart')
     </div>
 {{ Form::close() }}

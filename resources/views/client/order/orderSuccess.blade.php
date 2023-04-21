@@ -125,6 +125,12 @@
                             </div>
                             @endforeach
                             <div class="row wp-item-table">
+                                <div class="col-6 text-right">
+                                   Phí vận chuyển:
+                                </div>
+                                <div class="col-6 text-left">
+                                    <span class="text-secondary font-weight-bold">{{number_format($order['value_fee_ship'], 0, "" ,"." )}}đ</span>
+                                </div>
                                 <div class="col-6 font-weight-bold text-right">
                                    Tổng giá trị đơn hàng:
                                 </div>

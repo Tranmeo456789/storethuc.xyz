@@ -46,7 +46,9 @@ $(document).ready(function () {
         itemsTablet: [600, 1], //2 items between 600 and 0
         itemsMobile: true // itemsMobile disabled - inherit from itemsTablet option
     });
-
+    $(".select2").select2().change(function() {
+        $(this).valid();
+      });
     //  ZOOM PRODUCT DETAIL
     $("#zoom").elevateZoom({ gallery: 'list-thumb', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif' });
 
@@ -717,7 +719,7 @@ $(document).on('change', "select.get_child", function (event) {
     if (($selectValue == '') && (url != '') && (url.indexOf('value_new') !== -1)) {
         options = $(target).find('option')[0].outerHTML;
         $(target).html(options);
-        $(target).trigger("change");
+         $(target).trigger("change");
     } else {
         url = url.replace('value_new', $selectValue);
         let addtion = $(this).data('addtion');
@@ -748,8 +750,8 @@ $(document).on('change', "select.get_child", function (event) {
                 });
 
                 $(target).html(options);
-                if ($(target).hasClass('get_data')) $(target).trigger("change");
-                if ($(target).hasClass('get_child')) $(target).trigger("change");
+                if ($(target).hasClass('get_data')); $(target).trigger("change");
+                if ($(target).hasClass('get_child')); $(target).trigger("change");
             },
             error: function (xhr, textStatus, errorThrown) {
                 alert("Error: " + errorThrown);
@@ -789,5 +791,27 @@ $(document).on('change', "select.get_data", function (event) {
 
 });
 
+$(document).on('change', "select.get_fee_ship", function (event) {
+    event.preventDefault();
+    let url = $(this).data('href_fee');
+    let _token = $('input[name="_token"]').val();
+    var provinceId = $('#province_id').find(":selected").val();
+    var districtId = $('#district_id').find(":selected").val();
+    var wardId = $('#ward_id').find(":selected").val();
+    $.ajax({
+        url: url,
+        method: "GET",
+        dataType: 'html',
+        data: {           
+            provinceId: provinceId,
+            districtId: districtId,
+            wardId: wardId,
+            _token: _token
+        },
+        success: function(data) {
+             $('.checkout-list-product').html(data);
+        },
+    });  
+});
 
 

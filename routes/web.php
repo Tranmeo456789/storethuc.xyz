@@ -94,6 +94,8 @@ Route::get('saveAjax/cart', 'CartController@saveAjax')->name('cart.saveAjax');
 Route::get('remove/cart/{id}', 'CartController@remove')->name('cart.remove');
 Route::get('cart/destroy','CartController@destroy')->name('cart.destroy');
 Route::post('cart/udate','CartController@update')->name('cart.update');
+Route::get('tinh-phi-van-chuyen-ajax','CartController@feeAjax')->name('cart.feeAjax');
+
 Route::post('cart/location','OrderController@locationAjax')->name('locationAjax');
 Route::post('OrderSuccess','OrderController@OrderSuccess')->name('OrderSuccess');
 Route::get('dat-hang-thanh-cong/{id}','OrderController@viewOrderSuccess')->name('order.success');

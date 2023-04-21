@@ -161,6 +161,7 @@ class OrderController extends Controller
         $params['delivery_method']=$request->input('delivery_method');
         $params['total']=0;
         $params['total_product']=0;
+        $params['value_fee_ship']=(int)$request->input('value_fee_ship');
         
         foreach(Cart::content() as $itemCart){           
             $params['info_product'][$itemCart->id]['product_id']=$itemCart->id;
@@ -173,6 +174,7 @@ class OrderController extends Controller
             $params['total']+=$itemCart->subtotal;
             $params['total_product']+=$itemCart->qty;
         }
+        $params['total']+=$params['value_fee_ship'];
         $province=(new ProvinceModel)->getItem(['id'=>$request->input('province_id')],['task'=>'get-item-full']);
         $district=(new DistrictModel)->getItem(['id'=>$request->input('district_id')],['task'=>'get-item-full']);
         $ward=(new WardModel)->getItem(['id'=>$request->input('ward_id')],['task'=>'get-item-full']);
@@ -185,8 +187,6 @@ class OrderController extends Controller
         $OrderLast=OrderModel::latest('id')->first();
         (new OrderModel)->saveItem(['id' => $OrderLast->id],['task'=>'frontend-save-code-order']);
         $OrderLast=OrderModel::latest('id')->first();
-       
-       
         // $data=[
         //     'code_order' => $OrderLast['code_order'],
         //     'fullname'=>$OrderLast['buyer']['fullname'],

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Model\ProductModel;
-
+use App\Model\FeeShipModel;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
@@ -156,5 +156,35 @@ class CartController extends Controller
         );
 
         echo json_encode($result);
+    }
+    function feeAjax(Request $request){
+        $data = $request->all();
+        //$selectValue = $data['selectValue'];
+
+
+        //$isAddress = $data['isAddress'];
+        
+        // if($isAddress==1){
+        //     $params['province_id'] = $selectValue;           
+        // }
+        // if($isAddress==2){
+        //     $params['district_id'] = $selectValue;   
+        //     $params['province_id'] = $data['provinceId']; 
+        // }
+        $params['province_id'] = $data['provinceId']; 
+        $params['district_id'] = $data['districtId'];
+        $params['ward_id'] = $data['wardId'];
+        $feeArrDetail = (new FeeShipModel)->getItem($params,['task'=>'get-item-follow-address']);
+        if($feeArrDetail==null){          
+            if($params['ward_id']!=null){
+                $feeArrDetail = (new FeeShipModel)->getItem(['district_id'=>$params['district_id']],['task'=>'get-item-follow-address']);
+            }elseif($params['district_id']!=null){
+                $feeArrDetail = (new FeeShipModel)->getItem(['province_id'=>$params['province_id']],['task'=>'get-item-follow-address']);
+            }else{
+                $feeArrDetail=(new FeeShipModel)->getItem(['id'=>1],['task'=>'get-item']);
+            }
+        }
+        $feeDetail = $feeArrDetail->fee_ship;
+        return view('client.cart.child_checkout.list_product_cart',compact('feeDetail'));
     }
 }

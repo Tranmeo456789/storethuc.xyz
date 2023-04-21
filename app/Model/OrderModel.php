@@ -64,7 +64,7 @@ class OrderModel extends BackEndModel
     {
         $result = null;
         if($options['task'] == "list-order-flow-status"){
-            $query = $this::select('id','code_order','total','total_product','created_at','status_order','user_id'); 
+            $query = $this::select('id','code_order','total','value_fee_ship','total_product','created_at','status_order','user_id'); 
             if(isset($params['phone'])){
                 $query=$this::where('buyer','LIKE', "%{$params['phone']}%");
             }                           
@@ -89,7 +89,7 @@ class OrderModel extends BackEndModel
             $result =  $query->orderBy('id', 'desc')->get();
         }
         if ($options['task'] == "user-list-items") {
-            $query = $this::select('id','code_order','total','buyer','created_at','status_order','user_id','code_service')
+            $query = $this::select('id','code_order','total','value_fee_ship','buyer','created_at','status_order','user_id','code_service')
                                 ->where('id','>',1);
             if ((isset($params['filter']['status_order'])) && ($params['filter']['status_order'] != 'all')) {
                 $query = $query->where('status_order',$params['filter']['status_order']);
@@ -118,18 +118,18 @@ class OrderModel extends BackEndModel
     {
         $result = null;
         if ($options['task'] == 'get-item-frontend') {
-            $result = self::select('id','code_order','total_product','total','info_product','user_id','buyer','status_order','created_at')
+            $result = self::select('id','code_order','total_product','total','value_fee_ship','info_product','user_id','buyer','status_order','created_at')
                             ->where('id', $params['id'])
                             ->first()->toArray();
         }
         if ($options['task'] == 'get-item-frontend-code') {
-            $result = self::select('id','code_order','total','created_at','status_order','user_id','delivery_method','receive',
+            $result = self::select('id','code_order','total','value_fee_ship','created_at','status_order','user_id','delivery_method','receive',
                             'info_product','buyer','pharmacy','total_product','delivery_service','code_service')
                             ->where('code_order', $params['code_order'])
                             ->first();
         }
         if ($options['task'] == 'get-item') {
-            $result = self::select('id','code_order','total','created_at','status_order','user_id','buyer',
+            $result = self::select('id','code_order','total','value_fee_ship','created_at','status_order','user_id','buyer',
                             'info_product','pharmacy','total_product','delivery_service','code_service')
                             ->where('id', $params['id'])
                             ->first();

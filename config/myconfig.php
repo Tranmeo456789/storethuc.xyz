@@ -46,6 +46,9 @@
                 'select2' => [
                     'class' => 'form-control col-md-12 col-xs-12 select2'
                 ],
+                'select2_feeship' => [
+                    'class' => 'form-control col-md-12 col-xs-12 select2 get_fee_ship'
+                ],
                 'input_datemask' => [
                     'class' => 'form-control datemask',
                     'data-inputmask-alias'=>"dd/mm/yyyy",
