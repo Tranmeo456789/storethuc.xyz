@@ -124,6 +124,7 @@ $(document).on('change', "select[name^='list_products[product_id]']", function(e
     url = $(this).data('href');
     $selectValue = $(this).val();
     $rowCurrent = $(this).closest('.row-detail');
+    console.log($rowCurrent);
     if (($selectValue != '') && ($selectValue != 'null')) {
         url = url.replace('value_new', $selectValue);
         $.get({

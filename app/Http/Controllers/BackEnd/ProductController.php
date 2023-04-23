@@ -118,11 +118,5 @@ class ProductController extends BackEndController
         $item = $this->model->getItem($params, ['task' => 'get-item-simple']);
         return json_encode($item->toArray());
     }
-   public function changeProductInAdmin(Request $request,$id,$status){
-        $params['id']=$request->id;
-        $params['status_product']=$request->status;
-        $this->model->saveItem($params, ['task' => 'update-status-item-of-admin']);
-        $request->session()->put('app_notify', 'Thay đổi trạng thái thuốc thành công!');
-        return back()->withInput();
-   }
+   
 }

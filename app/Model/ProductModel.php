@@ -39,7 +39,7 @@ class ProductModel extends BackEndModel
        // $user = Session::get('user');
         if ($options['task'] == "user-list-items") {
             $query = $this::with('unitProduct')
-                            ->select('id','name','thumbnail','price','inventory','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')->where('id','>=',1);
+                            ->select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')->where('id','>=',1);
             
             if ((isset($params['filter']['status_product'])) && ($params['filter']['status_product'] != 'all')) {
                 $query = $query->where('status_product',$params['filter']['status_product']);
@@ -55,29 +55,26 @@ class ProductModel extends BackEndModel
 
         if ($options['task'] == "user-list-items-in-warehouse") {
             $query = $this::with('productWarehouse')
-                            ->select('id','name','code','image','quantity_in_stock')
-                            ->where('id','>',1)
-                            ->ofUser();
+                            ->select('id','name','thumbnail','quantity_in_stock')
+                            ->where('id','>',1);
             $result =  $query->orderBy('id', 'desc')
                               ->paginate($params['pagination']['totalItemsPerPage']);
         }
         if ($options['task'] == "user-list-items-in-warehouse-no-pagination") {
             $query = $this::with('productWarehouse')
-                            ->select('id','name','code','price','image','quantity_in_stock','user_id')
-                            ->where('id','>',1)
-                            ->ofUser();
+                            ->select('id','name','price','thumbnail','quantity_in_stock','user_id')
+                            ->where('id','>',1);
             $result =  $query->orderBy('id', 'desc')
                               ->get();
         }
         if ($options['task'] == 'user-list-all-items'){
             $result = $this::selectRaw("id as product_id")
                                     ->where('id','>',1)
-                                    ->ofUser()
                                     ->get()
                                     ->toArray();
         }
         if ($options['task'] == "frontend-list-items") {
-            $query = $this::select('id','name','thumbnail','price','inventory','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+            $query = $this::select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                                 ->where('id','>=',1)->where('status_product','con_hang');
             if (isset($params['cat_id'])){
                 $query->where('cat_id', $params['cat_id']);
@@ -114,12 +111,11 @@ class ProductModel extends BackEndModel
         if($options['task'] == "admin-list-items-in-selectbox") {
             $query = $this->select('id', 'name')
                         ->where('id','>',1)
-                        ->OfUser()
                         ->orderBy('name', 'asc');
             $result = $query->pluck('name', 'id')->toArray();
         }
         if($options['task'] == "list-items-search") {
-            $query = $this::with('unitProduct')->select('id','name','thumbnail','price','inventory','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at');
+            $query = $this::with('unitProduct')->select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at');
             if(isset($params['keyword'])){
                 $query->where('name','LIKE', "%{$params['keyword']}%");
             }
@@ -138,25 +134,24 @@ class ProductModel extends BackEndModel
     {
         $result = null;
         if ($options['task'] == 'get-item') {
-            $result = self::select('id','name','thumbnail','price','inventory','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+            $result = self::select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                             ->where('id', $params['id'])
                             ->first();
         }
         if ($options['task'] == 'get-item-in-slug') {
-            $result = self::select('id','name','thumbnail','price','inventory','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+            $result = self::select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                             ->where('slug', $params['slug'])
                             ->first();
         }
         if ($options['task'] == 'get-item-simple') {
-            $result = self::with('unitProduct')->select('id','name','unit_id','price','inventory','promotion')
+            $result = self::with('unitProduct')->select('id','name','unit_id','price','inventory','quantity_in_stock','promotion')
                             ->where('id', $params['id'])
-                            ->OfUser()
                             ->first();
         }
 
         if ($options['task'] == 'frontend-get-item') {
             $result = self::with('unitProduct')
-                            ->select('id','name','thumbnail','price','inventory','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+                            ->select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                             ->where('id', $params['id'])
                             ->first();
         }
@@ -240,5 +235,9 @@ class ProductModel extends BackEndModel
     }
     public function catProduct(){
         return $this->belongsTo('App\Model\CatProductModel','cat_id','id');
+    }
+    public function productWarehouse()
+    {
+        return $this->hasMany(ProductWarehouseModel::class,'product_id','id');
     }
 }

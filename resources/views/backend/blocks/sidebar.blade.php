@@ -84,6 +84,35 @@
                 </ul>
             </li>
             <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-vihara"></i>
+                    <p>
+                        Kho hàng
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('warehouse')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Danh sách kho hàng</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('warehouse.info')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Quản lý kho</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('importCoupon')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Phiếu nhập kho</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('order')}}" class="nav-link">
                     <i class="nav-icon far fa-list-alt"></i>
                     <p>

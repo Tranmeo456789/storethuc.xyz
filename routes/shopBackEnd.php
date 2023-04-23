@@ -88,4 +88,17 @@ Route::group(['prefix' => $prefixShopBackEnd, 'namespace' => 'BackEnd', 'middlew
         Route::get('/sua-phi-ship/{id}', 'FeeShipController@form')->name('feeShip.edit')->middleware('can:edit_unit');
         Route::post('/luu-phi-ship', 'FeeShipController@save')->name('feeShip.save');
         Route::get('/xoa-phi-ship/{id}', 'FeeShipController@delete')->name('feeShip.delete')->middleware('can:delete_unit');
+
+        Route::get('/danh-sach-kho-hang', 'WarehouseController@index')->name('warehouse')->middleware('can:list_unit');
+        Route::get('/them-kho-hang', 'WarehouseController@form')->name('warehouse.add')->middleware('can:add_unit');
+        Route::get('/sua-kho-hang/{id}', 'WarehouseController@form')->name('warehouse.edit')->middleware('can:edit_unit');
+        Route::post('/luu-kho-hang', 'WarehouseController@save')->name('warehouse.save');
+        Route::get('/xoa-kho-hang/{id}', 'WarehouseController@delete')->name('warehouse.delete')->middleware('can:delete_unit');
+        Route::get('/thong-tin-kho-hang', 'WarehouseController@info')->name('warehouse.info');
+
+        Route::get('/danh-sach-phieu-nhap-hang', 'ImportCouponController@index')->name('importCoupon');
+        Route::get('/them-phieu-nhap-hang', 'ImportCouponController@form')->name('importCoupon.add');
+        Route::get('/sua-phieu-nhap-hang/{id}', 'ImportCouponController@form')->name('importCoupon.edit');
+        Route::post('/luu-phieu-nhap-hang', 'ImportCouponController@save')->name('importCoupon.save');
+        Route::get('/xoa-phieu-nhap-hang/{id}', 'ImportCouponController@delete')->name('importCoupon.delete');
 });
