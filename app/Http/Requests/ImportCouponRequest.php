@@ -37,11 +37,11 @@ class ImportCouponRequest extends AjaxFormRequest
             'date'                         => $condDate,
             'warehouse_id'                 => $condWareHouse,
             'list_products.product_id.*'   => $condProduct,
-            'list_products.unit_id.*'      => $condUnit,
-            'list_products.price_import.*' => $condPrice,
-            'list_products.quantity.*'     => $condQuantity,
-            'list_products.total_money.*'  => $condTotalMoney,
-            // 'total'        => $condTotalMoney,
+            //'list_products.unit_id.*'      => $condUnit,
+            //'list_products.price_import.*' => $condPrice,
+            //'list_products.quantity.*'     => $condQuantity,
+            //'list_products.total_money.*'  => $condTotalMoney,
+            //'total'        => $condTotalMoney,
         ];
     }
     public function attributes()

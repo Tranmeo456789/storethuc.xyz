@@ -163,7 +163,7 @@ function updateDetailImportCoupon($rowCurrent) {
     $price_import = ($price_import != '') ? parseInt($price_import.replaceAll('.', '')) : 0;
     $total = ($total != '') ? parseInt($total.replaceAll('.', '')) : 0;
     $total_money_old = ($total_money_old != '') ? parseInt($total_money_old.replaceAll('.', '')) : 0;
-
+console.log($total);
     $total_money = $quantity * $price_import;
     $total = $total - $total_money_old + $total_money;
     $($rowCurrent).find("input[name='list_products[total_money][]']").val($total_money.toLocaleString("vi-VN"));
