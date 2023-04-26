@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('register', 'Api\RegisterController@register');
+
+//login create token
+Route::post('login', 'Api\LoginController@login');
+// list product
+Route::get('product', 'Api\ProductController@index');
+// refresh token
+Route::post('refresh-token', 'Api\LoginController@refreshToken');
+//delete token
+Route::delete('delete-token', 'Api\LoginController@deleteToken');
+

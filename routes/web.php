@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index');
 //     return view('home');
 // });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 //Route::get('/', 'HomeController@index')->name('home');
 //Route::get('dashboard', 'DashboardController@show')->middleware('auth');
 
