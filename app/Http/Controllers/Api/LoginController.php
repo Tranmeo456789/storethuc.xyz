@@ -8,7 +8,8 @@ use App\SessionUser;
 use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Auth;
-
+use JWTAuth;
+use JWTAuthException;
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -22,9 +23,11 @@ class LoginController extends Controller
         if (auth()->attempt($dataCheckLogin)) {
             $checkTokenExit = SessionUser::where('user_id', Auth::id())->first();
             if (empty($checkTokenExit)) {
+                $credentials = $request->only('email', 'password');
+                $token = JWTAuth::attempt($credentials);
                 $userSession = SessionUser::create(
                     [
-                        'token' => Str::random((40)),
+                        'token' => $token,
                         'refresh_token' => Str::random(40),
                         'token_expried' => date('Y-m-d H:i:s', strtotime('+30 day')),
                         'refresh_token_expried' => date('Y-m-d H:i:s', strtotime('+360 day')),

@@ -26,6 +26,9 @@ class ProductController extends Controller
             //     401
             // );
             $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->get();
+            foreach($products as $k=>$item){
+                $products[$k]['price']=(int)$item['price'];
+            }
             return response()->json([
                 'code' => 200,
                 'message' => "OK",

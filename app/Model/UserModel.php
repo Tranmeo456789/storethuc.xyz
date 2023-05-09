@@ -9,12 +9,12 @@ use Illuminate\Support\Str;
 use DB;
 use App\Role;
 use App\Model\RoleUserModel;
+use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-
-class UserModel extends BackEndModel
+class UserModel extends BackEndModel implements Authenticatable
 {
-    
-
    // protected $casts = [];
     public function __construct()
     {
