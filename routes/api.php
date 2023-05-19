@@ -28,4 +28,6 @@ Route::get('product', 'Api\ProductController@index');
 Route::post('refresh-token', 'Api\LoginController@refreshToken');
 //delete token
 Route::delete('delete-token', 'Api\LoginController@deleteToken');
-
+//cart
+Route::get('cart/count', 'Api\CartController@count');
+Route::post('cart/add', 'Api\CartController@add');

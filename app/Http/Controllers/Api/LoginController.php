@@ -21,7 +21,7 @@ class LoginController extends Controller
         // xac thuc user co tai khoan chua
 
         if (auth()->attempt($dataCheckLogin)) {
-            $checkTokenExit = SessionUser::where('user_id', Auth::id())->first();
+            $checkTokenExit = SessionUser::where('user_id', Auth::id())->select('token','user_id')->first();
             if (empty($checkTokenExit)) {
                 $credentials = $request->only('email', 'password');
                 $token = JWTAuth::attempt($credentials);
@@ -34,14 +34,17 @@ class LoginController extends Controller
                         'user_id' => (int)Auth::id()
                     ]
                 );
+                unset($userSession['refresh_token'], $userSession['token_expried'],$userSession['refresh_token_expried']);
             } else {
                 $checkTokenExit['user_id']=(int)$checkTokenExit['user_id'];
                 $userSession = $checkTokenExit;
             }
-            
+            $userSession['userId']=$userSession['user_id'];
+            unset($userSession['user_id']);
             return response()->json(
                 [
                     'code' => 200,
+                    'mesage'=>'OK',
                     'data' => $userSession
                 ],
                 200
