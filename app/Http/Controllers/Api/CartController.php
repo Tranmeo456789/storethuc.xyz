@@ -32,7 +32,7 @@ class CartController extends Controller
             );
         } else {
             unset($checkTokenIsValid['refresh_token'], $checkTokenIsValid['token_expried'],$checkTokenIsValid['refresh_token_expried'],$checkTokenIsValid['info_product'],$checkTokenIsValid['id'],$checkTokenIsValid['token'],$checkTokenIsValid['created_at'],$checkTokenIsValid['updated_at']);
-            $checkTokenIsValid['user_id']=(int)$checkTokenIsValid['user_id'];
+            $checkTokenIsValid['user_id']=strval($checkTokenIsValid['user_id']);
             $checkTokenIsValid['total_cart']=(int)$checkTokenIsValid['total_cart'];
             return response()->json([
                 'code' => 200,
@@ -92,8 +92,39 @@ class CartController extends Controller
                             ]);
              $checkTokenIsValid['total_cart']=(int)$checkTokenIsValid['total_cart'];
 
-             $respon['user_id']=$checkTokenIsValid['user_id'];
+             $respon['user_id']=strval($checkTokenIsValid['user_id']);
              $respon['total_cart']=(int)$checkTokenIsValid['total_cart']+1;
+            return response()->json([
+                'code' => 200,
+                'message' => "OK",
+                'data' => $respon
+            ], 200);
+        }
+    }
+    public function detail(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $checkTokenIsValid = SessionUser::where('token', $token)->first()->toArray();
+        if (empty($token)) {
+            return response()->json(
+                [
+                    'code' => 401,
+                    'message' => "token chua duoc gui tren header"
+                ],
+                401
+            );
+        } elseif (empty($checkTokenIsValid)) {
+            return response()->json(
+                [
+                    'code' => 401,
+                    'message' => "token khong hop le"
+                ],
+                401
+            );
+        } else {
+           // $respon['user_id']=(int)$checkTokenIsValid['user_id'];
+            $respon['total']=(int)$checkTokenIsValid['total_cart'];
+            $respon['items']=json_decode($checkTokenIsValid['info_product'], true);
             return response()->json([
                 'code' => 200,
                 'message' => "OK",

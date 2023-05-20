@@ -31,3 +31,4 @@ Route::delete('delete-token', 'Api\LoginController@deleteToken');
 //cart
 Route::get('cart/count', 'Api\CartController@count');
 Route::post('cart/add', 'Api\CartController@add');
+Route::get('cart/detail', 'Api\CartController@detail');
