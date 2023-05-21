@@ -123,8 +123,61 @@ class CartController extends Controller
             );
         } else {
            // $respon['user_id']=(int)$checkTokenIsValid['user_id'];
-            $respon['total']=(int)$checkTokenIsValid['total_cart'];
+           
+            $respon['total']=0;
             $respon['items']=json_decode($checkTokenIsValid['info_product'], true);
+            foreach($respon['items'] as $val){
+                $respon['total']+=((double)$val['price']*$val['quantity']);
+            }
+            return response()->json([
+                'code' => 200,
+                'message' => "OK",
+                'data' => $respon
+            ], 200);
+        }
+    }
+    public function update(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $checkTokenIsValid = SessionUser::where('token', $token)->first()->toArray();
+        if (empty($token)) {
+            return response()->json(
+                [
+                    'code' => 401,
+                    'message' => "token chua duoc gui tren header"
+                ],
+                401
+            );
+        } elseif (empty($checkTokenIsValid)) {
+            return response()->json(
+                [
+                    'code' => 401,
+                    'message' => "token khong hop le"
+                ],
+                401
+            );
+        } else {
+            $productId = (int)$request->productId;
+            $quantity = (int)$request->quantity;
+            $listProductArr = json_decode($checkTokenIsValid['info_product'], true);
+            $totalCart=0;
+            $respon['total']=0;
+            foreach($listProductArr as $k=>$val){
+                if($productId==(int)$val['id']){
+                    $listProductArr[$k]['quantity']=$quantity;
+                    $totalCart+=$quantity;
+                    $respon['total']=((double)$val['price']*$quantity);
+                }else{
+                    $totalCart+=(int)$val['quantity'];
+                    $respon['total']=((double)$val['price']*$val['quantity']);
+                }
+            }
+            $listProductStr=json_encode($listProductArr);
+            $userSession = SessionUser::where('token',$token)->update([
+                'info_product'=>$listProductStr,
+                'total_cart'=>(int)$totalCart
+            ]);
+            $respon['items']=json_decode($listProductStr, true);
             return response()->json([
                 'code' => 200,
                 'message' => "OK",
