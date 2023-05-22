@@ -32,12 +32,15 @@ class CartController extends Controller
             );
         } else {
             unset($checkTokenIsValid['refresh_token'], $checkTokenIsValid['token_expried'],$checkTokenIsValid['refresh_token_expried'],$checkTokenIsValid['info_product'],$checkTokenIsValid['id'],$checkTokenIsValid['token'],$checkTokenIsValid['created_at'],$checkTokenIsValid['updated_at']);
-            $checkTokenIsValid['user_id']=strval($checkTokenIsValid['user_id']);
-            $checkTokenIsValid['total_cart']=(int)$checkTokenIsValid['total_cart'];
+            $respon['user_id']=strval($checkTokenIsValid['user_id']);
+            $respon['total_cart']=(int)$checkTokenIsValid['total_cart'];
+            if($respon['total_cart']==0){
+                $respon=null;
+            }
             return response()->json([
                 'code' => 200,
                 'message' => "OK",
-                'data' => $checkTokenIsValid
+                'data' => $respon
             ], 200);
         }
     }
@@ -182,6 +185,41 @@ class CartController extends Controller
                 'code' => 200,
                 'message' => "OK",
                 'data' => $respon
+            ], 200);
+        }
+    }
+    public function confirm(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $checkTokenIsValid = SessionUser::where('token', $token)->first()->toArray();
+        if (empty($token)) {
+            return response()->json(
+                [
+                    'code' => 401,
+                    'message' => "token chua duoc gui tren header"
+                ],
+                401
+            );
+        } elseif (empty($checkTokenIsValid)) {
+            return response()->json(
+                [
+                    'code' => 401,
+                    'message' => "token khong hop le"
+                ],
+                401
+            );
+        } else {
+            
+            $userSession = SessionUser::where('token',$token)->update([
+                'info_product'=>'',
+                'total_cart'=>(int)0
+            ]);
+            // $respon['items']=[];
+            // $respon['total']=null;
+            return response()->json([
+                'code' => 200,
+                'message' => "OK",
+                'data' => null
             ], 200);
         }
     }
