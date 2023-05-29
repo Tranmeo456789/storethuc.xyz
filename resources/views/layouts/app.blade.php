@@ -59,7 +59,7 @@
                     @include("client.block.box_responsive.menu_responsive")
                 </div>
                 <div id="btn-top"><img src="{{asset('images/icon-to-top.png')}}" alt="" /></div>
-                <div id="btn-zalo-me"><a href="https://zalo.me/{{$phoneAdmin}}"><img src="{{asset('images/zalo.png')}}" alt="" /></a></div>
+                <div id="btn-zalo-me"><a href="https://zalo.me/{{$phoneAdmin}}"><img src="{{asset('images/zalo-2.png')}}" alt="" /></a></div>
                 <div class="hotline-phone-ring-wrap">
                     <div class="hotline-phone-ring">
                         <div class="hotline-phone-ring-circle"></div>

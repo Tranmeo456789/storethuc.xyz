@@ -22,6 +22,7 @@
 #category-product-wp {
     border: 1px solid #ececec;
     border-top: none;
+    border-radius: 8px 8px 0px 0px;
 }
 #main-menu{
     margin-bottom: 0px;
@@ -31,6 +32,7 @@
 #filter-product-wp {
     border: 1px solid #ececec;
     margin-top: 25px;
+    border-radius: 8px 8px 0px 0px;
 }
 
 #category-product-wp .section-title,
@@ -42,6 +44,7 @@
     background: #239b3d;
     color: #fff;
     padding: 15px;
+    border-radius: 8px 8px 0px 0px;
 }
 
 #category-product-wp .section-detail {
@@ -210,10 +213,11 @@
     display: inline-block;
     color: rgb(255, 255, 255);
     text-transform: uppercase;
-    padding: 5px 15px;
+    padding: 10px;
     background-color: #239b3d;
     line-height: normal;
     margin-bottom: 0px;
+    border-radius: 8px 8px 0px 0px;
 }
 
 #feature-product-wp .list-item li,
