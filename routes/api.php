@@ -34,3 +34,11 @@ Route::post('cart/add', 'Api\CartController@add');
 Route::get('cart/detail', 'Api\CartController@detail');
 Route::post('cart/update', 'Api\CartController@update');
 Route::post('cart/confirm', 'Api\CartController@confirm');
+
+//return info when reload page in reatjs
+Route::get('me', 'Api\LoginController@reactjsReload');
+Route::get('user-list', 'Api\UserController@list');
+
+Route::group(['middleware' => 'CheckToken'], function() {
+    Route::delete('delete-user/{idUser}', 'Api\UserController@delete');
+});

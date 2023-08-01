@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Model\UserModel;
 use Illuminate\Http\Request;
 use App\SessionUser;
 use Illuminate\Support\Str;
@@ -10,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use JWTAuth;
 use JWTAuthException;
+
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -21,10 +23,10 @@ class LoginController extends Controller
         // xac thuc user co tai khoan chua
 
         if (auth()->attempt($dataCheckLogin)) {
-            $checkTokenExit = SessionUser::where('user_id', Auth::id())->select('token','user_id')->first();
+            $checkTokenExit = SessionUser::where('user_id', Auth::id())->select('token', 'user_id')->first();
             if (empty($checkTokenExit)) {
                 $credentials = $request->only('email', 'password');
-                $token = JWTAuth::attempt($credentials);
+                $token = JWTAuth::claims(['username' => $request->email])->attempt($credentials);
                 $userSession = SessionUser::create(
                     [
                         'token' => $token,
@@ -34,17 +36,17 @@ class LoginController extends Controller
                         'user_id' => (int)Auth::id()
                     ]
                 );
-                unset($userSession['refresh_token'], $userSession['token_expried'],$userSession['refresh_token_expried']);
+                unset($userSession['refresh_token'], $userSession['token_expried'], $userSession['refresh_token_expried']);
             } else {
-                $checkTokenExit['user_id']=(int)$checkTokenExit['user_id'];
+                $checkTokenExit['user_id'] = (int)$checkTokenExit['user_id'];
                 $userSession = $checkTokenExit;
             }
-            $userSession['userId']=$userSession['user_id'];
+            $userSession['userId'] = $userSession['user_id'];
             unset($userSession['user_id']);
             return response()->json(
                 [
                     'code' => 200,
-                    'mesage'=>'OK',
+                    'mesage' => 'OK',
                     'data' => $userSession
                 ],
                 200
@@ -95,5 +97,33 @@ class LoginController extends Controller
             'code' => 200,
             'message' => 'delete token success'
         ], 200);
+    }
+    public function reactjsReload(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $tokenDeBear = trim($token,'Bearer');
+        $tokenDeBear = trim($tokenDeBear,' ');
+        $checkTokenIsValid = SessionUser::where('token', $tokenDeBear)->first();
+        if (!empty($checkTokenIsValid)) {
+            $infoUserLogin = UserModel::where('id', $checkTokenIsValid['user_id'])->first();
+            unset($infoUserLogin['password']);
+            $infoUserLogin['username']=$infoUserLogin['email'];
+            return response()->json(
+                [
+                    'code' => 200,
+                    'info_user' => $infoUserLogin
+                ],
+                200
+            );
+        }else{
+            return response()->json(
+                [
+                    'code' => 401,
+                    'token'=>$tokenDeBear,
+                    'message' => 'token sai'
+                ],
+                401
+            );
+        }
     }
 }

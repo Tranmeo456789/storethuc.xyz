@@ -13,7 +13,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends BackEndModel implements Authenticatable
+class UserModel extends BackEndModel
 {
    // protected $casts = [];
     public function __construct()
