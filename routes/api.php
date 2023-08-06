@@ -38,6 +38,9 @@ Route::post('cart/confirm', 'Api\CartController@confirm');
 //return info when reload page in reatjs
 Route::get('me', 'Api\LoginController@reactjsReload');
 Route::get('user-list', 'Api\UserController@list');
+Route::get('product/search', 'Api\ProductController@search');
+Route::get('product/selling', 'Api\ProductController@selling');
+Route::get('cat/product', 'Api\CatProductController@list');
 
 Route::group(['middleware' => 'CheckToken'], function() {
     Route::delete('delete-user/{idUser}', 'Api\UserController@delete');

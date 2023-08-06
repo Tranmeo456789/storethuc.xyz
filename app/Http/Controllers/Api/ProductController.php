@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Model\ProductModel;
 use App\SessionUser;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -75,5 +76,27 @@ class ProductController extends Controller
                 'data' => $products
             ], 200);
         }
+    }
+    public function search(Request $request){
+        $keySearch=$request->q;
+        $typeSearch=$request->type;
+        if($typeSearch=='less'){
+            $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->where('name','LIKE', "%{$keySearch}%")->limit(5)->get();
+        }else{
+            $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->where('name','LIKE', "%{$keySearch}%")->get();
+        }
+        return response()->json([
+            'code' => 200,
+            'message' => "OK",
+            'data' => $products
+        ], 200);
+    }
+    public function selling(Request $request){
+        $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->inRandomOrder()->limit(5)->get();
+        return response()->json([
+            'code' => 200,
+            'message' => "OK",
+            'data' => $products
+        ], 200);
     }
 }
