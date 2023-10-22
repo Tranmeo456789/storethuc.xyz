@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Model\ProductModel;
 use App\SessionUser;
-
+use App\Model\CatProductModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +32,7 @@ class ProductController extends Controller
                 [
                     'code' => 401,
                     'message' => "token chua duoc gui tren header",
-                    'data'=> $data
+                    'data' => $data
                 ],
                 401
             );
@@ -45,7 +45,7 @@ class ProductController extends Controller
             //     'message' => "OK",
             //     'data' => $products
             // ], 200);
-            
+
         } elseif (empty($checkTokenIsValid)) {
             $data = [
                 [
@@ -65,9 +65,9 @@ class ProductController extends Controller
             );
         } else {
             $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->limit(2)->get();
-            foreach($products as $k=>$item){
-                $products[$k]['id']=(int)$item['id'];
-                $products[$k]['price']=(int)$item['price'];
+            foreach ($products as $k => $item) {
+                $products[$k]['id'] = (int)$item['id'];
+                $products[$k]['price'] = (int)$item['price'];
                 $products[$k]['quantity'] = 1;
             }
             return response()->json([
@@ -77,13 +77,14 @@ class ProductController extends Controller
             ], 200);
         }
     }
-    public function search(Request $request){
-        $keySearch=$request->q;
-        $typeSearch=$request->type;
-        if($typeSearch=='less'){
-            $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->where('name','LIKE', "%{$keySearch}%")->limit(5)->get();
-        }else{
-            $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->where('name','LIKE', "%{$keySearch}%")->get();
+    public function search(Request $request)
+    {
+        $keySearch = $request->q;
+        $typeSearch = $request->type;
+        if ($typeSearch == 'less') {
+            $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->where('name', 'LIKE', "%{$keySearch}%")->limit(5)->get();
+        } else {
+            $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->where('name', 'LIKE', "%{$keySearch}%")->get();
         }
         return response()->json([
             'code' => 200,
@@ -91,12 +92,39 @@ class ProductController extends Controller
             'data' => $products
         ], 200);
     }
-    public function selling(Request $request){
-        $products = ProductModel::select('id', 'name', 'thumbnail', 'price')->inRandomOrder()->limit(5)->get();
+    public function selling(Request $request)
+    {
+        $products = ProductModel::with('unitProduct')->select('id', 'name', 'thumbnail', 'price','unit_id')->inRandomOrder()->limit(5)->get();
+        
         return response()->json([
             'code' => 200,
             'message' => "OK",
             'data' => $products
         ], 200);
+    }
+    public function listProductInCat(Request $request)
+    {
+        $id = $request->id;
+        if ($id) {
+            return response()->json([
+                'code' => 200,
+                'message' => "OK",
+                'data' => '1 danh muc'
+            ], 200);
+        } else {
+            $listAllCatProduct = (new CatProductModel)->listItems(null, ['task' => 'list-items-front-end']);
+            foreach ($listAllCatProduct as $key=>$itemCat) {
+                if ($itemCat['parent_id'] == 1) {
+                    $catId = $itemCat['id'];
+                    $item = (new ProductModel)->listItems(['cat_id' => $catId, 'limit' => 8], ['task' => 'frontend-list-items'])->toArray();
+                    $listAllCatProduct[$key]['product'] = $item['data'];
+                }
+            }
+            return response()->json([
+                'code' => 200,
+                'message' => "OK",
+                'data' => $listAllCatProduct
+            ], 200);
+        }
     }
 }

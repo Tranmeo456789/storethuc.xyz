@@ -40,6 +40,7 @@ Route::get('me', 'Api\LoginController@reactjsReload');
 Route::get('user-list', 'Api\UserController@list');
 Route::get('product/search', 'Api\ProductController@search');
 Route::get('product/selling', 'Api\ProductController@selling');
+Route::get('product/cat/{id?}', 'Api\ProductController@listProductInCat');
 Route::get('cat/product', 'Api\CatProductController@list');
 
 Route::group(['middleware' => 'CheckToken'], function() {

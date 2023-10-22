@@ -74,7 +74,7 @@ class ProductModel extends BackEndModel
                                     ->toArray();
         }
         if ($options['task'] == "frontend-list-items") {
-            $query = $this::select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
+            $query = $this::with('unitProduct')->select('id','name','thumbnail','price','inventory','quantity_in_stock','promotion','unit_id','describe','content','status_product','slug','cat_id','image','created_at', 'updated_at')
                                 ->where('id','>=',1)->where('status_product','con_hang');
             if (isset($params['cat_id'])){
                 $query->where('cat_id', $params['cat_id']);
@@ -88,6 +88,7 @@ class ProductModel extends BackEndModel
             }
             
         }
+        
         // if ($options['task'] == "frontend-list-items-featurer") {
         //     $type = $params['type'];
         //     $query = $this::select('id','name','type','code','cat_product_id','producer_id',

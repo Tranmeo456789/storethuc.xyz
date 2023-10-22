@@ -28,16 +28,16 @@ class BackEndModel extends Model
     }
     public function setCreatedHistory(&$params){
       $params['created_at']    = date('Y-m-d H:i:s');
-      if(Auth::check()){
-        $params['created_by'] = Auth::user()->id;
-      }
+      // if(Auth::check()){
+      //   $params['created_by'] = Auth::user()->id;
+      // }
       
     }
     public function setModifiedHistory(&$params){
       $params['updated_at']    = date('Y-m-d H:i:s');
-      if(Auth::check()){
-        $params['updated_by'] = Auth::user()->id;
-      }
+      // if(Auth::check()){
+      //   $params['updated_by'] = Auth::user()->id;
+      // }
     }
     public function getMaxCode($params = null, $options = null){
       $member =  DB::table('generated_code')
